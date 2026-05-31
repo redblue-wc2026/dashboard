@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My Predictions — Red n Blue WC2026</title>
+<title>My Predictions — Red n Blue Review WC2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--red:#C4122E;--blue:#1B5BA8;--prussian:#1C3A6B;--sky:#4E8DD6;--gold:#F5D020;--white:#fff;--surface:#F7F8FA;--border:#E0E2E8;--muted:#9BA3AF}
@@ -67,6 +67,19 @@ h1,h2,h3,.hf{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 #error-screen p{color:var(--muted);font-size:14px;line-height:1.7}
 .chevron{transition:transform 0.2s;font-size:18px;color:var(--muted)}
 .chevron.open{transform:rotate(180deg)}
+/* Played/finished fixtures greyed out */
+.fixture-row.played{opacity:0.45;pointer-events:none}
+.fixture-row.played .team{color:var(--muted)}
+/* Sticky save bar */
+.sticky-save{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;
+  border-top:3px solid var(--red);padding:10px 16px;z-index:200;
+  box-shadow:0 -4px 16px rgba(0,0,0,0.12)}
+.sticky-save-inner{max-width:900px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.sticky-save-inner span{font-size:13px;color:var(--muted);font-family:'Plus Jakarta Sans',Arial,sans-serif;flex:1}
+.sticky-save-btn{background:var(--red);color:#fff;border:none;padding:11px 24px;
+  border-radius:7px;font-size:13px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif;
+  cursor:pointer;box-shadow:0 3px 10px rgba(196,18,46,0.35);white-space:nowrap}
+.sticky-save-btn.saved{background:#28a745}
 @media(max-width:500px){.fixture-row{grid-template-columns:1fr;gap:6px}.score-inputs{justify-content:flex-start}}
 </style>
 </head>
@@ -86,6 +99,16 @@ h1,h2,h3,.hf{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     </div>
   </div>
 </nav>
+
+<!-- Sticky save bar — shown when scrolled past first batch -->
+<div class="sticky-save" id="sticky-save">
+  <div class="sticky-save-inner">
+    <span id="sticky-label">Unsaved predictions</span>
+    <button class="sticky-save-btn" id="sticky-save-btn" onclick="saveCurrentBatch()">
+      💾 Save Predictions
+    </button>
+  </div>
+</div>
 
 <div class="hero">
   <div class="hero-inner">
@@ -112,14 +135,22 @@ h1,h2,h3,.hf{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 // ── CONFIG ────────────────────────────────────────────────────────
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbzVQHGbw6gf0kzmbzadN28pRa1MUb2EezPyNSSxjObDR5sDCSoYmWAo-iTAvJm4tNGl/exec';
 
-// ── TOKEN — URL param takes priority, then localStorage ──────────
+// ── TOKEN — URL param is ALWAYS the source of truth ──────────────
+// Each player has their own unique link. The token in the URL
+// identifies who they are. sessionStorage provides convenience
+// within a single browser tab session only.
 const params = new URLSearchParams(window.location.search);
-let TOKEN = params.get('token') || localStorage.getItem('wc2026_token') || '';
+let TOKEN = params.get('token') || '';
+
+// Only fall back to sessionStorage if no token in URL
+// (e.g. navigating back from leaderboard in the same tab)
+if (!TOKEN) TOKEN = sessionStorage.getItem('wc2026_token') || '';
 
 if (TOKEN) {
-  // Persist to localStorage so it survives browser restarts
-  localStorage.setItem('wc2026_token', TOKEN);
-  // Keep token in URL for bookmarking
+  // Store per-tab only — sessionStorage is isolated per tab so
+  // multiple players on the same browser can't overwrite each other
+  sessionStorage.setItem('wc2026_token', TOKEN);
+  // Keep token in URL for easy bookmarking
   if (!params.get('token')) {
     const url = new URL(window.location);
     url.searchParams.set('token', TOKEN);
@@ -233,6 +264,9 @@ function toggleBatch(header) {
   chevron.classList.toggle('open');
 }
 
+// ── CURRENT OPEN BATCH for sticky save ───────────────────────────
+let _currentOpenBatch = -1;
+
 // ── RENDER FIXTURES ───────────────────────────────────────────────
 function renderFixtures(fixtures, batchIdx, deadlineHtml) {
   const allLocked = fixtures.every(f => f.locked === 'TRUE' || f.past_deadline);
@@ -240,6 +274,7 @@ function renderFixtures(fixtures, batchIdx, deadlineHtml) {
   let html = deadlineHtml;
   fixtures.forEach(f => {
     const locked     = f.locked === 'TRUE' || f.past_deadline;
+    const played     = f.status === 'FINISHED' || (f.result_home !== '' && f.result_away !== '');
     const hasResult  = f.result_home !== '' && f.result_away !== '';
     const isScored   = f.points_total !== '';
     const isDefault  = f.is_default === 'TRUE';
@@ -254,8 +289,11 @@ function renderFixtures(fixtures, batchIdx, deadlineHtml) {
       else                    ptsBadge = `<span class="pts-badge pts-0">0 pts</span>`;
     }
 
+    // Played fixtures: show result, grey out, no inputs
+    const rowClass = (played && !hasResult) ? 'fixture-row played' : played ? 'fixture-row played' : 'fixture-row';
+
     html += `
-    <div class="fixture-row">
+    <div class="${rowClass}">
       <div>
         <div class="team">${f.home_team}</div>
         <div class="fixture-meta">${f.kickoff_uk || ''}</div>
@@ -267,16 +305,16 @@ function renderFixtures(fixtures, batchIdx, deadlineHtml) {
               <input type="number" class="score-input" min="0" max="20"
                 data-fixture="${f.fixture_id}" data-side="home"
                 value="${f.predicted_home !== '' ? f.predicted_home : ''}"
-                placeholder="?" ${locked ? 'disabled' : ''}>
+                placeholder="?" ${locked || played ? 'disabled' : ''}>
               <span class="score-sep">–</span>
               <input type="number" class="score-input" min="0" max="20"
                 data-fixture="${f.fixture_id}" data-side="away"
                 value="${f.predicted_away !== '' ? f.predicted_away : ''}"
-                placeholder="?" ${locked ? 'disabled' : ''}>
+                placeholder="?" ${locked || played ? 'disabled' : ''}>
             </div>`
         }
         ${ptsBadge ? `<div style="text-align:center;margin-top:4px">${ptsBadge}</div>` : ''}
-        ${isScored && !hasResult && f.predicted_home
+        ${isScored && !hasResult && f.predicted_home !== ''
           ? `<div class="fixture-meta" style="text-align:center">Your: ${f.predicted_home}–${f.predicted_away}</div>`
           : ''}
       </div>
@@ -368,6 +406,42 @@ function showAlert(id, msg) {
   setTimeout(() => { el.style.display = 'none'; }, 5000);
 }
 
+// ── STICKY SAVE BAR ───────────────────────────────────────────────
+// Show sticky bar when an open batch is in view
+function updateStickyBar() {
+  const batches = document.querySelectorAll('.batch-body.open');
+  let found = -1;
+  batches.forEach((body, i) => {
+    const rect = body.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 60) {
+      const btn = body.querySelector('.save-btn');
+      if (btn) found = parseInt(btn.id.replace('save-btn-',''));
+    }
+  });
+  const bar = document.getElementById('sticky-save');
+  if (found >= 0) {
+    _currentOpenBatch = found;
+    bar.style.display = 'block';
+  } else {
+    bar.style.display = 'none';
+  }
+}
+window.addEventListener('scroll', updateStickyBar);
+
+function saveCurrentBatch() {
+  if (_currentOpenBatch < 0) return;
+  const btn = document.getElementById(`save-btn-${_currentOpenBatch}`);
+  if (btn) btn.click();
+  // Reflect saved state on sticky button briefly
+  const sBtn = document.getElementById('sticky-save-btn');
+  sBtn.textContent = '✅ Saved!';
+  sBtn.classList.add('saved');
+  setTimeout(() => {
+    sBtn.textContent = '💾 Save Predictions';
+    sBtn.classList.remove('saved');
+  }, 2500);
+}
+
 // ── ONLY ALLOW 0–20 ───────────────────────────────────────────────
 document.addEventListener('input', e => {
   if (!e.target.classList.contains('score-input')) return;
@@ -379,5 +453,35 @@ document.addEventListener('input', e => {
 
 init();
 </script>
+
+<div style="background:#1B5BA8;border-top:5px solid #C4122E;padding:24px 16px;text-align:center;margin-top:16px">
+  <p style="color:#fff;font-size:14px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif;margin-bottom:10px">🦅 Red and Blue Review</p>
+  <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+    <a href="https://www.facebook.com/profile.php?id=100063836118934"
+       style="display:inline-flex;align-items:center;gap:6px;background:#1877F2;color:#fff;
+              text-decoration:none;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:700;
+              font-family:'Plus Jakarta Sans',Arial,sans-serif;box-shadow:0 2px 8px rgba(24,119,242,0.4)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Facebook
+    </a>
+    <a href="https://www.youtube.com/@theredbluereview8132"
+       style="display:inline-flex;align-items:center;gap:6px;background:#FF0000;color:#fff;
+              text-decoration:none;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:700;
+              font-family:'Plus Jakarta Sans',Arial,sans-serif;box-shadow:0 2px 8px rgba(255,0,0,0.4)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      YouTube
+    </a>
+    <a href="https://www.instagram.com/red_and_blue_review"
+       style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;
+              text-decoration:none;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:700;
+              font-family:'Plus Jakarta Sans',Arial,sans-serif;box-shadow:0 2px 8px rgba(225,48,108,0.4)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+  </div>
+  <p style="color:rgba(255,255,255,0.4);font-size:11px;font-family:'Plus Jakarta Sans',Arial,sans-serif">
+    <a href="mailto:ian.lyons66@gmail.com" style="color:rgba(255,255,255,0.6);text-decoration:none">Contact Admin</a>
+  </p>
+</div>
 </body>
 </html>
