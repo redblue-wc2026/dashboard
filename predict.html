@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Predictions — Red n Blue WC2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',Arial,sans-serif;background:#0d1117;color:#e6edf3;min-height:100vh}
+:root{--red:#C4122E;--blue:#1B5BA8;--gold:#F5D020;--card:#161b22;--border:#30363d}
+.nav{background:var(--blue);border-bottom:4px solid var(--red);padding:0 16px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.nav-brand{color:#fff;font-weight:900;font-size:15px;letter-spacing:1px;text-transform:uppercase}
+.nav-brand span{color:var(--gold)}
+.nav-player{color:rgba(255,255,255,0.8);font-size:13px}
+.nav-player strong{color:#fff}
+.hero{background:linear-gradient(135deg,var(--blue),#0f3460);padding:24px 16px;border-bottom:3px solid var(--red)}
+.hero-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.hero h1{font-size:clamp(16px,3vw,22px);font-weight:900;color:#fff;text-transform:uppercase}
+.hero h1 span{color:var(--gold)}
+.stat-chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,0.12);border-radius:20px;padding:6px 14px;font-size:12px;color:#fff}
+.chip strong{color:var(--gold)}
+.main{max-width:900px;margin:24px auto;padding:0 16px 40px}
+.batch-card{background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:20px;overflow:hidden}
+.batch-header{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+.batch-header:hover{background:rgba(27,91,168,0.1)}
+.batch-title{font-weight:700;font-size:15px}
+.batch-meta{font-size:12px;color:#8b949e;margin-top:4px}
+.badge{padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase}
+.badge-open{background:rgba(40,167,69,0.2);color:#28a745;border:1px solid #28a745}
+.badge-locked{background:rgba(139,148,158,0.2);color:#8b949e;border:1px solid #8b949e}
+.badge-upcoming{background:rgba(245,208,32,0.15);color:var(--gold);border:1px solid var(--gold)}
+.badge-scored{background:rgba(27,91,168,0.2);color:#7eb3ff;border:1px solid var(--blue)}
+.batch-body{padding:0 20px 20px;display:none}
+.batch-body.open{display:block}
+.deadline-warn{background:rgba(196,18,46,0.12);border:1px solid var(--red);border-radius:6px;padding:10px 14px;font-size:12px;color:#ff8a8a;margin-bottom:14px}
+.fixture-row{display:grid;grid-template-columns:1fr auto 1fr auto;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
+.fixture-row:last-of-type{border-bottom:none}
+.team{font-size:13px;font-weight:600}
+.team.away{text-align:right}
+.vs{color:var(--red);font-weight:700;font-size:12px;text-align:center}
+.score-inputs{display:flex;align-items:center;gap:6px;justify-content:center}
+.score-input{width:48px;height:40px;background:#0d1117;border:1px solid var(--border);border-radius:6px;color:#fff;font-size:16px;font-weight:700;text-align:center;font-family:inherit;transition:border-color 0.2s}
+.score-input:focus{outline:none;border-color:var(--blue)}
+.score-input:disabled{color:#555;background:#0d1117;border-color:#222}
+.score-sep{color:#555;font-weight:700}
+.fixture-meta{font-size:11px;color:#8b949e;margin-top:4px}
+.pts-badge{padding:3px 8px;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap}
+.pts-3{background:rgba(40,167,69,0.2);color:#28a745}
+.pts-1{background:rgba(27,91,168,0.2);color:#7eb3ff}
+.pts-0{background:rgba(139,148,158,0.1);color:#555}
+.pts-default{background:rgba(196,18,46,0.1);color:#ff8a8a}
+.result-score{background:var(--blue);color:#fff;font-weight:700;padding:4px 10px;border-radius:4px;font-size:13px;white-space:nowrap}
+.save-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:7px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px;margin-top:14px;transition:opacity 0.2s}
+.save-btn:hover{opacity:0.9}
+.save-btn:disabled{opacity:0.4;cursor:not-allowed}
+.save-btn.saved{background:#28a745}
+.alert{padding:10px 14px;border-radius:6px;font-size:13px;margin-top:10px;display:none}
+.alert-success{background:rgba(40,167,69,0.15);border:1px solid #28a745;color:#28a745}
+.alert-error{background:rgba(196,18,46,0.15);border:1px solid var(--red);color:#ff8a8a}
+.locked-msg{color:#8b949e;font-size:13px;text-align:center;padding:16px 0;font-style:italic}
+#loading{text-align:center;padding:60px 16px;color:#8b949e;font-size:15px}
+#error-screen{display:none;text-align:center;padding:60px 16px}
+#error-screen h2{color:var(--red);margin-bottom:12px}
+#error-screen p{color:#8b949e;font-size:14px;line-height:1.7}
+.chevron{transition:transform 0.2s;font-size:18px}
+.chevron.open{transform:rotate(180deg)}
+@media(max-width:500px){
+  .fixture-row{grid-template-columns:1fr;gap:6px}
+  .score-inputs{justify-content:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">🦅 Red n Blue <span>WC2026</span></div>
+    <div class="nav-player" id="nav-player"></div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>My <span>Predictions</span></h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:4px">Red and Blue Review — WC2026 Prediction League</p>
+    </div>
+    <div class="stat-chips" id="stat-chips"></div>
+  </div>
+</div>
+
+<div class="main">
+  <div id="loading">⚽ Loading your predictions...</div>
+  <div id="error-screen">
+    <h2>🔒 Access Denied</h2>
+    <p>Your prediction link is invalid or has expired.<br><br>
+    If you've paid and received a welcome email, use the link from that email.<br><br>
+    Contact <a href="mailto:ian.lyons66@gmail.com" style="color:var(--gold)">ian.lyons66@gmail.com</a> for help.</p>
+  </div>
+  <div id="batches-container"></div>
+</div>
+
+<script>
+// ── CONFIG ────────────────────────────────────────────────────────
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzVQHGbw6gf0kzmbzadN28pRa1MUb2EezPyNSSxjObDR5sDCSoYmWAo-iTAvJm4tNGl/exec';
+
+// ── TOKEN FROM URL ────────────────────────────────────────────────
+const params = new URLSearchParams(window.location.search);
+const TOKEN  = params.get('token') || '';
+
+if (!TOKEN) {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('error-screen').style.display = 'block';
+}
+
+// ── INIT ──────────────────────────────────────────────────────────
+async function init() {
+  if (!TOKEN) return;
+  try {
+    const res  = await fetch(`${GAS_URL}?action=getFixtures&token=${TOKEN}`);
+    const data = await res.json();
+    document.getElementById('loading').style.display = 'none';
+
+    if (data.error) {
+      document.getElementById('error-screen').style.display = 'block';
+      return;
+    }
+
+    renderPlayer(data.player);
+    renderBatches(data.batches || []);
+  } catch(e) {
+    document.getElementById('loading').textContent =
+      'Unable to load predictions. Please try again later.';
+  }
+}
+
+// ── RENDER PLAYER ─────────────────────────────────────────────────
+function renderPlayer(player) {
+  document.getElementById('nav-player').innerHTML =
+    `${player.full_name} &nbsp;<strong>${player.player_id}</strong>`;
+
+  document.getElementById('stat-chips').innerHTML = `
+    <div class="chip">Points: <strong>${player.total_points || 0}</strong></div>
+    <div class="chip">Rank: <strong>#${player.current_rank || '—'}</strong></div>
+    <div class="chip">Correct: <strong>${player.correct_results || 0}</strong></div>
+  `;
+}
+
+// ── RENDER BATCHES ────────────────────────────────────────────────
+function renderBatches(batches) {
+  const container = document.getElementById('batches-container');
+
+  batches.forEach((batch, bi) => {
+    const allLocked   = batch.fixtures.every(f => f.locked === 'TRUE' || f.past_deadline);
+    const allScored   = batch.fixtures.every(f => f.points_total !== '');
+    const hasOpen     = batch.fixtures.some(f => f.locked !== 'TRUE' && !f.past_deadline);
+    const isUnlocked  = batch.unlocked;
+
+    let badgeHtml, bodyOpen;
+    if (!isUnlocked) {
+      badgeHtml = `<span class="badge badge-upcoming">Upcoming</span>`;
+      bodyOpen  = false;
+    } else if (allScored) {
+      badgeHtml = `<span class="badge badge-scored">Scored</span>`;
+      bodyOpen  = true;
+    } else if (hasOpen) {
+      badgeHtml = `<span class="badge badge-open">Open</span>`;
+      bodyOpen  = true;
+    } else {
+      badgeHtml = `<span class="badge badge-locked">Locked</span>`;
+      bodyOpen  = true;
+    }
+
+    // Deadline display
+    let deadlineHtml = '';
+    if (isUnlocked && batch.deadline && hasOpen) {
+      const dl = new Date(batch.deadline);
+      const uk = new Intl.DateTimeFormat('en-GB', {
+        weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Europe/London'
+      }).format(dl);
+      deadlineHtml = `<div class="deadline-warn">⏰ Predictions close 1 hour before each kick-off. Save early!</div>`;
+    }
+
+    const card = document.createElement('div');
+    card.className = 'batch-card';
+    card.innerHTML = `
+      <div class="batch-header" onclick="toggleBatch(this)">
+        <div>
+          <div class="batch-title">${batch.label}</div>
+          <div class="batch-meta">${batch.fixtures.length} fixtures</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          ${badgeHtml}
+          <span class="chevron ${bodyOpen ? 'open' : ''}">⌄</span>
+        </div>
+      </div>
+      <div class="batch-body ${bodyOpen ? 'open' : ''}" id="batch-${bi}">
+        ${!isUnlocked ? `<div class="locked-msg">This batch will be released soon. Check back later!</div>` :
+          renderFixtures(batch.fixtures, bi, deadlineHtml)}
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function toggleBatch(header) {
+  const body    = header.nextElementSibling;
+  const chevron = header.querySelector('.chevron');
+  body.classList.toggle('open');
+  chevron.classList.toggle('open');
+}
+
+// ── RENDER FIXTURES ───────────────────────────────────────────────
+function renderFixtures(fixtures, batchIdx, deadlineHtml) {
+  const allLocked = fixtures.every(f => f.locked === 'TRUE' || f.past_deadline);
+
+  let html = deadlineHtml;
+  fixtures.forEach(f => {
+    const locked     = f.locked === 'TRUE' || f.past_deadline;
+    const hasResult  = f.result_home !== '' && f.result_away !== '';
+    const isScored   = f.points_total !== '';
+    const isDefault  = f.is_default === 'TRUE';
+
+    // Points badge
+    let ptsBadge = '';
+    if (isScored) {
+      const pts = parseInt(f.points_total);
+      if (isDefault)          ptsBadge = `<span class="pts-badge pts-default">Default 5-5</span>`;
+      else if (pts === 3)     ptsBadge = `<span class="pts-badge pts-3">⭐ 3 pts</span>`;
+      else if (pts === 1)     ptsBadge = `<span class="pts-badge pts-1">✔️ 1 pt</span>`;
+      else                    ptsBadge = `<span class="pts-badge pts-0">0 pts</span>`;
+    }
+
+    html += `
+    <div class="fixture-row">
+      <div>
+        <div class="team">${f.home_team}</div>
+        <div class="fixture-meta">${f.kickoff_uk || ''}</div>
+      </div>
+      <div style="text-align:center">
+        ${hasResult
+          ? `<div class="result-score">${f.result_home} – ${f.result_away}</div>`
+          : `<div class="score-inputs">
+              <input type="number" class="score-input" min="0" max="20"
+                data-fixture="${f.fixture_id}" data-side="home"
+                value="${f.predicted_home || ''}"
+                placeholder="?" ${locked ? 'disabled' : ''}>
+              <span class="score-sep">–</span>
+              <input type="number" class="score-input" min="0" max="20"
+                data-fixture="${f.fixture_id}" data-side="away"
+                value="${f.predicted_away || ''}"
+                placeholder="?" ${locked ? 'disabled' : ''}>
+            </div>`
+        }
+        ${ptsBadge ? `<div style="text-align:center;margin-top:4px">${ptsBadge}</div>` : ''}
+        ${isScored && !hasResult && f.predicted_home
+          ? `<div class="fixture-meta" style="text-align:center">Your: ${f.predicted_home}–${f.predicted_away}</div>`
+          : ''}
+      </div>
+      <div>
+        <div class="team away">${f.away_team}</div>
+        <div class="fixture-meta" style="text-align:right">${f.stage}${f.group ? ' | '+f.group : ''}</div>
+      </div>
+      <div style="width:4px"></div>
+    </div>`;
+  });
+
+  if (!allLocked) {
+    html += `
+    <button class="save-btn" onclick="saveBatch(this, ${batchIdx})" id="save-btn-${batchIdx}">
+      💾 Save My Predictions
+    </button>
+    <div class="alert alert-success" id="alert-ok-${batchIdx}">✅ Predictions saved!</div>
+    <div class="alert alert-error"   id="alert-err-${batchIdx}"></div>`;
+  } else if (!fixtures.some(f => f.points_total !== '')) {
+    html += `<div class="locked-msg">Predictions locked — awaiting results.</div>`;
+  }
+
+  return html;
+}
+
+// ── SAVE PREDICTIONS ──────────────────────────────────────────────
+async function saveBatch(btn, batchIdx) {
+  const inputs = document.querySelectorAll(
+    `#batch-${batchIdx} .score-input:not([disabled])`);
+
+  const predictions = {};
+  let allFilled = true;
+
+  inputs.forEach(inp => {
+    const fid  = inp.dataset.fixture;
+    const side = inp.dataset.side;
+    const val  = inp.value;
+    if (val === '') { allFilled = false; return; }
+    if (!predictions[fid]) predictions[fid] = {};
+    predictions[fid][side] = parseInt(val);
+  });
+
+  if (Object.keys(predictions).length === 0) {
+    showAlert(`alert-err-${batchIdx}`, 'Please enter at least one score before saving.');
+    return;
+  }
+
+  btn.disabled    = true;
+  btn.textContent = 'Saving...';
+
+  try {
+    const res  = await fetch(GAS_URL, {
+      method: 'POST',
+      body:   JSON.stringify({
+        action:      'savePredictions',
+        token:       TOKEN,
+        predictions: predictions
+      })
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      btn.textContent = '✅ Saved!';
+      btn.classList.add('saved');
+      showAlert(`alert-ok-${batchIdx}`, `${data.saved} prediction(s) saved successfully!`);
+      setTimeout(() => {
+        btn.disabled    = false;
+        btn.textContent = '💾 Save My Predictions';
+        btn.classList.remove('saved');
+      }, 3000);
+    } else {
+      showAlert(`alert-err-${batchIdx}`,
+        'Save failed: ' + (data.error || 'Unknown error'));
+      btn.disabled    = false;
+      btn.textContent = '💾 Save My Predictions';
+    }
+  } catch(e) {
+    showAlert(`alert-err-${batchIdx}`, 'Network error — please try again.');
+    btn.disabled    = false;
+    btn.textContent = '💾 Save My Predictions';
+  }
+}
+
+function showAlert(id, msg) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent  = msg;
+  el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 5000);
+}
+
+// ── ONLY ALLOW 0–20 ───────────────────────────────────────────────
+document.addEventListener('input', e => {
+  if (!e.target.classList.contains('score-input')) return;
+  let v = parseInt(e.target.value);
+  if (isNaN(v)) return;
+  if (v < 0)  e.target.value = 0;
+  if (v > 20) e.target.value = 20;
+});
+
+init();
+</script>
+</body>
+</html>

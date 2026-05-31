@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Register — Red n Blue WC2026 Prediction League</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',Arial,sans-serif;background:#0d1117;color:#e6edf3;min-height:100vh}
+:root{--red:#C4122E;--blue:#1B5BA8;--gold:#F5D020}
+.nav{background:var(--blue);border-bottom:4px solid var(--red);padding:0 16px}
+.nav-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;padding:14px 0;gap:16px}
+.nav-brand{color:#fff;font-weight:900;font-size:16px;letter-spacing:1px;text-transform:uppercase}
+.nav-brand span{color:var(--gold)}
+.nav-link{color:rgba(255,255,255,0.8);text-decoration:none;font-size:13px;font-weight:600}
+.hero{background:linear-gradient(135deg,var(--blue),#0f3460);padding:40px 16px;border-bottom:3px solid var(--red);text-align:center}
+.hero h1{font-size:clamp(22px,5vw,36px);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:2px}
+.hero h1 span{color:var(--gold)}
+.hero p{color:rgba(255,255,255,0.75);margin-top:8px;font-size:14px}
+.container{max-width:600px;margin:32px auto;padding:0 16px 40px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:28px}
+.card h2{color:var(--gold);font-size:16px;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--red)}
+.form-group{margin-bottom:18px}
+label{display:block;font-size:13px;font-weight:600;color:#8b949e;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+input[type=text],input[type=email],input[type=tel]{
+  width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;
+  padding:12px 14px;color:#e6edf3;font-size:14px;font-family:inherit;
+  transition:border-color 0.2s
+}
+input:focus{outline:none;border-color:var(--blue)}
+input.error{border-color:var(--red)}
+.checkbox-group{display:flex;align-items:flex-start;gap:12px;padding:14px;background:#0d1117;border:1px solid #30363d;border-radius:6px;cursor:pointer}
+.checkbox-group input[type=checkbox]{width:18px;height:18px;margin-top:2px;cursor:pointer;accent-color:var(--blue)}
+.checkbox-group label{font-size:13px;color:#e6edf3;text-transform:none;letter-spacing:0;cursor:pointer;margin:0}
+.checkbox-group label a{color:var(--gold)}
+.bank-box{background:var(--blue);color:#fff;padding:16px 20px;border-radius:6px;font-family:monospace;font-size:13px;line-height:2.2;margin:16px 0}
+.bank-box strong{color:var(--gold)}
+.info-box{background:rgba(27,91,168,0.15);border-left:4px solid var(--blue);padding:14px 16px;border-radius:4px;font-size:13px;color:#cce0ff;margin:16px 0}
+.btn{width:100%;background:var(--red);color:#fff;border:none;padding:16px;border-radius:8px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:opacity 0.2s;margin-top:8px}
+.btn:hover{opacity:0.9}
+.btn:disabled{opacity:0.5;cursor:not-allowed}
+.error-msg{color:var(--red);font-size:12px;margin-top:4px;display:none}
+.success-card{display:none;text-align:center;padding:32px}
+.success-card .icon{font-size:60px;margin-bottom:16px}
+.success-card h2{color:var(--gold);font-size:22px;margin-bottom:12px}
+.success-card p{color:#cce0ff;font-size:14px;line-height:1.7}
+.closed-card{text-align:center;padding:32px}
+.closed-card .icon{font-size:50px;margin-bottom:16px}
+.status-bar{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px 18px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.status-bar .places{color:var(--gold);font-weight:700;font-size:16px}
+#loading{text-align:center;padding:40px;color:#8b949e}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">🦅 Red n Blue <span>WC2026</span></div>
+    <a href="index.html" class="nav-link">← Leaderboard</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Join the <span>Prediction League</span></h1>
+  <p>Red and Blue Review Podcast — FIFA World Cup 2026</p>
+</div>
+
+<div class="container">
+  <div id="loading">Loading registration status...</div>
+
+  <!-- Closed state -->
+  <div id="closed-card" class="card closed-card" style="display:none">
+    <div class="icon">🔒</div>
+    <h2 style="color:var(--gold);margin-bottom:12px">Registration Closed</h2>
+    <p style="color:#cce0ff;font-size:14px">Registration is currently closed. Follow the Red and Blue Review Facebook page for updates.</p>
+  </div>
+
+  <!-- Registration form -->
+  <div id="form-card" class="card" style="display:none">
+    <div id="status-bar" class="status-bar">
+      <span>Places remaining</span>
+      <span class="places" id="places-remaining">...</span>
+    </div>
+
+    <h2>📋 Your Details</h2>
+    <form id="reg-form" novalidate>
+      <div class="form-group">
+        <label for="full_name">Full Name *</label>
+        <input type="text" id="full_name" name="full_name" placeholder="e.g. John Smith" autocomplete="name">
+        <div class="error-msg" id="err-name">Please enter your full name</div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+        <div class="error-msg" id="err-email">Please enter a valid email address</div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number (optional)</label>
+        <input type="tel" id="phone" name="phone" placeholder="07xxx xxxxxx" autocomplete="tel">
+      </div>
+
+      <h2 style="margin-top:24px">💰 Entry Fee</h2>
+      <div class="info-box">
+        Entry fee is <strong style="color:#F5D020">£20</strong> per player, paid by bank transfer after registration. Your place is only confirmed once payment is received and verified.
+      </div>
+      <div class="bank-box">
+        <strong>Account Name:</strong> Red n Blue Review<br>
+        <strong>Sort Code:</strong> 60-92-04<br>
+        <strong>Account No:</strong> 25928113<br>
+        <strong>Reference:</strong> <span style="color:#F5D020">Your Player ID (sent by email)</span>
+      </div>
+
+      <h2 style="margin-top:24px">✅ Confirmation</h2>
+      <div class="form-group">
+        <div class="checkbox-group">
+          <input type="checkbox" id="rules_confirmed" name="rules_confirmed">
+          <label for="rules_confirmed">I have read and agree to the <a href="rules.html" target="_blank">competition rules</a>. I understand my place is only confirmed once payment is received.</label>
+        </div>
+        <div class="error-msg" id="err-rules">Please confirm you have read the rules</div>
+      </div>
+      <div class="form-group">
+        <div class="checkbox-group">
+          <input type="checkbox" id="fb_opt_in" name="fb_opt_in">
+          <label for="fb_opt_in">I'd like to join the Red n Blue WC2026 Facebook group (recommended for banter and updates!)</label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn" id="submit-btn">Register Now →</button>
+    </form>
+
+    <!-- Success state (replaces form) -->
+    <div class="success-card" id="success-card">
+      <div class="icon">🎉</div>
+      <h2>Registration Received!</h2>
+      <p>Check your email for payment details.<br><br>
+      Your place will be confirmed once we receive your bank transfer of <strong style="color:var(--gold)">£20</strong>.<br><br>
+      Use the reference in your email — we use this to match your payment.<br><br>
+      <strong>Come On You Eagles! 🦅</strong></p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── CONFIG — replace GAS_URL after deploying Google Apps Script ──
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzVQHGbw6gf0kzmbzadN28pRa1MUb2EezPyNSSxjObDR5sDCSoYmWAo-iTAvJm4tNGl/exec';
+
+// ── INIT ──────────────────────────────────────────────────────────
+async function init() {
+  try {
+    const res  = await fetch(`${GAS_URL}?action=checkReg`);
+    const data = await res.json();
+    document.getElementById('loading').style.display = 'none';
+    if (data.open && data.remaining > 0) {
+      document.getElementById('form-card').style.display = 'block';
+      document.getElementById('places-remaining').textContent =
+        `${data.remaining} / 100`;
+    } else {
+      document.getElementById('closed-card').style.display = 'block';
+    }
+  } catch(e) {
+    document.getElementById('loading').textContent =
+      'Unable to load registration status. Please try again later.';
+  }
+}
+
+// ── FORM SUBMIT ───────────────────────────────────────────────────
+document.getElementById('reg-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  clearErrors();
+
+  const fullName = document.getElementById('full_name').value.trim();
+  const email    = document.getElementById('email').value.trim();
+  const phone    = document.getElementById('phone').value.trim();
+  const rulesOk  = document.getElementById('rules_confirmed').checked;
+  const fbOptIn  = document.getElementById('fb_opt_in').checked;
+
+  let valid = true;
+  if (!fullName) { showError('err-name', 'full_name'); valid = false; }
+  if (!email || !email.includes('@')) { showError('err-email', 'email'); valid = false; }
+  if (!rulesOk) { showError('err-rules', null); valid = false; }
+  if (!valid) return;
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled    = true;
+  btn.textContent = 'Submitting...';
+
+  try {
+    const res  = await fetch(GAS_URL, {
+      method: 'POST',
+      body:   JSON.stringify({
+        action:           'register',
+        full_name:        fullName,
+        email:            email,
+        phone:            phone,
+        rules_confirmed:  rulesOk,
+        fb_opt_in:        fbOptIn
+      })
+    });
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById('reg-form').style.display = 'none';
+      document.getElementById('success-card').style.display = 'block';
+    } else {
+      alert('Registration failed: ' + (data.error || 'Unknown error'));
+      btn.disabled    = false;
+      btn.textContent = 'Register Now →';
+    }
+  } catch(err) {
+    alert('Network error — please try again');
+    btn.disabled    = false;
+    btn.textContent = 'Register Now →';
+  }
+});
+
+function showError(errId, fieldId) {
+  document.getElementById(errId).style.display = 'block';
+  if (fieldId) document.getElementById(fieldId).classList.add('error');
+}
+function clearErrors() {
+  document.querySelectorAll('.error-msg').forEach(e => e.style.display = 'none');
+  document.querySelectorAll('input').forEach(i => i.classList.remove('error'));
+}
+
+init();
+</script>
+</body>
+</html>
