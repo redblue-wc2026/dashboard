@@ -119,8 +119,8 @@ h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     <h1>World Cup 2026 <span>Prediction League</span></h1>
     <p class="hero-sub">Red and Blue Review Podcast — 11 June – 19 July 2026</p>
     <div class="stat-cards">
-      <div class="stat-card"><span class="num">£10</span><span class="lbl">Prize Fund</span></div>
-      <div class="stat-card"><span class="num">1</span><span class="lbl">Players / 100</span></div>
+      <div class="stat-card"><span class="num">£0</span><span class="lbl">Prize Fund</span></div>
+      <div class="stat-card"><span class="num">0</span><span class="lbl">Players / 100</span></div>
       <div class="stat-card"><span class="num">0</span><span class="lbl">Matches Played</span></div>
       <div class="stat-card"><span class="num">TBC</span><span class="lbl">Next Deadline</span></div>
     </div>
@@ -132,7 +132,7 @@ h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
     <div id="leaderboard" class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 31 May 2026 10:38</p>
+      <p class="updated">Last updated: 31 May 2026 12:09</p>
       <table class="lb-table">
         <thead>
           <tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>Δ</th></tr>
@@ -182,7 +182,7 @@ h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
       </p>
       
       <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-        <a href="predict.html" class="btn btn-action" onclick="promptToken(event)">⚽ My Predictions →</a>
+        <a href="predict.html" class="btn btn-action" onclick="goToMyPredictions(event)">⚽ My Predictions →</a>
         <a href="register.html" class="btn btn-nav">📋 Join the League</a>
       </div>
     </div>
@@ -194,15 +194,15 @@ h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     <div id="prizes" class="card">
       <div class="section-title">💰 Prize Fund</div>
       <div class="prize-bar">
-        <div class="prize-row total"><span class="label">Total Prize Fund</span><span class="value">£10</span></div>
-        <div class="prize-row"><span class="label">🥇 1st Place</span><span class="value">£2</span></div>
-        <div class="prize-row"><span class="label">🥈 2nd Place</span><span class="value">£1</span></div>
+        <div class="prize-row total"><span class="label">Total Prize Fund</span><span class="value">£0</span></div>
+        <div class="prize-row"><span class="label">🥇 1st Place</span><span class="value">£0</span></div>
+        <div class="prize-row"><span class="label">🥈 2nd Place</span><span class="value">£0</span></div>
         <div class="prize-row"><span class="label">🥉 3rd Place</span><span class="value">£0</span></div>
-        <div class="prize-row"><span class="label">📊 Group Stage</span><span class="value">£1</span></div>
-        <div class="prize-row"><span class="label">⚡ Knockout</span><span class="value">£1</span></div>
+        <div class="prize-row"><span class="label">📊 Group Stage</span><span class="value">£0</span></div>
+        <div class="prize-row"><span class="label">⚡ Knockout</span><span class="value">£0</span></div>
       </div>
       <p style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif">
-        99 places remaining — prize grows with every entry!
+        100 places remaining — prize grows with every entry!
       </p>
     </div>
 
@@ -230,16 +230,28 @@ h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     <a href="mailto:ian.lyons66@gmail.com">Contact Admin</a>
   </p>
   <p style="margin-top:10px;font-size:11px;color:rgba(255,255,255,0.4)">
-    Dashboard refreshed automatically after each matchday. Last updated: 31 May 2026 10:38
+    Dashboard refreshed automatically after each matchday. Last updated: 31 May 2026 12:09
   </p>
 </div>
 
 <script>
-function promptToken(e) {
+// Token management — persist across sessions using localStorage
+var _tok = (new URLSearchParams(window.location.search)).get('token')
+           || localStorage.getItem('wc2026_token') || '';
+if (_tok) localStorage.setItem('wc2026_token', _tok);
+
+function goToMyPredictions(e) {
   e.preventDefault();
-  var token = prompt("Enter your unique prediction token\n(from your welcome email):");
-  if (token && token.trim()) {
-    window.location.href = "predict.html?token=" + token.trim();
+  var token = localStorage.getItem('wc2026_token') || '';
+  if (token) {
+    window.location.href = 'predict.html?token=' + token;
+  } else {
+    // Only prompt if no token known at all (first visit without email link)
+    var entered = prompt('Enter your unique prediction token\n(from your welcome email):');
+    if (entered && entered.trim()) {
+      localStorage.setItem('wc2026_token', entered.trim());
+      window.location.href = 'predict.html?token=' + entered.trim();
+    }
   }
 }
 window.addEventListener('scroll', function() {

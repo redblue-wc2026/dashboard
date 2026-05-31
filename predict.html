@@ -75,7 +75,15 @@ h1,h2,h3,.hf{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-brand">🦅 Red n Blue <span>WC2026</span></div>
-    <div class="nav-player" id="nav-player"></div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <a href="index.html" id="back-btn"
+         style="background:#1C3A6B;color:#fff;text-decoration:none;font-size:12px;font-weight:700;
+                font-family:'Plus Jakarta Sans',Arial,sans-serif;padding:7px 14px;border-radius:5px;
+                box-shadow:0 2px 6px rgba(28,58,107,0.3)">
+        ← Dashboard
+      </a>
+      <div class="nav-player" id="nav-player"></div>
+    </div>
   </div>
 </nav>
 
@@ -104,11 +112,20 @@ h1,h2,h3,.hf{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 // ── CONFIG ────────────────────────────────────────────────────────
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbzVQHGbw6gf0kzmbzadN28pRa1MUb2EezPyNSSxjObDR5sDCSoYmWAo-iTAvJm4tNGl/exec';
 
-// ── TOKEN FROM URL ────────────────────────────────────────────────
+// ── TOKEN — URL param takes priority, then localStorage ──────────
 const params = new URLSearchParams(window.location.search);
-const TOKEN  = params.get('token') || '';
+let TOKEN = params.get('token') || localStorage.getItem('wc2026_token') || '';
 
-if (!TOKEN) {
+if (TOKEN) {
+  // Persist to localStorage so it survives browser restarts
+  localStorage.setItem('wc2026_token', TOKEN);
+  // Keep token in URL for bookmarking
+  if (!params.get('token')) {
+    const url = new URL(window.location);
+    url.searchParams.set('token', TOKEN);
+    window.history.replaceState({}, '', url);
+  }
+} else {
   document.getElementById('loading').style.display = 'none';
   document.getElementById('error-screen').style.display = 'block';
 }
@@ -132,6 +149,12 @@ async function init() {
     document.getElementById('loading').textContent =
       'Unable to load predictions. Please try again later.';
   }
+}
+
+// ── UPDATE BACK BUTTON with token ────────────────────────────────
+if (TOKEN) {
+  var backBtn = document.getElementById('back-btn');
+  if (backBtn) backBtn.href = 'index.html?token=' + TOKEN;
 }
 
 // ── RENDER PLAYER ─────────────────────────────────────────────────
@@ -243,12 +266,12 @@ function renderFixtures(fixtures, batchIdx, deadlineHtml) {
           : `<div class="score-inputs">
               <input type="number" class="score-input" min="0" max="20"
                 data-fixture="${f.fixture_id}" data-side="home"
-                value="${f.predicted_home || ''}"
+                value="${f.predicted_home !== '' ? f.predicted_home : ''}"
                 placeholder="?" ${locked ? 'disabled' : ''}>
               <span class="score-sep">–</span>
               <input type="number" class="score-input" min="0" max="20"
                 data-fixture="${f.fixture_id}" data-side="away"
-                value="${f.predicted_away || ''}"
+                value="${f.predicted_away !== '' ? f.predicted_away : ''}"
                 placeholder="?" ${locked ? 'disabled' : ''}>
             </div>`
         }
@@ -291,9 +314,9 @@ async function saveBatch(btn, batchIdx) {
     const fid  = inp.dataset.fixture;
     const side = inp.dataset.side;
     const val  = inp.value;
-    if (val === '') { allFilled = false; return; }
+    if (val === '' || val === null) { allFilled = false; return; }
     if (!predictions[fid]) predictions[fid] = {};
-    predictions[fid][side] = parseInt(val);
+    predictions[fid][side] = parseInt(val, 10);  // 0 is valid
   });
 
   if (Object.keys(predictions).length === 0) {
