@@ -98,9 +98,20 @@ h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .footer a{color:var(--gold);text-decoration:none}
 .footer .tagline{color:#fff;font-size:15px;font-weight:700;letter-spacing:1px;margin-bottom:8px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .updated{font-size:11px;color:var(--muted);text-align:right;margin-bottom:8px}
+
+/* TEST MODE BANNER */
+.test-banner{background:#F5D020;color:#111;font-weight:800;text-align:center;padding:10px 16px;font-size:13px;letter-spacing:1px;text-transform:uppercase;border-bottom:3px solid #b8880a;font-family:'Plus Jakarta Sans',Arial,sans-serif;position:sticky;top:0;z-index:200}
+.test-banner span{background:#111;color:#F5D020;padding:2px 8px;border-radius:4px;margin-right:8px;font-size:12px}
 </style>
 </head>
 <body>
+
+
+<div class="test-banner">
+  <span>⚠ TEST</span>
+  TEST STAGE — Showing test fixtures only. This dashboard is not live.
+</div>
+
 
 <nav class="nav">
   <div class="nav-inner">
@@ -117,12 +128,12 @@ h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 <div class="hero">
   <div class="hero-inner">
     <h1>World Cup 2026 <span>Prediction League</span></h1>
-    <p class="hero-sub">Red and Blue Review Podcast — 11 June – 19 July 2026</p>
+    <p class="hero-sub">Red and Blue Review Podcast — 11 June – 19 July 2026 &nbsp;|&nbsp; <strong style="color:var(--gold)">⚠ TEST STAGE</strong></p>
     <div class="stat-cards">
       <div class="stat-card"><span class="num">£0</span><span class="lbl">Prize Fund</span></div>
       <div class="stat-card"><span class="num">0</span><span class="lbl">Players / 100</span></div>
       <div class="stat-card"><span class="num">0</span><span class="lbl">Matches Played</span></div>
-      <div class="stat-card"><span class="num">TBC</span><span class="lbl">Next Deadline</span></div>
+      <div class="stat-card"><span class="num">31 May, 12:00 UK</span><span class="lbl">Next Deadline</span></div>
     </div>
   </div>
 </div>
@@ -132,7 +143,7 @@ h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
     <div id="leaderboard" class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 31 May 2026 13:21</p>
+      <p class="updated">Last updated: 31 May 2026 15:00</p>
       <table class="lb-table">
         <thead>
           <tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>Δ</th></tr>
@@ -162,10 +173,86 @@ h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
       <div class="section-title">📅 Upcoming Fixtures</div>
       
       
+      <div class="fixture-card">
+        <span class="fixture-time">Today 15:00 BST</span>
+        <div>
+          <div class="fixture-match">Mexico vs Canada</div>
+          <div class="fixture-stage">Test Group Stage | Group A | Test Stadium, London</div>
+        </div>
+      </div>
       
-      <p style="color:var(--muted);text-align:center;padding:24px;font-family:'Plus Jakarta Sans',Arial,sans-serif">
-        Fixtures for the first batch will be released on 4 June 2026.
-      </p>
+      <div class="fixture-card">
+        <span class="fixture-time">Today 18:00 BST</span>
+        <div>
+          <div class="fixture-match">USA vs Honduras</div>
+          <div class="fixture-stage">Test Group Stage | Group A | Test Stadium, London</div>
+        </div>
+      </div>
+      
+      <div class="fixture-card">
+        <span class="fixture-time">Today 21:00 BST</span>
+        <div>
+          <div class="fixture-match">Argentina vs Brazil</div>
+          <div class="fixture-stage">Test Group Stage | Group B | Test Stadium, London</div>
+        </div>
+      </div>
+      
+      <div class="fixture-card">
+        <span class="fixture-time">Tomorrow 15:00 BST</span>
+        <div>
+          <div class="fixture-match">England vs France</div>
+          <div class="fixture-stage">Test Group Stage | Group B | Test Stadium, London</div>
+        </div>
+      </div>
+      
+      <div class="fixture-card">
+        <span class="fixture-time">Tomorrow 18:00 BST</span>
+        <div>
+          <div class="fixture-match">Germany vs Spain</div>
+          <div class="fixture-stage">Test Group Stage | Group C | Test Stadium, London</div>
+        </div>
+      </div>
+      
+      <div class="fixture-card">
+        <span class="fixture-time">Tomorrow 21:00 BST</span>
+        <div>
+          <div class="fixture-match">Portugal vs Netherlands</div>
+          <div class="fixture-stage">Test Group Stage | Group C | Test Stadium, London</div>
+        </div>
+      </div>
+      
+      <div class="fixture-card">
+        <span class="fixture-time">Wed 15:00 BST</span>
+        <div>
+          <div class="fixture-match">Japan vs South Korea</div>
+          <div class="fixture-stage">Test Round of 16 | Test Stadium, London</div>
+        </div>
+      </div>
+      
+      <div class="fixture-card">
+        <span class="fixture-time">Wed 18:00 BST</span>
+        <div>
+          <div class="fixture-match">Italy vs Belgium</div>
+          <div class="fixture-stage">Test Round of 16 | Test Stadium, London</div>
+        </div>
+      </div>
+      
+      <div class="fixture-card">
+        <span class="fixture-time">Wed 21:00 BST</span>
+        <div>
+          <div class="fixture-match">Morocco vs Australia</div>
+          <div class="fixture-stage">Test Quarter-Final | Test Stadium, London</div>
+        </div>
+      </div>
+      
+      <div class="fixture-card">
+        <span class="fixture-time">Thu 18:00 BST</span>
+        <div>
+          <div class="fixture-match">France vs Brazil</div>
+          <div class="fixture-stage">Test Semi-Final | Test Stadium, London</div>
+        </div>
+      </div>
+      
       
       <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
         <a href="predict.html" class="btn btn-action" onclick="goToMyPredictions(event)">⚽ My Predictions →</a>
@@ -239,7 +326,7 @@ h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     <a href="mailto:ian.lyons66@gmail.com">Contact Admin</a>
   </p>
   <p style="margin-top:10px;font-size:11px;color:rgba(255,255,255,0.4)">
-    Dashboard refreshed automatically after each matchday. Last updated: 31 May 2026 13:21
+    Dashboard refreshed automatically after each matchday. Last updated: 31 May 2026 15:00
   </p>
 </div>
 
