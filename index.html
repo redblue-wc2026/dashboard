@@ -2,88 +2,106 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Red n Blue WC2026 Prediction League</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
+:root{--red:#C4122E;--blue:#1B5BA8;--prussian:#1C3A6B;--sky:#4E8DD6;--gold:#F5D020;--white:#fff;--near-black:#111;--muted:#9BA3AF;--border:#E0E2E8;--surface:#F7F8FA;--card:#fff}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Montserrat',Arial,sans-serif;background:#0d1117;color:#e6edf3;min-height:100vh}
-:root{--red:#C4122E;--blue:#1B5BA8;--gold:#F5D020;--white:#fff;--dark:#0d1117;--card:#161b22;--border:#30363d}
+body{font-family:'Montserrat',Arial,sans-serif;background:var(--surface);color:var(--near-black);min-height:100vh}
+h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
+
 /* NAV */
-.nav{background:var(--blue);border-bottom:4px solid var(--red);position:sticky;top:0;z-index:100}
+.nav{background:var(--blue);border-bottom:6px solid var(--red);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(27,91,168,0.2)}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:0;flex-wrap:wrap}
-.nav-brand{color:var(--white);font-weight:900;font-size:16px;padding:14px 20px 14px 0;letter-spacing:1px;text-transform:uppercase;border-right:2px solid rgba(255,255,255,0.2);margin-right:8px}
+.nav-brand{color:#fff;font-weight:800;font-size:16px;padding:14px 20px 14px 0;letter-spacing:1px;text-transform:uppercase;border-right:2px solid rgba(255,255,255,0.2);margin-right:8px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .nav-brand span{color:var(--gold)}
-.nav-link{color:rgba(255,255,255,0.85);text-decoration:none;padding:14px 14px;font-size:13px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;border-bottom:3px solid transparent;transition:all 0.2s}
-.nav-link:hover,.nav-link.active{color:var(--white);border-bottom-color:var(--gold)}
+.nav-link{color:rgba(255,255,255,0.8);text-decoration:none;padding:14px 14px;font-size:12px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;border-bottom:3px solid transparent;transition:all 0.2s;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.nav-link:hover,.nav-link.active{color:#fff;border-bottom-color:var(--gold)}
 .nav-link.rules{color:var(--gold)}
-/* HERO STATS */
-.hero{background:linear-gradient(135deg,var(--blue) 0%,#0f3460 100%);padding:28px 16px;border-bottom:3px solid var(--red)}
+
+/* HERO */
+.hero{background:var(--blue);padding:28px 16px;border-bottom:3px solid var(--red)}
 .hero-inner{max-width:1100px;margin:0 auto}
-.hero h1{font-size:clamp(20px,4vw,32px);font-weight:900;text-transform:uppercase;letter-spacing:2px;color:var(--white);margin-bottom:6px}
+.hero h1{font-size:clamp(18px,4vw,30px);font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#fff;margin-bottom:6px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .hero h1 span{color:var(--gold)}
-.hero-sub{color:rgba(255,255,255,0.7);font-size:13px;margin-bottom:20px}
-.stat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-.stat-card{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:16px;text-align:center;backdrop-filter:blur(4px)}
-.stat-card .num{font-size:28px;font-weight:900;color:var(--gold);display:block;line-height:1}
-.stat-card .lbl{font-size:11px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.hero-sub{color:rgba(255,255,255,0.65);font-size:13px;margin-bottom:20px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.stat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.stat-card{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.18);border-radius:10px;padding:16px;text-align:center}
+.stat-card .num{font-size:26px;font-weight:800;color:var(--gold);display:block;line-height:1;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.stat-card .lbl{font-size:11px;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:1px;margin-top:4px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+
 /* MAIN */
 .main{max-width:1100px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:1fr 340px;gap:24px}
 @media(max-width:768px){.main{grid-template-columns:1fr}}
-/* SECTION HEADERS */
-.section-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--red);display:flex;align-items:center;gap:8px}
+
+/* SECTION TITLE */
+.section-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--prussian);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--red);display:flex;align-items:center;gap:8px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+
+/* CARD */
+.card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+
 /* LEADERBOARD */
-.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px}
 .lb-table{width:100%;border-collapse:collapse;font-size:14px}
-.lb-table th{background:var(--blue);color:var(--white);padding:10px 12px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
-.lb-table td{padding:10px 12px;border-bottom:1px solid var(--border)}
+.lb-table th{background:var(--blue);color:#fff;padding:10px 12px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.lb-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--near-black)}
 .lb-table tr:last-child td{border-bottom:none}
-.lb-table tr:hover td{background:rgba(27,91,168,0.1)}
-.lb-table tr.you td{background:rgba(245,208,32,0.08);font-weight:700}
-.rank-badge{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;background:var(--border);color:var(--white)}
-.rank-1{background:var(--gold);color:#111}
-.rank-2{background:#C0C0C0;color:#111}
-.rank-3{background:#CD7F32;color:var(--white)}
+.lb-table tr:hover td{background:var(--surface)}
+.lb-table tr.you td{background:#FEF9E0;font-weight:700}
+.rank-badge{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;background:var(--surface);color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.rank-1{background:var(--gold);color:var(--prussian)}
+.rank-2{background:#C0C0C0;color:#333}
+.rank-3{background:#CD7F32;color:#fff}
 .move-up{color:#28a745;font-size:11px}
 .move-dn{color:var(--red);font-size:11px}
-.move-eq{color:#666;font-size:11px}
-.pts{font-weight:700;color:var(--gold)}
+.move-eq{color:#ccc;font-size:11px}
+.pts{font-weight:700;color:var(--red);font-family:'Plus Jakarta Sans',Arial,sans-serif}
+
 /* RESULTS */
-.result-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:10px}
+.result-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:10px}
 .result-teams{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.result-team{font-weight:600;font-size:14px;flex:1}
+.result-team{font-weight:600;font-size:14px;flex:1;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .result-team.away{text-align:right}
-.result-score{background:var(--blue);color:var(--white);font-weight:900;font-size:18px;padding:6px 14px;border-radius:6px;white-space:nowrap;min-width:70px;text-align:center}
-.result-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:#8b949e}
-.correct-pct{color:var(--gold);font-weight:600}
-/* UPCOMING */
-.fixture-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px}
-.fixture-time{background:var(--red);color:var(--white);font-size:11px;font-weight:700;padding:4px 8px;border-radius:4px;white-space:nowrap;min-width:50px;text-align:center}
-.fixture-match{flex:1;font-size:13px;font-weight:600}
-.fixture-stage{font-size:11px;color:#8b949e}
-.deadline-badge{background:rgba(196,18,46,0.15);border:1px solid var(--red);color:var(--red);font-size:11px;padding:6px 12px;border-radius:6px;margin-bottom:12px;font-weight:600}
+.result-score{background:var(--prussian);color:#fff;font-weight:800;font-size:18px;padding:6px 14px;border-radius:6px;white-space:nowrap;min-width:70px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.result-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--muted)}
+.correct-pct{color:var(--prussian);font-weight:700}
+
+/* FIXTURES */
+.fixture-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.fixture-time{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:5px 9px;border-radius:5px;white-space:nowrap;min-width:50px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif;box-shadow:0 2px 6px rgba(196,18,46,0.30)}
+.fixture-match{flex:1;font-size:13px;font-weight:600;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.fixture-stage{font-size:11px;color:var(--muted)}
+.deadline-badge{background:#FDE8EB;border:1px solid var(--red);color:var(--red);font-size:12px;padding:8px 14px;border-radius:6px;margin-bottom:12px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+
 /* SIDEBAR */
 .prize-bar{margin:8px 0}
-.prize-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.prize-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px}
 .prize-row:last-child{border-bottom:none}
-.prize-row .label{color:#8b949e}
-.prize-row .value{font-weight:700;color:var(--gold)}
-.prize-row.total .value{color:var(--white);font-size:16px}
-/* STATS CORNER */
-.mini-stat{background:linear-gradient(135deg,var(--blue),#0f3460);border-radius:8px;padding:14px;margin-bottom:10px;text-align:center}
-.mini-stat .val{font-size:22px;font-weight:900;color:var(--gold)}
-.mini-stat .desc{font-size:11px;color:rgba(255,255,255,0.7);margin-top:4px}
+.prize-row .label{color:var(--muted)}
+.prize-row .value{font-weight:700;color:var(--prussian);font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.prize-row.total .value{color:var(--red);font-size:16px;font-weight:800}
+
+/* MINI STAT */
+.mini-stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:10px;text-align:center;border-top:3px solid var(--blue)}
+.mini-stat .val{font-size:22px;font-weight:800;color:var(--red);font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.mini-stat .desc{font-size:11px;color:var(--muted);margin-top:4px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:11px 22px;border-radius:7px;text-decoration:none;font-weight:700;font-size:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif;color:#fff;letter-spacing:0.2px;cursor:pointer;border:none;text-transform:uppercase}
+.btn-action{background:var(--red);box-shadow:0 3px 10px rgba(196,18,46,0.35),0 1px 3px rgba(196,18,46,0.20)}
+.btn-nav{background:var(--prussian);box-shadow:0 3px 10px rgba(28,58,107,0.35),0 1px 3px rgba(28,58,107,0.20)}
+.btn-secondary{background:var(--sky);box-shadow:0 3px 10px rgba(78,141,214,0.35),0 1px 3px rgba(78,141,214,0.20)}
+
 /* FOOTER */
-.footer{background:var(--blue);border-top:4px solid var(--red);padding:24px 16px;margin-top:32px;text-align:center}
-.footer p{color:rgba(255,255,255,0.7);font-size:12px;margin:4px 0}
+.footer{background:var(--blue);border-top:5px solid var(--red);padding:24px 16px;margin-top:32px;text-align:center}
+.footer p{color:rgba(255,255,255,0.65);font-size:12px;margin:4px 0;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .footer a{color:var(--gold);text-decoration:none}
-.footer .tagline{color:var(--white);font-size:16px;font-weight:700;letter-spacing:1px;margin-bottom:8px}
-.updated{font-size:11px;color:#8b949e;text-align:right;margin-bottom:8px}
-.btn-predict{display:inline-block;background:var(--red);color:var(--white);padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;margin-top:10px}
+.footer .tagline{color:#fff;font-size:15px;font-weight:700;letter-spacing:1px;margin-bottom:8px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.updated{font-size:11px;color:var(--muted);text-align:right;margin-bottom:8px}
 </style>
 </head>
 <body>
-<!-- NAV -->
+
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-brand">🦅 Red n Blue <span>WC2026</span></div>
@@ -92,57 +110,38 @@ body{font-family:'Montserrat',Arial,sans-serif;background:#0d1117;color:#e6edf3;
     <a href="#fixtures"    class="nav-link">📅 Fixtures</a>
     <a href="#prizes"      class="nav-link">💰 Prizes</a>
     <a href="rules.html"   class="nav-link rules">📋 Rules</a>
+    <a href="register.html" class="nav-link" style="margin-left:auto;color:var(--gold)">Join →</a>
   </div>
 </nav>
-<!-- HERO -->
+
 <div class="hero">
   <div class="hero-inner">
     <h1>World Cup 2026 <span>Prediction League</span></h1>
     <p class="hero-sub">Red and Blue Review Podcast — 11 June – 19 July 2026</p>
     <div class="stat-cards">
-      <div class="stat-card">
-        <span class="num">£10</span>
-        <span class="lbl">Prize Fund</span>
-      </div>
-      <div class="stat-card">
-        <span class="num">1</span>
-        <span class="lbl">Players / 100</span>
-      </div>
-      <div class="stat-card">
-        <span class="num">0</span>
-        <span class="lbl">Matches Played</span>
-      </div>
-      <div class="stat-card">
-        <span class="num">TBC</span>
-        <span class="lbl">Next Deadline</span>
-      </div>
+      <div class="stat-card"><span class="num">£10</span><span class="lbl">Prize Fund</span></div>
+      <div class="stat-card"><span class="num">1</span><span class="lbl">Players / 100</span></div>
+      <div class="stat-card"><span class="num">0</span><span class="lbl">Matches Played</span></div>
+      <div class="stat-card"><span class="num">TBC</span><span class="lbl">Next Deadline</span></div>
     </div>
   </div>
 </div>
-<!-- MAIN -->
+
 <div class="main">
   <div class="left-col">
-    <!-- LEADERBOARD -->
+
     <div id="leaderboard" class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 30 May 2026 20:41</p>
+      <p class="updated">Last updated: 31 May 2026 10:38</p>
       <table class="lb-table">
         <thead>
-          <tr>
-            <th>#</th>
-            <th>Player</th>
-            <th>Pts</th>
-            <th>W</th>
-            <th>GD</th>
-            <th>Δ</th>
-          </tr>
+          <tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>Δ</th></tr>
         </thead>
         <tbody>
           
           <tr>
             <td>
-              <span class="rank-badge
-                ">
+              <span class="rank-badge ">
                 1
               </span>
             </td>
@@ -153,8 +152,7 @@ body{font-family:'Montserrat',Arial,sans-serif;background:#0d1117;color:#e6edf3;
             <td>
               
               
-              
-                <span class="move-eq">─</span>
+              <span class="move-eq">─</span>
               
             </td>
           </tr>
@@ -163,85 +161,66 @@ body{font-family:'Montserrat',Arial,sans-serif;background:#0d1117;color:#e6edf3;
         </tbody>
       </table>
     </div>
-    <!-- RECENT RESULTS -->
+
     <div id="results" class="card">
       <div class="section-title">⚽ Recent Results</div>
       
       
-      <p style="color:#8b949e;text-align:center;padding:20px">
+      <p style="color:var(--muted);text-align:center;padding:24px;font-family:'Plus Jakarta Sans',Arial,sans-serif">
         Results will appear here once the tournament begins on 11 June 2026.
       </p>
       
     </div>
-    <!-- UPCOMING FIXTURES -->
+
     <div id="fixtures" class="card">
       <div class="section-title">📅 Upcoming Fixtures</div>
       
       
       
-      <p style="color:#8b949e;text-align:center;padding:20px">
+      <p style="color:var(--muted);text-align:center;padding:24px;font-family:'Plus Jakarta Sans',Arial,sans-serif">
         Fixtures for the first batch will be released on 4 June 2026.
       </p>
       
-      <a href="#" class="btn-predict" onclick="promptToken()">
-        ⚽ Submit / View My Predictions →
-      </a>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <a href="predict.html" class="btn btn-action" onclick="promptToken(event)">⚽ My Predictions →</a>
+        <a href="register.html" class="btn btn-nav">📋 Join the League</a>
+      </div>
     </div>
+
   </div>
-  <!-- SIDEBAR -->
+
   <div class="right-col">
-    <!-- PRIZE FUND -->
+
     <div id="prizes" class="card">
       <div class="section-title">💰 Prize Fund</div>
       <div class="prize-bar">
-        <div class="prize-row total">
-          <span class="label">Total Prize Fund</span>
-          <span class="value">£10</span>
-        </div>
-        <div class="prize-row">
-          <span class="label">🥇 1st Place</span>
-          <span class="value">£2</span>
-        </div>
-        <div class="prize-row">
-          <span class="label">🥈 2nd Place</span>
-          <span class="value">£1</span>
-        </div>
-        <div class="prize-row">
-          <span class="label">🥉 3rd Place</span>
-          <span class="value">£0</span>
-        </div>
-        <div class="prize-row">
-          <span class="label">📊 Group Stage</span>
-          <span class="value">£1</span>
-        </div>
-        <div class="prize-row">
-          <span class="label">⚡ Knockout</span>
-          <span class="value">£1</span>
-        </div>
+        <div class="prize-row total"><span class="label">Total Prize Fund</span><span class="value">£10</span></div>
+        <div class="prize-row"><span class="label">🥇 1st Place</span><span class="value">£2</span></div>
+        <div class="prize-row"><span class="label">🥈 2nd Place</span><span class="value">£1</span></div>
+        <div class="prize-row"><span class="label">🥉 3rd Place</span><span class="value">£0</span></div>
+        <div class="prize-row"><span class="label">📊 Group Stage</span><span class="value">£1</span></div>
+        <div class="prize-row"><span class="label">⚡ Knockout</span><span class="value">£1</span></div>
       </div>
-      <p style="font-size:11px;color:#8b949e;margin-top:10px;text-align:center">
+      <p style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif">
         99 places remaining — prize grows with every entry!
       </p>
     </div>
-    <!-- STATS CORNER -->
+
     
-    <!-- JOIN -->
+
     <div class="card" style="text-align:center">
       <div class="section-title">📘 Join the Community</div>
-      <p style="font-size:13px;color:#8b949e;margin-bottom:12px">
-        Like &amp; Follow the Red and Blue Review Facebook page
-        to join the private Prediction League group!
+      <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-family:'Plus Jakarta Sans',Arial,sans-serif">
+        Like &amp; Follow the Red and Blue Review Facebook page to join the private prediction group!
       </p>
-      <a href="https://facebook.com/RedAndBlueReview"
-         style="display:inline-block;background:#1877F2;color:#fff;
-                padding:10px 20px;border-radius:6px;text-decoration:none;
-                font-weight:700;font-size:13px">
+      <a href="https://facebook.com/RedAndBlueReview" class="btn btn-secondary">
         📘 Red and Blue Review
       </a>
     </div>
+
   </div>
 </div>
-<!-- FOOTER -->
+
 <div class="footer">
   <p class="tagline">🦅 Come On You Eagles! 🦅</p>
   <p>Red and Blue Review Podcast</p>
@@ -250,22 +229,19 @@ body{font-family:'Montserrat',Arial,sans-serif;background:#0d1117;color:#e6edf3;
     <a href="https://facebook.com/RedAndBlueReview">Facebook</a> &nbsp;|&nbsp;
     <a href="mailto:ian.lyons66@gmail.com">Contact Admin</a>
   </p>
-  <p style="margin-top:10px;font-size:11px">
-    Dashboard refreshed automatically after each matchday.
-    Last updated: 30 May 2026 20:41
+  <p style="margin-top:10px;font-size:11px;color:rgba(255,255,255,0.4)">
+    Dashboard refreshed automatically after each matchday. Last updated: 31 May 2026 10:38
   </p>
 </div>
+
 <script>
-function promptToken() {
-  var token = prompt(
-    "Enter your unique prediction token\n" +
-    "(from your welcome email):"
-  );
+function promptToken(e) {
+  e.preventDefault();
+  var token = prompt("Enter your unique prediction token\n(from your welcome email):");
   if (token && token.trim()) {
     window.location.href = "predict.html?token=" + token.trim();
   }
 }
-// Highlight nav link based on scroll position
 window.addEventListener('scroll', function() {
   var sections = ['leaderboard','results','fixtures','prizes'];
   var links = document.querySelectorAll('.nav-link');

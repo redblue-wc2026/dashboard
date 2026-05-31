@@ -4,52 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Register — Red n Blue WC2026 Prediction League</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
+:root{--red:#C4122E;--blue:#1B5BA8;--prussian:#1C3A6B;--sky:#4E8DD6;--gold:#F5D020;--white:#fff;--surface:#F7F8FA;--border:#E0E2E8;--muted:#9BA3AF}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Montserrat',Arial,sans-serif;background:#0d1117;color:#e6edf3;min-height:100vh}
-:root{--red:#C4122E;--blue:#1B5BA8;--gold:#F5D020}
-.nav{background:var(--blue);border-bottom:4px solid var(--red);padding:0 16px}
+body{font-family:'Montserrat',Arial,sans-serif;background:var(--surface);color:#111;min-height:100vh}
+h1,h2,h3,.hf{font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.nav{background:var(--blue);border-bottom:6px solid var(--red);padding:0 16px;box-shadow:0 2px 12px rgba(27,91,168,0.2)}
 .nav-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;padding:14px 0;gap:16px}
-.nav-brand{color:#fff;font-weight:900;font-size:16px;letter-spacing:1px;text-transform:uppercase}
+.nav-brand{color:#fff;font-weight:800;font-size:16px;letter-spacing:1px;text-transform:uppercase;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .nav-brand span{color:var(--gold)}
-.nav-link{color:rgba(255,255,255,0.8);text-decoration:none;font-size:13px;font-weight:600}
-.hero{background:linear-gradient(135deg,var(--blue),#0f3460);padding:40px 16px;border-bottom:3px solid var(--red);text-align:center}
-.hero h1{font-size:clamp(22px,5vw,36px);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:2px}
+.nav-link{color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:600;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.hero{background:var(--blue);padding:36px 16px;border-bottom:3px solid var(--red);text-align:center}
+.hero h1{font-size:clamp(22px,5vw,34px);font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:2px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .hero h1 span{color:var(--gold)}
-.hero p{color:rgba(255,255,255,0.75);margin-top:8px;font-size:14px}
-.container{max-width:600px;margin:32px auto;padding:0 16px 40px}
-.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:28px}
-.card h2{color:var(--gold);font-size:16px;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--red)}
+.hero p{color:rgba(255,255,255,0.65);margin-top:8px;font-size:13px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.container{max-width:600px;margin:32px auto;padding:0 16px 48px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.card h2{color:var(--prussian);font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--red);font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .form-group{margin-bottom:18px}
-label{display:block;font-size:13px;font-weight:600;color:#8b949e;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 input[type=text],input[type=email],input[type=tel]{
-  width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;
-  padding:12px 14px;color:#e6edf3;font-size:14px;font-family:inherit;
-  transition:border-color 0.2s
+  width:100%;background:#fff;border:1px solid var(--border);border-radius:6px;
+  padding:12px 14px;color:#111;font-size:14px;font-family:inherit;transition:border-color 0.2s
 }
-input:focus{outline:none;border-color:var(--blue)}
+input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,91,168,0.12)}
 input.error{border-color:var(--red)}
-.checkbox-group{display:flex;align-items:flex-start;gap:12px;padding:14px;background:#0d1117;border:1px solid #30363d;border-radius:6px;cursor:pointer}
+.checkbox-group{display:flex;align-items:flex-start;gap:12px;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:6px;cursor:pointer}
 .checkbox-group input[type=checkbox]{width:18px;height:18px;margin-top:2px;cursor:pointer;accent-color:var(--blue)}
-.checkbox-group label{font-size:13px;color:#e6edf3;text-transform:none;letter-spacing:0;cursor:pointer;margin:0}
-.checkbox-group label a{color:var(--gold)}
-.bank-box{background:var(--blue);color:#fff;padding:16px 20px;border-radius:6px;font-family:monospace;font-size:13px;line-height:2.2;margin:16px 0}
+.checkbox-group label{font-size:13px;color:#333;text-transform:none;letter-spacing:0;cursor:pointer;margin:0}
+.checkbox-group label a{color:var(--prussian);font-weight:600}
+.bank-box{background:var(--prussian);color:#fff;padding:18px 22px;border-radius:8px;font-family:monospace;font-size:13px;line-height:2.2;margin:16px 0;box-shadow:0 3px 10px rgba(28,58,107,0.25)}
 .bank-box strong{color:var(--gold)}
-.info-box{background:rgba(27,91,168,0.15);border-left:4px solid var(--blue);padding:14px 16px;border-radius:4px;font-size:13px;color:#cce0ff;margin:16px 0}
-.btn{width:100%;background:var(--red);color:#fff;border:none;padding:16px;border-radius:8px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:opacity 0.2s;margin-top:8px}
-.btn:hover{opacity:0.9}
-.btn:disabled{opacity:0.5;cursor:not-allowed}
-.error-msg{color:var(--red);font-size:12px;margin-top:4px;display:none}
+.info-box{background:#E8F0FB;border-left:4px solid var(--blue);padding:14px 16px;border-radius:4px;font-size:13px;color:#1C3A6B;margin:16px 0}
+.btn{display:block;width:100%;background:var(--red);color:#fff;border:none;padding:15px;border-radius:7px;font-size:14px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px;margin-top:8px;box-shadow:0 3px 10px rgba(196,18,46,0.35),0 1px 3px rgba(196,18,46,0.20)}
+.btn:hover{opacity:0.92}
+.btn:disabled{opacity:0.5;cursor:not-allowed;box-shadow:none}
+.error-msg{color:var(--red);font-size:12px;margin-top:4px;display:none;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .success-card{display:none;text-align:center;padding:32px}
-.success-card .icon{font-size:60px;margin-bottom:16px}
-.success-card h2{color:var(--gold);font-size:22px;margin-bottom:12px}
-.success-card p{color:#cce0ff;font-size:14px;line-height:1.7}
+.success-card .icon{font-size:56px;margin-bottom:16px}
+.success-card h2{color:var(--prussian);font-size:22px;margin-bottom:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.success-card p{color:#555;font-size:14px;line-height:1.8}
 .closed-card{text-align:center;padding:32px}
-.closed-card .icon{font-size:50px;margin-bottom:16px}
-.status-bar{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px 18px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
-.status-bar .places{color:var(--gold);font-weight:700;font-size:16px}
-#loading{text-align:center;padding:40px;color:#8b949e}
+.status-bar{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.status-bar .places{color:var(--red);font-weight:800;font-size:16px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+#loading{text-align:center;padding:40px;color:var(--muted);font-family:'Plus Jakarta Sans',Arial,sans-serif}
 </style>
 </head>
 <body>
