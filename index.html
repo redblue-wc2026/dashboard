@@ -5,132 +5,148 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Red n Blue Review WC2026 Prediction League</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--red:#C4122E;--blue:#1B5BA8;--prussian:#1C3A6B;--sky:#4E8DD6;--gold:#F5D020;--white:#fff;--near-black:#111;--muted:#9BA3AF;--border:#E0E2E8;--surface:#F7F8FA;--card:#fff}
+:root{--red:#C4122E;--blue:#1B5BA8;--prussian:#1C3A6B;--sky:#4E8DD6;--gold:#F5D020;--white:#fff;--near-black:#111;--muted:#9BA3AF;--border:#E0E2E8;--surface:#F7F8FA;--green:#1B8B4B;--green-50:#E6F6ED;--blue-50:#E8F0FB;--red-50:#FDE8EB}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Montserrat',Arial,sans-serif;background:var(--surface);color:var(--near-black);min-height:100vh}
-h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
-
-/* NAV */
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .nav{background:var(--blue);border-bottom:6px solid var(--red);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(27,91,168,0.2)}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:0;flex-wrap:wrap}
 .nav-brand{color:#fff;font-weight:800;font-size:16px;padding:14px 20px 14px 0;letter-spacing:1px;text-transform:uppercase;border-right:2px solid rgba(255,255,255,0.2);margin-right:8px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .nav-brand span{color:var(--gold)}
-.nav-link{color:rgba(255,255,255,0.8);text-decoration:none;padding:14px 14px;font-size:12px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;border-bottom:3px solid transparent;transition:all 0.2s;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.nav-link{color:rgba(255,255,255,0.8);text-decoration:none;padding:14px 14px;font-size:12px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;border-bottom:3px solid transparent;transition:all 0.2s;font-family:'Plus Jakarta Sans',Arial,sans-serif;cursor:pointer}
 .nav-link:hover,.nav-link.active{color:#fff;border-bottom-color:var(--gold)}
-.nav-link.rules{color:var(--gold)}
-
-/* HERO */
+.tab-section{display:block}
 .hero{background:var(--blue);padding:28px 16px;border-bottom:3px solid var(--red);background-image:url('rnbrbanner.png');background-size:cover;background-position:center top;position:relative}
 .hero::before{content:'';position:absolute;inset:0;background:rgba(27,91,168,0.72);pointer-events:none}
-.hero-inner{position:relative;z-index:1}
-.hero-inner{max-width:1100px;margin:0 auto}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto}
 .hero-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px}
-.hero h1{font-size:clamp(18px,4vw,30px);font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#fff;margin-bottom:6px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.hero h1{font-size:clamp(18px,4vw,30px);font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#fff;margin-bottom:6px}
 .hero h1 span{color:var(--gold)}
-.hero-sub{color:rgba(255,255,255,0.65);font-size:13px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.hero-sub{color:rgba(255,255,255,0.65);font-size:13px}
 .hero-social{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .hero-social a{display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border-radius:6px;text-decoration:none;font-weight:700;font-size:11px;font-family:'Plus Jakarta Sans',Arial,sans-serif;color:#fff;white-space:nowrap}
-.hs-fb{background:#1877F2}
-.hs-yt{background:#FF0000}
+.hs-fb{background:#1877F2}.hs-yt{background:#FF0000}
 .hs-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
-.hs-tt{background:#010101}
-.hs-rules{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3)}
-@media(max-width:600px){.hero-social{gap:6px}.hero-social a{padding:6px 9px;font-size:10px}}
+.hs-tt{background:#010101}.hs-rules{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3)}
 .stat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .stat-card{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.18);border-radius:10px;padding:16px;text-align:center}
 .stat-card .num{font-size:26px;font-weight:800;color:var(--gold);display:block;line-height:1;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .stat-card .lbl{font-size:11px;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:1px;margin-top:4px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
-
-/* MAIN */
 .main{max-width:1100px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:1fr 340px;gap:24px}
 @media(max-width:768px){.main{grid-template-columns:1fr}}
-
-/* SECTION TITLE */
 .section-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--prussian);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--red);display:flex;align-items:center;gap:8px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
-
-/* CARD */
-.card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
-
-/* LEADERBOARD */
+.card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
 .lb-table{width:100%;border-collapse:collapse;font-size:14px}
 .lb-table th{background:var(--blue);color:#fff;padding:10px 12px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
-.lb-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--near-black)}
+.lb-table td{padding:10px 12px;border-bottom:1px solid var(--border)}
 .lb-table tr:last-child td{border-bottom:none}
 .lb-table tr:hover td{background:var(--surface)}
 .lb-table tr.you td{background:#FEF9E0;font-weight:700}
 .rank-badge{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;background:var(--surface);color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif}
-.rank-1{background:var(--gold);color:var(--prussian)}
-.rank-2{background:#C0C0C0;color:#333}
-.rank-3{background:#CD7F32;color:#fff}
-.move-up{color:#28a745;font-size:11px}
-.move-dn{color:var(--red);font-size:11px}
-.move-eq{color:#ccc;font-size:11px}
+.rank-1{background:var(--gold);color:var(--prussian)}.rank-2{background:#C0C0C0;color:#333}.rank-3{background:#CD7F32;color:#fff}
+.move-up{color:#28a745;font-size:11px}.move-dn{color:var(--red);font-size:11px}.move-eq{color:#ccc;font-size:11px}
 .pts{font-weight:700;color:var(--red);font-family:'Plus Jakarta Sans',Arial,sans-serif}
-
-/* RESULTS */
-.result-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:10px}
+.result-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:10px}
 .result-teams{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .result-team{font-weight:600;font-size:14px;flex:1;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .result-team.away{text-align:right}
 .result-score{background:var(--prussian);color:#fff;font-weight:800;font-size:18px;padding:6px 14px;border-radius:6px;white-space:nowrap;min-width:70px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .result-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--muted)}
 .correct-pct{color:var(--prussian);font-weight:700}
-
-/* FIXTURES */
-.fixture-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px}
-.fixture-time{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:5px 9px;border-radius:5px;white-space:nowrap;min-width:50px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif;box-shadow:0 2px 6px rgba(196,18,46,0.30)}
+.fixture-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.fixture-time{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:5px 9px;border-radius:5px;white-space:nowrap;min-width:50px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .fixture-match{flex:1;font-size:13px;font-weight:600;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .fixture-stage{font-size:11px;color:var(--muted)}
 .deadline-badge{background:#FDE8EB;border:1px solid var(--red);color:var(--red);font-size:12px;padding:8px 14px;border-radius:6px;margin-bottom:12px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif}
-
-/* SIDEBAR */
 .prize-bar{margin:8px 0}
 .prize-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px}
 .prize-row:last-child{border-bottom:none}
-.prize-row .label{color:var(--muted)}
-.prize-row .value{font-weight:700;color:var(--prussian);font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.prize-row .label{color:var(--muted)}.prize-row .value{font-weight:700;color:var(--prussian);font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .prize-row.total .value{color:var(--red);font-size:16px;font-weight:800}
-
-/* MINI STAT */
 .mini-stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:10px;text-align:center;border-top:3px solid var(--blue)}
 .mini-stat .val{font-size:22px;font-weight:800;color:var(--red);font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .mini-stat .desc{font-size:11px;color:var(--muted);margin-top:4px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
-
-/* BUTTONS */
 .btn{display:inline-block;padding:11px 22px;border-radius:7px;text-decoration:none;font-weight:700;font-size:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif;color:#fff;letter-spacing:0.2px;cursor:pointer;border:none;text-transform:uppercase}
-.btn-action{background:var(--red);box-shadow:0 3px 10px rgba(196,18,46,0.35),0 1px 3px rgba(196,18,46,0.20)}
-.btn-nav{background:var(--prussian);box-shadow:0 3px 10px rgba(28,58,107,0.35),0 1px 3px rgba(28,58,107,0.20)}
-.btn-secondary{background:var(--sky);box-shadow:0 3px 10px rgba(78,141,214,0.35),0 1px 3px rgba(78,141,214,0.20)}
-
-/* FOOTER */
+.btn-action{background:var(--red);box-shadow:0 3px 10px rgba(196,18,46,0.35)}
+.btn-nav{background:var(--prussian);box-shadow:0 3px 10px rgba(28,58,107,0.35)}
+.btn-secondary{background:var(--sky);box-shadow:0 3px 10px rgba(78,141,214,0.35)}
 .footer{background:var(--blue);border-top:5px solid var(--red);padding:24px 16px;margin-top:32px;text-align:center}
 .footer p{color:rgba(255,255,255,0.65);font-size:12px;margin:4px 0;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .footer a{color:var(--gold);text-decoration:none}
-.footer .tagline{color:#fff;font-size:15px;font-weight:700;letter-spacing:1px;margin-bottom:8px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.footer-tagline{color:#fff;font-size:15px;font-weight:700;letter-spacing:1px;margin-bottom:8px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .updated{font-size:11px;color:var(--muted);text-align:right;margin-bottom:8px}
-
-/* TEST MODE BANNER */
 .test-banner{background:#F5D020;color:#111;font-weight:800;text-align:center;padding:10px 16px;font-size:13px;letter-spacing:1px;text-transform:uppercase;border-bottom:3px solid #b8880a;font-family:'Plus Jakarta Sans',Arial,sans-serif;position:sticky;top:0;z-index:200}
 .test-banner span{background:#111;color:#F5D020;padding:2px 8px;border-radius:4px;margin-right:8px;font-size:12px}
+/* INSIGHTS */
+.ins-label{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin:24px 0 12px;display:flex;align-items:center;gap:10px}
+.ins-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.ins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.ins-grid-wide{display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:18px;margin-top:18px}
+.ins-grid-trio{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:18px}
+.ins-card{background:#fff;border-radius:12px;padding:22px;border:1px solid var(--border);box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.ins-ch{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.ins-ci{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.icon-blue{background:var(--blue-50)}.icon-red{background:var(--red-50)}.icon-green{background:var(--green-50)}
+.icon-gold{background:#FEF9E0}.icon-orange{background:#FEF3E6}.icon-purple{background:#F3EAF9}
+.ins-ct{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:14px}
+.ins-cs{font-size:11px;color:var(--muted);font-family:'Plus Jakarta Sans',Arial,sans-serif;margin-top:2px}
+.stat-row-ins{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.sbox{flex:1;min-width:80px;background:var(--surface);border-radius:8px;padding:12px 8px;text-align:center;border:1px solid var(--border)}
+.snum{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:800;font-size:24px;display:block}
+.slbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;font-family:'Plus Jakarta Sans',Arial,sans-serif;margin-top:2px;display:block}
+.sblue .snum{color:var(--blue)}.sgreen .snum{color:var(--green)}.sred .snum{color:var(--red)}
+.legend-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.lg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.lg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.score-pill-i{display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:5px 10px;margin:3px}
+.spi-val{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:13px}
+.spi-cnt{font-size:11px;color:var(--blue);font-weight:600}
+.form-row-i{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--surface)}
+.form-row-i:last-child{border-bottom:none}
+.frn{font-weight:600;font-size:12px;width:120px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fdots{display:flex;gap:4px}
+.fdot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif;color:#fff;flex-shrink:0}
+.dot-exact{background:var(--blue)}.dot-result{background:var(--green)}.dot-wrong{background:#E0E2E8;color:#999}.dot-miss{background:var(--red)}
+.frpts{margin-left:auto;font-weight:700;font-size:12px;color:var(--blue);font-family:'Plus Jakarta Sans',Arial,sans-serif;white-space:nowrap}
+.mv-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--surface)}
+.mv-row:last-child{border-bottom:none}
+.mv-rank{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:800;font-size:17px;color:var(--muted);width:28px;text-align:center}
+.mv-name{flex:1;font-weight:600;font-size:12px}
+.mv-pts{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:13px;color:var(--blue)}
+.mv-delta{display:flex;align-items:center;gap:2px;font-size:11px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.d-up{color:var(--green)}.d-dn{color:var(--red)}.d-eq{color:var(--muted)}
+.mb-block{border:1px solid var(--border);border-radius:9px;padding:12px 14px;margin-bottom:8px}
+.mb-block:last-child{margin-bottom:0}
+.mb-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px;flex-wrap:wrap}
+.mb-teams{font-weight:700;font-size:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.mb-tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.tag-ok{background:var(--green-50);color:var(--green)}.tag-no{background:var(--red-50);color:var(--red)}
+.mb-r{display:flex;align-items:center;gap:7px;margin:4px 0;font-size:11px}
+.mb-lbl{width:55px;flex-shrink:0;color:var(--muted)}
+.mb-sc{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:13px;min-width:32px;text-align:center}
+.mb-bar{flex:1;height:5px;background:var(--surface);border-radius:3px;overflow:hidden}
+.mb-bi{height:100%;border-radius:3px}
+.mb-pct{font-size:10px;color:var(--muted);min-width:30px;text-align:right}
+.fun-fact-card{border-radius:12px;padding:18px;color:#fff;position:relative;overflow:hidden}
+.fun-fact-card h3{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:14px;margin-bottom:5px}
+.fun-fact-card p{font-size:12px;color:rgba(255,255,255,0.8);line-height:1.6}
+.ff-hl{color:#F5D020;font-weight:700}
+@media(max-width:700px){.ins-grid-trio{grid-template-columns:1fr}.ins-grid-wide{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 
-<div class="test-banner">
-  <span>⚠ TEST</span>
-  TEST STAGE — Showing test fixtures only. This dashboard is not live.
-</div>
+<div class="test-banner"><span>&#x26A0; TEST</span> TEST STAGE — Showing test fixtures only. This dashboard is not live.</div>
 
 
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-brand">Red and Blue <span>Review</span></div>
-    <a href="#leaderboard" class="nav-link active">🏆 Leaderboard</a>
-    <a href="#results"     class="nav-link">⚽ Results</a>
-    <a href="#fixtures"    class="nav-link">📅 Fixtures</a>
-    <a href="#prizes"      class="nav-link">💰 Prizes</a>
+    <a href="#" class="nav-link active" data-tab="tab-main" onclick="return switchTab('tab-main',this)">🏆 Leaderboard</a>
+    <a href="#" class="nav-link" data-tab="tab-insights" onclick="return switchTab('tab-insights',this)">🔍 Insights</a>
     <a href="register.html" class="nav-link" style="margin-left:auto;color:var(--gold)">Join →</a>
   </div>
 </nav>
@@ -140,479 +156,424 @@ h1,h2,h3,h4,.hfont{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     <div class="hero-top">
       <div>
         <h1>World Cup 2026 <span>Prediction League</span></h1>
-        <p class="hero-sub">Red and Blue Review Podcast — 11 June – 19 July 2026 &nbsp;|&nbsp; <strong style="color:var(--gold)">⚠ TEST STAGE</strong></p>
+        <p class="hero-sub">Red and Blue Review Podcast — 11 June – 19 July 2026 &nbsp;|&nbsp; <strong style="color:var(--gold)">&#x26A0; TEST STAGE</strong></p>
       </div>
       <div class="hero-social">
-        <a href="https://www.facebook.com/profile.php?id=100063836118934" class="hs-fb">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          Facebook
-        </a>
-        <a href="https://www.youtube.com/@theredbluereview8132" class="hs-yt">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-          YouTube
-        </a>
-        <a href="https://www.instagram.com/red_and_blue_review" class="hs-ig">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          Instagram
-        </a>
-        <a href="https://www.tiktok.com/@redbluereviewpod" class="hs-tt">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
-          TikTok
-        </a>
-        <a href="rules.html" class="hs-rules">📋 Rules</a>
+        <a href="https://www.facebook.com/profile.php?id=100063836118934" class="hs-fb"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+        <a href="https://www.youtube.com/@theredbluereview8132" class="hs-yt"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg> YouTube</a>
+        <a href="https://www.instagram.com/red_and_blue_review" class="hs-ig"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</a>
+        <a href="https://www.tiktok.com/@redbluereviewpod" class="hs-tt"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg> TikTok</a>
+        <a href="rules.html" class="hs-rules">Rules</a>
       </div>
     </div>
     <div class="stat-cards">
-      <div class="stat-card"><span class="num">£130</span><span class="lbl">Prize Fund</span></div>
-      <div class="stat-card"><span class="num">13</span><span class="lbl">Players / 100</span></div>
-      <div class="stat-card"><span class="num">0</span><span class="lbl">Matches Played</span></div>
-      <div class="stat-card"><span class="num">02 Jun, 12:00 UK</span><span class="lbl">Next Deadline</span></div>
+      <div class="stat-card"><span class="num">&#xA3;120</span><span class="lbl">Prize Fund</span></div>
+      <div class="stat-card"><span class="num">12</span><span class="lbl">Players / 100</span></div>
+      <div class="stat-card"><span class="num">6</span><span class="lbl">Matches Played</span></div>
+      <div class="stat-card"><span class="num">02 Jun, 14:00 BST</span><span class="lbl">Next Deadline</span></div>
     </div>
   </div>
 </div>
 
+<!-- LEADERBOARD TAB -->
+<div id="tab-main" class="tab-section">
 <div class="main">
   <div class="left-col">
 
-    <div id="leaderboard" class="card">
+    <div class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 01 Jun 2026 19:21</p>
+      <p class="updated">Last updated: 01 Jun 2026 19:35</p>
       <table class="lb-table">
-        <thead>
-          <tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>Δ</th></tr>
-        </thead>
+        <thead><tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th></tr></thead>
         <tbody>
           
           <tr>
-            <td>
-              <span class="rank-badge ">
-                1
-              </span>
-            </td>
+            <td><span class="rank-badge rank-1">1</span></td>
             <td>Ian Lyons</td>
-            <td class="pts">8</td>
-            <td>0</td>
-            <td>0</td>
+            <td class="pts">18</td>
+            <td style="color:var(--muted);font-size:12px">6</td>
+            <td style="color:var(--muted);font-size:12px">4</td>
             <td>
-              
-              
-              <span class="move-eq">─</span>
+              <span class="move-eq">&#x2014;</span>
               
             </td>
           </tr>
           
           <tr>
+            <td><span class="rank-badge rank-2">2</span></td>
+            <td>Dave Hughes</td>
+            <td class="pts">15</td>
+            <td style="color:var(--muted);font-size:12px">5</td>
+            <td style="color:var(--muted);font-size:12px">2</td>
             <td>
-              <span class="rank-badge ">
-                2
-              </span>
+              <span class="move-up">&#x25B2;1</span>
+              
             </td>
-            <td>Alison Thrower</td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge rank-3">3</span></td>
+            <td>Emma Thornton</td>
+            <td class="pts">12</td>
+            <td style="color:var(--muted);font-size:12px">4</td>
+            <td style="color:var(--muted);font-size:12px">1</td>
+            <td>
+              <span class="move-dn">&#x25BC;1</span>
+            </td>
+          </tr>
+          
+          <tr class="you">
+            <td><span class="rank-badge ">4</span></td>
+            <td>Sarah Mitchell <span style="color:var(--muted);font-size:11px">&#x2190; you</span></td>
+            <td class="pts">9</td>
+            <td style="color:var(--muted);font-size:12px">3</td>
+            <td style="color:var(--muted);font-size:12px">-1</td>
+            <td>
+              <span class="move-up">&#x25B2;2</span>
+              
+            </td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge ">5</span></td>
+            <td>Chris Adeola</td>
+            <td class="pts">9</td>
+            <td style="color:var(--muted);font-size:12px">3</td>
+            <td style="color:var(--muted);font-size:12px">-2</td>
+            <td>
+              <span class="move-dn">&#x25BC;1</span>
+            </td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge ">6</span></td>
+            <td>Priya Sharma</td>
+            <td class="pts">7</td>
+            <td style="color:var(--muted);font-size:12px">2</td>
+            <td style="color:var(--muted);font-size:12px">0</td>
+            <td>
+              <span class="move-dn">&#x25BC;2</span>
+            </td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge ">7</span></td>
+            <td>Tom Nguyen</td>
+            <td class="pts">6</td>
+            <td style="color:var(--muted);font-size:12px">2</td>
+            <td style="color:var(--muted);font-size:12px">-3</td>
+            <td>
+              <span class="move-up">&#x25B2;3</span>
+              
+            </td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge ">8</span></td>
+            <td>Lisa Park</td>
+            <td class="pts">5</td>
+            <td style="color:var(--muted);font-size:12px">1</td>
+            <td style="color:var(--muted);font-size:12px">-1</td>
+            <td>
+              <span class="move-eq">&#x2014;</span>
+              
+            </td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge ">9</span></td>
+            <td>James Okafor</td>
             <td class="pts">4</td>
-            <td>0</td>
-            <td>0</td>
+            <td style="color:var(--muted);font-size:12px">1</td>
+            <td style="color:var(--muted);font-size:12px">-2</td>
             <td>
-              
-              
-              <span class="move-eq">─</span>
-              
+              <span class="move-dn">&#x25BC;2</span>
             </td>
           </tr>
           
           <tr>
+            <td><span class="rank-badge ">10</span></td>
+            <td>Ana Ruiz</td>
+            <td class="pts">3</td>
+            <td style="color:var(--muted);font-size:12px">1</td>
+            <td style="color:var(--muted);font-size:12px">-4</td>
             <td>
-              <span class="rank-badge ">
-                2
-              </span>
-            </td>
-            <td>Lucie Usher</td>
-            <td class="pts">4</td>
-            <td>0</td>
-            <td>0</td>
-            <td>
-              
-              
-              <span class="move-up">▲2</span>
-              
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <span class="rank-badge ">
-                4
-              </span>
-            </td>
-            <td>Jade Drummond-Pearson</td>
-            <td class="pts">2</td>
-            <td>0</td>
-            <td>0</td>
-            <td>
-              
-              
-              <span class="move-dn">▼1</span>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <span class="rank-badge ">
-                5
-              </span>
-            </td>
-            <td>Nick Philpot</td>
-            <td class="pts">1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>
-              
-              
-              <span class="move-dn">▼1</span>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <span class="rank-badge ">
-                5
-              </span>
-            </td>
-            <td>Dan</td>
-            <td class="pts">1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>
-              
-              
-              <span class="move-dn">▼1</span>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <span class="rank-badge ">
-                5
-              </span>
-            </td>
-            <td>Edmond Asamoah-Twum</td>
-            <td class="pts">1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>
-              
-              
-              <span class="move-dn">▼1</span>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <span class="rank-badge ">
-                5
-              </span>
-            </td>
-            <td>Eric Ayoola</td>
-            <td class="pts">1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>
-              
-              
-              <span class="move-dn">▼1</span>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <span class="rank-badge ">
-                5
-              </span>
-            </td>
-            <td>Victor Odunaiya</td>
-            <td class="pts">1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>
-              
-              
-              <span class="move-up">▲5</span>
-              
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <span class="rank-badge ">
-                5
-              </span>
-            </td>
-            <td>Nigel Croucher</td>
-            <td class="pts">1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>
-              
-              
-              <span class="move-dn">▼1</span>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <span class="rank-badge ">
-                11
-              </span>
-            </td>
-            <td>Andrew Adams</td>
-            <td class="pts">0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>
-              
-              
-              <span class="move-dn">▼1</span>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <span class="rank-badge ">
-                11
-              </span>
-            </td>
-            <td>Nilesh Parmar</td>
-            <td class="pts">0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>
-              
-              
-              <span class="move-dn">▼1</span>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <span class="rank-badge ">
-                11
-              </span>
-            </td>
-            <td>Oladoyin Joseph</td>
-            <td class="pts">0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>
-              
-              
-              <span class="move-dn">▼1</span>
+              <span class="move-dn">&#x25BC;1</span>
             </td>
           </tr>
           
           
         </tbody>
       </table>
-    </div>
-
-    <div id="results" class="card">
-      <div class="section-title">⚽ Recent Results</div>
       
-      
-      <p style="color:var(--muted);text-align:center;padding:24px;font-family:'Plus Jakarta Sans',Arial,sans-serif">
-        Results will appear here once the tournament begins on 11 June 2026.
-      </p>
+      <div style="text-align:center;margin-top:14px">
+        <a href="leaderboard_full.html" class="btn btn-nav" style="font-size:11px;padding:9px 18px">📋 View Full Leaderboard (12 players) &#x2192;</a>
+      </div>
       
     </div>
 
-    <div id="fixtures" class="card">
+    <div class="card">
+      <div class="section-title">&#x26bd; Recent Results</div>
+      
+      <div class="result-card">
+        <div class="result-teams">
+          <span class="result-team">Argentina</span>
+          <span class="result-score">1 – 3</span>
+          <span class="result-team away">Brazil</span>
+        </div>
+        <div class="result-meta">
+          <span>Test Group Stage | Group B</span>
+          <span class="correct-pct">25% predicted correctly</span>
+        </div>
+      </div>
+      
+      <div class="result-card">
+        <div class="result-teams">
+          <span class="result-team">Mexico</span>
+          <span class="result-score">2 – 0</span>
+          <span class="result-team away">Canada</span>
+        </div>
+        <div class="result-meta">
+          <span>Test Group Stage | Group A</span>
+          <span class="correct-pct">83% predicted correctly</span>
+        </div>
+      </div>
+      
+      
+    </div>
+
+    <div class="card">
       <div class="section-title">📅 Upcoming Fixtures</div>
-      
+      <div class="deadline-badge">&#x23F0; Prediction deadline: Tuesday 02 Jun, 14:00 BST</div>
       
       <div class="fixture-card">
-        <span class="fixture-time">Wed 15:00 BST</span>
+        <span class="fixture-time">15:00</span>
         <div>
           <div class="fixture-match">Japan vs South Korea</div>
-          <div class="fixture-stage">Test Round of 16 | Test Stadium, London</div>
+          <div class="fixture-stage">Test Round of 16</div>
         </div>
       </div>
       
       <div class="fixture-card">
-        <span class="fixture-time">Wed 18:00 BST</span>
+        <span class="fixture-time">18:00</span>
         <div>
           <div class="fixture-match">Italy vs Belgium</div>
-          <div class="fixture-stage">Test Round of 16 | Test Stadium, London</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">Wed 21:00 BST</span>
-        <div>
-          <div class="fixture-match">Morocco vs Australia</div>
-          <div class="fixture-stage">Test Quarter-Final | Test Stadium, London</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">Thu 18:00 BST</span>
-        <div>
-          <div class="fixture-match">France vs Brazil</div>
-          <div class="fixture-stage">Test Semi-Final | Test Stadium, London</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">Thu 21:00 BST</span>
-        <div>
-          <div class="fixture-match">England vs Germany</div>
-          <div class="fixture-stage">Test Semi-Final | Test Stadium, London</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">Fri 16:00 BST</span>
-        <div>
-          <div class="fixture-match">Brazil vs Germany</div>
-          <div class="fixture-stage">Test 3rd Place | Test Stadium, London</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">Fri 20:00 BST</span>
-        <div>
-          <div class="fixture-match">England vs France</div>
-          <div class="fixture-stage">Test Final 🏆 | Test Stadium, London</div>
+          <div class="fixture-stage">Test Round of 16</div>
         </div>
       </div>
       
       
       <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-        <a href="predict.html" class="btn btn-action" onclick="goToMyPredictions(event)">⚽ My Predictions →</a>
-        <a href="register.html" class="btn btn-nav">📋 Join the League</a>
+        <a href="predict.html" class="btn btn-action" onclick="goToMyPredictions(event)">&#x26bd; My Predictions &#x2192;</a>
+        <a href="register.html" class="btn btn-nav">Join the League</a>
       </div>
     </div>
 
-  </div>
+  </div><!-- /left-col -->
 
   <div class="right-col">
-
-    <div id="prizes" class="card">
+    <div class="card">
       <div class="section-title">💰 Prize Fund</div>
       <div class="prize-bar">
-        <div class="prize-row total"><span class="label">Total Prize Fund</span><span class="value">£130</span></div>
-        <div class="prize-row"><span class="label">🥇 1st Place</span><span class="value">£26</span></div>
-        <div class="prize-row"><span class="label">🥈 2nd Place</span><span class="value">£15</span></div>
-        <div class="prize-row"><span class="label">🥉 3rd Place</span><span class="value">£10</span></div>
-        <div class="prize-row"><span class="label">📊 Group Stage</span><span class="value">£13</span></div>
-        <div class="prize-row"><span class="label">⚡ Knockout</span><span class="value">£13</span></div>
+        <div class="prize-row total"><span class="label">Total Prize Fund</span><span class="value">&#xA3;120</span></div>
+        <div class="prize-row"><span class="label">🥇 1st Place</span><span class="value">&#xA3;24</span></div>
+        <div class="prize-row"><span class="label">🥈 2nd Place</span><span class="value">&#xA3;14</span></div>
+        <div class="prize-row"><span class="label">🥉 3rd Place</span><span class="value">&#xA3;10</span></div>
+        <div class="prize-row"><span class="label">📊 Group Stage</span><span class="value">&#xA3;12</span></div>
+        <div class="prize-row"><span class="label">&#x26A1; Knockout</span><span class="value">&#xA3;12</span></div>
       </div>
-      <p style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif">
-        87 places remaining — prize grows with every entry!
-      </p>
+      <p style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif">88 places remaining — prize grows with every entry!</p>
     </div>
-
-    
 
     
     <div class="card">
-      <div class="section-title">▶ Latest Episode</div>
-      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px">
-        <iframe
-          src="https://www.youtube.com/embed/5fu_gcney-o?rel=0&modestbranding=1"
-          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
-          allowfullscreen
-          loading="lazy"
-          title="Red and Blue Review — latest episode">
-        </iframe>
+      <div class="section-title">📊 Stats Corner</div>
+      <div class="mini-stat">
+        <div class="val">🌟 Ian Lyons</div>
+        <div class="desc">Top scorer this week — 18 pts</div>
       </div>
-      <p style="font-size:11px;color:var(--muted);margin-top:8px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif">
-        🎙️ Red and Blue Review Podcast
-      </p>
+      
+      <div class="mini-stat">
+        <div class="val">😮 25%</div>
+        <div class="desc">Got Argentina vs Brazil right</div>
+      </div>
+      
+      
+      <div class="mini-stat">
+        <div class="val">72</div>
+        <div class="desc">Total predictions scored</div>
+      </div>
+      
     </div>
+    
+
     
 
     <div class="card" style="text-align:center">
       <div class="section-title">📘 Join the Community</div>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-family:'Plus Jakarta Sans',Arial,sans-serif">
-        Like &amp; Follow the Red and Blue Review Facebook page to join the private prediction group!
-      </p>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-family:'Plus Jakarta Sans',Arial,sans-serif">Like &amp; Follow the Red and Blue Review Facebook page to join the private prediction group!</p>
       <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
         <a href="https://www.facebook.com/profile.php?id=100063836118934" class="btn btn-secondary">📘 Facebook</a>
-        <a href="https://www.youtube.com/@theredbluereview8132" style="display:inline-block;background:#FF0000;color:#fff;padding:11px 22px;border-radius:7px;text-decoration:none;font-weight:700;font-size:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif;box-shadow:0 3px 10px rgba(255,0,0,0.35)">▶ YouTube</a>
-        <a href="https://www.tiktok.com/@redbluereviewpod" style="display:inline-block;background:#010101;color:#fff;padding:11px 22px;border-radius:7px;text-decoration:none;font-weight:700;font-size:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif">&#9654; TikTok</a>
+        <a href="https://www.youtube.com/@theredbluereview8132" style="display:inline-block;background:#FF0000;color:#fff;padding:11px 22px;border-radius:7px;text-decoration:none;font-weight:700;font-size:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif">🔴 YouTube</a>
       </div>
     </div>
+  </div><!-- /right-col -->
+</div><!-- /main -->
+</div><!-- /tab-main -->
 
+<!-- INSIGHTS TAB -->
+<div id="tab-insights" class="tab-section" style="display:none">
+<div style="max-width:1100px;margin:0 auto;padding:24px 16px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+    <div>
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:var(--prussian)">🔍 Competition Insights</h2>
+      <p style="font-size:13px;color:var(--muted);margin-top:4px">Analysis based on all scored predictions so far</p>
+    </div>
+    <span style="background:var(--blue-50);color:var(--blue);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;padding:5px 14px;border-radius:20px;border:1px solid #C5D9F5">6 matches scored &#xB7; 12 players</span>
+  </div>
+
+  <div class="ins-label">At a glance</div>
+  <div class="ins-grid">
+    <div class="ins-card">
+      <div class="ins-ch"><div class="ins-ci icon-blue">🎯</div><div><div class="ins-ct">Prediction Accuracy</div><div class="ins-cs">Across all scored predictions</div></div></div>
+      <div class="stat-row-ins">
+        <div class="sbox sblue"><span class="snum" id="ins-exact-pct">—</span><span class="slbl">Exact score</span></div>
+        <div class="sbox sgreen"><span class="snum" id="ins-result-pct">—</span><span class="slbl">Correct result</span></div>
+        <div class="sbox sred"><span class="snum" id="ins-wrong-pct">—</span><span class="slbl">Wrong result</span></div>
+      </div>
+      <div style="height:150px"><canvas id="accuracyDonut"></canvas></div>
+      <div class="legend-row"><div class="lg-item"><div class="lg-dot" style="background:var(--blue)"></div>Exact (3pts)</div><div class="lg-item"><div class="lg-dot" style="background:var(--green)"></div>Correct (1pt)</div><div class="lg-item"><div class="lg-dot" style="background:#E0E2E8"></div>Wrong</div></div>
+    </div>
+    <div class="ins-card">
+      <div class="ins-ch"><div class="ins-ci icon-gold">📊</div><div><div class="ins-ct">Points per Match</div><div class="ins-cs">Total points earned by all players</div></div></div>
+      <div style="height:190px"><canvas id="pointsBar"></canvas></div>
+    </div>
+    <div class="ins-card">
+      <div class="ins-ch"><div class="ins-ci icon-purple">🔮</div><div><div class="ins-ct">Most Predicted Scores</div><div class="ins-cs">Crowd favourites across all fixtures</div></div></div>
+      <div id="scorePills" style="display:flex;flex-wrap:wrap;margin-top:4px"></div>
+      <p style="font-size:11px;color:var(--muted);margin-top:12px" id="top-score-note"></p>
+    </div>
+  </div>
+
+  <div class="ins-label">Player performance</div>
+  <div class="ins-grid-wide">
+    <div class="ins-card">
+      <div class="ins-ch"><div class="ins-ci icon-green">🔥</div><div><div class="ins-ct">Recent Form Guide</div><div class="ins-cs"><span style="display:inline-flex;align-items:center;gap:4px;margin-right:8px"><span class="fdot dot-exact" style="display:inline-flex">3</span>Exact</span> <span style="display:inline-flex;align-items:center;gap:4px;margin-right:8px"><span class="fdot dot-result" style="display:inline-flex">1</span>Correct</span> <span style="display:inline-flex;align-items:center;gap:4px;margin-right:8px"><span class="fdot dot-wrong" style="display:inline-flex">0</span>Wrong</span> <span style="display:inline-flex;align-items:center;gap:4px"><span class="fdot dot-miss" style="display:inline-flex">D</span>Default</span></div></div></div>
+      <div id="formGuide"></div>
+    </div>
+    <div class="ins-card">
+      <div class="ins-ch"><div class="ins-ci icon-red">&#x26A1;</div><div><div class="ins-ct">Leaderboard &amp; Movement</div><div class="ins-cs">Current standings vs start of batch</div></div></div>
+      <div id="moverRows"></div>
+    </div>
+  </div>
+
+  <div class="ins-label">Match-by-match breakdown</div>
+  <div class="ins-grid-wide">
+    <div class="ins-card">
+      <div class="ins-ch"><div class="ins-ci icon-blue">📈</div><div><div class="ins-ct">Accuracy per Match</div><div class="ins-cs">% of players who got exact score / correct result</div></div></div>
+      <div style="height:220px"><canvas id="matchAccuracy"></canvas></div>
+      <div class="legend-row" style="margin-top:14px"><div class="lg-item"><div class="lg-dot" style="background:var(--blue)"></div>Exact score</div><div class="lg-item"><div class="lg-dot" style="background:var(--green)"></div>Correct result only</div></div>
+    </div>
+    <div class="ins-card">
+      <div class="ins-ch"><div class="ins-ci icon-orange">🦸</div><div><div class="ins-ct">Crowd vs Reality</div><div class="ins-cs">Most-predicted score vs actual result</div></div></div>
+      <div id="crowdReality"></div>
+    </div>
+  </div>
+
+  <div class="ins-label">Group think &amp; fun facts</div>
+  <div class="ins-grid-trio">
+    <div class="ins-card" style="grid-column:span 2">
+      <div class="ins-ch"><div class="ins-ci icon-purple">🧠</div><div><div class="ins-ct">Group Think Radar</div><div class="ins-cs">How well did the crowd collectively call each match?</div></div></div>
+      <div style="height:260px"><canvas id="radarChart"></canvas></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="fun-fact-card" style="background:linear-gradient(135deg,#1C3A6B,#1B5BA8)">
+        <h3>Hardest match to call</h3>
+        <p>Only <span class="ff-hl">25%</span> got Argentina vs Brazil right.</p>
+      </div>
+      <div class="fun-fact-card" style="background:linear-gradient(135deg,#8C0A1F,#C4122E)">
+        <h3>Biggest upset</h3>
+        <p><span class="ff-hl">75%</span> backed Argentina. Reality: Brazil won 1–3.</p>
+      </div>
+      <div class="fun-fact-card" style="background:linear-gradient(135deg,#1B5B40,#1B8B4B)">
+        <h3>Easiest call</h3>
+        <p><span class="ff-hl">83%</span> correctly predicted Mexico vs Canada.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ins-label">Prediction spread</div>
+  <div class="ins-grid">
+    <div class="ins-card">
+      <div class="ins-ch"><div class="ins-ci icon-blue">💯</div><div><div class="ins-ct">Goals Per Prediction</div><div class="ins-cs">Total goals players expected per match</div></div></div>
+      <div style="height:180px"><canvas id="goalsHist"></canvas></div>
+    </div>
+    <div class="ins-card">
+      <div class="ins-ch"><div class="ins-ci icon-red">🎯</div><div><div class="ins-ct">Result Bias</div><div class="ins-cs">Home win / Draw / Away win: predicted vs actual</div></div></div>
+      <div style="height:180px"><canvas id="resultBias"></canvas></div>
+    </div>
+    <div class="ins-card">
+      <div class="ins-ch"><div class="ins-ci icon-green">📅</div><div><div class="ins-ct">Points Trajectory</div><div class="ins-cs">Cumulative top-3 points across the batch</div></div></div>
+      <div style="height:180px"><canvas id="trajectory"></canvas></div>
+    </div>
   </div>
 </div>
+</div><!-- /tab-insights -->
 
 <div class="footer">
-  <p class="tagline">🦅 Come On You Eagles! 🦅</p>
-  <p>Red and Blue Review Podcast</p>
-  <div style="margin:12px 0;display:flex;justify-content:center;gap:8px;flex-wrap:wrap">
-    <a href="https://www.facebook.com/profile.php?id=100063836118934"
-       style="display:inline-flex;align-items:center;gap:6px;background:#1877F2;color:#fff;
-              text-decoration:none;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:700;
-              font-family:'Plus Jakarta Sans',Arial,sans-serif;
-              box-shadow:0 2px 8px rgba(24,119,242,0.35)">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      Facebook
-    </a>
-    <a href="https://www.youtube.com/@theredbluereview8132"
-       style="display:inline-flex;align-items:center;gap:6px;background:#FF0000;color:#fff;
-              text-decoration:none;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:700;
-              font-family:'Plus Jakarta Sans',Arial,sans-serif;
-              box-shadow:0 2px 8px rgba(255,0,0,0.35)">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-      YouTube
-    </a>
-    <a href="https://www.instagram.com/red_and_blue_review"
-       style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;text-decoration:none;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif;box-shadow:0 2px 8px rgba(225,48,108,0.4)">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      Instagram
-    </a>
-  </div>
-  <p>
-    <a href="rules.html">Competition Rules</a> &nbsp;|&nbsp;
-    <a href="mailto:ian.lyons66@gmail.com">Contact Admin</a>
-  </p>
-  <p style="margin-top:10px;font-size:11px;color:rgba(255,255,255,0.4)">
-    Dashboard refreshed automatically after each matchday. Last updated: 01 Jun 2026 19:21
-  </p>
+  <div class="footer-tagline">Red and Blue Review &#xB7; WC2026 Prediction League</div>
+  <p>Questions? <a href="mailto:ian.lyons66@gmail.com">ian.lyons66@gmail.com</a></p>
+  <p>&#x00A9; 2026 Red and Blue Review</p>
 </div>
 
 <script>
-// Token — URL param or sessionStorage (per-tab, not shared across users)
-var _tok = (new URLSearchParams(window.location.search)).get('token')
-           || sessionStorage.getItem('wc2026_token') || '';
-if (_tok) sessionStorage.setItem('wc2026_token', _tok);
-
-function goToMyPredictions(e) {
-  e.preventDefault();
-  var token = (new URLSearchParams(window.location.search)).get('token')
-              || sessionStorage.getItem('wc2026_token') || '';
-  if (token) {
-    window.location.href = 'predict.html?token=' + token;
-  } else {
-    var entered = prompt('Enter your unique prediction token\n(from your welcome email):');
-    if (entered && entered.trim()) {
-      sessionStorage.setItem('wc2026_token', entered.trim());
-      window.location.href = 'predict.html?token=' + entered.trim();
-    }
-  }
+function switchTab(tabId,el){
+  document.querySelectorAll('.tab-section').forEach(t=>t.style.display='none');
+  document.querySelectorAll('.nav-link[data-tab]').forEach(l=>l.classList.remove('active'));
+  document.getElementById(tabId).style.display='block';
+  if(el)el.classList.add('active');
+  if(tabId==='tab-insights'&&!window._chartsBuilt){buildInsightCharts();window._chartsBuilt=true;}
+  return false;
 }
-window.addEventListener('scroll', function() {
-  var sections = ['leaderboard','results','fixtures','prizes'];
-  var links = document.querySelectorAll('.nav-link');
-  sections.forEach(function(id, i) {
-    var el = document.getElementById(id);
-    if (el) {
-      var rect = el.getBoundingClientRect();
-      if (rect.top <= 80 && rect.bottom > 80) {
-        links.forEach(function(l){l.classList.remove('active')});
-        if (links[i]) links[i].classList.add('active');
-      }
-    }
+
+const INS = {"crowd_reality": [{"actual": "2\u20130", "crowd": "1\u20130", "ok": true, "pct": 42, "teams": "Mexico vs Canada"}, {"actual": "2\u20130", "crowd": "2\u20130", "ok": true, "pct": 33, "teams": "USA vs Honduras"}, {"actual": "1\u20133", "crowd": "2\u20131", "ok": false, "pct": 25, "teams": "Argentina vs Brazil"}, {"actual": "1\u20130", "crowd": "1\u20131", "ok": false, "pct": 33, "teams": "England vs France"}, {"actual": "1\u20131", "crowd": "1\u20131", "ok": true, "pct": 50, "teams": "Germany vs Spain"}, {"actual": "2\u20131", "crowd": "2\u20131", "ok": true, "pct": 42, "teams": "Portugal vs Neth."}], "easiest_match": "Mexico vs Canada", "easiest_pct": 83, "exact_pct": 38, "form_guide": [{"batch_pts": 18, "cr": 6, "delta": 0, "form": ["exact", "exact", "result", "exact", "wrong", "result"], "gd": 4, "name": "Ian Lyons", "pts": 18, "rank": 1}, {"batch_pts": 15, "cr": 5, "delta": 1, "form": ["exact", "result", "exact", "wrong", "result", "exact"], "gd": 2, "name": "Dave Hughes", "pts": 15, "rank": 2}, {"batch_pts": 12, "cr": 4, "delta": -1, "form": ["result", "result", "wrong", "exact", "result", "wrong"], "gd": 1, "name": "Emma Thornton", "pts": 12, "rank": 3}, {"batch_pts": 9, "cr": 3, "delta": 2, "form": ["wrong", "exact", "result", "wrong", "wrong", "result"], "gd": -1, "name": "Sarah Mitchell", "pts": 9, "rank": 4}, {"batch_pts": 9, "cr": 3, "delta": -1, "form": ["result", "wrong", "result", "result", "wrong", "wrong"], "gd": -2, "name": "Chris Adeola", "pts": 9, "rank": 5}, {"batch_pts": 7, "cr": 2, "delta": -2, "form": ["wrong", "result", "wrong", "result", "wrong", "exact"], "gd": 0, "name": "Priya Sharma", "pts": 7, "rank": 6}, {"batch_pts": 6, "cr": 2, "delta": 3, "form": ["result", "wrong", "wrong", "exact", "wrong", "wrong"], "gd": -3, "name": "Tom Nguyen", "pts": 6, "rank": 7}, {"batch_pts": 5, "cr": 1, "delta": 0, "form": ["wrong", "wrong", "result", "wrong", "result", "wrong"], "gd": -1, "name": "Lisa Park", "pts": 5, "rank": 8}], "goals_histogram": [7, 18, 24, 14, 7, 2], "hardest_match": "Argentina vs Brazil", "hardest_pct": 25, "match_labels": ["MEX v CAN", "USA v HON", "ARG v BRA", "ENG v FRA", "GER v ESP", "POR v NED"], "match_stats": [{"away_team": "Canada", "exact_pct": 58, "fixture_id": "T001", "home_team": "Mexico", "label": "MEX v CAN", "n_preds": 12, "result_pct": 25}, {"away_team": "Honduras", "exact_pct": 42, "fixture_id": "T002", "home_team": "USA", "label": "USA v HON", "n_preds": 12, "result_pct": 33}, {"away_team": "Brazil", "exact_pct": 8, "fixture_id": "T003", "home_team": "Argentina", "label": "ARG v BRA", "n_preds": 12, "result_pct": 17}, {"away_team": "France", "exact_pct": 33, "fixture_id": "T004", "home_team": "England", "label": "ENG v FRA", "n_preds": 12, "result_pct": 42}, {"away_team": "Spain", "exact_pct": 25, "fixture_id": "T005", "home_team": "Germany", "label": "GER v ESP", "n_preds": 12, "result_pct": 33}, {"away_team": "Netherlands", "exact_pct": 50, "fixture_id": "T006", "home_team": "Portugal", "label": "POR v NED", "n_preds": 12, "result_pct": 17}], "n_exact": 27, "n_result": 17, "n_wrong": 28, "result_bias": {"act_away": 33, "act_draw": 17, "act_home": 50, "pred_away": 26, "pred_draw": 22, "pred_home": 52}, "result_pct": 24, "top_scores": [{"n": 18, "v": "1\u20130"}, {"n": 14, "v": "2\u20131"}, {"n": 12, "v": "1\u20131"}, {"n": 9, "v": "2\u20130"}, {"n": 7, "v": "0\u20130"}, {"n": 6, "v": "3\u20131"}, {"n": 4, "v": "0\u20131"}, {"n": 2, "v": "2\u20132"}], "total_predictions": 72, "traj_labels": ["M1", "M2", "M3", "M4", "M5", "M6"], "trajectory": [{"data": [3, 6, 9, 12, 15, 18], "name": "Ian Lyons"}, {"data": [0, 3, 6, 9, 12, 15], "name": "Dave Hughes"}, {"data": [1, 4, 5, 8, 11, 12], "name": "Emma Thornton"}], "upset_favourite": "Argentina", "upset_pct": 75, "upset_result": "Brazil won 1\u20133", "wrong_pct": 38};
+const C={blue:'#1B5BA8',sky:'#4E8DD6',red:'#C4122E',green:'#1B8B4B',gold:'#F5D020',muted:'#9BA3AF',surface:'#F7F8FA',border:'#E0E2E8',orange:'#E07B1A',purple:'#7B3FA0'};
+
+function buildInsightCharts(){
+  if(!INS||!INS.match_stats)return;
+  if(INS.exact_pct!==undefined){document.getElementById('ins-exact-pct').textContent=INS.exact_pct+'%';document.getElementById('ins-result-pct').textContent=INS.result_pct+'%';document.getElementById('ins-wrong-pct').textContent=INS.wrong_pct+'%';}
+  const sp=document.getElementById('scorePills');
+  (INS.top_scores||[]).forEach(s=>{sp.innerHTML+=`<div class="score-pill-i"><span class="spi-val">${s.v}</span><span class="spi-cnt">${s.n}&times;</span></div>`;});
+  if(INS.top_scores&&INS.top_scores[0])document.getElementById('top-score-note').innerHTML=`&#x26A0; <strong>${INS.top_scores[0].v}</strong> was the most popular pick.`;
+  const fg=document.getElementById('formGuide');
+  (INS.form_guide||[]).forEach(p=>{
+    const dots=(p.form||[]).map(f=>{const cls=f==='exact'?'dot-exact':f==='result'?'dot-result':f==='miss'?'dot-miss':'dot-wrong';const l=f==='exact'?'3':f==='result'?'1':f==='miss'?'D':'0';return`<div class="fdot ${cls}">${l}</div>`;}).join('');
+    fg.innerHTML+=`<div class="form-row-i"><div class="frn">${p.name}</div><div class="fdots">${dots}</div><div class="frpts">${p.batch_pts}pts</div></div>`;
   });
-});
+  const mr=document.getElementById('moverRows');
+  (INS.form_guide||[]).forEach(p=>{
+    const arrow=p.delta>0?`<span class="mv-delta d-up">&#x25B2;${p.delta}</span>`:p.delta<0?`<span class="mv-delta d-dn">&#x25BC;${Math.abs(p.delta)}</span>`:`<span class="mv-delta d-eq">&#x2014;</span>`;
+    const medal=p.rank===1?'🥇':p.rank===2?'🥈':p.rank===3?'🥉':p.rank;
+    mr.innerHTML+=`<div class="mv-row"><div class="mv-rank">${medal}</div><div class="mv-name">${p.name}</div><div style="font-size:10px;color:var(--muted);margin-right:6px">${p.cr}W GD${p.gd>=0?'+':''}${p.gd}</div><div class="mv-pts">${p.pts}pts</div>${arrow}</div>`;
+  });
+  const cr=document.getElementById('crowdReality');
+  (INS.crowd_reality||[]).forEach(m=>{
+    const tag=m.ok?`<span class="mb-tag tag-ok">Correct &#x2713;</span>`:`<span class="mb-tag tag-no">Wrong &#x2717;</span>`;
+    cr.innerHTML+=`<div class="mb-block"><div class="mb-hdr"><div class="mb-teams">${m.teams}</div>${tag}</div><div class="mb-r"><div class="mb-lbl">Crowd</div><div class="mb-sc" style="color:var(--blue)">${m.crowd}</div><div class="mb-bar"><div class="mb-bi" style="width:${m.pct}%;background:var(--blue)"></div></div><div class="mb-pct">${m.pct}%</div></div><div class="mb-r"><div class="mb-lbl">Actual</div><div class="mb-sc" style="color:${m.ok?C.green:C.red}">${m.actual}</div><div class="mb-bar"><div class="mb-bi" style="width:100%;background:${m.ok?C.green:C.red}"></div></div></div></div>`;
+  });
+  const ML=INS.match_labels||[];const TL=INS.traj_labels||[];const MS=INS.match_stats||[];
+  const GH=INS.goals_histogram||[0,0,0,0,0,0];const RB=INS.result_bias||{};const TR=INS.trajectory||[];
+  const trColors=[C.gold,C.blue,C.red,C.green,C.purple];
+  new Chart(document.getElementById('accuracyDonut'),{type:'doughnut',data:{labels:['Exact','Result','Wrong'],datasets:[{data:[INS.n_exact||0,INS.n_result||0,INS.n_wrong||0],backgroundColor:[C.blue,C.green,C.border],borderWidth:0,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{display:false}}}});
+  new Chart(document.getElementById('pointsBar'),{type:'bar',data:{labels:ML,datasets:[{label:'Exact (3pts)',data:MS.map(m=>Math.round((m.exact_pct/100)*(m.n_preds||0)*3)),backgroundColor:C.blue,borderRadius:4,stack:'s'},{label:'Result (1pt)',data:MS.map(m=>Math.round((m.result_pct/100)*(m.n_preds||0))),backgroundColor:C.green,borderRadius:4,stack:'s'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{grid:{color:C.surface},ticks:{font:{size:9}}}}}});
+  new Chart(document.getElementById('matchAccuracy'),{type:'bar',data:{labels:ML,datasets:[{label:'Exact %',data:MS.map(m=>m.exact_pct),backgroundColor:C.blue,borderRadius:4},{label:'Result %',data:MS.map(m=>m.result_pct),backgroundColor:C.green,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{max:100,grid:{color:C.surface},ticks:{font:{size:9},callback:v=>v+'%'}}}}});
+  new Chart(document.getElementById('radarChart'),{type:'radar',data:{labels:ML,datasets:[{label:'Exact %',data:MS.map(m=>m.exact_pct),fill:true,backgroundColor:'rgba(27,91,168,0.15)',borderColor:C.blue,pointBackgroundColor:C.blue,pointRadius:4},{label:'Correct %',data:MS.map(m=>m.exact_pct+m.result_pct),fill:true,backgroundColor:'rgba(27,139,75,0.10)',borderColor:C.green,pointBackgroundColor:C.green,pointRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{r:{min:0,max:100,ticks:{stepSize:25,font:{size:9},backdropColor:'transparent'},grid:{color:C.border},pointLabels:{font:{size:10,family:'Plus Jakarta Sans'}}}}}});
+  new Chart(document.getElementById('goalsHist'),{type:'bar',data:{labels:['0','1','2','3','4','5+'],datasets:[{data:GH,backgroundColor:[C.sky,C.blue,C.blue,C.blue,C.sky,C.muted],borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{grid:{color:C.surface},ticks:{font:{size:9}}}}}});
+  new Chart(document.getElementById('resultBias'),{type:'bar',data:{labels:['Home Win','Draw','Away Win'],datasets:[{label:'Predicted',data:[RB.pred_home||0,RB.pred_draw||0,RB.pred_away||0],backgroundColor:[C.blue,C.muted,C.sky],borderRadius:6},{label:'Actual',data:[RB.act_home||0,RB.act_draw||0,RB.act_away||0],backgroundColor:['rgba(27,91,168,0.25)','rgba(155,163,175,0.25)','rgba(78,141,214,0.25)'],borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{font:{size:9},boxWidth:8}}},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{max:70,ticks:{font:{size:9},callback:v=>v+'%'},grid:{color:C.surface}}}}});
+  new Chart(document.getElementById('trajectory'),{type:'line',data:{labels:TL,datasets:TR.map((t,i)=>({label:t.name,data:t.data,borderColor:trColors[i%trColors.length],backgroundColor:trColors[i%trColors.length].replace('#','rgba(').replace(/([0-9a-f]{2})/gi,m=>parseInt(m,16)+',').replace(/,$/,',0.07)'),tension:0.4,fill:i===0,pointRadius:3}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{font:{size:9},boxWidth:8}}},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{grid:{color:C.surface},ticks:{font:{size:9}}}}}});
+}
+
+function goToMyPredictions(e){const token=new URLSearchParams(window.location.search).get('token');if(token){e.preventDefault();window.location.href='predict.html?token='+token;}}
 </script>
 </body>
 </html>

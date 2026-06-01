@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Full Leaderboard — Red n Blue Review WC2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#C4122E;--blue:#1B5BA8;--prussian:#1C3A6B;--sky:#4E8DD6;--gold:#F5D020;--border:#E0E2E8;--surface:#F7F8FA;--muted:#9BA3AF}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;min-height:100vh}
+.nav{background:var(--blue);border-bottom:6px solid var(--red);box-shadow:0 2px 12px rgba(27,91,168,0.2)}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:12px}
+.nav-brand{color:#fff;font-weight:800;font-size:15px;padding:14px 16px 14px 0;letter-spacing:1px;text-transform:uppercase;border-right:2px solid rgba(255,255,255,0.2);margin-right:4px;font-family:'Plus Jakarta Sans',sans-serif}
+.nav-brand span{color:var(--gold)}
+.back-btn{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;padding:8px 14px;border-radius:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);transition:background 0.2s}
+.back-btn:hover{background:rgba(255,255,255,0.2);color:#fff}
+.main{max-width:900px;margin:24px auto;padding:0 16px}
+.page-head{background:linear-gradient(135deg,var(--prussian) 0%,var(--blue) 100%);border-radius:14px;padding:28px 32px;margin-bottom:24px;position:relative;overflow:hidden}
+.page-head::after{content:'';position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:rgba(245,208,32,0.1)}
+.page-head h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:24px;color:#fff}
+.page-head p{color:rgba(255,255,255,0.65);font-size:13px;margin-top:6px}
+.page-head .meta{margin-top:14px;display:flex;gap:16px;flex-wrap:wrap}
+.meta-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:8px 14px;text-align:center}
+.meta-pill .num{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:var(--gold);display:block}
+.meta-pill .lbl{font-size:10px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;display:block}
+.card{background:#fff;border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 10px rgba(0,0,0,0.05);overflow:hidden}
+.section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--prussian);padding:16px 20px 12px;border-bottom:2px solid var(--red);display:flex;align-items:center;gap:8px;font-family:'Plus Jakarta Sans',sans-serif}
+.lb{width:100%;border-collapse:collapse;font-size:13px}
+.lb th{background:var(--blue);color:#fff;padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;font-family:'Plus Jakarta Sans',sans-serif}
+.lb th:nth-child(n+3){text-align:center}
+.lb td{padding:10px 14px;border-bottom:1px solid var(--border)}
+.lb td:nth-child(n+3){text-align:center}
+.lb tr:last-child td{border-bottom:none}
+.lb tr:hover td{background:var(--surface)}
+.lb tr.you td{background:#FEF9E0;font-weight:700}
+.lb tr.you td:first-child::after{content:' ←';font-size:10px;color:var(--muted)}
+.rk{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;background:var(--surface);color:#555;font-family:'Plus Jakarta Sans',sans-serif}
+.rk1{background:var(--gold);color:var(--prussian)}.rk2{background:#C0C0C0;color:#333}.rk3{background:#CD7F32;color:#fff}
+.pts{font-weight:700;color:var(--red);font-family:'Plus Jakarta Sans',sans-serif}
+.mu{color:#1B8B4B;font-size:11px;font-weight:700}.md{color:var(--red);font-size:11px;font-weight:700}.me{color:#ddd;font-size:11px}
+.tier-sep td{background:var(--surface);font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'Plus Jakarta Sans',sans-serif;padding:6px 14px;border-bottom:1px solid var(--border)}
+.footer-bar{display:flex;align-items:center;justify-content:space-between;margin-top:20px;flex-wrap:wrap;gap:12px;padding-bottom:32px}
+.footer-bar p{font-size:12px;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:7px;text-decoration:none;font-weight:700;font-size:12px;font-family:'Plus Jakarta Sans',sans-serif;color:#fff;letter-spacing:0.2px}
+.btn-nav{background:var(--prussian);box-shadow:0 3px 10px rgba(28,58,107,0.3)}
+.btn-action{background:var(--red);box-shadow:0 3px 10px rgba(196,18,46,0.3)}
+.key{display:flex;gap:16px;flex-wrap:wrap;padding:12px 20px;background:var(--surface);border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif}
+.ki{display:flex;align-items:center;gap:5px}
+.kb{font-weight:700;color:#111}
+@media(max-width:600px){.lb th:nth-child(5),.lb td:nth-child(5){display:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">Red and Blue <span>Review</span></div>
+    <a href="index.html" class="back-btn">← Back to Dashboard</a>
+  </div>
+</nav>
+
+<div class="main">
+
+  <div class="page-head">
+    <h1>🏆 Full Leaderboard</h1>
+    <p>Red n Blue Review WC2026 Prediction League &mdash; 11 June – 19 July 2026</p>
+    <div class="meta">
+      <div class="meta-pill"><span class="num">12</span><span class="lbl">Players</span></div>
+      <div class="meta-pill"><span class="num">6</span><span class="lbl">Matches played</span></div>
+      <div class="meta-pill"><span class="num">£120</span><span class="lbl">Prize fund</span></div>
+      <div class="meta-pill"><span class="num">12</span><span class="lbl">Ranked</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">🏆 All Players — Live Rankings</div>
+    <div class="key">
+      <div class="ki"><span class="kb">Pts</span> Total points</div>
+      <div class="ki"><span class="kb">W</span> Correct results (tiebreaker 1)</div>
+      <div class="ki"><span class="kb">GD</span> Goal difference contribution (tiebreaker 2)</div>
+      <div class="ki"><span class="kb">Δ</span> Change vs previous batch</div>
+    </div>
+    <table class="lb">
+      <thead>
+        <tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>Δ</th></tr>
+      </thead>
+      <tbody>
+        
+        
+        <tr>
+          <td>
+            <span class="rk rk1">
+              1
+            </span>
+          </td>
+          <td style="font-weight:600">
+            Ian Lyons
+          </td>
+          <td class="pts">18</td>
+          <td style="color:var(--muted)">6</td>
+          <td style="color:var(--muted)">4</td>
+          <td>
+            
+            
+            <span class="me">─</span>
+            
+          </td>
+        </tr>
+        
+        
+        <tr>
+          <td>
+            <span class="rk rk2">
+              2
+            </span>
+          </td>
+          <td style="font-weight:600">
+            Dave Hughes
+          </td>
+          <td class="pts">15</td>
+          <td style="color:var(--muted)">5</td>
+          <td style="color:var(--muted)">2</td>
+          <td>
+            
+            
+            <span class="mu">▲1</span>
+            
+          </td>
+        </tr>
+        
+        
+        <tr>
+          <td>
+            <span class="rk rk3">
+              3
+            </span>
+          </td>
+          <td style="font-weight:600">
+            Emma Thornton
+          </td>
+          <td class="pts">12</td>
+          <td style="color:var(--muted)">4</td>
+          <td style="color:var(--muted)">1</td>
+          <td>
+            
+            
+            <span class="md">▼1</span>
+          </td>
+        </tr>
+        
+        
+        <tr class="tier-sep"><td colspan="6">— Outside the top 3 —</td></tr>
+        
+        <tr class="you">
+          <td>
+            <span class="rk ">
+              4
+            </span>
+          </td>
+          <td style="font-weight:600">
+            Sarah Mitchell
+          </td>
+          <td class="pts">9</td>
+          <td style="color:var(--muted)">3</td>
+          <td style="color:var(--muted)">-1</td>
+          <td>
+            
+            
+            <span class="mu">▲2</span>
+            
+          </td>
+        </tr>
+        
+        
+        <tr>
+          <td>
+            <span class="rk ">
+              5
+            </span>
+          </td>
+          <td style="font-weight:600">
+            Chris Adeola
+          </td>
+          <td class="pts">9</td>
+          <td style="color:var(--muted)">3</td>
+          <td style="color:var(--muted)">-2</td>
+          <td>
+            
+            
+            <span class="md">▼1</span>
+          </td>
+        </tr>
+        
+        
+        <tr>
+          <td>
+            <span class="rk ">
+              6
+            </span>
+          </td>
+          <td style="font-weight:600">
+            Priya Sharma
+          </td>
+          <td class="pts">7</td>
+          <td style="color:var(--muted)">2</td>
+          <td style="color:var(--muted)">0</td>
+          <td>
+            
+            
+            <span class="md">▼2</span>
+          </td>
+        </tr>
+        
+        
+        <tr>
+          <td>
+            <span class="rk ">
+              7
+            </span>
+          </td>
+          <td style="font-weight:600">
+            Tom Nguyen
+          </td>
+          <td class="pts">6</td>
+          <td style="color:var(--muted)">2</td>
+          <td style="color:var(--muted)">-3</td>
+          <td>
+            
+            
+            <span class="mu">▲3</span>
+            
+          </td>
+        </tr>
+        
+        
+        <tr>
+          <td>
+            <span class="rk ">
+              8
+            </span>
+          </td>
+          <td style="font-weight:600">
+            Lisa Park
+          </td>
+          <td class="pts">5</td>
+          <td style="color:var(--muted)">1</td>
+          <td style="color:var(--muted)">-1</td>
+          <td>
+            
+            
+            <span class="me">─</span>
+            
+          </td>
+        </tr>
+        
+        
+        <tr>
+          <td>
+            <span class="rk ">
+              9
+            </span>
+          </td>
+          <td style="font-weight:600">
+            James Okafor
+          </td>
+          <td class="pts">4</td>
+          <td style="color:var(--muted)">1</td>
+          <td style="color:var(--muted)">-2</td>
+          <td>
+            
+            
+            <span class="md">▼2</span>
+          </td>
+        </tr>
+        
+        
+        <tr>
+          <td>
+            <span class="rk ">
+              10
+            </span>
+          </td>
+          <td style="font-weight:600">
+            Ana Ruiz
+          </td>
+          <td class="pts">3</td>
+          <td style="color:var(--muted)">1</td>
+          <td style="color:var(--muted)">-4</td>
+          <td>
+            
+            
+            <span class="md">▼1</span>
+          </td>
+        </tr>
+        
+        
+        <tr>
+          <td>
+            <span class="rk ">
+              11
+            </span>
+          </td>
+          <td style="font-weight:600">
+            Ben Walsh
+          </td>
+          <td class="pts">2</td>
+          <td style="color:var(--muted)">0</td>
+          <td style="color:var(--muted)">-5</td>
+          <td>
+            
+            
+            <span class="me">─</span>
+            
+          </td>
+        </tr>
+        
+        
+        <tr>
+          <td>
+            <span class="rk ">
+              12
+            </span>
+          </td>
+          <td style="font-weight:600">
+            Mei Chen
+          </td>
+          <td class="pts">1</td>
+          <td style="color:var(--muted)">0</td>
+          <td style="color:var(--muted)">-6</td>
+          <td>
+            
+            
+            <span class="me">─</span>
+            
+          </td>
+        </tr>
+        
+        
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer-bar">
+    <p>Last updated: 01 Jun 2026 19:35</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="index.html" class="btn btn-nav">← Dashboard</a>
+      <a href="predict.html" class="btn btn-action" onclick="goPredict(event)">⚽ My Predictions →</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function goPredict(e) {
+  const token = new URLSearchParams(window.location.search).get('token');
+  if (token) { e.preventDefault(); window.location.href = 'predict.html?token=' + token; }
+}
+</script>
+</body>
+</html>
