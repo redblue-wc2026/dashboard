@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Competition Rules — Red n Blue WC2026 Prediction League</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#C4122E;--blue:#1B5BA8;--gold:#F5D020;--dark:#0d1117;--prussian:#0a2744;--muted:#6b7280}
+body{font-family:'Plus Jakarta Sans',Arial,sans-serif;background:#f4f6f9;color:#1a1a2e;font-size:15px;line-height:1.7}
+
+/* NAV */
+.nav{background:var(--prussian);padding:0 20px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--red)}
+.nav a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:12px;font-weight:700;padding:14px 10px;display:inline-block;letter-spacing:0.5px;font-family:'Plus Jakarta Sans',Arial,sans-serif;transition:color 0.2s}
+.nav a:hover,.nav a.active{color:#fff}
+.nav .nav-brand{color:#fff;font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:14px;margin-right:8px;letter-spacing:1px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--prussian) 0%,var(--blue) 60%,var(--red) 100%);padding:36px 20px 28px;text-align:center}
+.hero h1{font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:clamp(22px,4vw,34px);color:#fff;letter-spacing:1px;line-height:1.2}
+.hero h1 span{color:var(--gold)}
+.hero-sub{color:rgba(255,255,255,0.7);font-size:13px;margin-top:8px}
+
+/* CONTENT */
+.container{max-width:820px;margin:0 auto;padding:32px 16px 60px}
+
+.rules-card{background:#fff;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.08);padding:32px 36px;margin-bottom:24px}
+@media(max-width:600px){.rules-card{padding:20px 16px}}
+
+.section-heading{font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--red);border-bottom:2px solid var(--red);padding-bottom:8px;margin-bottom:20px}
+
+h2.rule-h2{font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:15px;color:var(--prussian);margin:24px 0 8px;text-transform:uppercase;letter-spacing:0.5px}
+h2.rule-h2:first-child{margin-top:0}
+
+.rule{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.rule-num{flex-shrink:0;background:var(--blue);color:#fff;font-weight:800;font-size:11px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',Arial,sans-serif;margin-top:1px}
+.rule-text{color:#374151;font-size:14px;line-height:1.65}
+.rule-text strong{color:var(--prussian)}
+
+/* SCORING BOX */
+.scoring-highlight{background:linear-gradient(135deg,var(--prussian),var(--blue));border-radius:10px;padding:20px 24px;margin:16px 0;color:#fff}
+.scoring-highlight h3{font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:12px}
+.pts-row{display:flex;align-items:center;gap:12px;margin-bottom:8px;font-size:14px}
+.pts-badge{font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:18px;color:var(--gold);min-width:28px;text-align:right}
+.pts-row:last-child{margin-bottom:0}
+
+/* TABLE */
+.rules-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+.rules-table th{background:var(--prussian);color:#fff;padding:9px 12px;text-align:left;font-family:'Montserrat',Arial,sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
+.rules-table td{padding:9px 12px;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.rules-table tr:last-child td{border-bottom:none}
+.rules-table tr:nth-child(even) td{background:#f9fafb}
+.check{color:#16a34a;font-weight:800}
+.cross{color:#dc2626;font-weight:800}
+.pts-cell{font-family:'Montserrat',Arial,sans-serif;font-weight:800;color:var(--blue)}
+
+/* TIEBREAKER */
+.tb-card{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid var(--blue);border-radius:8px;padding:14px 18px;margin-bottom:10px}
+.tb-label{font-family:'Montserrat',Arial,sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--blue);margin-bottom:4px}
+.tb-desc{font-size:13px;color:#374151;line-height:1.6}
+
+/* PRIZE */
+.prize-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0}
+.prize-item{background:linear-gradient(135deg,var(--prussian),#0d2d5e);border-radius:10px;padding:16px;text-align:center;color:#fff}
+.prize-item .pi-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.65);font-family:'Montserrat',Arial,sans-serif;font-weight:700;margin-bottom:4px}
+.prize-item .pi-name{font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:14px;color:var(--gold)}
+.prize-item .pi-desc{font-size:11px;color:rgba(255,255,255,0.55);margin-top:4px}
+
+/* NOTE BOX */
+.note-box{background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:14px 18px;font-size:13px;color:#92400e;margin:12px 0}
+.note-box strong{color:#78350f}
+
+/* FOOTER */
+.footer{background:var(--blue);border-top:5px solid var(--red);padding:24px 16px;text-align:center;margin-top:16px}
+.footer p{color:rgba(255,255,255,0.65);font-size:12px;margin:4px 0;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.footer .tagline{color:#fff;font-size:15px;font-weight:700;letter-spacing:1px;margin-bottom:10px;font-family:'Montserrat',Arial,sans-serif}
+.footer a{color:var(--gold);text-decoration:none}
+.footer-social{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+.footer-social a{display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:none;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-brand">🦅 RnB WC2026</span>
+  <a href="index.html">🏆 Leaderboard</a>
+  <a href="rules.html" class="active">📋 Rules</a>
+</nav>
+
+<div class="hero">
+  <h1>Competition <span>Rules</span></h1>
+  <p class="hero-sub">Red and Blue Review Podcast — FIFA World Cup 2026 &nbsp;|&nbsp; 11 June – 19 July 2026</p>
+</div>
+
+<div class="container">
+
+  <!-- ENTRY -->
+  <div class="rules-card">
+    <div class="section-heading">Entry</div>
+    <div class="rule"><span class="rule-num">1</span><span class="rule-text">Entry is open to Red and Blue Review podcast members. Entry costs <strong>£20 per person</strong>, payable by bank transfer (details provided on registration).</span></div>
+    <div class="rule"><span class="rule-num">2</span><span class="rule-text">Your entry is <strong>not confirmed</strong> until payment has been received and verified by the Committee. You will receive a confirmation email once your place is secured.</span></div>
+    <div class="rule"><span class="rule-num">3</span><span class="rule-text">A maximum of <strong>100 players</strong> will be accepted. Places are allocated strictly on a first-paid, first-confirmed basis.</span></div>
+    <div class="rule"><span class="rule-num">4</span><span class="rule-text">Late joiners are welcome provided places remain and entry is received <strong>on or before 25 June 2026</strong>. Late joiners receive automatic 5-5 scores for all fixtures played before their confirmation date.</span></div>
+    <div class="rule"><span class="rule-num">5</span><span class="rule-text">Entry fees are <strong>non-refundable</strong> once the competition has started (11 June 2026). Refunds before the start date are at the Committee's discretion.</span></div>
+  </div>
+
+  <!-- PREDICTIONS -->
+  <div class="rules-card">
+    <div class="section-heading">Fixture Predictions</div>
+    <div class="rule"><span class="rule-num">6</span><span class="rule-text">Fixtures are released in <strong>batches via email</strong>, one week before the first fixture in each batch.</span></div>
+    <div class="rule"><span class="rule-num">7</span><span class="rule-text">Predictions are submitted via your <strong>unique personal competition link</strong> (in your confirmation email). Keep it secure — do not share it.</span></div>
+    <div class="rule"><span class="rule-num">8</span><span class="rule-text">Predictions must be submitted before the <strong>deadline: 1 hour before the first kick-off</strong> in each batch.</span></div>
+    <div class="rule"><span class="rule-num">9</span><span class="rule-text">Once the deadline passes, predictions are <strong>locked and cannot be changed</strong> under any circumstances.</span></div>
+    <div class="rule"><span class="rule-num">10</span><span class="rule-text">You may update predictions any time before the deadline. <strong>Only your final submission counts.</strong></span></div>
+    <div class="rule"><span class="rule-num">11</span><span class="rule-text">Missed predictions are automatically assigned a score of <strong>5-5</strong> for each fixture missed.</span></div>
+    <div class="rule"><span class="rule-num">12</span><span class="rule-text">Only the Competition Admin can see your individual predictions. All submissions are stored securely.</span></div>
+  </div>
+
+  <!-- SCORING -->
+  <div class="rules-card">
+    <div class="section-heading">Scoring</div>
+
+    <div class="scoring-highlight">
+      <h3>Points per fixture</h3>
+      <div class="pts-row"><span class="pts-badge">3</span><span>Exact correct score (e.g. you predicted 2–1, result was 2–1)</span></div>
+      <div class="pts-row"><span class="pts-badge">1</span><span>Correct result only — right Win/Draw/Loss, wrong score</span></div>
+      <div class="pts-row"><span class="pts-badge">0</span><span>Wrong result (and wrong score)</span></div>
+    </div>
+
+    <div class="rule" style="margin-top:16px"><span class="rule-num">13</span><span class="rule-text">A 3-point correct score already includes the 1-point result reward. <strong>Maximum per fixture: 3 points.</strong> You cannot earn both.</span></div>
+    <div class="rule"><span class="rule-num">14</span><span class="rule-text">For knockout matches going to extra time or penalties: scoring is based on the <strong>90-minute score only</strong>.</span></div>
+    <div class="rule"><span class="rule-num">15</span><span class="rule-text">Missed predictions (auto-assigned 5-5) count as a Draw and will almost certainly score 0 points.</span></div>
+
+    <h2 class="rule-h2" style="margin-top:24px">Examples</h2>
+    <table class="rules-table">
+      <thead>
+        <tr><th>Result</th><th>Your Prediction</th><th>Points</th><th>Why</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>England 2–1 France</td><td><strong>2–1</strong></td><td class="pts-cell">✅ 3 pts</td><td>Exact score</td></tr>
+        <tr><td>England 2–1 France</td><td>1–0</td><td class="pts-cell">✔️ 1 pt</td><td>Correct result, wrong score</td></tr>
+        <tr><td>England 2–1 France</td><td>2–2</td><td class="pts-cell">❌ 0 pts</td><td>Predicted draw</td></tr>
+        <tr><td>England 2–1 France</td><td>0–3</td><td class="pts-cell">❌ 0 pts</td><td>Predicted France win</td></tr>
+        <tr><td>England 2–1 France</td><td>5–5 <em>(missed)</em></td><td class="pts-cell">❌ 0 pts</td><td>Auto-filled draw</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TIEBREAKERS -->
+  <div class="rules-card">
+    <div class="section-heading">Tiebreakers</div>
+    <div class="rule"><span class="rule-num">16</span><span class="rule-text">If two or more players are equal on total points, the following tiebreakers are applied in order:</span></div>
+    <div style="margin-top:12px">
+      <div class="tb-card">
+        <div class="tb-label">Tiebreaker 1 — Correct Results</div>
+        <div class="tb-desc">The player with the higher count of correct result predictions (Home Win / Draw / Away Win) ranks higher.</div>
+      </div>
+      <div class="tb-card">
+        <div class="tb-label">Tiebreaker 2 — Goal Difference Formula</div>
+        <div class="tb-desc">Total goals across <strong>correctly</strong> predicted matches minus total goals across <strong>incorrectly</strong> predicted matches. A higher number ranks higher. This rewards precise predictions — getting 1-0 right is better than 5-4 right.</div>
+      </div>
+      <div class="tb-card">
+        <div class="tb-label">Tiebreaker 3 — Shared Position</div>
+        <div class="tb-desc">If players remain tied after both tiebreakers, they share the position and any prize money is split equally.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIZES -->
+  <div class="rules-card">
+    <div class="section-heading">Prizes</div>
+    <div class="rule"><span class="rule-num">17</span><span class="rule-text">The prize fund is <strong>50% of all entry income</strong>. With 100 players: £2,000 total → <strong>£1,000 prize fund</strong>.</span></div>
+    <div class="rule"><span class="rule-num">18</span><span class="rule-text">Prizes are awarded as follows:</span></div>
+
+    <div class="prize-grid" style="margin-top:12px">
+      <div class="prize-item"><div class="pi-label">🥇 1st Place</div><div class="pi-name">Overall Winner</div><div class="pi-desc">Largest share of top-3 pool</div></div>
+      <div class="prize-item"><div class="pi-label">🥈 2nd Place</div><div class="pi-name">Runner Up</div><div class="pi-desc">Second share of top-3 pool</div></div>
+      <div class="prize-item"><div class="pi-label">🥉 3rd Place</div><div class="pi-name">Third Place</div><div class="pi-desc">Third share of top-3 pool</div></div>
+      <div class="prize-item"><div class="pi-label">⚽ Bonus Prize</div><div class="pi-name">Group Stage Champ</div><div class="pi-desc">Most points in Group Stage</div></div>
+      <div class="prize-item"><div class="pi-label">🏆 Bonus Prize</div><div class="pi-name">Knockout Champ</div><div class="pi-desc">Most points in Knockout rounds</div></div>
+    </div>
+
+    <div class="note-box" style="margin-top:16px">
+      <strong>Note:</strong> The top-3 pool is 40% of the prize fund. Exact amounts confirmed once registration closes. A player can win a bonus prize AND a top-3 prize.
+    </div>
+
+    <div class="rule" style="margin-top:16px"><span class="rule-num">19</span><span class="rule-text">The <strong>Group Stage Champion</strong> is the player with the most points from Group Stage fixtures only (11–27 June 2026).</span></div>
+    <div class="rule"><span class="rule-num">20</span><span class="rule-text">The <strong>Knockout Stage Champion</strong> is the player with the most points from the Round of 32 onwards.</span></div>
+  </div>
+
+  <!-- LEAGUE TABLE & UPDATES -->
+  <div class="rules-card">
+    <div class="section-heading">League Table &amp; Updates</div>
+    <div class="rule"><span class="rule-num">21</span><span class="rule-text">The live competition league table is available at the <a href="index.html" style="color:var(--blue);font-weight:700">dashboard</a> — accessible to all players at any time.</span></div>
+    <div class="rule"><span class="rule-num">22</span><span class="rule-text">The table is updated automatically after each matchday's results are processed.</span></div>
+    <div class="rule"><span class="rule-num">23</span><span class="rule-text">Each player receives an <strong>individual performance report by email</strong> after each fixture batch is scored, including their current position and points breakdown.</span></div>
+  </div>
+
+  <!-- FACEBOOK GROUP -->
+  <div class="rules-card">
+    <div class="section-heading">Facebook Group</div>
+    <div class="rule"><span class="rule-num">24</span><span class="rule-text">To join the private prediction league Facebook group, Like and Follow the <a href="https://www.facebook.com/profile.php?id=100063836118934" style="color:var(--blue);font-weight:700" target="_blank">Red and Blue Review Facebook page</a>. The Committee will add you once your entry is confirmed.</span></div>
+    <div class="rule"><span class="rule-num">25</span><span class="rule-text">Interim league table updates and competition discussion will be posted in the Facebook group throughout the tournament.</span></div>
+  </div>
+
+  <!-- CONDUCT -->
+  <div class="rules-card">
+    <div class="section-heading">Conduct &amp; Disputes</div>
+    <div class="rule"><span class="rule-num">26</span><span class="rule-text">All participants are expected to engage with the competition in good faith and good spirit.</span></div>
+    <div class="rule"><span class="rule-num">27</span><span class="rule-text">Disputes or scoring queries must be raised with the Competition Admin <strong>within 48 hours</strong> of results being published.</span></div>
+    <div class="rule"><span class="rule-num">28</span><span class="rule-text">All disputes are adjudicated by the Red and Blue Review Committee. <strong>Their decision is final.</strong></span></div>
+    <div class="rule"><span class="rule-num">29</span><span class="rule-text">The Committee reserves the right to disqualify any player found to be acting dishonestly, without refund.</span></div>
+    <div class="rule"><span class="rule-num">30</span><span class="rule-text">The Committee reserves the right to amend these rules in exceptional circumstances (e.g. match abandonment). Any changes will be communicated by email.</span></div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="rules-card" style="text-align:center">
+    <div class="section-heading">Contact</div>
+    <p style="font-size:14px;color:#374151;margin-bottom:8px">Questions? Email: <a href="mailto:ian.lyons66@gmail.com" style="color:var(--blue);font-weight:700">ian.lyons66@gmail.com</a></p>
+    <p style="font-size:13px;color:var(--muted)">Or message us on <a href="https://www.facebook.com/profile.php?id=100063836118934" style="color:var(--blue);font-weight:700" target="_blank">Facebook</a></p>
+    <p style="font-size:11px;color:var(--muted);margin-top:16px">Rules version 1.0 &nbsp;|&nbsp; Red and Blue Review Committee &nbsp;|&nbsp; May 2026</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p class="tagline">🦅 Come On You Eagles! 🦅</p>
+  <p>Red and Blue Review Podcast</p>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/profile.php?id=100063836118934" style="background:#1877F2">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Facebook
+    </a>
+    <a href="https://www.youtube.com/@theredbluereview8132" style="background:#FF0000">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      YouTube
+    </a>
+    <a href="https://www.instagram.com/red_and_blue_review" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.tiktok.com/@redbluereviewpod" style="background:#010101">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+      TikTok
+    </a>
+  </div>
+  <p><a href="index.html">Leaderboard</a> &nbsp;|&nbsp; <a href="mailto:ian.lyons66@gmail.com">Contact Admin</a></p>
+</div>
+
+</body>
+</html>
