@@ -79,6 +79,41 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .updated{font-size:11px;color:var(--muted);text-align:right;margin-bottom:8px}
 .test-banner{background:#F5D020;color:#111;font-weight:800;text-align:center;padding:10px 16px;font-size:13px;letter-spacing:1px;text-transform:uppercase;border-bottom:3px solid #b8880a;font-family:'Plus Jakarta Sans',Arial,sans-serif;position:sticky;top:0;z-index:200}
 .test-banner span{background:#111;color:#F5D020;padding:2px 8px;border-radius:4px;margin-right:8px;font-size:12px}
+/* KPI GRID */
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:4px}
+.kpi-box{border-radius:8px;padding:12px 8px;text-align:center;border:1px solid var(--border)}
+.kpi-num{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:800;font-size:20px;display:block}
+.kpi-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;font-family:'Plus Jakarta Sans',Arial,sans-serif;margin-top:2px;display:block}
+.kpi-blue{background:var(--blue-50)}.kpi-blue .kpi-num{color:var(--blue)}
+.kpi-green{background:var(--green-50)}.kpi-green .kpi-num{color:var(--green)}
+.kpi-gold{background:#FEF9E0}.kpi-gold .kpi-num{color:#B8880A}
+.kpi-red{background:var(--red-50)}.kpi-red .kpi-num{color:var(--red)}
+.kpi-prussian{background:#EEF2F8}.kpi-prussian .kpi-num{color:var(--prussian)}
+.kpi-sky{background:#EBF4FD}.kpi-sky .kpi-num{color:var(--sky)}
+
+/* METRIC SECTION CARDS */
+.metric-section-card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.10);overflow:hidden;border:1px solid var(--border)}
+.msc-header{display:flex;align-items:center;gap:14px;padding:18px 24px}.msc-wc{background:linear-gradient(135deg,#1C3A6B,#1B5BA8)}.msc-league{background:linear-gradient(135deg,#6B1C3A,#C4122E)}
+.msc-icon{font-size:24px}
+.msc-title{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:800;font-size:16px;color:#fff}
+.msc-sub{font-size:11px;color:rgba(255,255,255,0.7);margin-top:2px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.metric-grid-3x3{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.metric-cell{border-right:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}.metric-cell:nth-child(3n){border-right:none}.metric-cell:nth-last-child(-n+3){border-bottom:none}
+.mc-head{display:flex;align-items:center;gap:8px;padding:10px 14px}.mc-icon{font-size:16px}.mc-title{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:11px;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:0.3px;line-height:1.3}
+.mc-body{padding:14px;flex:1;display:flex;flex-direction:column;gap:4px}
+.mc-value{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:800;font-size:26px;color:var(--near-black);line-height:1.1}
+.mc-sub{font-size:11px;color:var(--muted);font-family:'Plus Jakarta Sans',Arial,sans-serif;margin-bottom:6px;line-height:1.3}
+.mc-analysis{list-style:none;padding:0;margin-top:auto;padding-top:8px;border-top:1px solid var(--border)}
+.mc-analysis li{font-size:11px;color:#444;line-height:1.5;padding:3px 0;padding-left:12px;position:relative}.mc-analysis li::before{content:"\2022";position:absolute;left:0;color:var(--muted)}
+.mc-form-wrap{display:flex;flex-direction:column;gap:3px;margin:4px 0}
+.mc-form-row{display:flex;align-items:center;gap:4px;font-size:10px}
+.mc-form-name{width:70px;flex-shrink:0;font-weight:600;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mc-fdots{display:flex;gap:2px}.mc-fdot{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#fff;flex-shrink:0}.mfd-exact{background:var(--blue)}.mfd-result{background:var(--green)}.mfd-wrong{background:#E0E2E8;color:#999}.mfd-miss{background:var(--red)}
+.mc-pills-wrap{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0}
+.mc-pill{display:inline-flex;align-items:center;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:3px 7px}
+.mc-pval{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:12px}
+.mc-pcnt{font-size:10px;color:var(--blue);font-weight:600}
+@media(max-width:768px){.metric-grid-3x3{grid-template-columns:1fr 1fr}.metric-cell:nth-child(3n){border-right:1px solid var(--border)}.metric-cell:nth-child(2n){border-right:none}.metric-cell:nth-last-child(-n+3){border-bottom:1px solid var(--border)}.metric-cell:nth-last-child(-n+2){border-bottom:none}}
 /* INSIGHTS */
 .ins-label{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin:24px 0 12px;display:flex;align-items:center;gap:10px}
 .ins-label::after{content:'';flex:1;height:1px;background:var(--border)}
@@ -156,7 +191,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     <div class="hero-top">
       <div>
         <h1>World Cup 2026 <span>Prediction League</span></h1>
-        <p class="hero-sub">Red and Blue Review Podcast — 11 June – 19 July 2026 &nbsp;|&nbsp; <strong style="color:var(--gold)">&#x26A0; TEST STAGE</strong></p>
+        <p class="hero-sub">Red and Blue Review Podcast — 11 June - 19 July 2026 &nbsp;|&nbsp; <strong style="color:var(--gold)">&#x26A0; TEST STAGE</strong></p>
       </div>
       <div class="hero-social">
         <a href="https://www.facebook.com/profile.php?id=100063836118934" class="hs-fb"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
@@ -182,7 +217,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
     <div class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 02 Jun 2026 06:30</p>
+      <p class="updated">Last updated: 02 Jun 2026 20:12</p>
       <table class="lb-table">
         <thead><tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th></tr></thead>
         <tbody>
@@ -190,7 +225,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">1</span></td>
             <td>Ian Lyons</td>
-            <td class="pts">8</td>
+            <td class="pts">10</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td>
@@ -202,7 +237,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">2</span></td>
             <td>Alison Thrower</td>
-            <td class="pts">4</td>
+            <td class="pts">6</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td>
@@ -212,21 +247,20 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           </tr>
           
           <tr>
-            <td><span class="rank-badge ">2</span></td>
+            <td><span class="rank-badge ">3</span></td>
             <td>Lucie Usher</td>
-            <td class="pts">4</td>
+            <td class="pts">5</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td>
-              <span class="move-up">&#x25B2;2</span>
-              
+              <span class="move-dn">&#x25BC;1</span>
             </td>
           </tr>
           
           <tr>
-            <td><span class="rank-badge ">4</span></td>
-            <td>Jade Drummond-Pearson</td>
-            <td class="pts">2</td>
+            <td><span class="rank-badge ">3</span></td>
+            <td>Victor Odunaiya</td>
+            <td class="pts">5</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td>
@@ -237,55 +271,47 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">5</span></td>
             <td>Nick Philpot</td>
-            <td class="pts">1</td>
+            <td class="pts">2</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td>
-              <span class="move-dn">&#x25BC;1</span>
+              <span class="move-eq">&#x2014;</span>
+              
             </td>
           </tr>
           
           <tr>
             <td><span class="rank-badge ">5</span></td>
             <td>Dan</td>
-            <td class="pts">1</td>
+            <td class="pts">2</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td>
-              <span class="move-dn">&#x25BC;1</span>
+              <span class="move-eq">&#x2014;</span>
+              
             </td>
           </tr>
           
           <tr>
             <td><span class="rank-badge ">5</span></td>
-            <td>Edmond Asamoah-Twum</td>
-            <td class="pts">1</td>
+            <td>Jade Drummond-Pearson</td>
+            <td class="pts">2</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td>
-              <span class="move-dn">&#x25BC;1</span>
+              <span class="move-eq">&#x2014;</span>
+              
             </td>
           </tr>
           
           <tr>
             <td><span class="rank-badge ">5</span></td>
             <td>Eric Ayoola</td>
-            <td class="pts">1</td>
+            <td class="pts">2</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td>
-              <span class="move-dn">&#x25BC;1</span>
-            </td>
-          </tr>
-          
-          <tr>
-            <td><span class="rank-badge ">5</span></td>
-            <td>Victor Odunaiya</td>
-            <td class="pts">1</td>
-            <td style="color:var(--muted);font-size:12px">0</td>
-            <td style="color:var(--muted);font-size:12px">0</td>
-            <td>
-              <span class="move-up">&#x25B2;5</span>
+              <span class="move-eq">&#x2014;</span>
               
             </td>
           </tr>
@@ -293,11 +319,24 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">5</span></td>
             <td>Nigel Croucher</td>
+            <td class="pts">2</td>
+            <td style="color:var(--muted);font-size:12px">0</td>
+            <td style="color:var(--muted);font-size:12px">0</td>
+            <td>
+              <span class="move-eq">&#x2014;</span>
+              
+            </td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge ">10</span></td>
+            <td>Andrew Adams</td>
             <td class="pts">1</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td style="color:var(--muted);font-size:12px">0</td>
             <td>
-              <span class="move-dn">&#x25BC;1</span>
+              <span class="move-eq">&#x2014;</span>
+              
             </td>
           </tr>
           
@@ -322,30 +361,6 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     <div class="card">
       <div class="section-title">📅 Upcoming Fixtures</div>
       
-      
-      <div class="fixture-card">
-        <span class="fixture-time">02 Jun 2026 15:00 BST</span>
-        <div>
-          <div class="fixture-match">Japan vs South Korea</div>
-          <div class="fixture-stage">Test Round of 16 | Test Stadium, London</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">02 Jun 2026 18:00 BST</span>
-        <div>
-          <div class="fixture-match">Italy vs Belgium</div>
-          <div class="fixture-stage">Test Round of 16 | Test Stadium, London</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">02 Jun 2026 21:00 BST</span>
-        <div>
-          <div class="fixture-match">Morocco vs Australia</div>
-          <div class="fixture-stage">Test Quarter-Final | Test Stadium, London</div>
-        </div>
-      </div>
       
       <div class="fixture-card">
         <span class="fixture-time">03 Jun 2026 18:00 BST</span>
@@ -403,17 +418,84 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     </div>
 
     
-
-    <div class="card" style="text-align:center">
-      <div class="section-title">📘 Join the Community</div>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-family:'Plus Jakarta Sans',Arial,sans-serif">Like &amp; Follow the Red and Blue Review Facebook page to join the private prediction group!</p>
-      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
-        <a href="https://www.facebook.com/profile.php?id=100063836118934" class="btn btn-secondary">📘 Facebook</a>
-        <a href="https://www.youtube.com/@theredbluereview8132" style="display:inline-block;background:#FF0000;color:#fff;padding:11px 22px;border-radius:7px;text-decoration:none;font-weight:700;font-size:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif">🔴 YouTube</a>
+    <div class="card">
+      <div class="section-title">&#x1F4CA; Current Prediction Stats</div>
+      <div class="kpi-grid">
+        <div class="kpi-box kpi-prussian">
+          <span class="kpi-num">92</span>
+          <span class="kpi-lbl">Predictions made</span>
+        </div>
+        <div class="kpi-box kpi-gold">
+          <span class="kpi-num">9</span>
+          <span class="kpi-lbl">Matches scored</span>
+        </div>
+        <div class="kpi-box kpi-blue">
+          <span class="kpi-num">5%</span>
+          <span class="kpi-lbl">Exact scores</span>
+        </div>
+        <div class="kpi-box kpi-green">
+          <span class="kpi-num">31%</span>
+          <span class="kpi-lbl">Correct results</span>
+        </div>
+        <div class="kpi-box kpi-red">
+          <span class="kpi-num">69%</span>
+          <span class="kpi-lbl">Wrong calls</span>
+        </div>
+        <div class="kpi-box kpi-sky">
+          
+          <span class="kpi-num">5-5</span>
+          <span class="kpi-lbl">Top predicted score</span>
+          
+        </div>
       </div>
+      
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);font-family:'Plus Jakarta Sans',Arial,sans-serif;margin-bottom:6px">Most predicted score</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:800;font-size:22px;color:var(--prussian)">5-5</span>
+          <span style="font-size:12px;color:var(--muted)">picked by <strong style="color:var(--blue)">35</strong> players</span>
+        </div>
+      </div>
+      
+      
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);font-family:'Plus Jakarta Sans',Arial,sans-serif;margin-bottom:4px">Easiest call</p>
+        <p style="font-size:12px;color:var(--near-black)"><strong style="color:var(--green)">62%</strong> got <strong>Italy vs Belgium</strong> right</p>
+      </div>
+      
+      
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);font-family:'Plus Jakarta Sans',Arial,sans-serif;margin-bottom:4px">Hardest to call</p>
+        <p style="font-size:12px;color:var(--near-black)">Only <strong style="color:var(--red)">0%</strong> got <strong>Mexico vs Canada</strong> right</p>
+      </div>
+      
+      
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);font-family:'Plus Jakarta Sans',Arial,sans-serif;margin-bottom:4px">Biggest upset</p>
+        <p style="font-size:12px;color:var(--near-black)"><strong style="color:var(--red)">100%</strong> backed Canada — Mexico won 2-1</p>
+      </div>
+      
     </div>
+    
 
     
+    <div class="card">
+      <div class="section-title">&#x25B6; Latest Episode</div>
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px">
+        <iframe src="https://www.youtube.com/embed/5fu_gcney-o?rel=0&modestbranding=1" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" allowfullscreen loading="lazy" title="Red and Blue Review latest episode"></iframe>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:8px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif">&#x1F3A4; Red and Blue Review Podcast</p>
+    </div>
+    
+
+    <div class="card" style="text-align:center">
+      <div class="section-title">&#x1F4D8; Join the Community</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-family:'Plus Jakarta Sans',Arial,sans-serif">Like &amp; Follow the Red and Blue Review Facebook page to join the private prediction group!</p>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+        <a href="https://www.facebook.com/profile.php?id=100063836118934" class="btn btn-secondary">&#x1F4D8; Facebook</a>
+        <a href="https://www.youtube.com/@theredbluereview8132" style="display:inline-block;background:#FF0000;color:#fff;padding:11px 22px;border-radius:7px;text-decoration:none;font-weight:700;font-size:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif">&#x1F534; YouTube</a>
+      </div>
+    </div>
   </div><!-- /right-col -->
 </div><!-- /main -->
 </div><!-- /tab-main -->
@@ -421,99 +503,238 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 <!-- INSIGHTS TAB -->
 <div id="tab-insights" class="tab-section" style="display:none">
 <div style="max-width:1100px;margin:0 auto;padding:24px 16px">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+
+  <!-- Header banner -->
+  <div style="background:linear-gradient(135deg,var(--prussian) 0%,var(--blue) 60%,var(--sky) 100%);border-radius:14px;padding:22px 28px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
     <div>
-      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:var(--prussian)">🔍 Competition Insights</h2>
-      <p style="font-size:13px;color:var(--muted);margin-top:4px">Analysis based on all scored predictions so far</p>
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;color:#fff">&#x1F50D; Competition Insights</h2>
+      <p style="font-size:12px;color:rgba(255,255,255,0.7);margin-top:4px">9 metrics randomly selected each day &mdash; refreshed every morning</p>
     </div>
-    <span style="background:var(--blue-50);color:var(--blue);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;padding:5px 14px;border-radius:20px;border:1px solid #C5D9F5">0 matches scored &#xB7; 13 players</span>
-  </div>
-
-  <div class="ins-label">At a glance</div>
-  <div class="ins-grid">
-    <div class="ins-card">
-      <div class="ins-ch"><div class="ins-ci icon-blue">🎯</div><div><div class="ins-ct">Prediction Accuracy</div><div class="ins-cs">Across all scored predictions</div></div></div>
-      <div class="stat-row-ins">
-        <div class="sbox sblue"><span class="snum" id="ins-exact-pct">—</span><span class="slbl">Exact score</span></div>
-        <div class="sbox sgreen"><span class="snum" id="ins-result-pct">—</span><span class="slbl">Correct result</span></div>
-        <div class="sbox sred"><span class="snum" id="ins-wrong-pct">—</span><span class="slbl">Wrong result</span></div>
-      </div>
-      <div style="height:150px"><canvas id="accuracyDonut"></canvas></div>
-      <div class="legend-row"><div class="lg-item"><div class="lg-dot" style="background:var(--blue)"></div>Exact (3pts)</div><div class="lg-item"><div class="lg-dot" style="background:var(--green)"></div>Correct (1pt)</div><div class="lg-item"><div class="lg-dot" style="background:#E0E2E8"></div>Wrong</div></div>
-    </div>
-    <div class="ins-card">
-      <div class="ins-ch"><div class="ins-ci icon-gold">📊</div><div><div class="ins-ct">Points per Match</div><div class="ins-cs">Total points earned by all players</div></div></div>
-      <div style="height:190px"><canvas id="pointsBar"></canvas></div>
-    </div>
-    <div class="ins-card">
-      <div class="ins-ch"><div class="ins-ci icon-purple">🔮</div><div><div class="ins-ct">Most Predicted Scores</div><div class="ins-cs">Crowd favourites across all fixtures</div></div></div>
-      <div id="scorePills" style="display:flex;flex-wrap:wrap;margin-top:4px"></div>
-      <p style="font-size:11px;color:var(--muted);margin-top:12px" id="top-score-note"></p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <span style="background:rgba(255,255,255,0.15);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;padding:5px 12px;border-radius:20px">0 matches scored</span>
+      <span style="background:rgba(245,208,32,0.2);color:#F5D020;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;padding:5px 12px;border-radius:20px">13 players</span>
     </div>
   </div>
 
-  <div class="ins-label">Player performance</div>
-  <div class="ins-grid-wide">
-    <div class="ins-card">
-      <div class="ins-ch"><div class="ins-ci icon-green">🔥</div><div><div class="ins-ct">Recent Form Guide</div><div class="ins-cs"><span style="display:inline-flex;align-items:center;gap:4px;margin-right:8px"><span class="fdot dot-exact" style="display:inline-flex">3</span>Exact</span> <span style="display:inline-flex;align-items:center;gap:4px;margin-right:8px"><span class="fdot dot-result" style="display:inline-flex">1</span>Correct</span> <span style="display:inline-flex;align-items:center;gap:4px;margin-right:8px"><span class="fdot dot-wrong" style="display:inline-flex">0</span>Wrong</span> <span style="display:inline-flex;align-items:center;gap:4px"><span class="fdot dot-miss" style="display:inline-flex">D</span>Default</span></div></div></div>
-      <div id="formGuide"></div>
-    </div>
-    <div class="ins-card">
-      <div class="ins-ch"><div class="ins-ci icon-red">&#x26A1;</div><div><div class="ins-ct">Leaderboard &amp; Movement</div><div class="ins-cs">Current standings vs start of batch</div></div></div>
-      <div id="moverRows"></div>
-    </div>
-  </div>
+  <!-- WORLD CUP METRICS CARD -->
+  
 
-  <div class="ins-label">Match-by-match breakdown</div>
-  <div class="ins-grid-wide">
-    <div class="ins-card">
-      <div class="ins-ch"><div class="ins-ci icon-blue">📈</div><div><div class="ins-ct">Accuracy per Match</div><div class="ins-cs">% of players who got exact score / correct result</div></div></div>
-      <div style="height:220px"><canvas id="matchAccuracy"></canvas></div>
-      <div class="legend-row" style="margin-top:14px"><div class="lg-item"><div class="lg-dot" style="background:var(--blue)"></div>Exact score</div><div class="lg-item"><div class="lg-dot" style="background:var(--green)"></div>Correct result only</div></div>
-    </div>
-    <div class="ins-card">
-      <div class="ins-ch"><div class="ins-ci icon-orange">🦸</div><div><div class="ins-ct">Crowd vs Reality</div><div class="ins-cs">Most-predicted score vs actual result</div></div></div>
-      <div id="crowdReality"></div>
-    </div>
-  </div>
-
-  <div class="ins-label">Group think &amp; fun facts</div>
-  <div class="ins-grid-trio">
-    <div class="ins-card" style="grid-column:span 2">
-      <div class="ins-ch"><div class="ins-ci icon-purple">🧠</div><div><div class="ins-ct">Group Think Radar</div><div class="ins-cs">How well did the crowd collectively call each match?</div></div></div>
-      <div style="height:260px"><canvas id="radarChart"></canvas></div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <div class="fun-fact-card" style="background:linear-gradient(135deg,#1C3A6B,#1B5BA8)">
-        <h3>Hardest match to call</h3>
-        <p>Only <span class="ff-hl">0%</span> got Mexico vs Canada right.</p>
-      </div>
-      <div class="fun-fact-card" style="background:linear-gradient(135deg,#8C0A1F,#C4122E)">
-        <h3>Biggest upset</h3>
-        <p><span class="ff-hl">100%</span> backed Canada. Reality: Mexico won 2–1.</p>
-      </div>
-      <div class="fun-fact-card" style="background:linear-gradient(135deg,#1B5B40,#1B8B4B)">
-        <h3>Easiest call</h3>
-        <p><span class="ff-hl">50%</span> correctly predicted England vs France.</p>
+  <!-- PREDICTION LEAGUE METRICS CARD -->
+  
+  <div class="metric-section-card" style="margin-top:24px">
+    <div class="msc-header msc-league">
+      <span class="msc-icon">&#x1F3AE;</span>
+      <div>
+        <div class="msc-title">Prediction League Metrics</div>
+        <div class="msc-sub">How the group is predicting &mdash; today's selection of 9 from 18</div>
       </div>
     </div>
+    <div class="metric-grid-3x3">
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#9BA3AF">
+          <span class="mc-icon">&amp;#x26A0;</span>
+          <span class="mc-title">Default Rate</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-value">38%</div>
+          <div class="mc-sub">35 of 92 defaulted to 5-5</div>
+          
+          <ul class="mc-analysis">
+            
+            <li>35 predictions (38%) were not submitted and defaulted to 5-5 (0 pts)</li>
+            
+            <li>Deadline awareness needed — gaps appearing</li>
+            
+            <li>Each default costs up to 3 points vs an exact score — missed opportunities add up</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#1B8B4B">
+          <span class="mc-icon">&amp;#x1F680;</span>
+          <span class="mc-title">Most Improved Player</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-value">Ian</div>
+          <div class="mc-sub">No movement yet</div>
+          
+          <ul class="mc-analysis">
+            
+            <li>Ian Lyons has climbed 0 places — biggest mover this batch</li>
+            
+            <li>Now at rank 1 with 10pts</li>
+            
+            <li>Momentum in prediction leagues is as real as in football — watch the risers closely</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#B8880A">
+          <span class="mc-icon">&amp;#x2B50;</span>
+          <span class="mc-title">Top Scorer This Batch</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-value">Ian</div>
+          <div class="mc-sub">8pts this batch</div>
+          
+          <ul class="mc-analysis">
+            
+            <li>Ian Lyons leads this batch with 8pts</li>
+            
+            <li>Batch form is often a better indicator of current quality than the overall standings</li>
+            
+            <li>Tight batch competition with several players bunched at the top</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#B8880A">
+          <span class="mc-icon">&amp;#x1F4C8;</span>
+          <span class="mc-title">Points Trajectory</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-value">10pts</div>
+          <div class="mc-sub">Ian Lyons leads</div>
+          <div style="height:80px;margin:8px 0"><canvas id="mc-traj-4"></canvas></div>
+          
+          <ul class="mc-analysis">
+            
+            <li>Leader on 10pts — 10pts clear of the bottom</li>
+            
+            <li>Average across 13 players is 3pts</li>
+            
+            <li>Pack is tightly bunched — every fixture counts</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#7B3FA0">
+          <span class="mc-icon">&amp;#x1F52E;</span>
+          <span class="mc-title">Most Predicted Scores</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-pills-wrap" id="mc-pills-5"></div>
+          
+          <ul class="mc-analysis">
+            
+            <li>5–5 was the single most popular pick across all players</li>
+            
+            <li>Players are expecting open, attacking football</li>
+            
+            <li>18 unique scorelines predicted — strong diversity of opinion across the group</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#1C3A6B">
+          <span class="mc-icon">&amp;#x1F3C5;</span>
+          <span class="mc-title">Points Gap: 1st to Last</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-value">10pts</div>
+          <div class="mc-sub">Ian Lyons leads</div>
+          
+          <ul class="mc-analysis">
+            
+            <li>Gap from 1st (10pts) to last (0pts) is 10 points</li>
+            
+            <li>Gap forming but undecided</li>
+            
+            <li>Ian Lyons is 7pts above average</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#1C3A6B">
+          <span class="mc-icon">&amp;#x1F465;</span>
+          <span class="mc-title">Crowd Consensus Score</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-value">0%</div>
+          <div class="mc-sub">crowd&#39;s top pick was right</div>
+          
+          <ul class="mc-analysis">
+            
+            <li>When the group agreed, they were correct 0% of the time</li>
+            
+            <li>The crowd was caught out more than expected — 100% of consensus picks failed</li>
+            
+            <li>Wisdom of crowds works best in structured markets — football is gloriously unpredictable</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#E07B1A">
+          <span class="mc-icon">&amp;#x1F91C;</span>
+          <span class="mc-title">Tightest Battle</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-value">0pts</div>
+          <div class="mc-sub">Lucie Usher vs Victor Odunaiya</div>
+          
+          <ul class="mc-analysis">
+            
+            <li>Lucie Usher and Victor Odunaiya separated by just 0 points</li>
+            
+            <li>One exact score prediction could flip these two players — nothing is decided yet</li>
+            
+            <li>Tight gaps throughout mean every fixture still matters enormously</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#1B5BA8">
+          <span class="mc-icon">&amp;#x1F4CA;</span>
+          <span class="mc-title">Prediction Accuracy</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-value">5%</div>
+          <div class="mc-sub">exact scores | 26% correct results</div>
+          
+          <ul class="mc-analysis">
+            
+            <li>5% of 92 predictions were exact scores (3pts)</li>
+            
+            <li>26% got the correct result (1pt) — overall accuracy 31%</li>
+            
+            <li>68% wrong — the margins between players are tight as a result</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+    </div>
   </div>
+  
 
-  <div class="ins-label">Prediction spread</div>
-  <div class="ins-grid">
-    <div class="ins-card">
-      <div class="ins-ch"><div class="ins-ci icon-blue">💯</div><div><div class="ins-ct">Goals Per Prediction</div><div class="ins-cs">Total goals players expected per match</div></div></div>
-      <div style="height:180px"><canvas id="goalsHist"></canvas></div>
-    </div>
-    <div class="ins-card">
-      <div class="ins-ch"><div class="ins-ci icon-red">🎯</div><div><div class="ins-ct">Result Bias</div><div class="ins-cs">Home win / Draw / Away win: predicted vs actual</div></div></div>
-      <div style="height:180px"><canvas id="resultBias"></canvas></div>
-    </div>
-    <div class="ins-card">
-      <div class="ins-ch"><div class="ins-ci icon-green">📅</div><div><div class="ins-ct">Points Trajectory</div><div class="ins-cs">Cumulative top-3 points across the batch</div></div></div>
-      <div style="height:180px"><canvas id="trajectory"></canvas></div>
-    </div>
-  </div>
+  
+
 </div>
 </div><!-- /tab-insights -->
 
@@ -533,7 +754,7 @@ function switchTab(tabId,el){
   return false;
 }
 
-const INS = {"crowd_reality": [{"actual": "2\u20131", "crowd": "5\u20135", "ok": false, "pct": 100, "teams": "Mexico vs Canada"}, {"actual": "0\u20131", "crowd": "2\u20131", "ok": false, "pct": 60, "teams": "USA vs Honduras"}, {"actual": "3\u20132", "crowd": "5\u20135", "ok": false, "pct": 33, "teams": "Argentina vs Brazil"}, {"actual": "3\u20130", "crowd": "5\u20135", "ok": false, "pct": 17, "teams": "England vs France"}, {"actual": "2\u20132", "crowd": "3\u20132", "ok": false, "pct": 23, "teams": "Germany vs Spain"}, {"actual": "1\u20132", "crowd": "1\u20131", "ok": false, "pct": 38, "teams": "Portugal vs Netherlands"}], "easiest_match": "England vs France", "easiest_pct": 50, "exact_pct": 8, "form_guide": [{"batch_pts": 8, "cr": 0, "delta": 0, "form": ["miss", "wrong", "result", "result", "exact", "exact"], "gd": 0, "name": "Ian Lyons", "pts": 8, "rank": 1}, {"batch_pts": 4, "cr": 0, "delta": 0, "form": ["miss", "wrong", "wrong", "exact", "result", "wrong"], "gd": 0, "name": "Alison Thrower", "pts": 4, "rank": 2}, {"batch_pts": 4, "cr": 0, "delta": 2, "form": ["result", "wrong", "exact"], "gd": 0, "name": "Lucie Usher", "pts": 4, "rank": 2}, {"batch_pts": 2, "cr": 0, "delta": -1, "form": ["miss", "result", "result", "wrong"], "gd": 0, "name": "Jade Drummond-Pearson", "pts": 2, "rank": 4}, {"batch_pts": 1, "cr": 0, "delta": -1, "form": ["miss", "miss", "miss", "miss", "miss", "miss"], "gd": 0, "name": "Nick Philpot", "pts": 1, "rank": 5}, {"batch_pts": 1, "cr": 0, "delta": -1, "form": ["wrong", "wrong", "wrong", "miss", "miss"], "gd": 0, "name": "Dan", "pts": 1, "rank": 5}, {"batch_pts": 1, "cr": 0, "delta": -1, "form": ["result", "wrong", "wrong"], "gd": 0, "name": "Edmond Asamoah-Twum", "pts": 1, "rank": 5}, {"batch_pts": 1, "cr": 0, "delta": -1, "form": ["result", "wrong", "wrong"], "gd": 0, "name": "Eric Ayoola", "pts": 1, "rank": 5}, {"batch_pts": 1, "cr": 0, "delta": 5, "form": ["wrong", "wrong", "result"], "gd": 0, "name": "Victor Odunaiya", "pts": 1, "rank": 5}, {"batch_pts": 1, "cr": 0, "delta": -1, "form": ["miss", "wrong"], "gd": 0, "name": "Nigel Croucher", "pts": 1, "rank": 5}, {"batch_pts": 0, "cr": 0, "delta": -1, "form": ["miss", "wrong", "wrong", "wrong", "wrong", "wrong"], "gd": 0, "name": "Andrew Adams", "pts": 0, "rank": 11}, {"batch_pts": 0, "cr": 0, "delta": -1, "form": ["wrong", "wrong", "wrong"], "gd": 0, "name": "Nilesh Parmar", "pts": 0, "rank": 11}, {"batch_pts": 0, "cr": 0, "delta": -1, "form": ["miss", "wrong", "wrong"], "gd": 0, "name": "Oladoyin Joseph", "pts": 0, "rank": 11}], "goals_histogram": [0, 3, 11, 14, 6, 19], "hardest_match": "Mexico vs Canada", "hardest_pct": 0, "match_labels": ["MEX v CAN", "USA v HON", "ARG v BRA", "ENG v FRA", "GER v SPA", "POR v NET"], "match_stats": [{"away_team": "Canada", "exact_pct": 0, "fixture_id": "T001", "home_team": "Mexico", "label": "MEX v CAN", "n_preds": 4, "result_pct": 0}, {"away_team": "Honduras", "exact_pct": 0, "fixture_id": "T002", "home_team": "USA", "label": "USA v HON", "n_preds": 5, "result_pct": 0}, {"away_team": "Brazil", "exact_pct": 0, "fixture_id": "T003", "home_team": "Argentina", "label": "ARG v BRA", "n_preds": 6, "result_pct": 17}, {"away_team": "France", "exact_pct": 8, "fixture_id": "T004", "home_team": "England", "label": "ENG v FRA", "n_preds": 12, "result_pct": 42}, {"away_team": "Spain", "exact_pct": 8, "fixture_id": "T005", "home_team": "Germany", "label": "GER v SPA", "n_preds": 13, "result_pct": 38}, {"away_team": "Netherlands", "exact_pct": 15, "fixture_id": "T006", "home_team": "Portugal", "label": "POR v NET", "n_preds": 13, "result_pct": 8}], "n_exact": 4, "n_result": 12, "n_wrong": 37, "result_bias": {"act_away": 33, "act_draw": 17, "act_home": 50, "pred_away": 13, "pred_draw": 53, "pred_home": 34}, "result_pct": 23, "top_scores": [{"n": 14, "v": "5\u20135"}, {"n": 10, "v": "1\u20131"}, {"n": 8, "v": "2\u20131"}, {"n": 4, "v": "1\u20132"}, {"n": 4, "v": "2\u20132"}, {"n": 3, "v": "3\u20132"}, {"n": 2, "v": "3\u20130"}, {"n": 2, "v": "3\u20131"}], "total_predictions": 53, "traj_labels": ["M1", "M2", "M3", "M4", "M5", "M6"], "trajectory": [{"data": [0, 0, 1, 2, 5, 8], "name": "Ian Lyons"}, {"data": [0, 0, 0, 3, 4, 4], "name": "Alison Thrower"}, {"data": [1, 1, 4], "name": "Lucie Usher"}], "upset_favourite": "Canada", "upset_pct": 100, "upset_result": "Mexico won 2\u20131", "wrong_pct": 69};
+const INS = {"crowd_reality": [{"actual": "2-1", "crowd": "5-5", "ok": false, "pct": 100, "teams": "Mexico vs Canada"}, {"actual": "0-1", "crowd": "2-1", "ok": false, "pct": 60, "teams": "USA vs Honduras"}, {"actual": "3-2", "crowd": "5-5", "ok": false, "pct": 33, "teams": "Argentina vs Brazil"}, {"actual": "3-0", "crowd": "5-5", "ok": false, "pct": 17, "teams": "England vs France"}, {"actual": "2-2", "crowd": "5-5", "ok": false, "pct": 23, "teams": "Germany vs Spain"}, {"actual": "1-2", "crowd": "1-1", "ok": false, "pct": 38, "teams": "Portugal vs Netherlands"}, {"actual": "2-0", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Japan vs South Korea"}, {"actual": "1-1", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Italy vs Belgium"}, {"actual": "0-2", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Morocco vs Australia"}], "easiest_match": "Italy vs Belgium", "easiest_pct": 62, "exact_pct": 5, "form_guide": [{"batch_pts": 9, "cr": 0, "delta": 0, "form": ["result", "exact", "exact", "result", "wrong", "result"], "gd": 0, "name": "Ian Lyons", "pts": 10, "rank": 1}, {"batch_pts": 6, "cr": 0, "delta": 0, "form": ["exact", "result", "wrong", "result", "wrong", "result"], "gd": 0, "name": "Alison Thrower", "pts": 6, "rank": 2}, {"batch_pts": 5, "cr": 0, "delta": -1, "form": ["result", "wrong", "exact", "miss", "miss", "miss"], "gd": 0, "name": "Lucie Usher", "pts": 5, "rank": 3}, {"batch_pts": 5, "cr": 0, "delta": -1, "form": ["wrong", "wrong", "result", "exact", "result", "wrong"], "gd": 0, "name": "Victor Odunaiya", "pts": 5, "rank": 3}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["miss", "miss", "miss", "miss", "miss", "miss"], "gd": 0, "name": "Nick Philpot", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["wrong", "miss", "miss", "miss", "miss", "miss"], "gd": 0, "name": "Dan", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["result", "result", "wrong", "wrong", "wrong", "wrong"], "gd": 0, "name": "Jade Drummond-Pearson", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["result", "wrong", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Eric Ayoola", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["miss", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Nigel Croucher", "pts": 2, "rank": 5}, {"batch_pts": 1, "cr": 0, "delta": 0, "form": ["wrong", "wrong", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Andrew Adams", "pts": 1, "rank": 10}, {"batch_pts": 1, "cr": 0, "delta": 0, "form": ["result", "wrong", "wrong", "wrong", "wrong", "wrong"], "gd": 0, "name": "Edmond Asamoah-Twum", "pts": 1, "rank": 10}, {"batch_pts": 1, "cr": 0, "delta": 0, "form": ["miss", "wrong", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Oladoyin Joseph", "pts": 1, "rank": 10}, {"batch_pts": 0, "cr": 0, "delta": 0, "form": ["wrong", "wrong", "wrong", "wrong", "wrong", "wrong"], "gd": 0, "name": "Nilesh Parmar", "pts": 0, "rank": 13}], "goals_histogram": [0, 7, 15, 17, 8, 45], "hardest_match": "Mexico vs Canada", "hardest_pct": 0, "match_labels": ["MEX v CAN", "USA v HON", "ARG v BRA", "ENG v FRA", "GER v SPA", "POR v NET", "JAP v SOU", "ITA v BEL", "MOR v AUS"], "match_stats": [{"away_team": "Canada", "exact_pct": 0, "fixture_id": "T001", "home_team": "Mexico", "label": "MEX v CAN", "n_preds": 4, "result_pct": 0}, {"away_team": "Honduras", "exact_pct": 0, "fixture_id": "T002", "home_team": "USA", "label": "USA v HON", "n_preds": 5, "result_pct": 0}, {"away_team": "Brazil", "exact_pct": 0, "fixture_id": "T003", "home_team": "Argentina", "label": "ARG v BRA", "n_preds": 6, "result_pct": 17}, {"away_team": "France", "exact_pct": 8, "fixture_id": "T004", "home_team": "England", "label": "ENG v FRA", "n_preds": 12, "result_pct": 42}, {"away_team": "Spain", "exact_pct": 8, "fixture_id": "T005", "home_team": "Germany", "label": "GER v SPA", "n_preds": 13, "result_pct": 38}, {"away_team": "Netherlands", "exact_pct": 15, "fixture_id": "T006", "home_team": "Portugal", "label": "POR v NET", "n_preds": 13, "result_pct": 8}, {"away_team": "South Korea", "exact_pct": 8, "fixture_id": "T007", "home_team": "Japan", "label": "JAP v SOU", "n_preds": 13, "result_pct": 15}, {"away_team": "Belgium", "exact_pct": 0, "fixture_id": "T008", "home_team": "Italy", "label": "ITA v BEL", "n_preds": 13, "result_pct": 62}, {"away_team": "Australia", "exact_pct": 0, "fixture_id": "T009", "home_team": "Morocco", "label": "MOR v AUS", "n_preds": 13, "result_pct": 15}], "n_exact": 5, "n_result": 24, "n_wrong": 63, "result_bias": {"act_away": 33, "act_draw": 22, "act_home": 44, "pred_away": 14, "pred_draw": 57, "pred_home": 29}, "result_pct": 26, "top_scores": [{"n": 35, "v": "5-5"}, {"n": 12, "v": "1-1"}, {"n": 10, "v": "2-1"}, {"n": 5, "v": "1-2"}, {"n": 5, "v": "2-2"}, {"n": 4, "v": "1-0"}, {"n": 3, "v": "0-1"}, {"n": 3, "v": "3-2"}], "total_predictions": 92, "traj_labels": ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"], "trajectory": [{"data": [0, 0, 1, 2, 5, 8, 9, 9, 10], "name": "Ian Lyons"}, {"data": [0, 0, 0, 3, 4, 4, 5, 5, 6], "name": "Alison Thrower"}, {"data": [1, 1, 4, 4, 5, 5], "name": "Lucie Usher"}], "upset_favourite": "Canada", "upset_pct": 100, "upset_result": "Mexico won 2-1", "wrong_pct": 69};
 const C={blue:'#1B5BA8',sky:'#4E8DD6',red:'#C4122E',green:'#1B8B4B',gold:'#F5D020',muted:'#9BA3AF',surface:'#F7F8FA',border:'#E0E2E8',orange:'#E07B1A',purple:'#7B3FA0'};
 
 function buildInsightCharts(){
@@ -551,36 +772,4 @@ function buildInsightCharts(){
   (INS.form_guide||[]).forEach(p=>{
     const arrow=p.delta>0?`<span class="mv-delta d-up">&#x25B2;${p.delta}</span>`:p.delta<0?`<span class="mv-delta d-dn">&#x25BC;${Math.abs(p.delta)}</span>`:`<span class="mv-delta d-eq">&#x2014;</span>`;
     const medal=p.rank===1?'🥇':p.rank===2?'🥈':p.rank===3?'🥉':p.rank;
-    mr.innerHTML+=`<div class="mv-row"><div class="mv-rank">${medal}</div><div class="mv-name">${p.name}</div><div style="font-size:10px;color:var(--muted);margin-right:6px">${p.cr}W GD${p.gd>=0?'+':''}${p.gd}</div><div class="mv-pts">${p.pts}pts</div>${arrow}</div>`;
-  });
-  const cr=document.getElementById('crowdReality');
-  (INS.crowd_reality||[]).forEach(m=>{
-    const tag=m.ok?`<span class="mb-tag tag-ok">Correct &#x2713;</span>`:`<span class="mb-tag tag-no">Wrong &#x2717;</span>`;
-    cr.innerHTML+=`<div class="mb-block"><div class="mb-hdr"><div class="mb-teams">${m.teams}</div>${tag}</div><div class="mb-r"><div class="mb-lbl">Crowd</div><div class="mb-sc" style="color:var(--blue)">${m.crowd}</div><div class="mb-bar"><div class="mb-bi" style="width:${m.pct}%;background:var(--blue)"></div></div><div class="mb-pct">${m.pct}%</div></div><div class="mb-r"><div class="mb-lbl">Actual</div><div class="mb-sc" style="color:${m.ok?C.green:C.red}">${m.actual}</div><div class="mb-bar"><div class="mb-bi" style="width:100%;background:${m.ok?C.green:C.red}"></div></div></div></div>`;
-  });
-  const ML=INS.match_labels||[];const TL=INS.traj_labels||[];const MS=INS.match_stats||[];
-  const GH=INS.goals_histogram||[0,0,0,0,0,0];const RB=INS.result_bias||{};const TR=INS.trajectory||[];
-  const trColors=[C.gold,C.blue,C.red,C.green,C.purple];
-  new Chart(document.getElementById('accuracyDonut'),{type:'doughnut',data:{labels:['Exact','Result','Wrong'],datasets:[{data:[INS.n_exact||0,INS.n_result||0,INS.n_wrong||0],backgroundColor:[C.blue,C.green,C.border],borderWidth:0,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{display:false}}}});
-  new Chart(document.getElementById('pointsBar'),{type:'bar',data:{labels:ML,datasets:[{label:'Exact (3pts)',data:MS.map(m=>Math.round((m.exact_pct/100)*(m.n_preds||0)*3)),backgroundColor:C.blue,borderRadius:4,stack:'s'},{label:'Result (1pt)',data:MS.map(m=>Math.round((m.result_pct/100)*(m.n_preds||0))),backgroundColor:C.green,borderRadius:4,stack:'s'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{grid:{color:C.surface},ticks:{font:{size:9}}}}}});
-  new Chart(document.getElementById('matchAccuracy'),{type:'bar',data:{labels:ML,datasets:[{label:'Exact %',data:MS.map(m=>m.exact_pct),backgroundColor:C.blue,borderRadius:4},{label:'Result %',data:MS.map(m=>m.result_pct),backgroundColor:C.green,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{max:100,grid:{color:C.surface},ticks:{font:{size:9},callback:v=>v+'%'}}}}});
-  new Chart(document.getElementById('radarChart'),{type:'radar',data:{labels:ML,datasets:[{label:'Exact %',data:MS.map(m=>m.exact_pct),fill:true,backgroundColor:'rgba(27,91,168,0.15)',borderColor:C.blue,pointBackgroundColor:C.blue,pointRadius:4},{label:'Correct %',data:MS.map(m=>m.exact_pct+m.result_pct),fill:true,backgroundColor:'rgba(27,139,75,0.10)',borderColor:C.green,pointBackgroundColor:C.green,pointRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{r:{min:0,max:100,ticks:{stepSize:25,font:{size:9},backdropColor:'transparent'},grid:{color:C.border},pointLabels:{font:{size:10,family:'Plus Jakarta Sans'}}}}}});
-  new Chart(document.getElementById('goalsHist'),{type:'bar',data:{labels:['0','1','2','3','4','5+'],datasets:[{data:GH,backgroundColor:[C.sky,C.blue,C.blue,C.blue,C.sky,C.muted],borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{grid:{color:C.surface},ticks:{font:{size:9}}}}}});
-  new Chart(document.getElementById('resultBias'),{type:'bar',data:{labels:['Home Win','Draw','Away Win'],datasets:[{label:'Predicted',data:[RB.pred_home||0,RB.pred_draw||0,RB.pred_away||0],backgroundColor:[C.blue,C.muted,C.sky],borderRadius:6},{label:'Actual',data:[RB.act_home||0,RB.act_draw||0,RB.act_away||0],backgroundColor:['rgba(27,91,168,0.25)','rgba(155,163,175,0.25)','rgba(78,141,214,0.25)'],borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{font:{size:9},boxWidth:8}}},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{max:70,ticks:{font:{size:9},callback:v=>v+'%'},grid:{color:C.surface}}}}});
-  new Chart(document.getElementById('trajectory'),{type:'line',data:{labels:TL,datasets:TR.map((t,i)=>({label:t.name,data:t.data,borderColor:trColors[i%trColors.length],backgroundColor:trColors[i%trColors.length].replace('#','rgba(').replace(/([0-9a-f]{2})/gi,m=>parseInt(m,16)+',').replace(/,$/,',0.07)'),tension:0.4,fill:i===0,pointRadius:3}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{font:{size:9},boxWidth:8}}},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{grid:{color:C.surface},ticks:{font:{size:9}}}}}});
-}
-
-function goToMyPredictions(e){const token=new URLSearchParams(window.location.search).get('token');if(token){e.preventDefault();window.location.href='predict.html?token='+token;}}
-
-// Append token to full leaderboard link so it carries through
-(function(){
-  const token=new URLSearchParams(window.location.search).get('token');
-  if(token){
-    document.querySelectorAll('a[href="leaderboard_full.html"]').forEach(a=>{
-      a.href='leaderboard_full.html?token='+token;
-    });
-  }
-})();
-</script>
-</body>
-</html>
+    mr.innerHTML+=`<div class="mv-row"><div class="mv-rank">${medal}</div><div class="mv-name">${p.name}</div><div style="font-size:10px;color:var(--muted);margin-right:6px">${p.
