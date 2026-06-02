@@ -182,7 +182,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
     <div class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 02 Jun 2026 06:22</p>
+      <p class="updated">Last updated: 02 Jun 2026 06:26</p>
       <table class="lb-table">
         <thead><tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th></tr></thead>
         <tbody>
@@ -571,6 +571,16 @@ function buildInsightCharts(){
 }
 
 function goToMyPredictions(e){const token=new URLSearchParams(window.location.search).get('token');if(token){e.preventDefault();window.location.href='predict.html?token='+token;}}
+
+// Append token to full leaderboard link so it carries through
+(function(){
+  const token=new URLSearchParams(window.location.search).get('token');
+  if(token){
+    document.querySelectorAll('a[href="leaderboard_full.html"]').forEach(a=>{
+      a.href='leaderboard_full.html?token='+token;
+    });
+  }
+})();
 </script>
 </body>
 </html>

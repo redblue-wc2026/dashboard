@@ -361,7 +361,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
   
 
   <div class="footer-bar">
-    <p>Last updated: 02 Jun 2026 06:22</p>
+    <p>Last updated: 02 Jun 2026 06:26</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a href="index.html" class="btn btn-nav">← Dashboard</a>
       <a href="predict.html" class="btn btn-action" onclick="goPredict(event)">⚽ My Predictions →</a>
@@ -371,9 +371,23 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
 </div>
 
 <script>
+const _token = new URLSearchParams(window.location.search).get('token');
+
+// Wire up all token-dependent links on page load
+(function(){
+  if (!_token) return;
+  // Predictions button
+  document.querySelectorAll('a[href="predict.html"]').forEach(a => {
+    a.href = 'predict.html?token=' + _token;
+  });
+  // Back to dashboard button
+  document.querySelectorAll('a[href="index.html"]').forEach(a => {
+    a.href = 'index.html?token=' + _token;
+  });
+})();
+
 function goPredict(e) {
-  const token = new URLSearchParams(window.location.search).get('token');
-  if (token) { e.preventDefault(); window.location.href = 'predict.html?token=' + token; }
+  if (_token) { e.preventDefault(); window.location.href = 'predict.html?token=' + _token; }
 }
 </script>
 </body>
