@@ -238,7 +238,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
     <div class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 03 Jun 2026 17:12</p>
+      <p class="updated">Last updated: 03 Jun 2026 17:20</p>
       <table class="lb-table">
         <thead><tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th></tr></thead>
         <tbody>
@@ -530,14 +530,38 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 </div>
 
 <script>
+// ── Token persistence ─────────────────────────────────────────────────────────
+// Read token from URL and persist it across navigation via localStorage.
+// This means players can bookmark /dashboard/ and still reach their predictions.
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var t = params.get('token');
+  if (t) {
+    localStorage.setItem('wc2026_token', t);
+  } else {
+    t = localStorage.getItem('wc2026_token') || '';
+  }
+  window.WC_TOKEN = t;
+  // Update all predict.html links to include the token
+  if (t) {
+    document.querySelectorAll('a[href^="predict.html"]').forEach(function(a){
+      a.href = 'predict.html?token=' + t;
+    });
+  }
+})();
+
 function switchTab(tabId,el){
   document.querySelectorAll('.tab-section').forEach(t=>t.style.display='none');
   document.querySelectorAll('.nav-link[data-tab]').forEach(l=>l.classList.remove('active'));
   document.getElementById(tabId).style.display='block';
   if(el)el.classList.add('active');
-  if(tabId==='tab-insights'&&!window._chartsBuilt){buildInsightCharts();window._chartsBuilt=true;}
-
   return false;
+}
+
+function goToMyPredictions(e){
+  e.preventDefault();
+  var token = window.WC_TOKEN || localStorage.getItem('wc2026_token') || '';
+  window.location.href = token ? 'predict.html?token=' + token : 'predict.html';
 }
 
 const INS = {"crowd_reality": [{"actual": "2-1", "crowd": "5-5", "ok": false, "pct": 100, "teams": "Mexico vs Canada"}, {"actual": "0-1", "crowd": "2-1", "ok": false, "pct": 60, "teams": "USA vs Honduras"}, {"actual": "3-2", "crowd": "5-5", "ok": false, "pct": 33, "teams": "Argentina vs Brazil"}, {"actual": "3-0", "crowd": "5-5", "ok": false, "pct": 17, "teams": "England vs France"}, {"actual": "2-2", "crowd": "5-5", "ok": false, "pct": 23, "teams": "Germany vs Spain"}, {"actual": "1-2", "crowd": "1-1", "ok": false, "pct": 38, "teams": "Portugal vs Netherlands"}, {"actual": "2-0", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Japan vs South Korea"}, {"actual": "1-1", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Italy vs Belgium"}, {"actual": "0-2", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Morocco vs Australia"}], "easiest_match": "Italy vs Belgium", "easiest_pct": 62, "exact_pct": 5, "form_guide": [{"batch_pts": 9, "cr": 0, "delta": 0, "form": ["result", "exact", "exact", "result", "wrong", "result"], "gd": 0, "name": "Ian Lyons", "pts": 10, "rank": 1}, {"batch_pts": 6, "cr": 0, "delta": 0, "form": ["exact", "result", "wrong", "result", "wrong", "result"], "gd": 0, "name": "Alison Thrower", "pts": 6, "rank": 2}, {"batch_pts": 5, "cr": 0, "delta": -1, "form": ["result", "wrong", "exact", "miss", "miss", "miss"], "gd": 0, "name": "Lucie Usher", "pts": 5, "rank": 3}, {"batch_pts": 5, "cr": 0, "delta": -1, "form": ["wrong", "wrong", "result", "exact", "result", "wrong"], "gd": 0, "name": "Victor Odunaiya", "pts": 5, "rank": 3}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["miss", "miss", "miss", "miss", "miss", "miss"], "gd": 0, "name": "Nick Philpot", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["wrong", "miss", "miss", "miss", "miss", "miss"], "gd": 0, "name": "Dan", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["result", "result", "wrong", "wrong", "wrong", "wrong"], "gd": 0, "name": "Jade Drummond-Pearson", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["result", "wrong", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Eric Ayoola", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["miss", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Nigel Croucher", "pts": 2, "rank": 5}, {"batch_pts": 1, "cr": 0, "delta": 0, "form": ["wrong", "wrong", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Andrew Adams", "pts": 1, "rank": 10}, {"batch_pts": 1, "cr": 0, "delta": 0, "form": ["result", "wrong", "wrong", "wrong", "wrong", "wrong"], "gd": 0, "name": "Edmond Asamoah-Twum", "pts": 1, "rank": 10}, {"batch_pts": 1, "cr": 0, "delta": 0, "form": ["miss", "wrong", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Oladoyin Joseph", "pts": 1, "rank": 10}, {"batch_pts": 0, "cr": 0, "delta": 0, "form": ["wrong", "wrong", "wrong", "wrong", "wrong", "wrong"], "gd": 0, "name": "Nilesh Parmar", "pts": 0, "rank": 13}], "goals_histogram": [0, 7, 15, 17, 8, 45], "hardest_match": "Mexico vs Canada", "hardest_pct": 0, "match_labels": ["MEX v CAN", "USA v HON", "ARG v BRA", "ENG v FRA", "GER v SPA", "POR v NET", "JAP v SOU", "ITA v BEL", "MOR v AUS"], "match_stats": [{"away_team": "Canada", "exact_pct": 0, "fixture_id": "T001", "home_team": "Mexico", "label": "MEX v CAN", "n_preds": 4, "result_pct": 0}, {"away_team": "Honduras", "exact_pct": 0, "fixture_id": "T002", "home_team": "USA", "label": "USA v HON", "n_preds": 5, "result_pct": 0}, {"away_team": "Brazil", "exact_pct": 0, "fixture_id": "T003", "home_team": "Argentina", "label": "ARG v BRA", "n_preds": 6, "result_pct": 17}, {"away_team": "France", "exact_pct": 8, "fixture_id": "T004", "home_team": "England", "label": "ENG v FRA", "n_preds": 12, "result_pct": 42}, {"away_team": "Spain", "exact_pct": 8, "fixture_id": "T005", "home_team": "Germany", "label": "GER v SPA", "n_preds": 13, "result_pct": 38}, {"away_team": "Netherlands", "exact_pct": 15, "fixture_id": "T006", "home_team": "Portugal", "label": "POR v NET", "n_preds": 13, "result_pct": 8}, {"away_team": "South Korea", "exact_pct": 8, "fixture_id": "T007", "home_team": "Japan", "label": "JAP v SOU", "n_preds": 13, "result_pct": 15}, {"away_team": "Belgium", "exact_pct": 0, "fixture_id": "T008", "home_team": "Italy", "label": "ITA v BEL", "n_preds": 13, "result_pct": 62}, {"away_team": "Australia", "exact_pct": 0, "fixture_id": "T009", "home_team": "Morocco", "label": "MOR v AUS", "n_preds": 13, "result_pct": 15}], "n_exact": 5, "n_result": 24, "n_wrong": 63, "result_bias": {"act_away": 33, "act_draw": 22, "act_home": 44, "pred_away": 14, "pred_draw": 57, "pred_home": 29}, "result_pct": 26, "top_scores": [{"n": 35, "v": "5-5"}, {"n": 12, "v": "1-1"}, {"n": 10, "v": "2-1"}, {"n": 5, "v": "1-2"}, {"n": 5, "v": "2-2"}, {"n": 4, "v": "1-0"}, {"n": 3, "v": "0-1"}, {"n": 3, "v": "3-2"}], "total_predictions": 92, "traj_labels": ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"], "trajectory": [{"data": [0, 0, 1, 2, 5, 8, 9, 9, 10], "name": "Ian Lyons"}, {"data": [0, 0, 0, 3, 4, 4, 5, 5, 6], "name": "Alison Thrower"}, {"data": [1, 1, 4, 4, 5, 5], "name": "Lucie Usher"}], "upset_favourite": "Canada", "upset_pct": 100, "upset_result": "Mexico won 2-1", "wrong_pct": 69};
