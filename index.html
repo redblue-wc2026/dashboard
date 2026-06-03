@@ -200,9 +200,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
   <div class="nav-inner">
     <div class="nav-brand">Red and Blue <span>Review</span></div>
     <a href="#" class="nav-link active" data-tab="tab-main" onclick="return switchTab('tab-main',this)">🏆 Leaderboard</a>
-    <!-- Insights tab disabled — rebuilding separately
-    <a href="#" class="nav-link" data-tab="tab-insights" onclick="return switchTab('tab-insights',this)">🔍 Insights</a>
-    -->
+    <a href="insight_cards.html" class="nav-link" id="insights-link">&#x1F50D; Insights</a>
     <a href="register.html" class="nav-link" style="margin-left:auto;color:var(--gold)">Join →</a>
   </div>
 </nav>
@@ -238,7 +236,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
     <div class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 03 Jun 2026 18:02</p>
+      <p class="updated">Last updated: 03 Jun 2026 18:15</p>
       <table class="lb-table">
         <thead><tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th></tr></thead>
         <tbody>
@@ -549,6 +547,9 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     });
     document.querySelectorAll('a[href^="leaderboard_full.html"]').forEach(function(a){
       a.href = 'leaderboard_full.html?token=' + t;
+    });
+    document.querySelectorAll('a[href^="insight_cards.html"]').forEach(function(a){
+      a.href = 'insight_cards.html?token=' + t;
     });
   }
 })();

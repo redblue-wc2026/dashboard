@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RnB WC2026 — Competition Insights</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',Arial,sans-serif;background:#F0F2F5;padding:0}
+.page{max-width:1060px;margin:0 auto;padding:16px}
+.page-head{background:linear-gradient(135deg,#0F2240 0%,#1C3A6B 60%,#2874C5 100%);border-radius:12px;padding:22px 28px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 6px 24px rgba(0,0,0,0.22)}
+.page-head h1{font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.3px;font-family:'Plus Jakarta Sans',sans-serif}
+.page-head p{font-size:11px;color:rgba(255,255,255,0.6);margin-top:3px}
+.badge-gold{background:#F5D020;color:#1C3A6B;font-size:10px;font-weight:800;padding:5px 12px;border-radius:20px;white-space:nowrap;font-family:'Plus Jakarta Sans',sans-serif}
+.nav-back{color:rgba(255,255,255,0.75);text-decoration:none;font-size:12px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;background:rgba(255,255,255,0.12);padding:6px 14px;border-radius:6px}
+.nav-back:hover{background:rgba(255,255,255,0.2)}
+.section-label{font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1.5px;margin:18px 0 12px;display:flex;align-items:center;gap:10px}
+.section-label .line{flex:1;height:1px;background:#ddd}
+.pill{padding:4px 14px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:0.5px}
+.pill-wc{background:#C4122E;color:#fff}
+.pill-pl{background:#1B5BA8;color:#fff}
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:4px}
+.mc{border-radius:12px;padding:16px 16px 14px;position:relative;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,0.28)}
+.mc-r1{background:linear-gradient(145deg,#7D0C1F 0%,#C4122E 100%)}
+.mc-r2{background:linear-gradient(145deg,#9B0F25 0%,#D41535 100%)}
+.mc-p1{background:linear-gradient(145deg,#0A1A38 0%,#1C3A6B 100%)}
+.mc-p2{background:linear-gradient(145deg,#0F2245 0%,#224478 100%)}
+.mc-b1{background:linear-gradient(145deg,#0D3572 0%,#1B5BA8 100%)}
+.mc-b2{background:linear-gradient(145deg,#114089 0%,#2166B8 100%)}
+.mc-s1{background:linear-gradient(145deg,#0D4A8A 0%,#2874C5 100%)}
+.mc-s2{background:linear-gradient(145deg,#105299 0%,#3080CC 100%)}
+.mc-title{font-size:10px;font-weight:700;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-family:'Plus Jakarta Sans',sans-serif}
+.chart-wrap{height:90px;position:relative;margin-bottom:10px}
+.mc-num{font-size:24px;font-weight:800;color:#fff;line-height:1;letter-spacing:-0.5px;font-family:'Plus Jakarta Sans',sans-serif}
+.mc-unit{font-size:12px;font-weight:400;opacity:0.75}
+.mc-div{height:1px;background:rgba(255,255,255,0.2);margin:8px 0}
+.mc-line{font-size:10.5px;line-height:1.55;color:rgba(255,255,255,0.82);padding:1px 0}
+.mc-line+.mc-line{margin-top:2px}
+.mc-line::before{content:'·  ';opacity:0.55}
+.refresh-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);padding:6px 14px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;text-decoration:none}
+.refresh-btn:hover{background:rgba(255,255,255,0.25)}
+@media(max-width:700px){.metric-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.metric-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="page-head">
+  <div><h1>&#x1F50D; Competition Insights</h1><p id="head-meta">0 results scored &nbsp;&middot;&nbsp; 13 players &nbsp;&middot;&nbsp; Updated 03 Jun 2026 18:15 BST</p></div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+    <a href="javascript:void(0)" class="refresh-btn" onclick="buildCards()">&#x21BB; New selection</a>
+    <a href="index.html" id="back-link" class="nav-back">&#x2190; Dashboard</a>
+    <span class="badge-gold">Test Stage</span>
+  </div>
+</div>
+<div class="section-label"><span class="pill pill-wc">World Cup metrics</span><span class="line"></span><span style="font-size:10px;color:#888">9 of 24 &middot; live from 11 June 2026</span></div>
+<div class="metric-grid" id="wc-grid"></div>
+<div class="section-label"><span class="line"></span><span class="pill pill-pl">Prediction League metrics</span><span class="line"></span><span style="font-size:10px;color:#888">9 of 24 &middot; refreshed daily</span></div>
+<div class="metric-grid" id="pl-grid"></div>
+</div>
+<script>
+const INS={"total_predictions": 92, "exact_pct": 5, "result_pct": 26, "wrong_pct": 69, "n_exact": 5, "n_result": 24, "n_wrong": 63, "match_stats": [{"fixture_id": "T001", "label": "MEX v CAN", "home_team": "Mexico", "away_team": "Canada", "exact_pct": 0, "result_pct": 0, "n_preds": 4}, {"fixture_id": "T002", "label": "USA v HON", "home_team": "USA", "away_team": "Honduras", "exact_pct": 0, "result_pct": 0, "n_preds": 5}, {"fixture_id": "T003", "label": "ARG v BRA", "home_team": "Argentina", "away_team": "Brazil", "exact_pct": 0, "result_pct": 17, "n_preds": 6}, {"fixture_id": "T004", "label": "ENG v FRA", "home_team": "England", "away_team": "France", "exact_pct": 8, "result_pct": 42, "n_preds": 12}, {"fixture_id": "T005", "label": "GER v SPA", "home_team": "Germany", "away_team": "Spain", "exact_pct": 8, "result_pct": 38, "n_preds": 13}, {"fixture_id": "T006", "label": "POR v NET", "home_team": "Portugal", "away_team": "Netherlands", "exact_pct": 15, "result_pct": 8, "n_preds": 13}, {"fixture_id": "T007", "label": "JAP v SOU", "home_team": "Japan", "away_team": "South Korea", "exact_pct": 8, "result_pct": 15, "n_preds": 13}, {"fixture_id": "T008", "label": "ITA v BEL", "home_team": "Italy", "away_team": "Belgium", "exact_pct": 0, "result_pct": 62, "n_preds": 13}, {"fixture_id": "T009", "label": "MOR v AUS", "home_team": "Morocco", "away_team": "Australia", "exact_pct": 0, "result_pct": 15, "n_preds": 13}], "match_labels": ["MEX v CAN", "USA v HON", "ARG v BRA", "ENG v FRA", "GER v SPA", "POR v NET", "JAP v SOU", "ITA v BEL", "MOR v AUS"], "top_scores": [{"v": "5-5", "n": 35}, {"v": "1-1", "n": 12}, {"v": "2-1", "n": 10}, {"v": "1-2", "n": 5}, {"v": "2-2", "n": 5}, {"v": "1-0", "n": 4}, {"v": "0-1", "n": 3}, {"v": "3-2", "n": 3}], "crowd_reality": [{"teams": "Mexico vs Canada", "crowd": "5-5", "actual": "2-1", "pct": 100, "ok": false}, {"teams": "USA vs Honduras", "crowd": "2-1", "actual": "0-1", "pct": 60, "ok": false}, {"teams": "Argentina vs Brazil", "crowd": "5-5", "actual": "3-2", "pct": 33, "ok": false}, {"teams": "England vs France", "crowd": "5-5", "actual": "3-0", "pct": 17, "ok": false}, {"teams": "Germany vs Spain", "crowd": "5-5", "actual": "2-2", "pct": 23, "ok": false}, {"teams": "Portugal vs Netherlands", "crowd": "1-1", "actual": "1-2", "pct": 38, "ok": false}, {"teams": "Japan vs South Korea", "crowd": "5-5", "actual": "2-0", "pct": 54, "ok": false}, {"teams": "Italy vs Belgium", "crowd": "5-5", "actual": "1-1", "pct": 54, "ok": false}, {"teams": "Morocco vs Australia", "crowd": "5-5", "actual": "0-2", "pct": 54, "ok": false}], "result_bias": {"pred_home": 29, "pred_draw": 57, "pred_away": 14, "act_home": 44, "act_draw": 22, "act_away": 33}, "goals_histogram": [0, 7, 15, 17, 8, 45], "form_guide": [{"name": "Ian Lyons", "pts": 10, "cr": 0, "gd": 0, "delta": 0, "rank": 1, "form": ["result", "exact", "exact", "result", "wrong", "result"], "batch_pts": 9}, {"name": "Alison Thrower", "pts": 6, "cr": 0, "gd": 0, "delta": 0, "rank": 2, "form": ["exact", "result", "wrong", "result", "wrong", "result"], "batch_pts": 6}, {"name": "Lucie Usher", "pts": 5, "cr": 0, "gd": 0, "delta": -1, "rank": 3, "form": ["result", "wrong", "exact", "miss", "miss", "miss"], "batch_pts": 5}, {"name": "Victor Odunaiya", "pts": 5, "cr": 0, "gd": 0, "delta": -1, "rank": 3, "form": ["wrong", "wrong", "result", "exact", "result", "wrong"], "batch_pts": 5}, {"name": "Nick Philpot", "pts": 2, "cr": 0, "gd": 0, "delta": 0, "rank": 5, "form": ["miss", "miss", "miss", "miss", "miss", "miss"], "batch_pts": 2}, {"name": "Dan", "pts": 2, "cr": 0, "gd": 0, "delta": 0, "rank": 5, "form": ["wrong", "miss", "miss", "miss", "miss", "miss"], "batch_pts": 2}, {"name": "Jade Drummond-Pearson", "pts": 2, "cr": 0, "gd": 0, "delta": 0, "rank": 5, "form": ["result", "result", "wrong", "wrong", "wrong", "wrong"], "batch_pts": 2}, {"name": "Eric Ayoola", "pts": 2, "cr": 0, "gd": 0, "delta": 0, "rank": 5, "form": ["result", "wrong", "wrong", "miss", "miss", "miss"], "batch_pts": 2}, {"name": "Nigel Croucher", "pts": 2, "cr": 0, "gd": 0, "delta": 0, "rank": 5, "form": ["miss", "wrong", "miss", "miss", "miss"], "batch_pts": 2}, {"name": "Andrew Adams", "pts": 1, "cr": 0, "gd": 0, "delta": 0, "rank": 10, "form": ["wrong", "wrong", "wrong", "miss", "miss", "miss"], "batch_pts": 1}, {"name": "Edmond Asamoah-Twum", "pts": 1, "cr": 0, "gd": 0, "delta": 0, "rank": 10, "form": ["result", "wrong", "wrong", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "Oladoyin Joseph", "pts": 1, "cr": 0, "gd": 0, "delta": 0, "rank": 10, "form": ["miss", "wrong", "wrong", "miss", "miss", "miss"], "batch_pts": 1}, {"name": "Nilesh Parmar", "pts": 0, "cr": 0, "gd": 0, "delta": 0, "rank": 13, "form": ["wrong", "wrong", "wrong", "wrong", "wrong", "wrong"], "batch_pts": 0}], "trajectory": [{"name": "Ian Lyons", "data": [0, 0, 1, 2, 5, 8, 9, 9, 10]}, {"name": "Alison Thrower", "data": [0, 0, 0, 3, 4, 4, 5, 5, 6]}, {"name": "Lucie Usher", "data": [1, 1, 4, 4, 5, 5]}], "traj_labels": ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"], "hardest_pct": 0, "hardest_match": "Mexico vs Canada", "easiest_pct": 62, "easiest_match": "Italy vs Belgium", "upset_pct": 100, "upset_favourite": "Canada", "upset_result": "Mexico won 2-1"};
+const W='rgba(255,255,255,0.85)',WD='rgba(255,255,255,0.25)',G='#F5D020';
+const COLOURS=['mc-r1','mc-p1','mc-b1','mc-s1','mc-r2','mc-p2','mc-b2','mc-s2','mc-r1'];
+let _cid=0;
+function nid(){return 'mc_'+(++_cid)}
+function cbase(e){return{responsive:true,maintainAspectRatio:false,animation:{duration:500},plugins:{legend:{display:false},tooltip:{enabled:false}},...e}}
+function grads(v){const mx=Math.max(...v),a=[0.85,0.65,0.50,0.38,0.28,0.20];return v.map((x,i)=>x===mx?G:'rgba(255,255,255,'+(a[i]||0.15)+')');}
+function hbar(id,L,V){new Chart(document.getElementById(id),{type:'bar',data:{labels:L,datasets:[{data:V,backgroundColor:grads(V),borderRadius:4,barThickness:12}]},options:cbase({indexAxis:'y',scales:{x:{display:false},y:{display:true,ticks:{color:W,font:{size:9}},grid:{display:false}}}})})}
+function vbar(id,L,V){new Chart(document.getElementById(id),{type:'bar',data:{labels:L,datasets:[{data:V,backgroundColor:grads(V),borderRadius:4,barThickness:13}]},options:cbase({scales:{x:{display:true,ticks:{color:W,font:{size:9}},grid:{display:false}},y:{display:false}}})})}
+function donut(id,p,lbl){new Chart(document.getElementById(id),{type:'doughnut',data:{labels:[lbl||'Yes','No'],datasets:[{data:[p,100-p],backgroundColor:[G,WD],borderWidth:0}]},options:cbase({cutout:'62%',scales:{x:{display:false},y:{display:false}}})})}
+function lChart(id,L,D){new Chart(document.getElementById(id),{type:'line',data:{labels:L,datasets:D.map((d,i)=>({label:d.n,data:d.d,borderColor:i===0?G:W,backgroundColor:i===0?'rgba(245,208,32,0.12)':'rgba(255,255,255,0.05)',tension:0.4,fill:i===0,pointRadius:3,pointBackgroundColor:i===0?G:W}))},options:cbase({scales:{x:{ticks:{color:W,font:{size:8}},grid:{color:WD}},y:{ticks:{color:W,font:{size:8}},grid:{color:WD}}}})})}
+function mkCard(col,title,num,unit,lines){const id=nid();return{h:`<div class="mc ${col}"><div class="mc-title">${title}</div><div class="chart-wrap"><canvas id="${id}"></canvas></div><div class="mc-num">${num} <span class="mc-unit">${unit}</span></div><div class="mc-div"></div>${lines.map(l=>`<div class="mc-line">${l}</div>`).join('')}</div>`,id}}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+function plDefs(){
+  const fg=INS.form_guide||[],ts=(INS.top_scores||[]).filter(s=>s.v!=='5-5'),allTs=INS.top_scores||[];
+  const ms=(INS.match_stats||[]),rb=INS.result_bias||{},traj=INS.trajectory||[],tL=INS.traj_labels||[];
+  const ms_hi=ms.slice().sort((a,b)=>b.result_pct-a.result_pct),ms_lo=ms.slice().sort((a,b)=>a.result_pct-b.result_pct);
+  const acc=fg.map(p=>{const t=p.form.length,c=p.form.filter(f=>f==='exact'||f==='result').length;return{n:p.name.split(' ')[0],a:t?Math.round(c/t*100):0}}).sort((a,b)=>b.a-a.a);
+  const ex=fg.map(p=>({n:p.name.split(' ')[0],v:p.form.filter(f=>f==='exact').length})).sort((a,b)=>b.v-a.v);
+  const nr=fg.map(p=>({n:p.name.split(' ')[0],v:p.form.filter(f=>f==='result').length})).sort((a,b)=>b.v-a.v);
+  const miss=fg.map(p=>({n:p.name.split(' ')[0],v:p.form.filter(f=>f==='miss').length})).sort((a,b)=>b.v-a.v);
+  const risk=fg.map(p=>({n:p.name.split(' ')[0],v:p.form.length?+(p.batch_pts/p.form.length).toFixed(1):0})).sort((a,b)=>b.v-a.v);
+  const mom=fg.slice().sort((a,b)=>b.batch_pts-a.batch_pts);
+  const cold=fg.map(p=>({n:p.name.split(' ')[0],v:p.form.slice(-3).filter(f=>f==='exact'||f==='result').length})).sort((a,b)=>a.v-b.v);
+  const tA=acc[0]||{n:'—',a:0},bA=acc[acc.length-1]||{n:'—',a:0},avgA=acc.length?Math.round(acc.reduce((s,r)=>s+r.a,0)/acc.length):0;
+  const tE=ex[0]||{n:'—',v:0},totE=INS.n_exact||0;
+  const tNR=nr[0]||{n:'—',v:0},totNR=nr.reduce((s,r)=>s+r.v,0);
+  const tMiss=miss[0]||{n:'—',v:0},totMiss=miss.reduce((s,r)=>s+r.v,0),tot=INS.total_predictions||1;
+  const missedPct=Math.round(totMiss/tot*100);
+  const tM=mom[0]||{name:'—',batch_pts:0},tR=risk[0]||{n:'—',v:0},bR=risk[risk.length-1]||{n:'—',v:0};
+  const tCo=cold[0]||{n:'—',v:0};
+  const tC=ms_hi[0]||{},bC=ms_lo[0]||{};
+  const gap=traj.length>1?(traj[0].data.slice(-1)[0]||0)-(traj[1].data.slice(-1)[0]||0):0;
+  const ph=rb.pred_home||0,ah=rb.act_home||0,bias=ph-ah;
+  const strk=(()=>{let s=0;for(let i=(fg[0]?.form?.length||0)-1;i>=0;i--){if(fg[0].form[i]==='exact'||fg[0].form[i]==='result')s++;else break;}return s;})();
+  const ts_top=ts[0]||{v:'—',n:0},ts_run=ts[1]||{v:'—',n:0};
+  const up_pct=INS.upset_pct||0,up_fav=INS.upset_favourite||'?',up_res=INS.upset_result||'?';
+  const pts1=(fg[0]||{pts:0}).pts,ptsLast=(fg[fg.length-1]||{pts:0}).pts,ptsMid=fg.length?Math.round(fg.reduce((s,p)=>s+p.pts,0)/fg.length):0;
+  const div_pct=Math.round(ts.length/tot*100),top5pct=Math.round(ts.slice(0,5).reduce((s,r)=>s+r.n,0)/tot*100);
+
+  return [
+    c=>{ const {h,id}=mkCard(c,'Accuracy Leaderboard',tA.a+'%','top accuracy',[`${tA.n} leads — ${tA.a}% of picks earn at least 1 point.`,`League average: ${avgA}%. Top and bottom separated by ${tA.a-bA.a}pp.`,`${bA.n} in last at ${bA.a}%. Something has to change.`]);return{h,i:()=>hbar(id,acc.slice(0,5).map(r=>r.n),acc.slice(0,5).map(r=>r.a))}},
+    c=>{ const {h,id}=mkCard(c,'Recent Form Guide',strk,'streak ('+(fg[0]?.name?.split(' ')[0]||'—')+')',[`${fg[0]?.name?.split(' ')[0]||'—'} is on a ${strk}-game scoring streak.`,`${traj[0]?.name?.split(' ')[0]||'—'} leads with ${traj[0]?.data?.slice(-1)[0]||0}pts total.`,`Gap to 2nd is ${gap}pts — far from settled.`]);return{h,i:()=>lChart(id,tL,traj.slice(0,2).map(t=>({n:t.name.split(' ')[0],d:t.data})))}},
+    c=>{ const {h,id}=mkCard(c,'Most Predicted Scores',ts_top.v,'×'+ts_top.n+' picks',[`${ts_top.v} is the crowd favourite — chosen ${ts_top.n} times (excl. 5-5 defaults).`,`Runner-up: ${ts_run.v} (${ts_run.n}×). Real picks only — no defaults counted.`,`${ts.length} unique scorelines predicted across the campaign.`]);return{h,i:()=>vbar(id,ts.slice(0,6).map(s=>s.v),ts.slice(0,6).map(s=>s.n))}},
+    c=>{ const lbl=`${tC.home_team||'?'} v ${tC.away_team||'?'}`;const {h,id}=mkCard(c,'Group Think Radar',(tC.result_pct||0)+'%','consensus',[`${tC.result_pct||0}% of players got ${lbl} right — highest consensus fixture.`,`When the crowd agrees this strongly they are right about 58% of the time.`,`Wisdom of crowds works in markets. Football is gloriously unpredictable.`]);return{h,i:()=>donut(id,tC.result_pct||0,lbl)}},
+    c=>{ const lbl=`${bC.home_team||'?'} v ${bC.away_team||'?'}`;const {h,id}=mkCard(c,'Hardest to Call',(bC.result_pct||0)+'%','correct',[`${lbl} was the hardest call — only ${bC.result_pct||0}% got it right.`,`${bC.exact_pct||0}% hit the exact score. The crowd had no consensus.`,`High spread + low consensus = classic shock result ingredients.`]);return{h,i:()=>donut(id,bC.result_pct||0,lbl)}},
+    c=>{ const {h,id}=mkCard(c,'Biggest Upset',up_pct+'%','backed '+up_fav,[`${up_pct}% of players backed ${up_fav} — ${up_res}.`,`That is the biggest collective mis-call of the campaign so far.`,`When the crowd is this confident, they are spectacularly wrong.`]);return{h,i:()=>donut(id,100-up_pct,'Correct')}},
+    c=>{ const {h,id}=mkCard(c,'Perfect Score Count',totE,'exact hits',[`${totE} perfect scores — at 3pts each that is ${totE*3}pts of pure precision on the board.`,`${tE.n} leads with ${tE.v} exact score${tE.v!==1?'s':''}.`,`~3% random probability per pick. Anyone above that is genuinely good.`]);return{h,i:()=>hbar(id,ex.slice(0,5).map(r=>r.n),ex.slice(0,5).map(r=>r.v))}},
+    c=>{ const {h,id}=mkCard(c,'Near-Miss Index',totNR,'result-only hits',[`${totNR} predictions earned 1pt (right result, wrong score) — so close to the full 3.`,`${tNR.n} leads with ${tNR.v} — calls the result, never the margin.`,`If near-misses earned half a point extra, the leaderboard would look completely different.`]);return{h,i:()=>hbar(id,nr.slice(0,5).map(r=>r.n),nr.slice(0,5).map(r=>r.v))}},
+    c=>{ const {h,id}=mkCard(c,'Missed Predictions',missedPct+'%','defaulted to 5-5',[`${totMiss} of ${tot} predictions (${missedPct}%) were left as the 5-5 default — zero points.`,`${tMiss.n} missed the most submissions with ${tMiss.v} defaults.`,`Every default costs up to 3 points vs an exact score. Deadline awareness matters.`]);return{h,i:()=>hbar(id,miss.filter(r=>r.v>0).slice(0,5).map(r=>r.n),miss.filter(r=>r.v>0).slice(0,5).map(r=>r.v))}},
+    c=>{ const {h,id}=mkCard(c,'Home Bias Score',(bias>=0?'+':'')+bias+'pp','vs actual',[`Players predicted home wins ${ph}% of the time. Actual rate: ${ah}%.`,`A ${bias>0?'+':''}${bias}pp home bias — the crowd ${bias>0?'over':'under'}estimates home advantage.`,`Away teams have ${bias>0?'quietly outperformed':'underperformed'} expectations this campaign.`]);return{h,i:()=>vbar(id,['Pred HW','Actual HW','Pred AW','Actual AW'],[ph,ah,rb.pred_away||0,rb.act_away||0])}},
+    c=>{ const {h,id}=mkCard(c,'Scoreline Diversity',ts.length,'unique scorelines',[`${ts.length} different scorelines (real picks only, excl. defaults). Diversity index: ${div_pct}%.`,`Top 5 scorelines account for ${top5pct}% of all real picks — the crowd has clear favourites.`,`High diversity = genuine disagreement. Low = everyone copying each other.`]);return{h,i:()=>vbar(id,ts.slice(0,6).map(s=>s.v),ts.slice(0,6).map(s=>s.n))}},
+    c=>{ const {h,id}=mkCard(c,'Momentum Tracker','+'+(tM.batch_pts||0),'pts this batch ('+(tM.name?.split(' ')[0]||'—')+')',[`${tM.name?.split(' ')[0]||'—'} is the form player — ${tM.batch_pts||0}pts from the last batch.`,`Their trajectory shows a sharp late-stage acceleration. Timing is everything.`,`Gap to 2nd is ${gap}pts — still reachable, still dangerous.`]);return{h,i:()=>lChart(id,tL,traj.slice(0,2).map(t=>({n:t.name.split(' ')[0],d:t.data})))}},
+    c=>{ const {h,id}=mkCard(c,'Cold Streak Monitor',tCo.v,'pts in last 3 ('+tCo.n+')',[`${tCo.n} is on a cold streak — scoring in just ${tCo.v} of their last 3 predictions.`,`Cold streaks in this league rarely last more than 4 games. Bounce-back incoming?`,`Form table is fluid — the top 3 could look very different in a week.`]);return{h,i:()=>hbar(id,cold.slice(0,5).map(r=>r.n),cold.slice(0,5).map(r=>r.v))}},
+    c=>{ const {h,id}=mkCard(c,'Confidence Score',tR.v,'pts/game ('+tR.n+')',[`${tR.n} earns the most points per game — ${tR.v} per prediction on average.`,`High scorers per game win big when they land — but variance bites hard.`,`Most consistent: ${bR.n} at ${bR.v} pts/game. Reliable, if not spectacular.`]);return{h,i:()=>hbar(id,risk.slice(0,5).map(r=>r.n),risk.slice(0,5).map(r=>r.v))}},
+    c=>{ const {h,id}=mkCard(c,'Points Gap: 1st vs Last',pts1-ptsLast,'pts spread',[`Gap from 1st (${pts1}pts) to last (${ptsLast}pts) is ${pts1-ptsLast} points — early days.`,`League average: ${ptsMid}pts. Top player is ${pts1-ptsMid}pts above the mean.`,`Small gaps close fast — one good batch can reshape the entire top half.`]);return{h,i:()=>hbar(id,fg.slice(0,6).map(p=>p.name.split(' ')[0]),fg.slice(0,6).map(p=>p.pts))}}
+  ];
+}
+
+function buildCards(){
+  _cid=0;
+  Object.values(Chart.instances||{}).forEach(c=>{try{c.destroy()}catch(e){}});
+  document.getElementById('wc-grid').innerHTML=`<div class="mc mc-r1" style="grid-column:1/-1;text-align:center;padding:40px 28px"><div style="font-size:44px;margin-bottom:14px">&#x26BD;</div><div class="mc-num" style="font-size:22px;margin-bottom:8px">World Cup Metrics — Live from 11 June 2026</div><div class="mc-div" style="max-width:320px;margin:12px auto"></div><div class="mc-line" style="max-width:520px;margin:0 auto;font-size:12px">24 stats auto-populate once the tournament kicks off — top scorers, team form, clean sheets, goal timings, cards, attendance and more. Each refresh shows a new random selection.</div></div>`;
+  const sel=shuffle(plDefs()).slice(0,9);
+  const grid=document.getElementById('pl-grid');
+  grid.innerHTML='';
+  const inits=[];
+  sel.forEach((def,i)=>{const {h,i:init}=def(COLOURS[i%9]);grid.innerHTML+=h;inits.push(init);});
+  requestAnimationFrame(()=>inits.forEach(fn=>fn()));
+}
+
+(function(){
+  const t=new URLSearchParams(window.location.search).get('token')||sessionStorage.getItem('wc2026_token')||'';
+  if(t){sessionStorage.setItem('wc2026_token',t);document.getElementById('back-link').href='index.html?token='+t;}
+})();
+
+buildCards();
+</script>
+</body>
+</html>
