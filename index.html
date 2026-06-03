@@ -114,6 +114,25 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .mc-pval{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:12px}
 .mc-pcnt{font-size:10px;color:var(--blue);font-weight:600}
 @media(max-width:768px){.metric-grid-3x3{grid-template-columns:1fr 1fr}.metric-cell:nth-child(3n){border-right:1px solid var(--border)}.metric-cell:nth-child(2n){border-right:none}.metric-cell:nth-last-child(-n+3){border-bottom:1px solid var(--border)}.metric-cell:nth-last-child(-n+2){border-bottom:none}}
+/* ── New metric cards ── */
+.mc{border-radius:12px;padding:16px 16px 14px;position:relative;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,0.28)}
+.mc-r1{background:linear-gradient(145deg,#7D0C1F 0%,#C4122E 100%)}.mc-r2{background:linear-gradient(145deg,#9B0F25 0%,#D41535 100%)}
+.mc-p1{background:linear-gradient(145deg,#0A1A38 0%,#1C3A6B 100%)}.mc-p2{background:linear-gradient(145deg,#0F2245 0%,#224478 100%)}
+.mc-b1{background:linear-gradient(145deg,#0D3572 0%,#1B5BA8 100%)}.mc-b2{background:linear-gradient(145deg,#114089 0%,#2166B8 100%)}
+.mc-s1{background:linear-gradient(145deg,#0D4A8A 0%,#2874C5 100%)}.mc-s2{background:linear-gradient(145deg,#105299 0%,#3080CC 100%)}
+.mc-title{font-size:10px;font-weight:700;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.mc-chart-wrap{height:90px;position:relative;margin-bottom:10px}
+.mc-num{font-size:24px;font-weight:800;color:#fff;line-height:1;letter-spacing:-0.5px}
+.mc-unit{font-size:12px;font-weight:400;opacity:0.75}
+.mc-div{height:1px;background:rgba(255,255,255,0.2);margin:8px 0}
+.mc-line{font-size:10.5px;line-height:1.55;color:rgba(255,255,255,0.82);padding:1px 0}
+.mc-line+.mc-line{margin-top:2px}.mc-line::before{content:'·  ';opacity:0.55}
+.ins-metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:4px}
+.ins-sl{font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1.5px;margin:18px 0 12px;display:flex;align-items:center;gap:10px}
+.ins-sl .ins-line{flex:1;height:1px;background:#ddd}
+.ins-pill{padding:4px 14px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:0.5px}
+.ins-pill-wc{background:#C4122E;color:#fff}.ins-pill-pl{background:#1B5BA8;color:#fff}
+@media(max-width:700px){.ins-metric-grid{grid-template-columns:1fr}}
 /* INSIGHTS */
 .ins-label{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin:24px 0 12px;display:flex;align-items:center;gap:10px}
 .ins-label::after{content:'';flex:1;height:1px;background:var(--border)}
@@ -217,7 +236,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
     <div class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 03 Jun 2026 16:48</p>
+      <p class="updated">Last updated: 03 Jun 2026 17:04</p>
       <table class="lb-table">
         <thead><tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th></tr></thead>
         <tbody>
@@ -503,239 +522,32 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 <!-- INSIGHTS TAB -->
 <div id="tab-insights" class="tab-section" style="display:none">
 <div style="max-width:1100px;margin:0 auto;padding:24px 16px">
-
-  <!-- Header banner -->
-  <div style="background:linear-gradient(135deg,var(--prussian) 0%,var(--blue) 60%,var(--sky) 100%);border-radius:14px;padding:22px 28px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
-    <div>
-      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;color:#fff">&#x1F50D; Competition Insights</h2>
-      <p style="font-size:12px;color:rgba(255,255,255,0.7);margin-top:4px">9 metrics randomly selected each day &mdash; refreshed every morning</p>
-    </div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <span style="background:rgba(255,255,255,0.15);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;padding:5px 12px;border-radius:20px">0 matches scored</span>
-      <span style="background:rgba(245,208,32,0.2);color:#F5D020;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;padding:5px 12px;border-radius:20px">13 players</span>
-    </div>
+  <div style="background:linear-gradient(135deg,#0F2240 0%,#1C3A6B 60%,#2874C5 100%);border-radius:12px;padding:22px 28px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 6px 24px rgba(0,0,0,0.22)">
+    <div><h2 style="font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.3px;margin:0">Competition Insights</h2><p style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:3px">9 of 24 metrics each section &nbsp;&middot;&nbsp; 13 players &nbsp;&middot;&nbsp; Updated 03 Jun 2026 17:04</p></div>
+    <span style="background:#F5D020;color:#1C3A6B;font-size:10px;font-weight:800;padding:5px 12px;border-radius:20px;white-space:nowrap">Group Stage &middot; 0 scored</span>
   </div>
 
-  <!-- WORLD CUP METRICS CARD -->
-  
-
-  <!-- PREDICTION LEAGUE METRICS CARD -->
-  
-  <div class="metric-section-card" style="margin-top:24px">
-    <div class="msc-header msc-league">
-      <span class="msc-icon">&#x1F3AE;</span>
-      <div>
-        <div class="msc-title">Prediction League Metrics</div>
-        <div class="msc-sub">How the group is predicting &mdash; today's selection of 9 from 18</div>
-      </div>
-    </div>
-    <div class="metric-grid-3x3">
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1B8B4B">
-          <span class="mc-icon">&amp;#x1F680;</span>
-          <span class="mc-title">Most Improved Player</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">Ian</div>
-          <div class="mc-sub">No movement yet</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>Ian Lyons has climbed 0 places — biggest mover this batch</li>
-            
-            <li>Now at rank 1 with 10pts</li>
-            
-            <li>Momentum in prediction leagues is as real as in football — watch the risers closely</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1B8B4B">
-          <span class="mc-icon">&amp;#x1F3AF;</span>
-          <span class="mc-title">Easiest Call</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">62%</div>
-          <div class="mc-sub">Italy vs Belgium</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>62% got Italy vs Belgium right</li>
-            
-            <li>0% even nailed the exact score — strong collective conviction</li>
-            
-            <li>Strong alignment on this fixture suggests it was a form match with a predictable outcome</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1B5BA8">
-          <span class="mc-icon">&amp;#x1F4CA;</span>
-          <span class="mc-title">Prediction Accuracy</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">5%</div>
-          <div class="mc-sub">exact scores | 26% correct results</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>5% of 92 predictions were exact scores (3pts)</li>
-            
-            <li>26% got the correct result (1pt) — overall accuracy 31%</li>
-            
-            <li>68% wrong — the margins between players are tight as a result</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#4E8DD6">
-          <span class="mc-icon">&amp;#x2696;</span>
-          <span class="mc-title">Result Bias</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">29% Home</div>
-          <div class="mc-sub">57% Draw / 14% Away</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>Home wins predicted 29%, draws 57%, away 14%</li>
-            
-            <li>Balanced approach — no strong home bias</li>
-            
-            <li>Collective outcome bias signals whether players follow form or go with gut instinct</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1C3A6B">
-          <span class="mc-icon">&amp;#x1F9E0;</span>
-          <span class="mc-title">Group Think Radar</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">0%</div>
-          <div class="mc-sub">crowd consensus correct</div>
-          <div style="height:90px;margin:8px 0"><canvas id="mc-radar-5"></canvas></div>
-          
-          <ul class="mc-analysis">
-            
-            <li>The crowd was right 0% of the time when there was strong consensus</li>
-            
-            <li>Easiest collective call: Italy vs Belgium — 62% correct</li>
-            
-            <li>Hardest: Mexico vs Canada — only 0% got it right</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#9BA3AF">
-          <span class="mc-icon">&amp;#x26A0;</span>
-          <span class="mc-title">Default Rate</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">38%</div>
-          <div class="mc-sub">35 of 92 defaulted to 5-5</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>35 predictions (38%) were not submitted and defaulted to 5-5 (0 pts)</li>
-            
-            <li>Deadline awareness needed — gaps appearing</li>
-            
-            <li>Each default costs up to 3 points vs an exact score — missed opportunities add up</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1B5BA8">
-          <span class="mc-icon">&amp;#x1F4AF;</span>
-          <span class="mc-title">Goals Distribution</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">5 goals</div>
-          <div class="mc-sub">most commonly predicted total</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>Players most often predicted 5 total goals — expecting open football</li>
-            
-            <li>Average predicted total: 3.8 goals per match</li>
-            
-            <li>76% of predictions expected 3 or more goals</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1C3A6B">
-          <span class="mc-icon">&amp;#x1F3C5;</span>
-          <span class="mc-title">Points Gap: 1st to Last</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">10pts</div>
-          <div class="mc-sub">Ian Lyons leads</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>Gap from 1st (10pts) to last (0pts) is 10 points</li>
-            
-            <li>Gap forming but undecided</li>
-            
-            <li>Ian Lyons is 7pts above average</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1C3A6B">
-          <span class="mc-icon">&amp;#x1F465;</span>
-          <span class="mc-title">Crowd Consensus Score</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">0%</div>
-          <div class="mc-sub">crowd&#39;s top pick was right</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>When the group agreed, they were correct 0% of the time</li>
-            
-            <li>The crowd was caught out more than expected — 100% of consensus picks failed</li>
-            
-            <li>Wisdom of crowds works best in structured markets — football is gloriously unpredictable</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-
-  
-
+<div class="ins-sl"><span class="ins-pill ins-pill-wc">World Cup metrics</span><span class="ins-line"></span><span style="font-size:10px;color:#888">live from 11 June</span></div>
+<div class="ins-metric-grid"><div class="mc mc-r1" style="grid-column:1/-1;text-align:center;padding:36px 24px"><div style="font-size:40px;margin-bottom:12px">&#x26BD;</div><div class="mc-num" style="font-size:20px;margin-bottom:8px">World Cup Metrics — Live from 11 June 2026</div><div class="mc-div" style="margin:12px auto;max-width:300px"></div><div class="mc-line" style="max-width:500px;margin:0 auto;font-size:12px">24 stats auto-populate once the tournament kicks off — top scorers, team form, clean sheets, cards, goal timings, attendance and more.</div></div></div>
+<div class="ins-sl"><span class="ins-line"></span><span class="ins-pill ins-pill-pl">Prediction League metrics</span><span class="ins-line"></span><span style="font-size:10px;color:#888">9 of 24 &middot; refreshed daily</span></div>
+<div class="ins-metric-grid"><div class="mc mc-p1"><div class="mc-title">Accuracy Leaderboard</div><div class="mc-chart-wrap"><canvas id="ins_pl1"></canvas></div><div class="mc-num">83% <span class="mc-unit">top accuracy</span></div><div class="mc-div"></div><div class="mc-line">Ian leads on accuracy — 83% of picks earn at least 1 point.</div><div class="mc-line">League average: 23%. Top and bottom separated by 83pp.</div><div class="mc-line">Nilesh in last place at 0%. Something has to change.</div></div><div class="mc mc-b1"><div class="mc-title">Recent Form Guide</div><div class="mc-chart-wrap"><canvas id="ins_pl2"></canvas></div><div class="mc-num">1 <span class="mc-unit">streak (Ian)</span></div><div class="mc-div"></div><div class="mc-line">Ian is on a 1-game scoring streak — picking up points in every recent prediction.</div><div class="mc-line">Ian leads with 10pts total. The trajectory chart tells the story.</div><div class="mc-line">Gap to 2nd is 4pts — this leaderboard is far from settled.</div></div><div class="mc mc-s1"><div class="mc-title">Most Predicted Scores</div><div class="mc-chart-wrap"><canvas id="ins_pl3"></canvas></div><div class="mc-num">5-5 <span class="mc-unit">x35 picks</span></div><div class="mc-div"></div><div class="mc-line">5-5 is the crowd favourite — chosen 35 times across all predictions.</div><div class="mc-line">Runner-up: 1-1 (12x). The two most popular picks diverge heavily.</div><div class="mc-line">8 unique scorelines predicted. The crowd has no consensus.</div></div><div class="mc mc-r2"><div class="mc-title">Group Think Radar</div><div class="mc-chart-wrap"><canvas id="ins_pl4"></canvas></div><div class="mc-num">62% <span class="mc-unit">consensus</span></div><div class="mc-div"></div><div class="mc-line">62% of players got Italy v Belgium right — highest-consensus fixture.</div><div class="mc-line">When the crowd agrees this strongly they are right about 58% of the time.</div><div class="mc-line">Wisdom of crowds works in markets. Football is gloriously unpredictable.</div></div><div class="mc mc-p2"><div class="mc-title">Perfect Score Count</div><div class="mc-chart-wrap"><canvas id="ins_pl5"></canvas></div><div class="mc-num">5 <span class="mc-unit">exact hits</span></div><div class="mc-div"></div><div class="mc-line">5 perfect scores — at 3pts each that is 15pts of pure precision on the board.</div><div class="mc-line">Ian leads with 2 exact scores. Genius or educated guesser? Both.</div><div class="mc-line">~3% random probability per pick. Anyone above that average is genuinely good.</div></div><div class="mc mc-b2"><div class="mc-title">Near-Miss Index</div><div class="mc-chart-wrap"><canvas id="ins_pl6"></canvas></div><div class="mc-num">13 <span class="mc-unit">result-only hits</span></div><div class="mc-div"></div><div class="mc-line">13 predictions earned 1pt — right result, wrong score. So close to the full 3.</div><div class="mc-line">Ian leads with 3 — calls the result every time, never quite the margin.</div><div class="mc-line">If near-misses earned half a point extra, the leaderboard would look completely different.</div></div><div class="mc mc-s2"><div class="mc-title">Risk-Taking Index</div><div class="mc-chart-wrap"><canvas id="ins_pl7"></canvas></div><div class="mc-num">1.5 <span class="mc-unit">pts/game (Ian)</span></div><div class="mc-div"></div><div class="mc-line">Ian earns the most points per game — 1.5 per prediction on average.</div><div class="mc-line">High scorers per game win big when they land — but variance bites hard.</div><div class="mc-line">Most consistent: Nilesh at 0.0 pts/game. Boring? Maybe. Reliable? Absolutely.</div></div><div class="mc mc-r1"><div class="mc-title">Momentum Tracker</div><div class="mc-chart-wrap"><canvas id="ins_pl8"></canvas></div><div class="mc-num">+9 <span class="mc-unit">pts this batch (Ian)</span></div><div class="mc-div"></div><div class="mc-line">Ian is the tournament form player — 9 points from the last batch.</div><div class="mc-line">Their trajectory shows a sharp late-stage acceleration. Timing is everything.</div><div class="mc-line">Gap to 2nd is 4pts — still reachable, still dangerous.</div></div><div class="mc mc-p1"><div class="mc-title">Upset Radar</div><div class="mc-chart-wrap"><canvas id="ins_pl9"></canvas></div><div class="mc-num">0% <span class="mc-unit">correct (USA v Honduras)</span></div><div class="mc-div"></div><div class="mc-line">USA v Honduras was the hardest call — only 0% of players got it right.</div><div class="mc-line">0% of picks were exact scores. The crowd had no idea what scoreline to expect.</div><div class="mc-line">High prediction spread + low consensus = classic ingredients for a shock result.</div></div></div>
+<script id="ins-chart-init" type="text/javascript">
+document.addEventListener("DOMContentLoaded",function(){
+  window.buildInsightCharts = function(){
+    var W='rgba(255,255,255,0.85)',WD='rgba(255,255,255,0.25)';
+    function cbase(e){return{responsive:true,maintainAspectRatio:false,animation:{duration:600},plugins:{legend:{display:false},tooltip:{enabled:false}},...e}}
+    new Chart(document.getElementById('ins_pl1'),{type:'bar',data:{labels:["Ian", "Alison", "Victor", "Lucie", "Jade"],datasets:[{data:[83, 67, 50, 33, 33],backgroundColor:["#F5D020", "rgba(255,255,255,0.53)", "rgba(255,255,255,0.41)", "rgba(255,255,255,0.29)", "rgba(255,255,255,0.20)"],borderRadius:4,barThickness:12}]},options:cbase({indexAxis:'y',scales:{x:{display:false},y:{display:true,ticks:{color:W,font:{size:9}},grid:{display:false}}}})});
+    new Chart(document.getElementById('ins_pl2'),{type:'line',data:{labels:["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"],datasets:[{label:"Ian",data:[0, 0, 1, 2, 5, 8, 9, 9, 10],borderColor:'#F5D020',backgroundColor:'rgba(245,208,32,0.12)',tension:0.4,fill:true,pointRadius:3,pointBackgroundColor:'#F5D020'},{label:"Alison",data:[0, 0, 0, 3, 4, 4, 5, 5, 6],borderColor:'rgba(255,255,255,0.75)',backgroundColor:false,tension:0.4,fill:false,pointRadius:3,pointBackgroundColor:'rgba(255,255,255,0.75)'},{label:"Lucie",data:[1, 1, 4, 4, 5, 5],borderColor:'rgba(255,255,255,0.5)',backgroundColor:false,tension:0.4,fill:false,pointRadius:3,pointBackgroundColor:'rgba(255,255,255,0.5)'}]},options:cbase({scales:{x:{ticks:{color:W,font:{size:8}},grid:{color:WD}},y:{ticks:{color:W,font:{size:8}},grid:{color:WD}}}})});
+    new Chart(document.getElementById('ins_pl3'),{type:'bar',data:{labels:["5-5", "1-1", "2-1", "1-2", "2-2", "1-0"],datasets:[{data:[35, 12, 10, 5, 5, 4],backgroundColor:["#F5D020", "rgba(255,255,255,0.53)", "rgba(255,255,255,0.41)", "rgba(255,255,255,0.29)", "rgba(255,255,255,0.20)", "rgba(255,255,255,0.20)"],borderRadius:4,barThickness:13}]},options:cbase({scales:{x:{display:true,ticks:{color:W,font:{size:9}},grid:{display:false}},y:{display:false}}})});
+    new Chart(document.getElementById('ins_pl4'),{type:'doughnut',data:{labels:['Correct','Other'],datasets:[{data:[62,38],backgroundColor:['#F5D020','rgba(255,255,255,0.25)'],borderWidth:0}]},options:cbase({cutout:'60%',scales:{x:{display:false},y:{display:false}}})});
+    new Chart(document.getElementById('ins_pl5'),{type:'bar',data:{labels:["Ian", "Alison", "Lucie", "Victor", "Nick", "Dan"],datasets:[{data:[2, 1, 1, 1, 0, 0],backgroundColor:["#F5D020", "rgba(255,255,255,0.53)", "rgba(255,255,255,0.41)", "rgba(255,255,255,0.29)", "rgba(255,255,255,0.20)", "rgba(255,255,255,0.20)"],borderRadius:4,barThickness:13}]},options:cbase({scales:{x:{display:true,ticks:{color:W,font:{size:9}},grid:{display:false}},y:{display:false}}})});
+    new Chart(document.getElementById('ins_pl6'),{type:'bar',data:{labels:["Ian", "Alison", "Victor", "Jade", "Lucie"],datasets:[{data:[3, 3, 2, 2, 1],backgroundColor:["#F5D020", "rgba(255,255,255,0.53)", "rgba(255,255,255,0.41)", "rgba(255,255,255,0.29)", "rgba(255,255,255,0.20)"],borderRadius:4,barThickness:12}]},options:cbase({indexAxis:'y',scales:{x:{display:false},y:{display:true,ticks:{color:W,font:{size:9}},grid:{display:false}}}})});
+    new Chart(document.getElementById('ins_pl7'),{type:'bar',data:{labels:["Ian", "Alison", "Lucie", "Victor", "Nigel"],datasets:[{data:[1.5, 1.0, 0.8, 0.8, 0.4],backgroundColor:["#F5D020", "rgba(255,255,255,0.53)", "rgba(255,255,255,0.41)", "rgba(255,255,255,0.29)", "rgba(255,255,255,0.20)"],borderRadius:4,barThickness:12}]},options:cbase({indexAxis:'y',scales:{x:{display:false},y:{display:true,ticks:{color:W,font:{size:9}},grid:{display:false}}}})});
+    new Chart(document.getElementById('ins_pl8'),{type:'line',data:{labels:["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"],datasets:[{label:"Ian",data:[0, 0, 1, 2, 5, 8, 9, 9, 10],borderColor:'#F5D020',backgroundColor:'rgba(245,208,32,0.1)',tension:0.4,fill:true,pointRadius:3,pointBackgroundColor:'#F5D020'},{label:"Alison",data:[0, 0, 0, 3, 4, 4, 5, 5, 6],borderColor:'rgba(255,255,255,0.65)',backgroundColor:false,tension:0.4,fill:false,pointRadius:3,pointBackgroundColor:'rgba(255,255,255,0.65)'}]},options:cbase({scales:{x:{ticks:{color:W,font:{size:8}},grid:{color:WD}},y:{ticks:{color:W,font:{size:8}},grid:{color:WD}}}})});
+    new Chart(document.getElementById('ins_pl9'),{type:'doughnut',data:{labels:['Correct','Other'],datasets:[{data:[0,100],backgroundColor:['#F5D020','rgba(255,255,255,0.25)'],borderWidth:0}]},options:cbase({cutout:'60%',scales:{x:{display:false},y:{display:false}}})});
+  };
+});
+</script>
 </div>
 </div><!-- /tab-insights -->
 
@@ -752,6 +564,7 @@ function switchTab(tabId,el){
   document.getElementById(tabId).style.display='block';
   if(el)el.classList.add('active');
   if(tabId==='tab-insights'&&!window._chartsBuilt){buildInsightCharts();window._chartsBuilt=true;}
+
   return false;
 }
 
