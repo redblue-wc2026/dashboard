@@ -1,4 +1,42 @@
-<!DOCTYPE html>
+
+  // PL metric cards — 03 Jun 2026
+  new Chart(document.getElementById('mc_chart_1'),{type:'bar',
+    data:{labels:["Ian", "Alison", "Lucie", "Victor", "Nick", "Dan"],datasets:[{data:[10, 6, 5, 5, 2, 2],backgroundColor:["#F5D020","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+      plugins:{legend:{display:false},tooltip:{enabled:false}},indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:"rgba(255,255,255,0.85)",font:{size:8}},grid:{display:false}}}}});
+  new Chart(document.getElementById('mc_chart_2'),{type:'bar',
+    data:{labels:["Ian", "Lucie", "Victor", "Dan", "Eric"],datasets:[{data:[5, 2, 2, 1, 1],backgroundColor:["#F5D020","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+      plugins:{legend:{display:false},tooltip:{enabled:false}},indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:"rgba(255,255,255,0.85)",font:{size:8}},grid:{display:false}}}}});
+  new Chart(document.getElementById('mc_chart_3'),{type:'bar',
+    data:{labels:["Ian", "Alison", "Lucie", "Victor", "Nick"],datasets:[{data:[67, 60, 50, 50, 40],backgroundColor:["#F5D020","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+      plugins:{legend:{display:false},tooltip:{enabled:false}},indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:"rgba(255,255,255,0.85)",font:{size:8}},grid:{display:false}}}}});
+  new Chart(document.getElementById('mc_chart_4'),{type:'doughnut',
+    data:{labels:['Correct','Other'],datasets:[{data:[8,92],backgroundColor:['#F5D020','rgba(255,255,255,0.2)'],borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+      plugins:{legend:{display:false},tooltip:{enabled:false}},cutout:'60%'}});
+  new Chart(document.getElementById('mc_chart_5'),{type:'doughnut',
+    data:{labels:['Correct','Other'],datasets:[{data:[31,69],backgroundColor:['#F5D020','rgba(255,255,255,0.2)'],borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+      plugins:{legend:{display:false},tooltip:{enabled:false}},cutout:'60%'}});
+  new Chart(document.getElementById('mc_chart_6'),{type:'bar',
+    data:{labels:["Ian", "Alison", "Lucie", "Victor", "Dan"],datasets:[{data:[1, 1, 0, 0, 0],backgroundColor:["#F5D020","#F5D020","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+      plugins:{legend:{display:false},tooltip:{enabled:false}},scales:{x:{display:true,ticks:{color:"rgba(255,255,255,0.85)",font:{size:8}},grid:{display:false}},y:{display:false}}}});
+  new Chart(document.getElementById('mc_chart_7'),{type:'bar',
+    data:{labels:["Alison", "Ian", "Lucie", "Victor", "Nigel"],datasets:[{data:[3, 2, 2, 1, 1],backgroundColor:["#F5D020","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+      plugins:{legend:{display:false},tooltip:{enabled:false}},indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:"rgba(255,255,255,0.85)",font:{size:8}},grid:{display:false}}}}});
+  new Chart(document.getElementById('mc_chart_8'),{type:'bar',
+    data:{labels:["Nigel", "Ian", "Dan", "Alison", "Lucie"],datasets:[{data:[2.4, 1.8, 1.6, 1.2, 1.0],backgroundColor:["#F5D020","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+      plugins:{legend:{display:false},tooltip:{enabled:false}},indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:"rgba(255,255,255,0.85)",font:{size:8}},grid:{display:false}}}}});
+  new Chart(document.getElementById('mc_chart_9'),{type:'bar',
+    data:{labels:["Ian", "Alison", "Lucie", "Victor", "Nick"],datasets:[{data:[1.7, 1.2, 1.0, 1.0, 0.4],backgroundColor:["#F5D020","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)","rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+      plugins:{legend:{display:false},tooltip:{enabled:false}},indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:"rgba(255,255,255,0.85)",font:{size:8}},grid:{display:false}}}}});
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -169,6 +207,30 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .fun-fact-card p{font-size:12px;color:rgba(255,255,255,0.8);line-height:1.6}
 .ff-hl{color:#F5D020;font-weight:700}
 @media(max-width:700px){.ins-grid-trio{grid-template-columns:1fr}.ins-grid-wide{grid-template-columns:1fr}}
+
+  .mc{border-radius:12px;padding:16px 16px 14px;position:relative;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,0.26)}
+  .mc-r1{background:linear-gradient(145deg,#7D0C1F 0%,#C4122E 100%)}
+  .mc-r2{background:linear-gradient(145deg,#9B0F25 0%,#D41535 100%)}
+  .mc-p1{background:linear-gradient(145deg,#0A1A38 0%,#1C3A6B 100%)}
+  .mc-p2{background:linear-gradient(145deg,#0F2245 0%,#224478 100%)}
+  .mc-b1{background:linear-gradient(145deg,#0D3572 0%,#1B5BA8 100%)}
+  .mc-b2{background:linear-gradient(145deg,#114089 0%,#2166B8 100%)}
+  .mc-s1{background:linear-gradient(145deg,#0D4A8A 0%,#2874C5 100%)}
+  .mc-s2{background:linear-gradient(145deg,#105299 0%,#3080CC 100%)}
+  .mc-title{font-size:10px;font-weight:700;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-family:'Plus Jakarta Sans',sans-serif}
+  .chart-wrap{height:90px;position:relative;margin-bottom:10px}
+  .mc-num{font-size:24px;font-weight:800;color:#fff;line-height:1;letter-spacing:-0.5px;font-family:'Plus Jakarta Sans',sans-serif}
+  .mc-div{height:1px;background:rgba(255,255,255,0.2);margin:8px 0}
+  .mc-line{font-size:10.5px;line-height:1.55;color:rgba(255,255,255,0.82);padding:1px 0}
+  .mc-line+.mc-line{margin-top:2px}
+  .mc-line::before{content:'·  ';opacity:0.55}
+  .metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:8px}
+  .section-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin:24px 0 14px;display:flex;align-items:center;gap:12px}
+  .sl-line{flex:1;height:1px;background:#ddd}
+  .pill-wc{background:#C4122E;color:#fff;font-size:10px;font-weight:800;padding:4px 14px;border-radius:20px;letter-spacing:0.5px}
+  .pill-pl{background:#1B5BA8;color:#fff;font-size:10px;font-weight:800;padding:4px 14px;border-radius:20px;letter-spacing:0.5px}
+  @media(max-width:700px){.metric-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -502,241 +564,21 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
 <!-- INSIGHTS TAB -->
 <div id="tab-insights" class="tab-section" style="display:none">
-<div style="max-width:1100px;margin:0 auto;padding:24px 16px">
-
-  <!-- Header banner -->
-  <div style="background:linear-gradient(135deg,var(--prussian) 0%,var(--blue) 60%,var(--sky) 100%);border-radius:14px;padding:22px 28px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
-    <div>
-      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;color:#fff">&#x1F50D; Competition Insights</h2>
-      <p style="font-size:12px;color:rgba(255,255,255,0.7);margin-top:4px">9 metrics randomly selected each day &mdash; refreshed every morning</p>
-    </div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <span style="background:rgba(255,255,255,0.15);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;padding:5px 12px;border-radius:20px">0 matches scored</span>
-      <span style="background:rgba(245,208,32,0.2);color:#F5D020;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;padding:5px 12px;border-radius:20px">13 players</span>
-    </div>
+  <div style="background:linear-gradient(135deg,#1C3A6B 0%,#1B5BA8 60%,#4E8DD6 100%);border-radius:16px;padding:32px 36px;margin-bottom:28px;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.18)">
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:26px;color:#fff;margin:0 0 6px">&#x1F50D; Competition Insights</h2>
+    <p style="color:rgba(255,255,255,0.72);font-size:13px;margin:0">13 players &middot; 5 results scored &middot; Auto-refreshed daily after matches</p>
+    <span style="display:inline-block;background:#F5D020;color:#1C3A6B;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;padding:4px 12px;border-radius:20px;margin-top:10px">&#x1F504; Updated 03 Jun 2026</span>
   </div>
-
-  <!-- WORLD CUP METRICS CARD -->
-  
-
-  <!-- PREDICTION LEAGUE METRICS CARD -->
-  
-  <div class="metric-section-card" style="margin-top:24px">
-    <div class="msc-header msc-league">
-      <span class="msc-icon">&#x1F3AE;</span>
-      <div>
-        <div class="msc-title">Prediction League Metrics</div>
-        <div class="msc-sub">How the group is predicting &mdash; today's selection of 9 from 18</div>
-      </div>
-    </div>
-    <div class="metric-grid-3x3">
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1B8B4B">
-          <span class="mc-icon">&amp;#x1F680;</span>
-          <span class="mc-title">Most Improved Player</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">Ian</div>
-          <div class="mc-sub">No movement yet</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>Ian Lyons has climbed 0 places — biggest mover this batch</li>
-            
-            <li>Now at rank 1 with 10pts</li>
-            
-            <li>Momentum in prediction leagues is as real as in football — watch the risers closely</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1B8B4B">
-          <span class="mc-icon">&amp;#x1F3AF;</span>
-          <span class="mc-title">Easiest Call</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">62%</div>
-          <div class="mc-sub">Italy vs Belgium</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>62% got Italy vs Belgium right</li>
-            
-            <li>0% even nailed the exact score — strong collective conviction</li>
-            
-            <li>Strong alignment on this fixture suggests it was a form match with a predictable outcome</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1B5BA8">
-          <span class="mc-icon">&amp;#x1F4CA;</span>
-          <span class="mc-title">Prediction Accuracy</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">5%</div>
-          <div class="mc-sub">exact scores | 26% correct results</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>5% of 92 predictions were exact scores (3pts)</li>
-            
-            <li>26% got the correct result (1pt) — overall accuracy 31%</li>
-            
-            <li>68% wrong — the margins between players are tight as a result</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#4E8DD6">
-          <span class="mc-icon">&amp;#x2696;</span>
-          <span class="mc-title">Result Bias</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">29% Home</div>
-          <div class="mc-sub">57% Draw / 14% Away</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>Home wins predicted 29%, draws 57%, away 14%</li>
-            
-            <li>Balanced approach — no strong home bias</li>
-            
-            <li>Collective outcome bias signals whether players follow form or go with gut instinct</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1C3A6B">
-          <span class="mc-icon">&amp;#x1F9E0;</span>
-          <span class="mc-title">Group Think Radar</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">0%</div>
-          <div class="mc-sub">crowd consensus correct</div>
-          <div style="height:90px;margin:8px 0"><canvas id="mc-radar-5"></canvas></div>
-          
-          <ul class="mc-analysis">
-            
-            <li>The crowd was right 0% of the time when there was strong consensus</li>
-            
-            <li>Easiest collective call: Italy vs Belgium — 62% correct</li>
-            
-            <li>Hardest: Mexico vs Canada — only 0% got it right</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#9BA3AF">
-          <span class="mc-icon">&amp;#x26A0;</span>
-          <span class="mc-title">Default Rate</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">38%</div>
-          <div class="mc-sub">35 of 92 defaulted to 5-5</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>35 predictions (38%) were not submitted and defaulted to 5-5 (0 pts)</li>
-            
-            <li>Deadline awareness needed — gaps appearing</li>
-            
-            <li>Each default costs up to 3 points vs an exact score — missed opportunities add up</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1B5BA8">
-          <span class="mc-icon">&amp;#x1F4AF;</span>
-          <span class="mc-title">Goals Distribution</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">5 goals</div>
-          <div class="mc-sub">most commonly predicted total</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>Players most often predicted 5 total goals — expecting open football</li>
-            
-            <li>Average predicted total: 3.8 goals per match</li>
-            
-            <li>76% of predictions expected 3 or more goals</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1C3A6B">
-          <span class="mc-icon">&amp;#x1F3C5;</span>
-          <span class="mc-title">Points Gap: 1st to Last</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">10pts</div>
-          <div class="mc-sub">Ian Lyons leads</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>Gap from 1st (10pts) to last (0pts) is 10 points</li>
-            
-            <li>Gap forming but undecided</li>
-            
-            <li>Ian Lyons is 7pts above average</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1C3A6B">
-          <span class="mc-icon">&amp;#x1F465;</span>
-          <span class="mc-title">Crowd Consensus Score</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">0%</div>
-          <div class="mc-sub">crowd&#39;s top pick was right</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>When the group agreed, they were correct 0% of the time</li>
-            
-            <li>The crowd was caught out more than expected — 100% of consensus picks failed</li>
-            
-            <li>Wisdom of crowds works best in structured markets — football is gloriously unpredictable</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-    </div>
+  <div class="section-label"><span class="pill-wc">World Cup Metrics</span><span class="sl-line"></span><span style="font-size:10px;color:#aaa;font-weight:400;letter-spacing:0;text-transform:none">&#x1F504; Refreshed daily after matches</span></div>
+  <div class="metric-grid"><div style="background:linear-gradient(135deg,#7D0C1F,#C4122E);border-radius:12px;padding:32px;text-align:center;color:#fff;grid-column:1/-1;box-shadow:0 8px 28px rgba(0,0,0,0.26)">
+  <div style="font-size:36px;margin-bottom:12px">&#x26BD;</div>
+  <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;margin-bottom:8px">World Cup Metrics — Coming 11 June 2026</div>
+  <div style="font-size:13px;color:rgba(255,255,255,0.75);max-width:480px;margin:0 auto;line-height:1.6">
+    WC metrics populate automatically once the tournament kicks off and the scoring pipeline runs. 24 live stats — goals, upsets, group table form and more.
   </div>
-  
-
-  
-
-</div>
+</div></div>
+  <div class="section-label"><span class="sl-line"></span><span class="pill-pl">Prediction League Metrics</span><span class="sl-line"></span><span style="font-size:10px;color:#aaa;font-weight:400;letter-spacing:0;text-transform:none">&#x1F504; Refreshed daily</span></div>
+  <div class="metric-grid"><div class="mc mc-r1"><div class="mc-title">Total Points Leaderboard</div><div class="chart-wrap"><canvas id="mc_chart_1"></canvas></div><div class="mc-num">10pts</div><div class="mc-div"></div><div class="mc-line">Ian leads on 10pts — 4 clear of Alison in 2nd.</div><div class="mc-line">13 players, 5 results scored across test batches.</div><div class="mc-line">Nilesh yet to open his account — time is ticking.</div></div><div class="mc mc-p1"><div class="mc-title">Overnight Form Guide</div><div class="chart-wrap"><canvas id="mc_chart_2"></canvas></div><div class="mc-num">+5pts</div><div class="mc-div"></div><div class="mc-line">Ian earned 5pts overnight — biggest haul from June 2 batch.</div><div class="mc-line">Lucie and Victor both grabbed 2pts to close the gap.</div><div class="mc-line">6 players blanked overnight. Consistency is key.</div></div><div class="mc mc-b1"><div class="mc-title">Prediction Accuracy</div><div class="chart-wrap"><canvas id="mc_chart_3"></canvas></div><div class="mc-num">67%</div><div class="mc-div"></div><div class="mc-line">Ian converts 67% of predictions into points — highest accuracy.</div><div class="mc-line">League average ~46%. Anything above that is genuinely good.</div><div class="mc-line">Nilesh at 0% — hasn't scored yet from any prediction.</div></div><div class="mc mc-s1"><div class="mc-title">Biggest Upset</div><div class="chart-wrap"><canvas id="mc_chart_4"></canvas></div><div class="mc-num">8% correct</div><div class="mc-div"></div><div class="mc-line">Only 8% called Morocco losing to Australia — biggest shock.</div><div class="mc-line">Australia's win was the league's first major banana skin.</div><div class="mc-line">Upset score of 0.92 — almost nobody saw it coming.</div></div><div class="mc mc-r2"><div class="mc-title">Easiest Call</div><div class="chart-wrap"><canvas id="mc_chart_5"></canvas></div><div class="mc-num">31%</div><div class="mc-div"></div><div class="mc-line">31% correctly called Germany 2–2 Spain — most predictable.</div><div class="mc-line">No fixture yet hit 50% — the test batch has been tough.</div><div class="mc-line">When a third agree on the right outcome it still counts as chaos.</div></div><div class="mc mc-p2"><div class="mc-title">Perfect Score Count</div><div class="chart-wrap"><canvas id="mc_chart_6"></canvas></div><div class="mc-num">2 exact scores</div><div class="mc-div"></div><div class="mc-line">2 perfect scores so far — Ian and Alison each with 1.</div><div class="mc-line">At 3pts each that's 6 points requiring real precision.</div><div class="mc-line">~3% probability of a random exact score. Both are above that.</div></div><div class="mc mc-b2"><div class="mc-title">Near-Miss Index</div><div class="chart-wrap"><canvas id="mc_chart_7"></canvas></div><div class="mc-num">8 predictions</div><div class="mc-div"></div><div class="mc-line">8 predictions were just one goal away from a perfect score.</div><div class="mc-line">Alison leads the near-miss table with 3 — so close, so often.</div><div class="mc-line">If near-misses were half a point the leaderboard would differ.</div></div><div class="mc mc-s2"><div class="mc-title">Risk-Taking Index</div><div class="chart-wrap"><canvas id="mc_chart_8"></canvas></div><div class="mc-num">2.4 goals</div><div class="mc-div"></div><div class="mc-line">Nigel predicts the biggest winning margins — 2.4 goal avg.</div><div class="mc-line">Ian bets on closer games at 1.8 avg margin.</div><div class="mc-line">Lucie is the most cautious — low margins, steady points.</div></div><div class="mc mc-r1"><div class="mc-title">Avg Points per Fixture</div><div class="chart-wrap"><canvas id="mc_chart_9"></canvas></div><div class="mc-num">1.7pts</div><div class="mc-div"></div><div class="mc-line">Ian earns 1.7pts per prediction — the best ratio in the league.</div><div class="mc-line">League average: 0.9pts per fixture. Efficiency matters.</div><div class="mc-line">The gap between top and bottom will widen fast over 64 games.</div></div></div>
 </div><!-- /tab-insights -->
 
 <div class="footer">
@@ -755,22 +597,4 @@ function switchTab(tabId,el){
   return false;
 }
 
-const INS = {"crowd_reality": [{"actual": "2-1", "crowd": "5-5", "ok": false, "pct": 100, "teams": "Mexico vs Canada"}, {"actual": "0-1", "crowd": "2-1", "ok": false, "pct": 60, "teams": "USA vs Honduras"}, {"actual": "3-2", "crowd": "5-5", "ok": false, "pct": 33, "teams": "Argentina vs Brazil"}, {"actual": "3-0", "crowd": "5-5", "ok": false, "pct": 17, "teams": "England vs France"}, {"actual": "2-2", "crowd": "5-5", "ok": false, "pct": 23, "teams": "Germany vs Spain"}, {"actual": "1-2", "crowd": "1-1", "ok": false, "pct": 38, "teams": "Portugal vs Netherlands"}, {"actual": "2-0", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Japan vs South Korea"}, {"actual": "1-1", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Italy vs Belgium"}, {"actual": "0-2", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Morocco vs Australia"}], "easiest_match": "Italy vs Belgium", "easiest_pct": 62, "exact_pct": 5, "form_guide": [{"batch_pts": 9, "cr": 0, "delta": 0, "form": ["result", "exact", "exact", "result", "wrong", "result"], "gd": 0, "name": "Ian Lyons", "pts": 10, "rank": 1}, {"batch_pts": 6, "cr": 0, "delta": 0, "form": ["exact", "result", "wrong", "result", "wrong", "result"], "gd": 0, "name": "Alison Thrower", "pts": 6, "rank": 2}, {"batch_pts": 5, "cr": 0, "delta": -1, "form": ["result", "wrong", "exact", "miss", "miss", "miss"], "gd": 0, "name": "Lucie Usher", "pts": 5, "rank": 3}, {"batch_pts": 5, "cr": 0, "delta": -1, "form": ["wrong", "wrong", "result", "exact", "result", "wrong"], "gd": 0, "name": "Victor Odunaiya", "pts": 5, "rank": 3}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["miss", "miss", "miss", "miss", "miss", "miss"], "gd": 0, "name": "Nick Philpot", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["wrong", "miss", "miss", "miss", "miss", "miss"], "gd": 0, "name": "Dan", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["result", "result", "wrong", "wrong", "wrong", "wrong"], "gd": 0, "name": "Jade Drummond-Pearson", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["result", "wrong", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Eric Ayoola", "pts": 2, "rank": 5}, {"batch_pts": 2, "cr": 0, "delta": 0, "form": ["miss", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Nigel Croucher", "pts": 2, "rank": 5}, {"batch_pts": 1, "cr": 0, "delta": 0, "form": ["wrong", "wrong", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Andrew Adams", "pts": 1, "rank": 10}, {"batch_pts": 1, "cr": 0, "delta": 0, "form": ["result", "wrong", "wrong", "wrong", "wrong", "wrong"], "gd": 0, "name": "Edmond Asamoah-Twum", "pts": 1, "rank": 10}, {"batch_pts": 1, "cr": 0, "delta": 0, "form": ["miss", "wrong", "wrong", "miss", "miss", "miss"], "gd": 0, "name": "Oladoyin Joseph", "pts": 1, "rank": 10}, {"batch_pts": 0, "cr": 0, "delta": 0, "form": ["wrong", "wrong", "wrong", "wrong", "wrong", "wrong"], "gd": 0, "name": "Nilesh Parmar", "pts": 0, "rank": 13}], "goals_histogram": [0, 7, 15, 17, 8, 45], "hardest_match": "Mexico vs Canada", "hardest_pct": 0, "match_labels": ["MEX v CAN", "USA v HON", "ARG v BRA", "ENG v FRA", "GER v SPA", "POR v NET", "JAP v SOU", "ITA v BEL", "MOR v AUS"], "match_stats": [{"away_team": "Canada", "exact_pct": 0, "fixture_id": "T001", "home_team": "Mexico", "label": "MEX v CAN", "n_preds": 4, "result_pct": 0}, {"away_team": "Honduras", "exact_pct": 0, "fixture_id": "T002", "home_team": "USA", "label": "USA v HON", "n_preds": 5, "result_pct": 0}, {"away_team": "Brazil", "exact_pct": 0, "fixture_id": "T003", "home_team": "Argentina", "label": "ARG v BRA", "n_preds": 6, "result_pct": 17}, {"away_team": "France", "exact_pct": 8, "fixture_id": "T004", "home_team": "England", "label": "ENG v FRA", "n_preds": 12, "result_pct": 42}, {"away_team": "Spain", "exact_pct": 8, "fixture_id": "T005", "home_team": "Germany", "label": "GER v SPA", "n_preds": 13, "result_pct": 38}, {"away_team": "Netherlands", "exact_pct": 15, "fixture_id": "T006", "home_team": "Portugal", "label": "POR v NET", "n_preds": 13, "result_pct": 8}, {"away_team": "South Korea", "exact_pct": 8, "fixture_id": "T007", "home_team": "Japan", "label": "JAP v SOU", "n_preds": 13, "result_pct": 15}, {"away_team": "Belgium", "exact_pct": 0, "fixture_id": "T008", "home_team": "Italy", "label": "ITA v BEL", "n_preds": 13, "result_pct": 62}, {"away_team": "Australia", "exact_pct": 0, "fixture_id": "T009", "home_team": "Morocco", "label": "MOR v AUS", "n_preds": 13, "result_pct": 15}], "n_exact": 5, "n_result": 24, "n_wrong": 63, "result_bias": {"act_away": 33, "act_draw": 22, "act_home": 44, "pred_away": 14, "pred_draw": 57, "pred_home": 29}, "result_pct": 26, "top_scores": [{"n": 35, "v": "5-5"}, {"n": 12, "v": "1-1"}, {"n": 10, "v": "2-1"}, {"n": 5, "v": "1-2"}, {"n": 5, "v": "2-2"}, {"n": 4, "v": "1-0"}, {"n": 3, "v": "0-1"}, {"n": 3, "v": "3-2"}], "total_predictions": 92, "traj_labels": ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"], "trajectory": [{"data": [0, 0, 1, 2, 5, 8, 9, 9, 10], "name": "Ian Lyons"}, {"data": [0, 0, 0, 3, 4, 4, 5, 5, 6], "name": "Alison Thrower"}, {"data": [1, 1, 4, 4, 5, 5], "name": "Lucie Usher"}], "upset_favourite": "Canada", "upset_pct": 100, "upset_result": "Mexico won 2-1", "wrong_pct": 69};
-const C={blue:'#1B5BA8',sky:'#4E8DD6',red:'#C4122E',green:'#1B8B4B',gold:'#F5D020',muted:'#9BA3AF',surface:'#F7F8FA',border:'#E0E2E8',orange:'#E07B1A',purple:'#7B3FA0'};
-
-function buildInsightCharts(){
-  if(!INS||!INS.match_stats)return;
-  if(INS.exact_pct!==undefined){document.getElementById('ins-exact-pct').textContent=INS.exact_pct+'%';document.getElementById('ins-result-pct').textContent=INS.result_pct+'%';document.getElementById('ins-wrong-pct').textContent=INS.wrong_pct+'%';}
-  const sp=document.getElementById('scorePills');
-  (INS.top_scores||[]).forEach(s=>{sp.innerHTML+=`<div class="score-pill-i"><span class="spi-val">${s.v}</span><span class="spi-cnt">${s.n}&times;</span></div>`;});
-  if(INS.top_scores&&INS.top_scores[0])document.getElementById('top-score-note').innerHTML=`&#x26A0; <strong>${INS.top_scores[0].v}</strong> was the most popular pick.`;
-  const fg=document.getElementById('formGuide');
-  (INS.form_guide||[]).forEach(p=>{
-    const dots=(p.form||[]).map(f=>{const cls=f==='exact'?'dot-exact':f==='result'?'dot-result':f==='miss'?'dot-miss':'dot-wrong';const l=f==='exact'?'3':f==='result'?'1':f==='miss'?'D':'0';return`<div class="fdot ${cls}">${l}</div>`;}).join('');
-    fg.innerHTML+=`<div class="form-row-i"><div class="frn">${p.name}</div><div class="fdots">${dots}</div><div class="frpts">${p.batch_pts}pts</div></div>`;
-  });
-  const mr=document.getElementById('moverRows');
-  (INS.form_guide||[]).forEach(p=>{
-    const arrow=p.delta>0?`<span class="mv-delta d-up">&#x25B2;${p.delta}</span>`:p.delta<0?`<span class="mv-delta d-dn">&#x25BC;${Math.abs(p.delta)}</span>`:`<span class="mv-delta d-eq">&#x2014;</span>`;
-    const medal=p.rank===1?'🥇':p.rank===2?'🥈':p.rank===3?'🥉':p.rank;
-    mr.innerHTML+=`<div class="mv-row"><div class="mv-rank">${medal}</div><div class="mv-name">${p.name}</div><div style="font-size:10px;color:var(--muted);margin-right:6px">${p.
+const INS = {"crowd_reality": [{"actual": "2-1", "crowd": "5-5", "ok": false, "pct": 100, "teams": "Mexico vs Canada"}, {"actual": "0-1", "crowd": "2-1", "ok": false, "pct": 60, "teams": "USA vs Honduras"}, {"actual": "3-2", "crowd": "5-5", "ok": false, "pct": 33, "teams": "Argentina vs Brazil"}, {"actual": "3-0", "crowd": "5-5", "ok": false, "pct": 17, "teams": "England vs France"}, {"actual": "2-2", "crowd": "5-5", "ok": false, "pct": 23, "teams": "Germany vs Spain"}, {"actual": "1-2", "crowd": "1-1", "ok": false, "pct": 38, "teams": "Portugal vs Netherlands"}, {"actual": "2-0", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Japan vs South Korea"}, {"actual": "1-1", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Italy vs Belgium"}, {"actual": "0-2", "crowd": "5-5", "ok": false, "pct": 54, "teams": "Morocco vs Australia"}], "easiest_match": "Italy vs Belgium", "easiest_pct": 62, "exact_pct": 5, "form_guide": [{"batch_pts": 9, "cr": 0, "delta": 0, "form": ["result", "exact", "exact", "result", "wrong", "result"], "gd": 0, "name": "Ian Lyons", "pts": 10, "rank": 1}, {"batch_pts": 6, "cr": 0, "delta": 0, "form": ["exact", "result", "wrong", "result", "wrong", "result"], "gd": 0, "name": "Alison Thrower", "pts": 6, "rank": 2}, {"batch_pts": 5, "cr": 0, "delta": -1, "form": ["result", "wrong",
