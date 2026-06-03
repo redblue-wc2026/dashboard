@@ -217,7 +217,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
     <div class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 02 Jun 2026 20:12</p>
+      <p class="updated">Last updated: 03 Jun 2026 11:53</p>
       <table class="lb-table">
         <thead><tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th></tr></thead>
         <tbody>
@@ -532,28 +532,6 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     <div class="metric-grid-3x3">
       
       <div class="metric-cell">
-        <div class="mc-head" style="background:#9BA3AF">
-          <span class="mc-icon">&amp;#x26A0;</span>
-          <span class="mc-title">Default Rate</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">38%</div>
-          <div class="mc-sub">35 of 92 defaulted to 5-5</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>35 predictions (38%) were not submitted and defaulted to 5-5 (0 pts)</li>
-            
-            <li>Deadline awareness needed — gaps appearing</li>
-            
-            <li>Each default costs up to 3 points vs an exact score — missed opportunities add up</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
         <div class="mc-head" style="background:#1B8B4B">
           <span class="mc-icon">&amp;#x1F680;</span>
           <span class="mc-title">Most Improved Player</span>
@@ -576,66 +554,133 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
       </div>
       
       <div class="metric-cell">
-        <div class="mc-head" style="background:#B8880A">
-          <span class="mc-icon">&amp;#x2B50;</span>
-          <span class="mc-title">Top Scorer This Batch</span>
+        <div class="mc-head" style="background:#1B8B4B">
+          <span class="mc-icon">&amp;#x1F3AF;</span>
+          <span class="mc-title">Easiest Call</span>
         </div>
         <div class="mc-body">
           
-          <div class="mc-value">Ian</div>
-          <div class="mc-sub">8pts this batch</div>
+          <div class="mc-value">62%</div>
+          <div class="mc-sub">Italy vs Belgium</div>
           
           <ul class="mc-analysis">
             
-            <li>Ian Lyons leads this batch with 8pts</li>
+            <li>62% got Italy vs Belgium right</li>
             
-            <li>Batch form is often a better indicator of current quality than the overall standings</li>
+            <li>0% even nailed the exact score — strong collective conviction</li>
             
-            <li>Tight batch competition with several players bunched at the top</li>
+            <li>Strong alignment on this fixture suggests it was a form match with a predictable outcome</li>
             
           </ul>
         </div>
       </div>
       
       <div class="metric-cell">
-        <div class="mc-head" style="background:#B8880A">
-          <span class="mc-icon">&amp;#x1F4C8;</span>
-          <span class="mc-title">Points Trajectory</span>
+        <div class="mc-head" style="background:#1B5BA8">
+          <span class="mc-icon">&amp;#x1F4CA;</span>
+          <span class="mc-title">Prediction Accuracy</span>
         </div>
         <div class="mc-body">
           
-          <div class="mc-value">10pts</div>
-          <div class="mc-sub">Ian Lyons leads</div>
-          <div style="height:80px;margin:8px 0"><canvas id="mc-traj-4"></canvas></div>
+          <div class="mc-value">5%</div>
+          <div class="mc-sub">exact scores | 26% correct results</div>
           
           <ul class="mc-analysis">
             
-            <li>Leader on 10pts — 10pts clear of the bottom</li>
+            <li>5% of 92 predictions were exact scores (3pts)</li>
             
-            <li>Average across 13 players is 3pts</li>
+            <li>26% got the correct result (1pt) — overall accuracy 31%</li>
             
-            <li>Pack is tightly bunched — every fixture counts</li>
+            <li>68% wrong — the margins between players are tight as a result</li>
             
           </ul>
         </div>
       </div>
       
       <div class="metric-cell">
-        <div class="mc-head" style="background:#7B3FA0">
-          <span class="mc-icon">&amp;#x1F52E;</span>
-          <span class="mc-title">Most Predicted Scores</span>
+        <div class="mc-head" style="background:#4E8DD6">
+          <span class="mc-icon">&amp;#x2696;</span>
+          <span class="mc-title">Result Bias</span>
         </div>
         <div class="mc-body">
           
-          <div class="mc-pills-wrap" id="mc-pills-5"></div>
+          <div class="mc-value">29% Home</div>
+          <div class="mc-sub">57% Draw / 14% Away</div>
           
           <ul class="mc-analysis">
             
-            <li>5–5 was the single most popular pick across all players</li>
+            <li>Home wins predicted 29%, draws 57%, away 14%</li>
             
-            <li>Players are expecting open, attacking football</li>
+            <li>Balanced approach — no strong home bias</li>
             
-            <li>18 unique scorelines predicted — strong diversity of opinion across the group</li>
+            <li>Collective outcome bias signals whether players follow form or go with gut instinct</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#1C3A6B">
+          <span class="mc-icon">&amp;#x1F9E0;</span>
+          <span class="mc-title">Group Think Radar</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-value">0%</div>
+          <div class="mc-sub">crowd consensus correct</div>
+          <div style="height:90px;margin:8px 0"><canvas id="mc-radar-5"></canvas></div>
+          
+          <ul class="mc-analysis">
+            
+            <li>The crowd was right 0% of the time when there was strong consensus</li>
+            
+            <li>Easiest collective call: Italy vs Belgium — 62% correct</li>
+            
+            <li>Hardest: Mexico vs Canada — only 0% got it right</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#9BA3AF">
+          <span class="mc-icon">&amp;#x26A0;</span>
+          <span class="mc-title">Default Rate</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-value">38%</div>
+          <div class="mc-sub">35 of 92 defaulted to 5-5</div>
+          
+          <ul class="mc-analysis">
+            
+            <li>35 predictions (38%) were not submitted and defaulted to 5-5 (0 pts)</li>
+            
+            <li>Deadline awareness needed — gaps appearing</li>
+            
+            <li>Each default costs up to 3 points vs an exact score — missed opportunities add up</li>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="metric-cell">
+        <div class="mc-head" style="background:#1B5BA8">
+          <span class="mc-icon">&amp;#x1F4AF;</span>
+          <span class="mc-title">Goals Distribution</span>
+        </div>
+        <div class="mc-body">
+          
+          <div class="mc-value">5 goals</div>
+          <div class="mc-sub">most commonly predicted total</div>
+          
+          <ul class="mc-analysis">
+            
+            <li>Players most often predicted 5 total goals — expecting open football</li>
+            
+            <li>Average predicted total: 3.8 goals per match</li>
+            
+            <li>76% of predictions expected 3 or more goals</li>
             
           </ul>
         </div>
@@ -680,50 +725,6 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
             <li>The crowd was caught out more than expected — 100% of consensus picks failed</li>
             
             <li>Wisdom of crowds works best in structured markets — football is gloriously unpredictable</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#E07B1A">
-          <span class="mc-icon">&amp;#x1F91C;</span>
-          <span class="mc-title">Tightest Battle</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">0pts</div>
-          <div class="mc-sub">Lucie Usher vs Victor Odunaiya</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>Lucie Usher and Victor Odunaiya separated by just 0 points</li>
-            
-            <li>One exact score prediction could flip these two players — nothing is decided yet</li>
-            
-            <li>Tight gaps throughout mean every fixture still matters enormously</li>
-            
-          </ul>
-        </div>
-      </div>
-      
-      <div class="metric-cell">
-        <div class="mc-head" style="background:#1B5BA8">
-          <span class="mc-icon">&amp;#x1F4CA;</span>
-          <span class="mc-title">Prediction Accuracy</span>
-        </div>
-        <div class="mc-body">
-          
-          <div class="mc-value">5%</div>
-          <div class="mc-sub">exact scores | 26% correct results</div>
-          
-          <ul class="mc-analysis">
-            
-            <li>5% of 92 predictions were exact scores (3pts)</li>
-            
-            <li>26% got the correct result (1pt) — overall accuracy 31%</li>
-            
-            <li>68% wrong — the margins between players are tight as a result</li>
             
           </ul>
         </div>
