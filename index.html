@@ -238,7 +238,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
     <div class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 03 Jun 2026 17:20</p>
+      <p class="updated">Last updated: 03 Jun 2026 17:29</p>
       <table class="lb-table">
         <thead><tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th></tr></thead>
         <tbody>
@@ -542,10 +542,13 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     t = localStorage.getItem('wc2026_token') || '';
   }
   window.WC_TOKEN = t;
-  // Update all predict.html links to include the token
+  // Update all predict.html and leaderboard links to carry the token
   if (t) {
     document.querySelectorAll('a[href^="predict.html"]').forEach(function(a){
       a.href = 'predict.html?token=' + t;
+    });
+    document.querySelectorAll('a[href^="leaderboard_full.html"]').forEach(function(a){
+      a.href = 'leaderboard_full.html?token=' + t;
     });
   }
 })();
