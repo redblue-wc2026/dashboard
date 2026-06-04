@@ -36,9 +36,9 @@ body{font-family:'Montserrat',Arial,sans-serif;background:#F0F2F5;padding:0}
 .mc-num{font-size:24px;font-weight:800;color:#fff;line-height:1;letter-spacing:-0.5px;font-family:'Plus Jakarta Sans',sans-serif}
 .mc-unit{font-size:12px;font-weight:400;opacity:0.75}
 .mc-div{height:1px;background:rgba(255,255,255,0.2);margin:8px 0}
-.mc-line{font-size:10.5px;line-height:1.55;color:rgba(255,255,255,0.82);padding:1px 0}
+.mc-line{font-size:10.5px;line-height:1.55;color:rgba(255,255,255,0.82);padding:1px 0;padding-left:1.1em;position:relative}
 .mc-line+.mc-line{margin-top:2px}
-.mc-line::before{content:'·  ';opacity:0.55}
+.mc-line::before{content:'·';opacity:0.55;position:absolute;left:0}
 .refresh-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);padding:6px 14px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;text-decoration:none}
 .refresh-btn:hover{background:rgba(255,255,255,0.25)}
 @media(max-width:700px){.metric-grid{grid-template-columns:1fr 1fr}}
@@ -48,7 +48,7 @@ body{font-family:'Montserrat',Arial,sans-serif;background:#F0F2F5;padding:0}
 <body>
 <div class="page">
 <div class="page-head">
-  <div><h1>&#x1F50D; Competition Insights</h1><p id="head-meta">0 results scored &nbsp;&middot;&nbsp; 13 players &nbsp;&middot;&nbsp; Updated 03 Jun 2026 21:57 BST</p></div>
+  <div><h1>&#x1F50D; Competition Insights</h1><p id="head-meta">0 results scored &nbsp;&middot;&nbsp; 13 players &nbsp;&middot;&nbsp; Updated 04 Jun 2026 07:33 BST</p></div>
   <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
     <a href="javascript:void(0)" class="refresh-btn" onclick="buildCards()">&#x21BB; New selection</a>
     <a href="index.html" id="back-link" class="nav-back">&#x2190; Dashboard</a>
