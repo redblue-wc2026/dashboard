@@ -118,12 +118,6 @@ input.error{border-color:var(--red)}
         </div>
         <div class="error-msg" id="err-rules">Please confirm you have read the rules</div>
       </div>
-      <div class="form-group">
-        <div class="checkbox-group">
-          <input type="checkbox" id="fb_opt_in" name="fb_opt_in">
-          <label for="fb_opt_in">I'd like to join the Red n Blue Review WC2026 Facebook group (recommended for banter and updates!)</label>
-        </div>
-      </div>
 
       <button type="submit" class="btn" id="submit-btn">Register Now →</button>
     </form>
@@ -184,7 +178,6 @@ document.getElementById('reg-form').addEventListener('submit', async function(e)
   const email    = document.getElementById('email').value.trim();
   const phone    = document.getElementById('phone').value.trim();
   const rulesOk  = document.getElementById('rules_confirmed').checked;
-  const fbOptIn  = document.getElementById('fb_opt_in').checked;
 
   let valid = true;
   if (!fullName) { showError('err-name', 'full_name'); valid = false; }
@@ -204,8 +197,7 @@ document.getElementById('reg-form').addEventListener('submit', async function(e)
         full_name:        fullName,
         email:            email,
         phone:            phone,
-        rules_confirmed:  rulesOk,
-        fb_opt_in:        fbOptIn
+        rules_confirmed:  rulesOk
       })
     });
     const data = await res.json();
