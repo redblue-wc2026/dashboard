@@ -134,7 +134,7 @@ input.error{border-color:var(--red)}
       </span><br>
       Use the reference in your confirmation email so we can match your payment.<br><br>
       <strong>Come On You Eagles! 🦅</strong></p>
-      <button onclick="window.close()"
+      <button onclick="closePage()"
          style="display:inline-block;margin-top:24px;background:#1C3A6B;color:#fff;border:none;cursor:pointer;
                 padding:12px 28px;border-radius:7px;font-size:13px;font-weight:700;
                 font-family:'Plus Jakarta Sans',Arial,sans-serif;
@@ -147,6 +147,15 @@ input.error{border-color:var(--red)}
 </div>
 
 <script>
+function closePage() {
+  window.close();
+  // window.close() only works if the page was opened by JS.
+  // If it's still open after 300ms, redirect to the dashboard instead.
+  setTimeout(function() {
+    window.location.href = 'https://redblue-wc2026.github.io/dashboard/';
+  }, 300);
+}
+
 // ── CONFIG — replace GAS_URL after deploying Google Apps Script ──
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbzVQHGbw6gf0kzmbzadN28pRa1MUb2EezPyNSSxjObDR5sDCSoYmWAo-iTAvJm4tNGl/exec';
 
