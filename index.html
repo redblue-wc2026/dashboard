@@ -188,6 +188,14 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .fun-fact-card p{font-size:12px;color:rgba(255,255,255,0.8);line-height:1.6}
 .ff-hl{color:#F5D020;font-weight:700}
 @media(max-width:700px){.ins-grid-trio{grid-template-columns:1fr}.ins-grid-wide{grid-template-columns:1fr}}
+
+/* ── FORM DOTS ──────────────────────────────────────────────── */
+.fd-wrap{display:flex;gap:3px;align-items:center}
+.fd{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;font-family:'Plus Jakarta Sans',Arial,sans-serif;flex-shrink:0;box-shadow:0 2px 5px rgba(0,0,0,0.28)}
+.fd-exact{background:#1B8B4B;color:#fff}
+.fd-result{background:#E87722;color:#fff}
+.fd-wrong{background:#D1D5DB;color:#374151}
+.fd-miss{background:#C4122E;color:#fff}
 </style>
 </head>
 <body>
@@ -236,9 +244,16 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
     <div class="card">
       <div class="section-title">🏆 Live Leaderboard</div>
-      <p class="updated">Last updated: 04 Jun 2026 16:02</p>
-      <table class="lb-table">
-        <thead><tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th></tr></thead>
+      <p class="updated">Last updated: 04 Jun 2026 16:40</p>
+      <div class="form-legend-bar" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:10px;padding:8px 0 10px;border-bottom:1px solid var(--border)">
+  <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#888;font-family:'Plus Jakarta Sans',Arial,sans-serif">Form — Most Recent First:</span>
+  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-exact" style="width:18px;height:18px;font-size:7px">3</span> Exact score</span>
+  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-result" style="width:18px;height:18px;font-size:7px">1</span> Correct result</span>
+  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-wrong" style="width:18px;height:18px;font-size:7px">0</span> Wrong</span>
+  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-miss" style="width:18px;height:18px;font-size:7px">1</span> Missed — got result</span>
+</div>
+<table class="lb-table">
+        <thead><tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th><th style="min-width:160px">Form — Most Recent First</th></tr></thead>
         <tbody>
           
           <tr>
