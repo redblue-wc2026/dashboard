@@ -53,6 +53,9 @@ h1,h2,h3,.hf{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .pts-0{background:#f0f0f0;color:#888}
 .pts-default{background:#FDE8EB;color:var(--red)}
 .result-score{background:var(--prussian);color:#fff;font-weight:800;padding:5px 12px;border-radius:5px;font-size:13px;white-space:nowrap;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.prediction-line{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:6px;flex-wrap:wrap}
+.predicted-label{font-size:10px;color:var(--blue);font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif;text-transform:uppercase;letter-spacing:0.5px}
+.predicted-score{font-size:13px;font-weight:700;color:#111;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .save-btn{width:100%;background:var(--red);color:#fff;border:none;padding:13px;border-radius:7px;font-size:13px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px;margin-top:14px;box-shadow:0 3px 10px rgba(196,18,46,0.35),0 1px 3px rgba(196,18,46,0.20)}
 .save-btn:hover{opacity:0.92}
 .save-btn:disabled{opacity:0.4;cursor:not-allowed;box-shadow:none}
@@ -315,7 +318,14 @@ function renderFixtures(fixtures, batchIdx, deadlineHtml) {
       </div>
       <div style="text-align:center">
         ${hasResult
-          ? `<div class="result-score">${f.result_home} – ${f.result_away}</div>`
+          ? `<div class="result-score">${f.result_home} – ${f.result_away}</div>
+             ${f.predicted_home !== ''
+               ? `<div class="prediction-line">
+                    <span class="predicted-label">You predicted</span>
+                    <span class="predicted-score">${f.predicted_home}–${f.predicted_away}</span>
+                    ${ptsBadge}
+                  </div>`
+               : (ptsBadge ? `<div style="text-align:center;margin-top:4px">${ptsBadge}</div>` : '')}`
           : `<div>
               ${(f.stage && f.stage !== 'GROUP_STAGE' && f.stage !== 'Group Stage')
                 ? `<div style="background:#C4122E;color:#fff;font-size:9px;font-weight:800;text-align:center;padding:3px 8px;border-radius:4px;margin-bottom:5px;letter-spacing:0.5px;box-shadow:0 2px 6px rgba(196,18,46,0.45);font-family:'Plus Jakarta Sans',Arial,sans-serif">FT Only &mdash; Not ET</div>`
@@ -330,12 +340,13 @@ function renderFixtures(fixtures, batchIdx, deadlineHtml) {
                 data-fixture="${f.fixture_id}" data-side="away"
                 value="${f.predicted_away !== '' ? f.predicted_away : ''}"
                 placeholder="?" ${locked || played ? 'disabled' : ''}>
-            </div></div>`
+            </div>
+            ${ptsBadge ? `<div style="text-align:center;margin-top:4px">${ptsBadge}</div>` : ''}
+            ${isScored && !hasResult && f.predicted_home !== ''
+              ? `<div class="fixture-meta" style="text-align:center">Your: ${f.predicted_home}–${f.predicted_away}</div>`
+              : ''}
+            </div>`
         }
-        ${ptsBadge ? `<div style="text-align:center;margin-top:4px">${ptsBadge}</div>` : ''}
-        ${isScored && !hasResult && f.predicted_home !== ''
-          ? `<div class="fixture-meta" style="text-align:center">Your: ${f.predicted_home}–${f.predicted_away}</div>`
-          : ''}
       </div>
       <div>
         <div class="team away">${f.away_team}</div>
