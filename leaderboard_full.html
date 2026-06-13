@@ -36,7 +36,14 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
 .lb tr.you td{background:#FEF9E0;font-weight:700}
 .rk{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;background:var(--surface);color:#555;font-family:'Plus Jakarta Sans',sans-serif}
 .rk1{background:var(--gold);color:var(--prussian)}.rk2{background:#C0C0C0;color:#333}.rk3{background:#CD7F32;color:#fff}
-.pts{font-weight:700;color:var(--red);font-family:'Plus Jakarta Sans',sans-serif}
+.pts{font-weight:700;color:var(--red);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px}
+.lb th:nth-child(4),.lb th:nth-child(5),.lb th:nth-child(6),.lb td:nth-child(4),.lb td:nth-child(5),.lb td:nth-child(6){padding-left:2.4px;padding-right:2.4px}
+.wdl{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;font-weight:800;font-size:12px;font-family:'Plus Jakarta Sans',sans-serif;color:#fff;box-shadow:0 4px 10px rgba(0,0,0,0.5)}
+.wdl-w{background:var(--green)}.wdl-d{background:#E0A100}.wdl-l{background:var(--red)}
+.form-legend{display:flex;justify-content:flex-end;padding:8px 14px;border-bottom:1px solid var(--border)}
+.form-legend-items{display:flex;gap:0;margin-right:72px}
+.fli{display:flex;flex-direction:column;align-items:center;gap:1px;width:42px}
+.fli span:first-child{font-size:9px;color:#555;font-family:'Plus Jakarta Sans',sans-serif;text-align:center;line-height:1.2;height:2.4em}
 .mu{color:#1B8B4B;font-size:11px;font-weight:700}.md{color:var(--red);font-size:11px;font-weight:700}.me{color:#ddd;font-size:11px}
 .tier-sep td{background:var(--surface);font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'Plus Jakarta Sans',sans-serif;padding:6px 14px;border-bottom:1px solid var(--border)}
 .key{display:flex;gap:16px;flex-wrap:wrap;padding:12px 20px;background:var(--surface);border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif}
@@ -47,11 +54,11 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
 .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:7px;text-decoration:none;font-weight:700;font-size:12px;font-family:'Plus Jakarta Sans',sans-serif;color:#fff;letter-spacing:0.2px}
 .btn-nav{background:var(--prussian);box-shadow:0 3px 10px rgba(28,58,107,0.3)}
 .btn-action{background:var(--red);box-shadow:0 3px 10px rgba(196,18,46,0.3)}
-@media(max-width:600px){.lb th:nth-child(5),.lb td:nth-child(5){display:none}}
+@media(max-width:600px){.lb th:nth-child(7),.lb td:nth-child(7){display:none}}
 
 /* ── FORM DOTS ──────────────────────────────────────────────── */
 .fd-wrap{display:flex;gap:3px;align-items:center}
-.fd{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;font-family:'Plus Jakarta Sans',Arial,sans-serif;flex-shrink:0;box-shadow:0 2px 5px rgba(0,0,0,0.28)}
+.fd{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;font-family:'Plus Jakarta Sans',Arial,sans-serif;flex-shrink:0;box-shadow:0 4px 10px rgba(0,0,0,0.5)}
 .fd-exact{background:#1B8B4B;color:#fff}
 .fd-result{background:#E87722;color:#fff}
 .fd-wrong{background:#D1D5DB;color:#374151}
@@ -81,17 +88,18 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
   </div><!-- /page-head -->
 
   <div class="card" style="margin-bottom:20px">
-  <div class="form-legend-bar" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:10px;padding:8px 0 10px;border-bottom:1px solid var(--border)">
-  <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#888;font-family:'Plus Jakarta Sans',Arial,sans-serif">Form — Most Recent First:</span>
-  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-exact" style="width:18px;height:18px;font-size:7px">3</span> Exact score</span>
-  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-result" style="width:18px;height:18px;font-size:7px">1</span> Correct result</span>
-  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-wrong" style="width:18px;height:18px;font-size:7px">0</span> Wrong</span>
-  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-miss" style="width:18px;height:18px;font-size:7px">D</span> Missed — got result</span>
-</div>
+  <div class="form-legend">
+    <div class="form-legend-items">
+      <div class="fli"><span>Exact score</span><span class="fd fd-exact" style="width:18px;height:18px;font-size:7px">3</span></div>
+      <div class="fli"><span>Correct result</span><span class="fd fd-result" style="width:18px;height:18px;font-size:7px">1</span></div>
+      <div class="fli"><span>Wrong Result</span><span class="fd fd-wrong" style="width:18px;height:18px;font-size:7px">0</span></div>
+      <div class="fli"><span>Missed — got result</span><span class="fd fd-miss" style="width:18px;height:18px;font-size:7px;color:#fff">1</span></div>
+    </div>
+  </div>
 <div style="overflow-x:auto">
 <table class="lb">
       <thead>
-        <tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th><th style="min-width:160px">Form — Most Recent First</th></tr>
+        <tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>&#x394;</th><th style="min-width:160px">Form — Most Recent First</th></tr>
       </thead>
       <tbody>
         
@@ -100,7 +108,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">1</span></td>
           <td style="font-weight:600">Andrew Nicol</td>
           <td class="pts">10</td>
-          <td style="color:var(--muted)">4</td>
+          <td><span class="wdl wdl-w">3</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">0</span></td>
           <td style="color:var(--muted)">12</td>
           <td>
             
@@ -131,7 +141,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">2</span></td>
           <td style="font-weight:600">Stephen Self</td>
           <td class="pts">9</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">3</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -160,7 +172,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">3</span></td>
           <td style="font-weight:600">Nigel Croucher</td>
           <td class="pts">8</td>
-          <td style="color:var(--muted)">4</td>
+          <td><span class="wdl wdl-w">2</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">0</span></td>
           <td style="color:var(--muted)">12</td>
           <td>
             
@@ -187,13 +201,15 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
         </tr>
         
         
-        <tr class="tier-sep"><td colspan="7">&mdash; Outside the top 3 &mdash;</td></tr>
+        <tr class="tier-sep"><td colspan="9">&mdash; Outside the top 3 &mdash;</td></tr>
         
         <tr>
           <td><span class="rk ">3</span></td>
           <td style="font-weight:600">ray mcwilliam</td>
           <td class="pts">8</td>
-          <td style="color:var(--muted)">4</td>
+          <td><span class="wdl wdl-w">2</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">0</span></td>
           <td style="color:var(--muted)">12</td>
           <td>
             
@@ -224,7 +240,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">3</span></td>
           <td style="font-weight:600">Jamie Mcnamee</td>
           <td class="pts">8</td>
-          <td style="color:var(--muted)">4</td>
+          <td><span class="wdl wdl-w">2</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">0</span></td>
           <td style="color:var(--muted)">12</td>
           <td>
             
@@ -255,7 +273,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">3</span></td>
           <td style="font-weight:600">Heather Sinclair-Constance</td>
           <td class="pts">8</td>
-          <td style="color:var(--muted)">4</td>
+          <td><span class="wdl wdl-w">2</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">0</span></td>
           <td style="color:var(--muted)">12</td>
           <td>
             
@@ -286,7 +306,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">7</span></td>
           <td style="font-weight:600">Tim richards</td>
           <td class="pts">7</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">2</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">6</td>
           <td>
             
@@ -316,7 +338,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">7</span></td>
           <td style="font-weight:600">Ruari Armstrong</td>
           <td class="pts">7</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">2</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">6</td>
           <td>
             
@@ -346,7 +370,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">9</span></td>
           <td style="font-weight:600">Glenn Turner</td>
           <td class="pts">7</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">2</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -375,7 +401,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">10</span></td>
           <td style="font-weight:600">Gav scorr</td>
           <td class="pts">6</td>
-          <td style="color:var(--muted)">4</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">3</span></td>
+          <td><span class="wdl wdl-l">0</span></td>
           <td style="color:var(--muted)">12</td>
           <td>
             
@@ -406,7 +434,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">11</span></td>
           <td style="font-weight:600">Del Monteiro</td>
           <td class="pts">6</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">2</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">-4</td>
           <td>
             
@@ -434,7 +464,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">11</span></td>
           <td style="font-weight:600">Tom Grover</td>
           <td class="pts">6</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">2</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">-4</td>
           <td>
             
@@ -462,7 +494,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">13</span></td>
           <td style="font-weight:600">Daniel</td>
           <td class="pts">5</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">0</span></td>
           <td style="color:var(--muted)">9</td>
           <td>
             
@@ -490,7 +524,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">14</span></td>
           <td style="font-weight:600">Jason Parsons</td>
           <td class="pts">5</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">8</td>
           <td>
             
@@ -520,7 +556,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">15</span></td>
           <td style="font-weight:600">Yasmin Broome</td>
           <td class="pts">5</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">6</td>
           <td>
             
@@ -550,7 +588,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">15</span></td>
           <td style="font-weight:600">Alison Thrower</td>
           <td class="pts">5</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">6</td>
           <td>
             
@@ -580,7 +620,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">15</span></td>
           <td style="font-weight:600">Mark Saxby</td>
           <td class="pts">5</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">6</td>
           <td>
             
@@ -610,7 +652,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">15</span></td>
           <td style="font-weight:600">Peter Murray</td>
           <td class="pts">5</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">6</td>
           <td>
             
@@ -640,7 +684,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">15</span></td>
           <td style="font-weight:600">Steve Langton</td>
           <td class="pts">5</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">6</td>
           <td>
             
@@ -670,7 +716,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">15</span></td>
           <td style="font-weight:600">Lydia Land</td>
           <td class="pts">5</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">6</td>
           <td>
             
@@ -700,7 +748,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">21</span></td>
           <td style="font-weight:600">Paul Holden</td>
           <td class="pts">4</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">6</td>
           <td>
             
@@ -727,7 +777,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">22</span></td>
           <td style="font-weight:600">Ian Lyons</td>
           <td class="pts">4</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -756,7 +808,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">22</span></td>
           <td style="font-weight:600">Lucie Usher</td>
           <td class="pts">4</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -785,7 +839,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">22</span></td>
           <td style="font-weight:600">Ian Noble</td>
           <td class="pts">4</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -814,7 +870,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">22</span></td>
           <td style="font-weight:600">Ian Donald</td>
           <td class="pts">4</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -843,7 +901,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">22</span></td>
           <td style="font-weight:600">kate smyth</td>
           <td class="pts">4</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -872,7 +932,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">22</span></td>
           <td style="font-weight:600">Nicole Keightley</td>
           <td class="pts">4</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -901,7 +963,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">22</span></td>
           <td style="font-weight:600">Will Nicholls</td>
           <td class="pts">4</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -930,7 +994,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">22</span></td>
           <td style="font-weight:600">Ben O&#39;Reilly</td>
           <td class="pts">4</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -959,7 +1025,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">22</span></td>
           <td style="font-weight:600">Dave Ryan</td>
           <td class="pts">4</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -988,7 +1056,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">31</span></td>
           <td style="font-weight:600">Liz Hockley</td>
           <td class="pts">4</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">0</td>
           <td>
             
@@ -1014,7 +1084,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">32</span></td>
           <td style="font-weight:600">Edmond Asamoah-Twum</td>
           <td class="pts">3</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">3</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">8</td>
           <td>
             
@@ -1044,7 +1116,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">32</span></td>
           <td style="font-weight:600">Vanessa Firminger</td>
           <td class="pts">3</td>
-          <td style="color:var(--muted)">3</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">3</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">8</td>
           <td>
             
@@ -1074,7 +1148,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">34</span></td>
           <td style="font-weight:600">Jon Knox</td>
           <td class="pts">3</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-6</td>
           <td>
             
@@ -1101,7 +1177,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">35</span></td>
           <td style="font-weight:600">Daniel Simmons</td>
           <td class="pts">3</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1128,7 +1206,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">35</span></td>
           <td style="font-weight:600">Paul Gear</td>
           <td class="pts">3</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1155,7 +1235,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">35</span></td>
           <td style="font-weight:600">Claire O&#39;Leary</td>
           <td class="pts">3</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1182,7 +1264,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">35</span></td>
           <td style="font-weight:600">Rob Donovan</td>
           <td class="pts">3</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1209,7 +1293,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">35</span></td>
           <td style="font-weight:600">Richard Corbin</td>
           <td class="pts">3</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1236,7 +1322,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">35</span></td>
           <td style="font-weight:600">Katherine Demery</td>
           <td class="pts">3</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">1</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1263,7 +1351,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">41</span></td>
           <td style="font-weight:600">Ian OLeary</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">6</td>
           <td>
             
@@ -1290,7 +1380,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">42</span></td>
           <td style="font-weight:600">Brendan Palmer</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">4</td>
           <td>
             
@@ -1319,7 +1411,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">42</span></td>
           <td style="font-weight:600">Khehon</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">4</td>
           <td>
             
@@ -1348,7 +1442,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">44</span></td>
           <td style="font-weight:600">Thomas Williams</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -1377,7 +1473,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">44</span></td>
           <td style="font-weight:600">Nick Philpot</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -1406,7 +1504,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">44</span></td>
           <td style="font-weight:600">George Uwagwu</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -1435,7 +1535,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">44</span></td>
           <td style="font-weight:600">Mike Taylor</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -1464,7 +1566,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">44</span></td>
           <td style="font-weight:600">Jennifer Ball</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -1493,7 +1597,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">44</span></td>
           <td style="font-weight:600">Richard Furphy</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -1522,7 +1628,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">44</span></td>
           <td style="font-weight:600">Jamie Currie</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -1551,7 +1659,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">44</span></td>
           <td style="font-weight:600">Dale Saxby</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">2</td>
           <td>
             
@@ -1580,7 +1690,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">52</span></td>
           <td style="font-weight:600">Ashley Martin</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">-2</td>
           <td>
             
@@ -1608,7 +1720,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">52</span></td>
           <td style="font-weight:600">Paul Bristow</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">-2</td>
           <td>
             
@@ -1636,7 +1750,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">52</span></td>
           <td style="font-weight:600">Dave Duggan</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">-2</td>
           <td>
             
@@ -1664,7 +1780,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">52</span></td>
           <td style="font-weight:600">Graham Kitcher</td>
           <td class="pts">2</td>
-          <td style="color:var(--muted)">2</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">2</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">-2</td>
           <td>
             
@@ -1692,7 +1810,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">56</span></td>
           <td style="font-weight:600">Gracie</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">1</span></td>
           <td style="color:var(--muted)">3</td>
           <td>
             
@@ -1716,7 +1836,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">57</span></td>
           <td style="font-weight:600">Jade Drummond-Pearson</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-6</td>
           <td>
             
@@ -1743,7 +1865,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">kevin Sadler</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1770,7 +1894,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">Michael Graham</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1797,7 +1923,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">Nilesh Parmar</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1824,7 +1952,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">Theresa Baker</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1851,7 +1981,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">Jon Cooke</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1878,7 +2010,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">David Bradshaw</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1905,7 +2039,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">Loraine Turner</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1932,7 +2068,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">Oladoyin Joseph</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1959,7 +2097,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">Kerry Alexander-Pearson</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -1986,7 +2126,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">Sharon Pearson</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -2013,7 +2155,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">Martin Fernandes</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -2040,7 +2184,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">58</span></td>
           <td style="font-weight:600">Laura L Deverson</td>
           <td class="pts">1</td>
-          <td style="color:var(--muted)">1</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">1</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-8</td>
           <td>
             
@@ -2067,7 +2213,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">70</span></td>
           <td style="font-weight:600">Eric Ayoola</td>
           <td class="pts">0</td>
-          <td style="color:var(--muted)">0</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">2</span></td>
           <td style="color:var(--muted)">-7</td>
           <td>
             
@@ -2089,7 +2237,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">71</span></td>
           <td style="font-weight:600">Wayne Hudson</td>
           <td class="pts">0</td>
-          <td style="color:var(--muted)">0</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">3</span></td>
           <td style="color:var(--muted)">-10</td>
           <td>
             
@@ -2114,7 +2264,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
           <td><span class="rk ">72</span></td>
           <td style="font-weight:600">John Burton</td>
           <td class="pts">0</td>
-          <td style="color:var(--muted)">0</td>
+          <td><span class="wdl wdl-w">0</span></td>
+          <td><span class="wdl wdl-d">0</span></td>
+          <td><span class="wdl wdl-l">4</span></td>
           <td style="color:var(--muted)">-12</td>
           <td>
             
@@ -2143,7 +2295,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
   </div><!-- /card -->
 
   <div class="footer-bar">
-    <p>Last updated: 13 Jun 2026 06:42</p>
+    <p>Last updated: 13 Jun 2026 09:34</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a href="index.html" class="btn btn-nav">&#x2190; Dashboard</a>
       <a href="predict.html" class="btn btn-action" onclick="goPredict(event)">&#x26BD; My Predictions &#x2192;</a>
@@ -2168,4 +2320,4 @@ function goPredict(e) {
 </script>
 </body>
 </html>
-                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      

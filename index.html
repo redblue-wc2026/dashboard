@@ -47,7 +47,15 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .rank-badge{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;background:var(--surface);color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .rank-1{background:var(--gold);color:var(--prussian)}.rank-2{background:#C0C0C0;color:#333}.rank-3{background:#CD7F32;color:#fff}
 .move-up{color:#28a745;font-size:11px}.move-dn{color:var(--red);font-size:11px}.move-eq{color:#ccc;font-size:11px}
-.pts{font-weight:700;color:var(--red);font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.pts{font-weight:700;color:var(--red);font-family:'Plus Jakarta Sans',Arial,sans-serif;font-size:14px}
+.lb-table th.c,.lb-table td.c{text-align:center}
+.lb-table th:nth-child(4),.lb-table th:nth-child(5),.lb-table th:nth-child(6),.lb-table td:nth-child(4),.lb-table td:nth-child(5),.lb-table td:nth-child(6){padding-left:2.4px;padding-right:2.4px}
+.wdl{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;font-weight:800;font-size:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif;color:#fff;box-shadow:0 4px 10px rgba(0,0,0,0.5)}
+.wdl-w{background:var(--green)}.wdl-d{background:#E0A100}.wdl-l{background:var(--red)}
+.form-legend{display:flex;justify-content:flex-end;padding:8px 0;border-bottom:1px solid var(--border);margin-bottom:10px}
+.form-legend-items{display:flex;gap:0;margin-right:72px}
+.fli{display:flex;flex-direction:column;align-items:center;gap:1px;width:42px}
+.fli span:first-child{font-size:9px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif;text-align:center;line-height:1.2;height:2.4em}
 .result-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:10px}
 .result-teams{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .result-team{font-weight:600;font-size:14px;flex:1;font-family:'Plus Jakarta Sans',Arial,sans-serif}
@@ -191,7 +199,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
 /* ── FORM DOTS ──────────────────────────────────────────────── */
 .fd-wrap{display:flex;gap:3px;align-items:center}
-.fd{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;font-family:'Plus Jakarta Sans',Arial,sans-serif;flex-shrink:0;box-shadow:0 2px 5px rgba(0,0,0,0.28)}
+.fd{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;font-family:'Plus Jakarta Sans',Arial,sans-serif;flex-shrink:0;box-shadow:0 4px 10px rgba(0,0,0,0.5)}
 .fd-exact{background:#1B8B4B;color:#fff}
 .fd-result{background:#E87722;color:#fff}
 .fd-wrong{background:#D1D5DB;color:#374151}
@@ -242,26 +250,29 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
     <div class="card">
       <div class="section-title">🏆 Top 10</div>
-      <p class="updated">Last updated: 13 Jun 2026 06:42</p>
-      <div class="form-legend-bar" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:10px;padding:8px 0 10px;border-bottom:1px solid var(--border)">
-  <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#888;font-family:'Plus Jakarta Sans',Arial,sans-serif">Form — Most Recent First:</span>
-  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-exact" style="width:18px;height:18px;font-size:7px">3</span> Exact score</span>
-  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-result" style="width:18px;height:18px;font-size:7px">1</span> Correct result</span>
-  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-wrong" style="width:18px;height:18px;font-size:7px">0</span> Wrong</span>
-  <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#555;font-family:'Plus Jakarta Sans',Arial,sans-serif"><span class="fd fd-miss" style="width:18px;height:18px;font-size:7px">D</span> Missed — got result</span>
-</div>
+      <p class="updated">Last updated: 13 Jun 2026 09:34</p>
+      <div class="form-legend">
+        <div class="form-legend-items">
+          <div class="fli"><span>Exact score</span><span class="fd fd-exact" style="width:18px;height:18px;font-size:7px">3</span></div>
+          <div class="fli"><span>Correct result</span><span class="fd fd-result" style="width:18px;height:18px;font-size:7px">1</span></div>
+          <div class="fli"><span>Wrong Result</span><span class="fd fd-wrong" style="width:18px;height:18px;font-size:7px">0</span></div>
+          <div class="fli"><span>Missed — got result</span><span class="fd fd-miss" style="width:18px;height:18px;font-size:7px;color:#fff">1</span></div>
+        </div>
+      </div>
 <div style="overflow-x:auto">
 <table class="lb-table">
-        <thead><tr><th>#</th><th>Player</th><th>Pts</th><th>W</th><th>GD</th><th>&#x394;</th><th style="min-width:160px">Form — Most Recent First</th></tr></thead>
+        <thead><tr><th>#</th><th>Player</th><th class="c">Pts</th><th class="c">W</th><th class="c">D</th><th class="c">L</th><th class="c">GD</th><th class="c">&#x394;</th><th style="min-width:160px">Form — Most Recent First</th></tr></thead>
         <tbody>
           
           <tr>
             <td><span class="rank-badge ">1</span></td>
             <td>Andrew Nicol</td>
-            <td class="pts">10</td>
-            <td style="color:var(--muted);font-size:12px">4</td>
-            <td style="color:var(--muted);font-size:12px">12</td>
-            <td>
+            <td class="pts c">10</td>
+            <td class="c"><span class="wdl wdl-w">3</span></td>
+            <td class="c"><span class="wdl wdl-d">1</span></td>
+            <td class="c"><span class="wdl wdl-l">0</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">12</td>
+            <td class="c">
               <span class="move-eq">&#x2014;</span>
               
             </td>
@@ -287,10 +298,12 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">2</span></td>
             <td>Stephen Self</td>
-            <td class="pts">9</td>
-            <td style="color:var(--muted);font-size:12px">3</td>
-            <td style="color:var(--muted);font-size:12px">2</td>
-            <td>
+            <td class="pts c">9</td>
+            <td class="c"><span class="wdl wdl-w">3</span></td>
+            <td class="c"><span class="wdl wdl-d">0</span></td>
+            <td class="c"><span class="wdl wdl-l">1</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">2</td>
+            <td class="c">
               <span class="move-dn">&#x25BC;1</span>
             </td>
             <td>
@@ -314,10 +327,12 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">3</span></td>
             <td>Nigel Croucher</td>
-            <td class="pts">8</td>
-            <td style="color:var(--muted);font-size:12px">4</td>
-            <td style="color:var(--muted);font-size:12px">12</td>
-            <td>
+            <td class="pts c">8</td>
+            <td class="c"><span class="wdl wdl-w">2</span></td>
+            <td class="c"><span class="wdl wdl-d">2</span></td>
+            <td class="c"><span class="wdl wdl-l">0</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">12</td>
+            <td class="c">
               <span class="move-eq">&#x2014;</span>
               
             </td>
@@ -343,10 +358,12 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">3</span></td>
             <td>ray mcwilliam</td>
-            <td class="pts">8</td>
-            <td style="color:var(--muted);font-size:12px">4</td>
-            <td style="color:var(--muted);font-size:12px">12</td>
-            <td>
+            <td class="pts c">8</td>
+            <td class="c"><span class="wdl wdl-w">2</span></td>
+            <td class="c"><span class="wdl wdl-d">2</span></td>
+            <td class="c"><span class="wdl wdl-l">0</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">12</td>
+            <td class="c">
               <span class="move-eq">&#x2014;</span>
               
             </td>
@@ -372,10 +389,12 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">3</span></td>
             <td>Jamie Mcnamee</td>
-            <td class="pts">8</td>
-            <td style="color:var(--muted);font-size:12px">4</td>
-            <td style="color:var(--muted);font-size:12px">12</td>
-            <td>
+            <td class="pts c">8</td>
+            <td class="c"><span class="wdl wdl-w">2</span></td>
+            <td class="c"><span class="wdl wdl-d">2</span></td>
+            <td class="c"><span class="wdl wdl-l">0</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">12</td>
+            <td class="c">
               <span class="move-eq">&#x2014;</span>
               
             </td>
@@ -401,10 +420,12 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">3</span></td>
             <td>Heather Sinclair-Constance</td>
-            <td class="pts">8</td>
-            <td style="color:var(--muted);font-size:12px">4</td>
-            <td style="color:var(--muted);font-size:12px">12</td>
-            <td>
+            <td class="pts c">8</td>
+            <td class="c"><span class="wdl wdl-w">2</span></td>
+            <td class="c"><span class="wdl wdl-d">2</span></td>
+            <td class="c"><span class="wdl wdl-l">0</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">12</td>
+            <td class="c">
               <span class="move-eq">&#x2014;</span>
               
             </td>
@@ -430,10 +451,12 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">7</span></td>
             <td>Tim richards</td>
-            <td class="pts">7</td>
-            <td style="color:var(--muted);font-size:12px">3</td>
-            <td style="color:var(--muted);font-size:12px">6</td>
-            <td>
+            <td class="pts c">7</td>
+            <td class="c"><span class="wdl wdl-w">2</span></td>
+            <td class="c"><span class="wdl wdl-d">1</span></td>
+            <td class="c"><span class="wdl wdl-l">1</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">6</td>
+            <td class="c">
               <span class="move-up">&#x25B2;1</span>
               
             </td>
@@ -458,10 +481,12 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">7</span></td>
             <td>Ruari Armstrong</td>
-            <td class="pts">7</td>
-            <td style="color:var(--muted);font-size:12px">3</td>
-            <td style="color:var(--muted);font-size:12px">6</td>
-            <td>
+            <td class="pts c">7</td>
+            <td class="c"><span class="wdl wdl-w">2</span></td>
+            <td class="c"><span class="wdl wdl-d">1</span></td>
+            <td class="c"><span class="wdl wdl-l">1</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">6</td>
+            <td class="c">
               <span class="move-up">&#x25B2;1</span>
               
             </td>
@@ -486,10 +511,12 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">9</span></td>
             <td>Glenn Turner</td>
-            <td class="pts">7</td>
-            <td style="color:var(--muted);font-size:12px">3</td>
-            <td style="color:var(--muted);font-size:12px">2</td>
-            <td>
+            <td class="pts c">7</td>
+            <td class="c"><span class="wdl wdl-w">2</span></td>
+            <td class="c"><span class="wdl wdl-d">1</span></td>
+            <td class="c"><span class="wdl wdl-l">1</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">2</td>
+            <td class="c">
               <span class="move-dn">&#x25BC;6</span>
             </td>
             <td>
@@ -513,10 +540,12 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
           <tr>
             <td><span class="rank-badge ">10</span></td>
             <td>Gav scorr</td>
-            <td class="pts">6</td>
-            <td style="color:var(--muted);font-size:12px">4</td>
-            <td style="color:var(--muted);font-size:12px">12</td>
-            <td>
+            <td class="pts c">6</td>
+            <td class="c"><span class="wdl wdl-w">1</span></td>
+            <td class="c"><span class="wdl wdl-d">3</span></td>
+            <td class="c"><span class="wdl wdl-l">0</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">12</td>
+            <td class="c">
               <span class="move-up">&#x25B2;2</span>
               
             </td>
@@ -853,4 +882,4 @@ function buildInsightCharts(){
   (INS.form_guide||[]).forEach(p=>{
     const arrow=p.delta>0?`<span class="mv-delta d-up">&#x25B2;${p.delta}</span>`:p.delta<0?`<span class="mv-delta d-dn">&#x25BC;${Math.abs(p.delta)}</span>`:`<span class="mv-delta d-eq">&#x2014;</span>`;
     const medal=p.rank===1?'🥇':p.rank===2?'🥈':p.rank===3?'🥉':p.rank;
-    mr.innerHTML+=`<div class="mv-row"><div class="mv-rank">${medal}</div><div class="mv-name">${p.name}</div><div style="font-size:10px;color:var(--muted);margin-right:6px">${p.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+    mr.innerHTML+=`<div class="mv-row"><div class="mv-rank">${medal}</div><div class="mv-name">${p.name}</div><div style="font-size:10px;color:var(--muted);margin-right:6px">${p.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
