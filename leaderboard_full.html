@@ -39,7 +39,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
 .pts{font-weight:700;color:var(--red);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px}
 .lb th:nth-child(4),.lb th:nth-child(5),.lb th:nth-child(6),.lb td:nth-child(4),.lb td:nth-child(5),.lb td:nth-child(6){padding-left:2.4px;padding-right:2.4px}
 .wdl{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;font-weight:800;font-size:12px;font-family:'Plus Jakarta Sans',sans-serif;color:#fff;box-shadow:0 4px 10px rgba(0,0,0,0.5)}
-.wdl-w{background:var(--green)}.wdl-d{background:#E0A100}.wdl-l{background:var(--red)}
+.wdl-w{background:var(--green)}.wdl-d{background:#E0A100}.wdl-l{background:#D1D5DB;color:#374151}
 .form-legend{display:flex;justify-content:flex-end;padding:8px 14px;border-bottom:1px solid var(--border)}
 .form-legend-items{display:flex;gap:0;margin-right:72px}
 .fli{display:flex;flex-direction:column;align-items:center;gap:1px;width:42px}
@@ -63,6 +63,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
 .fd-result{background:#E87722;color:#fff}
 .fd-wrong{background:#D1D5DB;color:#374151}
 .fd-miss{background:#C4122E;color:#fff}
+.fd-miss0{background:#7C3AED;color:#fff}
 </style>
 </head>
 <body>
@@ -94,6 +95,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
       <div class="fli"><span>Correct result</span><span class="fd fd-result" style="width:18px;height:18px;font-size:7px">1</span></div>
       <div class="fli"><span>Wrong Result</span><span class="fd fd-wrong" style="width:18px;height:18px;font-size:7px">0</span></div>
       <div class="fli"><span>Missed — got result</span><span class="fd fd-miss" style="width:18px;height:18px;font-size:7px;color:#fff">1</span></div>
+      <div class="fli"><span>Missed — wrong result</span><span class="fd fd-miss0" style="width:18px;height:18px;font-size:7px;color:#fff">0</span></div>
     </div>
   </div>
 <div style="overflow-x:auto">
@@ -2295,7 +2297,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
   </div><!-- /card -->
 
   <div class="footer-bar">
-    <p>Last updated: 13 Jun 2026 10:28</p>
+    <p>Last updated: 13 Jun 2026 10:41</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a href="index.html" class="btn btn-nav">&#x2190; Dashboard</a>
       <a href="predict.html" class="btn btn-action" onclick="goPredict(event)">&#x26BD; My Predictions &#x2192;</a>
