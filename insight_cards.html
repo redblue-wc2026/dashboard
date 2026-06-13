@@ -2,142 +2,369 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>RnB WC2026 — Competition Insights</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RnB WC2026 — Insights</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Montserrat',Arial,sans-serif;background:#F0F2F5;padding:0}
-.page{max-width:1060px;margin:0 auto;padding:16px}
-.page-head{background:linear-gradient(135deg,#0F2240 0%,#1C3A6B 60%,#2874C5 100%);border-radius:12px;padding:22px 28px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 6px 24px rgba(0,0,0,0.22)}
-.page-head h1{font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.3px;font-family:'Plus Jakarta Sans',sans-serif}
-.page-head p{font-size:11px;color:rgba(255,255,255,0.6);margin-top:3px}
-.badge-gold{background:#F5D020;color:#1C3A6B;font-size:10px;font-weight:800;padding:5px 12px;border-radius:20px;white-space:nowrap;font-family:'Plus Jakarta Sans',sans-serif}
-.nav-back{color:rgba(255,255,255,0.75);text-decoration:none;font-size:12px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;background:rgba(255,255,255,0.12);padding:6px 14px;border-radius:6px}
-.nav-back:hover{background:rgba(255,255,255,0.2)}
-.section-label{font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1.5px;margin:18px 0 12px;display:flex;align-items:center;gap:10px}
-.section-label .line{flex:1;height:1px;background:#ddd}
-.pill{padding:4px 14px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:0.5px}
-.pill-wc{background:#C4122E;color:#fff}
-.pill-pl{background:#1B5BA8;color:#fff}
-.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:4px}
-.mc{border-radius:12px;padding:16px 16px 14px;position:relative;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,0.28)}
-.mc-r1{background:linear-gradient(145deg,#7D0C1F 0%,#C4122E 100%)}
-.mc-r2{background:linear-gradient(145deg,#9B0F25 0%,#D41535 100%)}
-.mc-p1{background:linear-gradient(145deg,#0A1A38 0%,#1C3A6B 100%)}
-.mc-p2{background:linear-gradient(145deg,#0F2245 0%,#224478 100%)}
-.mc-b1{background:linear-gradient(145deg,#0D3572 0%,#1B5BA8 100%)}
-.mc-b2{background:linear-gradient(145deg,#114089 0%,#2166B8 100%)}
-.mc-s1{background:linear-gradient(145deg,#0D4A8A 0%,#2874C5 100%)}
-.mc-s2{background:linear-gradient(145deg,#105299 0%,#3080CC 100%)}
-.mc-title{font-size:10px;font-weight:700;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-family:'Plus Jakarta Sans',sans-serif}
-.chart-wrap{height:90px;position:relative;margin-bottom:10px}
-.mc-num{font-size:24px;font-weight:800;color:#fff;line-height:1;letter-spacing:-0.5px;font-family:'Plus Jakarta Sans',sans-serif}
-.mc-unit{font-size:12px;font-weight:400;opacity:0.75}
-.mc-div{height:1px;background:rgba(255,255,255,0.2);margin:8px 0}
-.mc-line{font-size:10.5px;line-height:1.55;color:rgba(255,255,255,0.82);padding:1px 0;padding-left:1.1em;position:relative}
-.mc-line+.mc-line{margin-top:2px}
-.mc-line::before{content:'·';opacity:0.55;position:absolute;left:0}
-.refresh-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);padding:6px 14px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;text-decoration:none}
-.refresh-btn:hover{background:rgba(255,255,255,0.25)}
-@media(max-width:700px){.metric-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.metric-grid{grid-template-columns:1fr}}
+  :root {
+    --red:#C4122E; --blue:#1B5BA8; --prussian:#1C3A6B; --sky:#4E8DD6;
+    --gold:#F5D020; --white:#fff; --near-black:#111; --muted:#9BA3AF;
+    --border:#E0E2E8; --surface:#F7F8FA;
+    --red-50:#FDE8EB; --blue-50:#E8F0FB; --green:#1B8B4B; --green-50:#E6F6ED;
+    --orange:#E07B1A; --orange-50:#FEF3E6; --purple:#7B3FA0; --purple-50:#F3EAF9;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:#F0F2F5; font-family:'Montserrat',sans-serif; color:var(--near-black); padding:24px; }
+  .page-header { background:linear-gradient(135deg, var(--prussian) 0%, var(--blue) 60%, var(--sky) 100%); border-radius:16px; padding:32px 36px; margin-bottom:28px; position:relative; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.18); }
+  .page-header::before { content:''; position:absolute; top:-40px; right:-40px; width:220px; height:220px; border-radius:50%; background:rgba(255,255,255,0.06); }
+  .page-header::after  { content:''; position:absolute; bottom:-60px; right:80px; width:140px; height:140px; border-radius:50%; background:rgba(245,208,32,0.12); }
+  .page-header h1 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:26px; color:#fff; }
+  .page-header p  { color:rgba(255,255,255,0.72); font-size:13px; margin-top:6px; }
+  .page-header .badge { display:inline-block; background:var(--gold); color:var(--prussian); font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:11px; padding:4px 12px; border-radius:20px; margin-top:10px; }
+  .section-label { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:11px; color:#666; text-transform:uppercase; letter-spacing:1.5px; margin:24px 0 14px; display:flex; align-items:center; gap:12px; }
+  .section-label .line { flex:1; height:1px; background:#ddd; }
+  .section-label .refresh { font-size:10px; color:#aaa; font-weight:400; letter-spacing:0; text-transform:none; }
+  .pill-wc { background:var(--red); color:#fff; font-size:10px; font-weight:800; padding:4px 14px; border-radius:20px; letter-spacing:0.5px; }
+  .pill-pl { background:var(--blue); color:#fff; font-size:10px; font-weight:800; padding:4px 14px; border-radius:20px; letter-spacing:0.5px; }
+  .metric-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:8px; }
+  .mc { border-radius:12px; padding:16px 16px 14px; position:relative; overflow:hidden; box-shadow:0 8px 28px rgba(0,0,0,0.26); }
+  .mc-r1 { background:linear-gradient(145deg,#7D0C1F 0%,#C4122E 100%); }
+  .mc-r2 { background:linear-gradient(145deg,#9B0F25 0%,#D41535 100%); }
+  .mc-p1 { background:linear-gradient(145deg,#0A1A38 0%,#1C3A6B 100%); }
+  .mc-p2 { background:linear-gradient(145deg,#0F2245 0%,#224478 100%); }
+  .mc-b1 { background:linear-gradient(145deg,#0D3572 0%,#1B5BA8 100%); }
+  .mc-b2 { background:linear-gradient(145deg,#114089 0%,#2166B8 100%); }
+  .mc-s1 { background:linear-gradient(145deg,#0D4A8A 0%,#2874C5 100%); }
+  .mc-s2 { background:linear-gradient(145deg,#105299 0%,#3080CC 100%); }
+  .mc-title { font-size:10px; font-weight:700; color:rgba(255,255,255,0.65); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif; }
+  .chart-wrap { height:90px; position:relative; margin-bottom:10px; }
+  .mc-num { font-size:24px; font-weight:800; color:#fff; line-height:1; letter-spacing:-0.5px; font-family:'Plus Jakarta Sans',sans-serif; }
+  .mc-unit { font-size:12px; font-weight:400; opacity:0.75; }
+  .mc-div { height:1px; background:rgba(255,255,255,0.2); margin:8px 0; }
+  .mc-line { font-size:10.5px; line-height:1.55; color:rgba(255,255,255,0.82); padding:1px 0; padding-left:1.1em; position:relative; }
+  .mc-line + .mc-line { margin-top:2px; }
+  .mc-line::before { content:'·'; opacity:0.55; position:absolute; left:0; }
+  
+  .divider-label { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin:28px 0 12px; display:flex; align-items:center; gap:10px; }
+  .divider-label::after { content:''; flex:1; height:1px; background:var(--border); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; }
+  .grid-wide { display:grid; grid-template-columns:repeat(auto-fit,minmax(480px,1fr)); gap:20px; margin-top:20px; }
+  .grid-trio { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:20px; }
+  .card { background:#fff; border-radius:14px; padding:24px; border:1px solid var(--border); box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+  .card-header { display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+  .card-icon { width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+  .icon-blue { background:var(--blue-50); } .icon-red { background:var(--red-50); } .icon-green { background:var(--green-50); }
+  .icon-gold { background:#FEF9E0; } .icon-orange { background:var(--orange-50); } .icon-purple { background:var(--purple-50); }
+  .card-title { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:15px; color:var(--near-black); }
+  .card-sub { font-size:11px; color:var(--muted); font-family:'Plus Jakarta Sans',sans-serif; margin-top:2px; }
+  .stat-row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px; }
+  .stat-box { flex:1; min-width:90px; background:var(--surface); border-radius:10px; padding:14px 10px; text-align:center; border:1px solid var(--border); }
+  .stat-num { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:28px; display:block; }
+  .stat-lbl { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; font-family:'Plus Jakarta Sans',sans-serif; margin-top:3px; display:block; }
+  .stat-blue .stat-num { color:var(--blue); } .stat-red .stat-num { color:var(--red); } .stat-green .stat-num { color:var(--green); }
+  .form-row { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--surface); }
+  .form-row:last-child { border-bottom:none; }
+  .form-name { font-weight:600; font-size:13px; width:130px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .form-dots { display:flex; gap:5px; align-items:center; }
+  .dot { width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; font-family:'Plus Jakarta Sans',sans-serif; color:#fff; flex-shrink:0; }
+  .dot-exact { background:var(--blue); } .dot-result { background:var(--green); } .dot-wrong { background:#E0E2E8; color:#999; } .dot-miss { background:var(--red); }
+  .form-pts { margin-left:auto; font-weight:700; font-size:13px; color:var(--blue); font-family:'Plus Jakarta Sans',sans-serif; white-space:nowrap; }
+  .match-block { border:1px solid var(--border); border-radius:10px; padding:14px 16px; margin-bottom:10px; }
+  .match-block:last-child { margin-bottom:0; }
+  .mb-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+  .mb-teams { font-weight:700; font-size:13px; font-family:'Plus Jakarta Sans',sans-serif; }
+  .mb-stage { font-size:10px; color:var(--muted); background:var(--surface); padding:2px 8px; border-radius:10px; }
+  .mb-row { display:flex; align-items:center; gap:8px; margin:5px 0; font-size:12px; }
+  .mb-label { width:60px; flex-shrink:0; color:var(--muted); font-size:11px; }
+  .mb-score { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:14px; min-width:36px; text-align:center; }
+  .mb-bar { flex:1; height:6px; background:var(--surface); border-radius:3px; overflow:hidden; }
+  .mb-bar-inner { height:100%; border-radius:3px; }
+  .mb-agree { font-size:11px; color:var(--muted); min-width:36px; text-align:right; }
+  .result-tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; }
+  .tag-correct { background:var(--green-50); color:var(--green); } .tag-wrong { background:var(--red-50); color:var(--red); }
+  .mover-row { display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--surface); }
+  .mover-row:last-child { border-bottom:none; }
+  .mover-rank { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:18px; color:var(--muted); width:30px; text-align:center; }
+  .mover-name { flex:1; font-weight:600; font-size:13px; }
+  .mover-pts { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:14px; color:var(--blue); }
+  .mover-delta { display:flex; align-items:center; gap:3px; font-size:12px; font-weight:700; }
+  .delta-up { color:var(--green); } .delta-down { color:var(--red); } .delta-same { color:var(--muted); }
+  .fun-fact { background:linear-gradient(135deg,var(--prussian),var(--blue)); border-radius:14px; padding:24px; color:#fff; position:relative; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.18); }
+  .fun-fact h3 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:16px; margin-bottom:6px; }
+  .fun-fact p { font-size:13px; color:rgba(255,255,255,0.8); line-height:1.6; }
+  .fun-fact .highlight { color:var(--gold); font-weight:700; }
+  .score-pill { display:inline-flex; align-items:center; gap:6px; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:6px 12px; margin:4px; }
+  .score-val { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:14px; color:var(--near-black); }
+  .score-count { font-size:11px; color:var(--blue); font-weight:600; }
+  .chart-wrap-lg { position:relative; width:100%; }
+  .legend-row { display:flex; gap:16px; flex-wrap:wrap; margin-top:10px; }
+  .legend-item { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
+  .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+
+  @media(max-width:700px) { .metric-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
-<div class="page">
-<div class="page-head">
-  <div><h1>&#x1F50D; Competition Insights</h1><p id="head-meta">4 results scored &nbsp;&middot;&nbsp; 72 players &nbsp;&middot;&nbsp; Updated 13 Jun 2026 07:39 BST</p></div>
-  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-    <a href="javascript:void(0)" class="refresh-btn" onclick="buildCards()">&#x21BB; New selection</a>
-    <a href="index.html" id="back-link" class="nav-back">&#x2190; Dashboard</a>
-  </div>
+<div class="page-header">
+  <h1>&#x1F50D; Competition Insights</h1>
+  <p>Last updated: 13 Jun 2026 06:39 BST &nbsp;&middot;&nbsp; Data from football-data.org API v4 &amp; Google Sheets</p>
+  <span class="badge">&#x1F504; Auto-refreshed daily after matches</span>
 </div>
-<div class="section-label"><span class="pill pill-wc">World Cup metrics</span><span class="line"></span><span style="font-size:10px;color:#888">9 of 24 &middot; live from 11 June 2026</span></div>
-<div class="metric-grid" id="wc-grid"></div>
-<div class="section-label"><span class="line"></span><span class="pill pill-pl">Prediction League metrics</span><span class="line"></span><span style="font-size:10px;color:#888">9 of 24 &middot; refreshed daily</span></div>
-<div class="metric-grid" id="pl-grid"></div>
+
+<div class="section-label">
+  <span class="pill-wc">World Cup Metrics</span>
+  <span class="line"></span>
+  <span class="refresh">&#x1F504; Refreshed daily</span>
 </div>
+<div class="metric-grid">
+<div class="mc mc-r1">
+  <div class="mc-title">Team Form Index</div>
+  <div class="chart-wrap"><canvas id="mc_chart_1"></canvas></div>
+  <div class="mc-num">1.0</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">1.0 leads with 1.0 in Team Form Index.</div><div class="mc-line">8 entries in this metric — the spread tells the full story.</div><div class="mc-line">Updated nightly from football-data.org API v4.</div>
+</div>
+
+<div class="mc mc-p1">
+  <div class="mc-title">Substitute Impact Index</div>
+  <div class="chart-wrap"><canvas id="mc_chart_2"></canvas></div>
+  <div class="mc-num">0</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">Mexico leads with 0 in Substitute Impact Index.</div><div class="mc-line">8 entries in this metric — the spread tells the full story.</div><div class="mc-line">Updated nightly from football-data.org API v4.</div>
+</div>
+
+<div class="mc mc-b1">
+  <div class="mc-title">Corner & Dead-Ball Volume</div>
+  <div class="chart-wrap"><canvas id="mc_chart_3"></canvas></div>
+  <div class="mc-num">0</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">Mexico leads with 0 in Corner & Dead-Ball Volume.</div><div class="mc-line">8 entries in this metric — the spread tells the full story.</div><div class="mc-line">Updated nightly from football-data.org API v4.</div>
+</div>
+
+<div class="mc mc-s1">
+  <div class="mc-title">Cards & Discipline</div>
+  <div class="chart-wrap"><canvas id="mc_chart_4"></canvas></div>
+  <div class="mc-num">0</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">Mexico leads with 0 in Cards & Discipline.</div><div class="mc-line">8 entries in this metric — the spread tells the full story.</div><div class="mc-line">Updated nightly from football-data.org API v4.</div>
+</div>
+
+<div class="mc mc-r2">
+  <div class="mc-title">Average Squad Age</div>
+  <div class="chart-wrap"><canvas id="mc_chart_5"></canvas></div>
+  <div class="mc-num">25.6</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">Ecuador leads with 25.6 in Average Squad Age.</div><div class="mc-line">32 entries in this metric — the spread tells the full story.</div><div class="mc-line">Updated nightly from football-data.org API v4.</div>
+</div>
+
+<div class="mc mc-p2">
+  <div class="mc-title">Continental Performance Split</div>
+  <div class="chart-wrap"><canvas id="mc_chart_6"></canvas></div>
+  <div class="mc-num">2</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">CONCACAF leads with 2 in Continental Performance Split.</div><div class="mc-line">5 entries in this metric — the spread tells the full story.</div><div class="mc-line">Updated nightly from football-data.org API v4.</div>
+</div>
+
+<div class="mc mc-b2">
+  <div class="mc-title">Clean Sheet Standing</div>
+  <div class="chart-wrap"><canvas id="mc_chart_7"></canvas></div>
+  <div class="mc-num">1</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">1 leads with 1 in Clean Sheet Standing.</div><div class="mc-line">8 entries in this metric — the spread tells the full story.</div><div class="mc-line">Updated nightly from football-data.org API v4.</div>
+</div>
+
+<div class="mc mc-s2">
+  <div class="mc-title">Shot Accuracy Index</div>
+  <div class="chart-wrap"><canvas id="mc_chart_8"></canvas></div>
+  <div class="mc-num">0</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">Mexico leads with 0 in Shot Accuracy Index.</div><div class="mc-line">8 entries in this metric — the spread tells the full story.</div><div class="mc-line">Updated nightly from football-data.org API v4.</div>
+</div>
+
+<div class="mc mc-r1">
+  <div class="mc-title">Injury Time Drama</div>
+  <div class="chart-wrap"><canvas id="mc_chart_9"></canvas></div>
+  <div class="mc-num">0</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">Mexico leads with 0 in Injury Time Drama.</div><div class="mc-line">8 entries in this metric — the spread tells the full story.</div><div class="mc-line">Updated nightly from football-data.org API v4.</div>
+</div>
+</div>
+
+<div class="section-label">
+  <span class="line"></span>
+  <span class="pill-pl">Prediction League Metrics</span>
+  <span class="line"></span>
+  <span class="refresh">&#x1F504; Refreshed daily</span>
+</div>
+<div class="metric-grid">
+<div class="mc mc-p1">
+  <div class="mc-title">Hardest to Call</div>
+  <div class="chart-wrap"><canvas id="mc_chart_10"></canvas></div>
+  <div class="mc-num">13 scorelines</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">United States v Paraguay split the league — 13 different scorelines from 72 players.</div><div class="mc-line">That's 18% unique picks. When everyone disagrees, upsets tend to follow.</div><div class="mc-line">Easiest call: South Korea v Czechia — just 10 unique picks.</div>
+</div>
+
+<div class="mc mc-b1">
+  <div class="mc-title">Most Common Incorrect Pick</div>
+  <div class="chart-wrap"><canvas id="mc_chart_11"></canvas></div>
+  <div class="mc-num">69% wrong</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">69% of players got Canada v Bosnia-Herzegovina wrong. The most popular wrong pick: 1–0.</div><div class="mc-line">Actual result was 1–1. The crowd collectively wasted points here.</div><div class="mc-line">This fixture has become the cautionary tale of the campaign.</div>
+</div>
+
+<div class="mc mc-s1">
+  <div class="mc-title">Prediction Volatility</div>
+  <div class="chart-wrap"><canvas id="mc_chart_12"></canvas></div>
+  <div class="mc-num">2.0 goals</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">Ian predicts the biggest winning margins on average — 2.0 goals per game.</div><div class="mc-line">High volatility players bet on blowouts. They look brilliant when it lands.</div><div class="mc-line">Lowest volatility: Steve at 0.5. Every game is a 1-0 to them.</div>
+</div>
+
+<div class="mc mc-p2">
+  <div class="mc-title">Easiest Call</div>
+  <div class="chart-wrap"><canvas id="mc_chart_13"></canvas></div>
+  <div class="mc-num">39%</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">39% of players agreed on 1–1 for South Korea v Czechia.</div><div class="mc-line">When the crowd agrees this strongly, they're right more often than not.</div><div class="mc-line">But remember — last time consensus hit above 75%, the favourite still lost.</div>
+</div>
+
+<div class="mc mc-b2">
+  <div class="mc-title">Cold Streak Monitor</div>
+  <div class="chart-wrap"><canvas id="mc_chart_14"></canvas></div>
+  <div class="mc-num">0pts</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">John is on a cold streak — just 0 points from their last 3 predictions.</div><div class="mc-line">Sequence: 0pts / 0pts / 0pts. Something needs to change.</div><div class="mc-line">Cold streaks in this league rarely last more than 4 games. Bounce-back incoming?</div>
+</div>
+
+<div class="mc mc-s2">
+  <div class="mc-title">Risk-Taking Index</div>
+  <div class="chart-wrap"><canvas id="mc_chart_15"></canvas></div>
+  <div class="mc-num">2.69</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">Mike is the tournament gambler — variance of 2.69, averaging 2.8 goals per prediction.</div><div class="mc-line">Safest picker: Paul at 0.0. Boring? Maybe. Consistent? Absolutely.</div><div class="mc-line">High-risk predictors win big when they land — but they also crash hardest.</div>
+</div>
+
+<div class="mc mc-p1">
+  <div class="mc-title">Momentum Tracker</div>
+  <div class="chart-wrap"><canvas id="mc_chart_16"></canvas></div>
+  <div class="mc-num">+2.0pts</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">Dave is the tournament's form player — averaging 2.0pts per game in their last half of predictions.</div><div class="mc-line">That's a momentum swing of +2.0pts vs their earlier average. They're hitting their stride.</div><div class="mc-line">Going coldest: Jason at -1.5pts. Time to regroup.</div>
+</div>
+
+<div class="mc mc-b1">
+  <div class="mc-title">Recent Form Guide</div>
+  <div class="chart-wrap"><canvas id="mc_chart_17"></canvas></div>
+  <div class="mc-num">10pts</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">Andrew is the hottest predictor right now — 10 points from their last 4 predictions.</div><div class="mc-line">Form sequence: EEER — E = exact, R = result, X = wrong.</div><div class="mc-line">Eric is coldest with 0pts in the same window.</div>
+</div>
+
+<div class="mc mc-s1">
+  <div class="mc-title">Biggest Upset</div>
+  <div class="chart-wrap"><canvas id="mc_chart_18"></canvas></div>
+  <div class="mc-num">0% correct</div>
+  <div class="mc-div"></div>
+  <div class="mc-line">United States v Paraguay finished 4–1 — the result that shocked everyone.</div><div class="mc-line">Only 0% of players got it right. The upset score: 1.0.</div><div class="mc-line">Upset score of 1.0 = nobody called it. United States v Paraguay nearly broke that record.</div>
+</div>
+</div>
+
+
+
 <script>
-const INS={"total_predictions": 279, "exact_pct": 18, "result_pct": 33, "wrong_pct": 49, "n_exact": 51, "n_result": 92, "n_wrong": 136, "match_stats": [{"fixture_id": "F001", "label": "MEX v SOU", "home_team": "Mexico", "away_team": "South Africa", "exact_pct": 35, "result_pct": 55, "n_preds": 66}, {"fixture_id": "F002", "label": "SOU v CZE", "home_team": "South Korea", "away_team": "Czechia", "exact_pct": 13, "result_pct": 19, "n_preds": 69}, {"fixture_id": "F003", "label": "CAN v BOS", "home_team": "Canada", "away_team": "Bosnia-Herzegovina", "exact_pct": 26, "result_pct": 4, "n_preds": 72}, {"fixture_id": "F004", "label": "UNI v PAR", "home_team": "United States", "away_team": "Paraguay", "exact_pct": 0, "result_pct": 56, "n_preds": 72}], "match_labels": ["MEX v SOU", "SOU v CZE", "CAN v BOS", "UNI v PAR"], "top_scores": [{"v": "1-1", "n": 62}, {"v": "2-1", "n": 62}, {"v": "2-0", "n": 45}, {"v": "1-2", "n": 26}, {"v": "1-0", "n": 25}, {"v": "3-1", "n": 14}, {"v": "0-2", "n": 11}, {"v": "2-2", "n": 10}], "crowd_reality": [{"teams": "Mexico vs South Africa", "crowd": "2-0", "actual": "2-0", "pct": 35, "ok": true}, {"teams": "South Korea vs Czechia", "crowd": "1-1", "actual": "2-1", "pct": 39, "ok": false}, {"teams": "Canada vs Bosnia-Herzegovina", "crowd": "1-1", "actual": "1-1", "pct": 26, "ok": true}, {"teams": "United States vs Paraguay", "crowd": "2-1", "actual": "4-1", "pct": 31, "ok": false}], "result_bias": {"pred_home": 55, "pred_draw": 27, "pred_away": 18, "act_home": 75, "act_draw": 25, "act_away": 0}, "goals_histogram": [4, 31, 118, 95, 29, 2], "form_guide": [{"name": "Andrew Nicol", "pts": 10, "cr": 4, "gd": 12, "delta": 0, "rank": 1, "form": ["exact", "exact", "exact", "result"], "batch_pts": 10}, {"name": "Stephen Self", "pts": 9, "cr": 3, "gd": 2, "delta": -1, "rank": 2, "form": ["exact", "exact", "exact", "wrong"], "batch_pts": 9}, {"name": "Nigel Croucher", "pts": 8, "cr": 4, "gd": 12, "delta": 0, "rank": 3, "form": ["exact", "result", "exact", "result"], "batch_pts": 8}, {"name": "ray mcwilliam", "pts": 8, "cr": 4, "gd": 12, "delta": 0, "rank": 3, "form": ["result", "exact", "exact", "result"], "batch_pts": 8}, {"name": "Jamie Mcnamee", "pts": 8, "cr": 4, "gd": 12, "delta": 0, "rank": 3, "form": ["result", "exact", "exact", "result"], "batch_pts": 8}, {"name": "Heather Sinclair-Constance", "pts": 8, "cr": 4, "gd": 12, "delta": 0, "rank": 3, "form": ["result", "exact", "exact", "result"], "batch_pts": 8}, {"name": "Tim richards", "pts": 7, "cr": 3, "gd": 6, "delta": 1, "rank": 7, "form": ["exact", "wrong", "exact", "result"], "batch_pts": 7}, {"name": "Ruari Armstrong", "pts": 7, "cr": 3, "gd": 6, "delta": 1, "rank": 7, "form": ["exact", "wrong", "exact", "result"], "batch_pts": 7}, {"name": "Glenn Turner", "pts": 7, "cr": 3, "gd": 2, "delta": -6, "rank": 9, "form": ["result", "exact", "exact", "wrong"], "batch_pts": 7}, {"name": "Gav scorr", "pts": 6, "cr": 4, "gd": 12, "delta": 2, "rank": 10, "form": ["result", "result", "exact", "result"], "batch_pts": 6}, {"name": "Del Monteiro", "pts": 6, "cr": 2, "gd": -4, "delta": -3, "rank": 11, "form": ["exact", "wrong", "exact", "wrong"], "batch_pts": 6}, {"name": "Tom Grover", "pts": 6, "cr": 2, "gd": -4, "delta": -3, "rank": 11, "form": ["exact", "wrong", "exact", "wrong"], "batch_pts": 6}, {"name": "Daniel", "pts": 5, "cr": 3, "gd": 9, "delta": 1, "rank": 13, "form": ["exact", "result", "result"], "batch_pts": 5}, {"name": "Jason Parsons", "pts": 5, "cr": 3, "gd": 8, "delta": 1, "rank": 14, "form": ["result", "exact", "wrong", "result"], "batch_pts": 5}, {"name": "Yasmin Broome", "pts": 5, "cr": 3, "gd": 6, "delta": 1, "rank": 15, "form": ["result", "wrong", "exact", "result"], "batch_pts": 5}, {"name": "Alison Thrower", "pts": 5, "cr": 3, "gd": 6, "delta": 1, "rank": 15, "form": ["exact", "wrong", "result", "result"], "batch_pts": 5}, {"name": "Mark Saxby", "pts": 5, "cr": 3, "gd": 6, "delta": 1, "rank": 15, "form": ["result", "wrong", "exact", "result"], "batch_pts": 5}, {"name": "Peter Murray", "pts": 5, "cr": 3, "gd": 6, "delta": 1, "rank": 15, "form": ["result", "wrong", "exact", "result"], "batch_pts": 5}, {"name": "Steve Langton", "pts": 5, "cr": 3, "gd": 6, "delta": 1, "rank": 15, "form": ["result", "wrong", "exact", "result"], "batch_pts": 5}, {"name": "Lydia Land", "pts": 5, "cr": 3, "gd": 6, "delta": 1, "rank": 15, "form": ["result", "wrong", "exact", "result"], "batch_pts": 5}, {"name": "Paul Holden", "pts": 4, "cr": 2, "gd": 6, "delta": 1, "rank": 21, "form": ["exact", "wrong", "result"], "batch_pts": 4}, {"name": "Ian Lyons", "pts": 4, "cr": 2, "gd": 2, "delta": 2, "rank": 22, "form": ["exact", "wrong", "wrong", "result"], "batch_pts": 4}, {"name": "Lucie Usher", "pts": 4, "cr": 2, "gd": 2, "delta": 2, "rank": 22, "form": ["exact", "wrong", "wrong", "result"], "batch_pts": 4}, {"name": "Ian Noble", "pts": 4, "cr": 2, "gd": 2, "delta": 2, "rank": 22, "form": ["exact", "wrong", "wrong", "result"], "batch_pts": 4}, {"name": "Ian Donald", "pts": 4, "cr": 2, "gd": 2, "delta": 2, "rank": 22, "form": ["exact", "wrong", "wrong", "result"], "batch_pts": 4}, {"name": "kate smyth", "pts": 4, "cr": 2, "gd": 2, "delta": 2, "rank": 22, "form": ["exact", "wrong", "wrong", "result"], "batch_pts": 4}, {"name": "Nicole Keightley", "pts": 4, "cr": 2, "gd": 2, "delta": 2, "rank": 22, "form": ["exact", "wrong", "wrong", "result"], "batch_pts": 4}, {"name": "Will Nicholls", "pts": 4, "cr": 2, "gd": 2, "delta": 2, "rank": 22, "form": ["exact", "wrong", "wrong", "result"], "batch_pts": 4}, {"name": "Ben O'Reilly", "pts": 4, "cr": 2, "gd": 2, "delta": 2, "rank": 22, "form": ["exact", "wrong", "wrong", "result"], "batch_pts": 4}, {"name": "Dave Ryan", "pts": 4, "cr": 2, "gd": 2, "delta": 2, "rank": 22, "form": ["wrong", "wrong", "exact", "result"], "batch_pts": 4}, {"name": "Liz Hockley", "pts": 4, "cr": 2, "gd": 0, "delta": -18, "rank": 31, "form": ["result", "exact", "wrong"], "batch_pts": 4}, {"name": "Edmond Asamoah-Twum", "pts": 3, "cr": 3, "gd": 8, "delta": 7, "rank": 32, "form": ["result", "result", "wrong", "result"], "batch_pts": 3}, {"name": "Vanessa Firminger", "pts": 3, "cr": 3, "gd": 8, "delta": 7, "rank": 32, "form": ["result", "result", "wrong", "result"], "batch_pts": 3}, {"name": "Jon Knox", "pts": 3, "cr": 1, "gd": -6, "delta": -11, "rank": 34, "form": ["wrong", "exact", "wrong", "wrong"], "batch_pts": 3}, {"name": "Daniel Simmons", "pts": 3, "cr": 1, "gd": -8, "delta": -11, "rank": 35, "form": ["exact", "wrong", "wrong", "wrong"], "batch_pts": 3}, {"name": "Paul Gear", "pts": 3, "cr": 1, "gd": -8, "delta": -11, "rank": 35, "form": ["exact", "wrong", "wrong", "wrong"], "batch_pts": 3}, {"name": "Claire O'Leary", "pts": 3, "cr": 1, "gd": -8, "delta": -11, "rank": 35, "form": ["exact", "wrong", "wrong", "wrong"], "batch_pts": 3}, {"name": "Rob Donovan", "pts": 3, "cr": 1, "gd": -8, "delta": -11, "rank": 35, "form": ["exact", "wrong", "wrong", "wrong"], "batch_pts": 3}, {"name": "Richard Corbin", "pts": 3, "cr": 1, "gd": -8, "delta": -11, "rank": 35, "form": ["exact", "wrong", "wrong", "wrong"], "batch_pts": 3}, {"name": "Katherine Demery", "pts": 3, "cr": 1, "gd": -8, "delta": -11, "rank": 35, "form": ["exact", "wrong", "wrong", "wrong"], "batch_pts": 3}, {"name": "Ian OLeary", "pts": 2, "cr": 2, "gd": 6, "delta": 4, "rank": 41, "form": ["result", "wrong", "result"], "batch_pts": 2}, {"name": "Brendan Palmer", "pts": 2, "cr": 2, "gd": 4, "delta": 4, "rank": 42, "form": ["wrong", "result", "wrong", "result"], "batch_pts": 2}, {"name": "Khehon", "pts": 2, "cr": 2, "gd": 4, "delta": 4, "rank": 42, "form": ["wrong", "result", "wrong", "result"], "batch_pts": 2}, {"name": "Thomas Williams", "pts": 2, "cr": 2, "gd": 2, "delta": 5, "rank": 44, "form": ["result", "wrong", "wrong", "result"], "batch_pts": 2}, {"name": "Nick Philpot", "pts": 2, "cr": 2, "gd": 2, "delta": 5, "rank": 44, "form": ["result", "wrong", "wrong", "result"], "batch_pts": 2}, {"name": "George Uwagwu", "pts": 2, "cr": 2, "gd": 2, "delta": 5, "rank": 44, "form": ["result", "wrong", "wrong", "result"], "batch_pts": 2}, {"name": "Mike Taylor", "pts": 2, "cr": 2, "gd": 2, "delta": 5, "rank": 44, "form": ["result", "wrong", "wrong", "result"], "batch_pts": 2}, {"name": "Jennifer Ball", "pts": 2, "cr": 2, "gd": 2, "delta": 5, "rank": 44, "form": ["result", "wrong", "wrong", "result"], "batch_pts": 2}, {"name": "Richard Furphy", "pts": 2, "cr": 2, "gd": 2, "delta": 5, "rank": 44, "form": ["result", "wrong", "wrong", "result"], "batch_pts": 2}, {"name": "Jamie Currie", "pts": 2, "cr": 2, "gd": 2, "delta": 5, "rank": 44, "form": ["result", "wrong", "wrong", "result"], "batch_pts": 2}, {"name": "Dale Saxby", "pts": 2, "cr": 2, "gd": 2, "delta": 5, "rank": 44, "form": ["result", "wrong", "wrong", "result"], "batch_pts": 2}, {"name": "Ashley Martin", "pts": 2, "cr": 2, "gd": -2, "delta": -13, "rank": 52, "form": ["result", "result", "wrong", "wrong"], "batch_pts": 2}, {"name": "Paul Bristow", "pts": 2, "cr": 2, "gd": -2, "delta": -13, "rank": 52, "form": ["result", "result", "wrong", "wrong"], "batch_pts": 2}, {"name": "Dave Duggan", "pts": 2, "cr": 2, "gd": -2, "delta": -13, "rank": 52, "form": ["result", "result", "wrong", "wrong"], "batch_pts": 2}, {"name": "Graham Kitcher", "pts": 2, "cr": 2, "gd": -2, "delta": -13, "rank": 52, "form": ["result", "result", "wrong", "wrong"], "batch_pts": 2}, {"name": "Gracie", "pts": 1, "cr": 1, "gd": 3, "delta": 13, "rank": 56, "form": ["wrong", "result"], "batch_pts": 1}, {"name": "Jade Drummond-Pearson", "pts": 1, "cr": 1, "gd": -6, "delta": -11, "rank": 57, "form": ["wrong", "result", "wrong", "wrong"], "batch_pts": 1}, {"name": "kevin Sadler", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["result", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "Michael Graham", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["result", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "Nilesh Parmar", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["result", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "Theresa Baker", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["result", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "Jon Cooke", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["result", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "David Bradshaw", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["result", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "Loraine Turner", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["result", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "Oladoyin Joseph", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["result", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "Kerry Alexander-Pearson", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["wrong", "wrong", "result", "wrong"], "batch_pts": 1}, {"name": "Sharon Pearson", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["result", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "Martin Fernandes", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["result", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "Laura L Deverson", "pts": 1, "cr": 1, "gd": -8, "delta": -9, "rank": 58, "form": ["result", "wrong", "wrong", "wrong"], "batch_pts": 1}, {"name": "Eric Ayoola", "pts": 0, "cr": 0, "gd": -7, "delta": -1, "rank": 70, "form": ["wrong", "wrong"], "batch_pts": 0}, {"name": "Wayne Hudson", "pts": 0, "cr": 0, "gd": -10, "delta": 0, "rank": 71, "form": ["wrong", "wrong", "wrong"], "batch_pts": 0}, {"name": "John Burton", "pts": 0, "cr": 0, "gd": -12, "delta": 0, "rank": 72, "form": ["wrong", "wrong", "wrong", "wrong"], "batch_pts": 0}], "trajectory": [{"name": "Andrew Nicol", "data": [3, 6, 9, 10]}, {"name": "Stephen Self", "data": [3, 6, 9, 9]}, {"name": "Nigel Croucher", "data": [3, 4, 7, 8]}], "traj_labels": ["M1", "M2", "M3", "M4"], "hardest_pct": 30, "hardest_match": "Canada vs Bosnia-Herzegovina", "easiest_pct": 90, "easiest_match": "Mexico vs South Africa", "upset_pct": 69, "upset_favourite": "Bosnia-Herzegovina", "upset_result": "drew 1-1"};
-const W='rgba(255,255,255,0.85)',WD='rgba(255,255,255,0.25)',G='#F5D020';
-const COLOURS=['mc-r1','mc-p1','mc-b1','mc-s1','mc-r2','mc-p2','mc-b2','mc-s2','mc-r1'];
-let _cid=0;
-function nid(){return 'mc_'+(++_cid)}
-function cbase(e){return{responsive:true,maintainAspectRatio:false,animation:{duration:500},plugins:{legend:{display:false},tooltip:{enabled:false}},...e}}
-function grads(v){const mx=Math.max(...v),a=[0.85,0.65,0.50,0.38,0.28,0.20];return v.map((x,i)=>x===mx?G:'rgba(255,255,255,'+(a[i]||0.15)+')');}
-function hbar(id,L,V){new Chart(document.getElementById(id),{type:'bar',data:{labels:L,datasets:[{data:V,backgroundColor:grads(V),borderRadius:4,barThickness:12}]},options:cbase({indexAxis:'y',scales:{x:{display:false},y:{display:true,ticks:{color:W,font:{size:9}},grid:{display:false}}}})})}
-function vbar(id,L,V){new Chart(document.getElementById(id),{type:'bar',data:{labels:L,datasets:[{data:V,backgroundColor:grads(V),borderRadius:4,barThickness:13}]},options:cbase({scales:{x:{display:true,ticks:{color:W,font:{size:9}},grid:{display:false}},y:{display:false}}})})}
-function donut(id,p,lbl){new Chart(document.getElementById(id),{type:'doughnut',data:{labels:[lbl||'Yes','No'],datasets:[{data:[p,100-p],backgroundColor:[G,WD],borderWidth:0}]},options:cbase({cutout:'62%',scales:{x:{display:false},y:{display:false}}})})}
-function lChart(id,L,D){new Chart(document.getElementById(id),{type:'line',data:{labels:L,datasets:D.map((d,i)=>({label:d.n,data:d.d,borderColor:i===0?G:W,backgroundColor:i===0?'rgba(245,208,32,0.12)':'rgba(255,255,255,0.05)',tension:0.4,fill:i===0,pointRadius:3,pointBackgroundColor:i===0?G:W}))},options:cbase({scales:{x:{ticks:{color:W,font:{size:8}},grid:{color:WD}},y:{ticks:{color:W,font:{size:8}},grid:{color:WD}}}})})}
-function mkCard(col,title,num,unit,lines){const id=nid();return{h:`<div class="mc ${col}"><div class="mc-title">${title}</div><div class="chart-wrap"><canvas id="${id}"></canvas></div><div class="mc-num">${num} <span class="mc-unit">${unit}</span></div><div class="mc-div"></div>${lines.map(l=>`<div class="mc-line">${l}</div>`).join('')}</div>`,id}}
-function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 
-function plDefs(){
-  const fg=INS.form_guide||[],ts=(INS.top_scores||[]).filter(s=>s.v!=='5-5'),allTs=INS.top_scores||[];
-  const ms=(INS.match_stats||[]),rb=INS.result_bias||{},traj=INS.trajectory||[],tL=INS.traj_labels||[];
-  const ms_hi=ms.slice().sort((a,b)=>b.result_pct-a.result_pct),ms_lo=ms.slice().sort((a,b)=>a.result_pct-b.result_pct);
-  const acc=fg.map(p=>{const t=p.form.length,c=p.form.filter(f=>f==='exact'||f==='result').length;return{n:p.name.split(' ')[0],a:t?Math.round(c/t*100):0}}).sort((a,b)=>b.a-a.a);
-  const ex=fg.map(p=>({n:p.name.split(' ')[0],v:p.form.filter(f=>f==='exact').length})).sort((a,b)=>b.v-a.v);
-  const nr=fg.map(p=>({n:p.name.split(' ')[0],v:p.form.filter(f=>f==='result').length})).sort((a,b)=>b.v-a.v);
-  const miss=fg.map(p=>({n:p.name.split(' ')[0],v:p.form.filter(f=>f==='miss').length})).sort((a,b)=>b.v-a.v);
-  const risk=fg.map(p=>({n:p.name.split(' ')[0],v:p.form.length?+(p.batch_pts/p.form.length).toFixed(1):0})).sort((a,b)=>b.v-a.v);
-  const mom=fg.slice().sort((a,b)=>b.batch_pts-a.batch_pts);
-  const cold=fg.map(p=>({n:p.name.split(' ')[0],v:p.form.slice(-3).filter(f=>f==='exact'||f==='result').length})).sort((a,b)=>a.v-b.v);
-  const tA=acc[0]||{n:'—',a:0},bA=acc[acc.length-1]||{n:'—',a:0},avgA=acc.length?Math.round(acc.reduce((s,r)=>s+r.a,0)/acc.length):0;
-  const tE=ex[0]||{n:'—',v:0},totE=INS.n_exact||0;
-  const tNR=nr[0]||{n:'—',v:0},totNR=nr.reduce((s,r)=>s+r.v,0);
-  const tMiss=miss[0]||{n:'—',v:0},totMiss=miss.reduce((s,r)=>s+r.v,0),tot=INS.total_predictions||1;
-  const missedPct=Math.round(totMiss/tot*100);
-  const tM=mom[0]||{name:'—',batch_pts:0},tR=risk[0]||{n:'—',v:0},bR=risk[risk.length-1]||{n:'—',v:0};
-  const tCo=cold[0]||{n:'—',v:0};
-  const tC=ms_hi[0]||{},bC=ms_lo[0]||{};
-  const gap=traj.length>1?(traj[0].data.slice(-1)[0]||0)-(traj[1].data.slice(-1)[0]||0):0;
-  const ph=rb.pred_home||0,ah=rb.act_home||0,bias=ph-ah;
-  const strk=(()=>{let s=0;for(let i=(fg[0]?.form?.length||0)-1;i>=0;i--){if(fg[0].form[i]==='exact'||fg[0].form[i]==='result')s++;else break;}return s;})();
-  const ts_top=ts[0]||{v:'—',n:0},ts_run=ts[1]||{v:'—',n:0};
-  const up_pct=INS.upset_pct||0,up_fav=INS.upset_favourite||'?',up_res=INS.upset_result||'?';
-  const pts1=(fg[0]||{pts:0}).pts,ptsLast=(fg[fg.length-1]||{pts:0}).pts,ptsMid=fg.length?Math.round(fg.reduce((s,p)=>s+p.pts,0)/fg.length):0;
-  const div_pct=Math.round(ts.length/tot*100),top5pct=Math.round(ts.slice(0,5).reduce((s,r)=>s+r.n,0)/tot*100);
+new Chart(document.getElementById('mc_chart_1'),{type:'bar',
+  data:{labels:["#1", "#2", "#3", "#4", "#5"],datasets:[{data:[1.0, 0.94, 0.19, 0.12, 0.06],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
+new Chart(document.getElementById('mc_chart_2'),{type:'bar',
+  data:{labels:["Mexico", "South Afri", "South Kore", "Czechia", "Canada"],datasets:[{data:[0.0, 0.0, 0.0, 0.0, 0.0],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
+new Chart(document.getElementById('mc_chart_3'),{type:'bar',
+  data:{labels:["Mexico", "South Afri", "South Kore", "Czechia", "Canada"],datasets:[{data:[0.0, 0.0, 0.0, 0.0, 0.0],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
+new Chart(document.getElementById('mc_chart_4'),{type:'bar',
+  data:{labels:["Mexico", "South Afri", "South Kore", "Czechia", "Canada"],datasets:[{data:[0.0, 0.0, 0.0, 0.0, 0.0],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}}}}});
+new Chart(document.getElementById('mc_chart_5'),{type:'bar',
+  data:{labels:["Ecuador", "Morocco", "Spain", "Tunisia", "South Afri"],datasets:[{data:[25.6, 25.9, 26.2, 26.2, 26.3],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
+new Chart(document.getElementById('mc_chart_6'),{type:'bar',
+  data:{labels:["CONCACAF", "AFC", "CAF", "OTHER", "CONMEBOL"],datasets:[{data:[100.0, 100.0, 0.0, 0.0, 0.0],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
+new Chart(document.getElementById('mc_chart_7'),{type:'bar',
+  data:{labels:["#1", "#2", "#3", "#4", "#5"],datasets:[{data:[1.0, 0.0, 0.0, 0.0, 0.0],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
+new Chart(document.getElementById('mc_chart_8'),{type:'bar',
+  data:{labels:["Mexico", "South Afri", "South Kore", "Czechia", "Canada"],datasets:[{data:[0.0, 0.0, 0.0, 0.0, 0.0],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
+new Chart(document.getElementById('mc_chart_9'),{type:'bar',
+  data:{labels:["Mexico", "South Afri", "South Kore", "Czechia", "Canada"],datasets:[{data:[0.0, 0.0, 0.0, 0.0, 0.0],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
 
-  return [
-    c=>{ const {h,id}=mkCard(c,'Accuracy Leaderboard',tA.a+'%','top accuracy',[`${tA.n} leads — ${tA.a}% of picks earn at least 1 point.`,`League average: ${avgA}%. Top and bottom separated by ${tA.a-bA.a}pp.`,`${bA.n} in last at ${bA.a}%. Something has to change.`]);return{h,i:()=>hbar(id,acc.slice(0,5).map(r=>r.n),acc.slice(0,5).map(r=>r.a))}},
-    c=>{ const {h,id}=mkCard(c,'Recent Form Guide',strk,'streak ('+(fg[0]?.name?.split(' ')[0]||'—')+')',[`${fg[0]?.name?.split(' ')[0]||'—'} is on a ${strk}-game scoring streak.`,`${traj[0]?.name?.split(' ')[0]||'—'} leads with ${traj[0]?.data?.slice(-1)[0]||0}pts total.`,`Gap to 2nd is ${gap}pts — far from settled.`]);return{h,i:()=>lChart(id,tL,traj.slice(0,2).map(t=>({n:t.name.split(' ')[0],d:t.data})))}},
-    c=>{ const {h,id}=mkCard(c,'Most Predicted Scores',ts_top.v,'×'+ts_top.n+' picks',[`${ts_top.v} is the crowd favourite — chosen ${ts_top.n} times (excl. 5-5 defaults).`,`Runner-up: ${ts_run.v} (${ts_run.n}×). Real picks only — no defaults counted.`,`${ts.length} unique scorelines predicted across the campaign.`]);return{h,i:()=>vbar(id,ts.slice(0,6).map(s=>s.v),ts.slice(0,6).map(s=>s.n))}},
-    c=>{ const lbl=`${tC.home_team||'?'} v ${tC.away_team||'?'}`;const {h,id}=mkCard(c,'Group Think Radar',(tC.result_pct||0)+'%','consensus',[`${tC.result_pct||0}% of players got ${lbl} right — highest consensus fixture.`,`When the crowd agrees this strongly they are right about 58% of the time.`,`Wisdom of crowds works in markets. Football is gloriously unpredictable.`]);return{h,i:()=>donut(id,tC.result_pct||0,lbl)}},
-    c=>{ const lbl=`${bC.home_team||'?'} v ${bC.away_team||'?'}`;const {h,id}=mkCard(c,'Hardest to Call',(bC.result_pct||0)+'%','correct',[`${lbl} was the hardest call — only ${bC.result_pct||0}% got it right.`,`${bC.exact_pct||0}% hit the exact score. The crowd had no consensus.`,`High spread + low consensus = classic shock result ingredients.`]);return{h,i:()=>donut(id,bC.result_pct||0,lbl)}},
-    c=>{ const {h,id}=mkCard(c,'Biggest Upset',up_pct+'%','backed '+up_fav,[`${up_pct}% of players backed ${up_fav} — ${up_res}.`,`That is the biggest collective mis-call of the campaign so far.`,`When the crowd is this confident, they are spectacularly wrong.`]);return{h,i:()=>donut(id,100-up_pct,'Correct')}},
-    c=>{ const {h,id}=mkCard(c,'Perfect Score Count',totE,'exact hits',[`${totE} perfect scores — at 3pts each that is ${totE*3}pts of pure precision on the board.`,`${tE.n} leads with ${tE.v} exact score${tE.v!==1?'s':''}.`,`~3% random probability per pick. Anyone above that is genuinely good.`]);return{h,i:()=>hbar(id,ex.slice(0,5).map(r=>r.n),ex.slice(0,5).map(r=>r.v))}},
-    c=>{ const {h,id}=mkCard(c,'Near-Miss Index',totNR,'result-only hits',[`${totNR} predictions earned 1pt (right result, wrong score) — so close to the full 3.`,`${tNR.n} leads with ${tNR.v} — calls the result, never the margin.`,`If near-misses earned half a point extra, the leaderboard would look completely different.`]);return{h,i:()=>hbar(id,nr.slice(0,5).map(r=>r.n),nr.slice(0,5).map(r=>r.v))}},
-    c=>{ const {h,id}=mkCard(c,'Missed Predictions',missedPct+'%','defaulted to 5-5',[`${totMiss} of ${tot} predictions (${missedPct}%) were left as the 5-5 default — zero points.`,`${tMiss.n} missed the most submissions with ${tMiss.v} defaults.`,`Every default costs up to 3 points vs an exact score. Deadline awareness matters.`]);return{h,i:()=>hbar(id,miss.filter(r=>r.v>0).slice(0,5).map(r=>r.n),miss.filter(r=>r.v>0).slice(0,5).map(r=>r.v))}},
-    c=>{ const {h,id}=mkCard(c,'Home Bias Score',(bias>=0?'+':'')+bias+'pp','vs actual',[`Players predicted home wins ${ph}% of the time. Actual rate: ${ah}%.`,`A ${bias>0?'+':''}${bias}pp home bias — the crowd ${bias>0?'over':'under'}estimates home advantage.`,`Away teams have ${bias>0?'quietly outperformed':'underperformed'} expectations this campaign.`]);return{h,i:()=>vbar(id,['Pred HW','Actual HW','Pred AW','Actual AW'],[ph,ah,rb.pred_away||0,rb.act_away||0])}},
-    c=>{ const {h,id}=mkCard(c,'Scoreline Diversity',ts.length,'unique scorelines',[`${ts.length} different scorelines (real picks only, excl. defaults). Diversity index: ${div_pct}%.`,`Top 5 scorelines account for ${top5pct}% of all real picks — the crowd has clear favourites.`,`High diversity = genuine disagreement. Low = everyone copying each other.`]);return{h,i:()=>vbar(id,ts.slice(0,6).map(s=>s.v),ts.slice(0,6).map(s=>s.n))}},
-    c=>{ const {h,id}=mkCard(c,'Momentum Tracker','+'+(tM.batch_pts||0),'pts this batch ('+(tM.name?.split(' ')[0]||'—')+')',[`${tM.name?.split(' ')[0]||'—'} is the form player — ${tM.batch_pts||0}pts from the last batch.`,`Their trajectory shows a sharp late-stage acceleration. Timing is everything.`,`Gap to 2nd is ${gap}pts — still reachable, still dangerous.`]);return{h,i:()=>lChart(id,tL,traj.slice(0,2).map(t=>({n:t.name.split(' ')[0],d:t.data})))}},
-    c=>{ const {h,id}=mkCard(c,'Cold Streak Monitor',tCo.v,'pts in last 3 ('+tCo.n+')',[`${tCo.n} is on a cold streak — scoring in just ${tCo.v} of their last 3 predictions.`,`Cold streaks in this league rarely last more than 4 games. Bounce-back incoming?`,`Form table is fluid — the top 3 could look very different in a week.`]);return{h,i:()=>hbar(id,cold.slice(0,5).map(r=>r.n),cold.slice(0,5).map(r=>r.v))}},
-    c=>{ const {h,id}=mkCard(c,'Confidence Score',tR.v,'pts/game ('+tR.n+')',[`${tR.n} earns the most points per game — ${tR.v} per prediction on average.`,`High scorers per game win big when they land — but variance bites hard.`,`Most consistent: ${bR.n} at ${bR.v} pts/game. Reliable, if not spectacular.`]);return{h,i:()=>hbar(id,risk.slice(0,5).map(r=>r.n),risk.slice(0,5).map(r=>r.v))}},
-    c=>{ const {h,id}=mkCard(c,'Points Gap: 1st vs Last',pts1-ptsLast,'pts spread',[`Gap from 1st (${pts1}pts) to last (${ptsLast}pts) is ${pts1-ptsLast} points — early days.`,`League average: ${ptsMid}pts. Top player is ${pts1-ptsMid}pts above the mean.`,`Small gaps close fast — one good batch can reshape the entire top half.`]);return{h,i:()=>hbar(id,fg.slice(0,6).map(p=>p.name.split(' ')[0]),fg.slice(0,6).map(p=>p.pts))}}
-  ];
-}
-
-function buildCards(){
-  _cid=0;
-  Object.values(Chart.instances||{}).forEach(c=>{try{c.destroy()}catch(e){}});
-  document.getElementById('wc-grid').innerHTML=`<div class="mc mc-r1" style="grid-column:1/-1;text-align:center;padding:40px 28px"><div style="font-size:44px;margin-bottom:14px">&#x26BD;</div><div class="mc-num" style="font-size:22px;margin-bottom:8px">World Cup Metrics — Live from 11 June 2026</div><div class="mc-div" style="max-width:320px;margin:12px auto"></div><div class="mc-line" style="max-width:520px;margin:0 auto;font-size:12px">24 stats auto-populate once the tournament kicks off — top scorers, team form, clean sheets, goal timings, cards, attendance and more. Each refresh shows a new random selection.</div></div>`;
-  const sel=shuffle(plDefs()).slice(0,9);
-  const grid=document.getElementById('pl-grid');
-  grid.innerHTML='';
-  const inits=[];
-  sel.forEach((def,i)=>{const {h,i:init}=def(COLOURS[i%9]);grid.innerHTML+=h;inits.push(init);});
-  requestAnimationFrame(()=>inits.forEach(fn=>fn()));
-}
-
-(function(){
-  const t=new URLSearchParams(window.location.search).get('token')||sessionStorage.getItem('wc2026_token')||'';
-  if(t){sessionStorage.setItem('wc2026_token',t);document.getElementById('back-link').href='index.html?token='+t;}
-})();
-
-buildCards();
+new Chart(document.getElementById('mc_chart_10'),{type:'bar',
+  data:{labels:["United Sta", "Mexico v S", "Canada v B", "South Kore"],datasets:[{data:[18, 17, 15, 14],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
+new Chart(document.getElementById('mc_chart_11'),{type:'bar',
+  data:{labels:["Canada v B", "South Kore", "United Sta", "Mexico v S"],datasets:[{data:[69, 68, 44, 11],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
+new Chart(document.getElementById('mc_chart_12'),{type:'bar',
+  data:{labels:["Ian", "Wayne", "Nick", "Mike", "Ian"],datasets:[{data:[2.0, 2.0, 1.8, 1.8, 1.5],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}}}}});
+new Chart(document.getElementById('mc_chart_13'),{type:'doughnut',
+  data:{labels:["Agree (1\u20131)", "Other picks"],datasets:[{data:[39, 61],backgroundColor:["#F5D020", "rgba(255,255,255,0.2)"],borderWidth:0}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},cutout:'60%'}});
+new Chart(document.getElementById('mc_chart_14'),{type:'bar',
+  data:{labels:["John", "Nilesh", "Theresa", "Paul", "Loraine"],datasets:[{data:[0, 0, 0, 0, 0],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
+new Chart(document.getElementById('mc_chart_15'),{type:'bar',
+  data:{labels:["Mike", "Eric", "Rob", "Edmond", "Khehon"],datasets:[{data:[2.69, 2.25, 2.19, 1.5, 1.25],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}}}}});
+new Chart(document.getElementById('mc_chart_16'),{type:'bar',
+  data:{labels:["Dave", "Yasmin", "Mark", "Peter", "Steve"],datasets:[{data:[2.0, 1.5, 1.5, 1.5, 1.5],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}}}}});
+new Chart(document.getElementById('mc_chart_17'),{type:'bar',
+  data:{labels:["Andrew", "Stephen", "Nigel", "ray", "Jamie"],datasets:[{data:[10, 9, 8, 8, 8],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}}}}});
+new Chart(document.getElementById('mc_chart_18'),{type:'bar',
+  data:{labels:["United State", "South Korea ", "Canada v Bos", "Mexico v Sou"],datasets:[{data:[1.0, 0.87, 0.74, 0.65],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}}}}});
 </script>
 </body>
 </html>
