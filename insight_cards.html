@@ -27,7 +27,7 @@
   .section-label .refresh { font-size:10px; color:#aaa; font-weight:400; letter-spacing:0; text-transform:none; }
   .pill-wc { background:var(--red); color:#fff; font-size:10px; font-weight:800; padding:4px 14px; border-radius:20px; letter-spacing:0.5px; }
   .pill-pl { background:var(--blue); color:#fff; font-size:10px; font-weight:800; padding:4px 14px; border-radius:20px; letter-spacing:0.5px; }
-  .metric-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:8px; }
+  .metric-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:8px; }
   .mc { border-radius:12px; padding:16px 16px 14px; position:relative; overflow:hidden; box-shadow:0 8px 28px rgba(0,0,0,0.26); }
   .mc-r1 { background:linear-gradient(145deg,#7D0C1F 0%,#C4122E 100%); }
   .mc-r2 { background:linear-gradient(145deg,#9B0F25 0%,#D41535 100%); }
@@ -102,6 +102,7 @@
   .legend-item { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
   .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
 
+  @media(max-width:1100px) { .metric-grid { grid-template-columns:repeat(2,1fr); } }
   @media(max-width:700px) { .metric-grid { grid-template-columns:1fr; } }
 </style>
 </head>
@@ -365,8 +366,4 @@ new Chart(document.getElementById('mc_chart_18'),{type:'bar',
   data:{labels:["Top 5 Scorelines", "Other"],datasets:[{data:[79, 21],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
   options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
     plugins:{legend:{display:false},tooltip:{enabled:false}},
-    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
-
-</script>
-</body>
-</html>
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',fo
