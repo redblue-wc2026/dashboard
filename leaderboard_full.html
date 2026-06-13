@@ -41,9 +41,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
 .wdl{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;font-weight:800;font-size:12px;font-family:'Plus Jakarta Sans',sans-serif;color:#fff;box-shadow:0 4px 10px rgba(0,0,0,0.5)}
 .wdl-w{background:var(--green)}.wdl-d{background:#E0A100}.wdl-l{background:#D1D5DB;color:#374151}
 .form-legend{display:flex;justify-content:flex-end;padding:8px 14px;border-bottom:1px solid var(--border)}
-.form-legend-items{display:flex;gap:0;margin-right:72px}
-.fli{display:flex;flex-direction:column;align-items:center;gap:1px;width:42px}
-.fli span:first-child{font-size:9px;color:#555;font-family:'Plus Jakarta Sans',sans-serif;text-align:center;line-height:1.2;height:2.4em}
+.form-legend-items{display:flex;gap:0;margin-right:6px}
+.fli{display:flex;flex-direction:column;align-items:center;gap:3px;width:34px}
+.fli span:first-child{font-size:9px;color:#555;font-family:'Plus Jakarta Sans',sans-serif;text-align:center;line-height:1.2;height:3.6em;display:flex;align-items:flex-end;justify-content:center}
 .mu{color:#1B8B4B;font-size:11px;font-weight:700}.md{color:var(--red);font-size:11px;font-weight:700}.me{color:#ddd;font-size:11px}
 .tier-sep td{background:var(--surface);font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'Plus Jakarta Sans',sans-serif;padding:6px 14px;border-bottom:1px solid var(--border)}
 .key{display:flex;gap:16px;flex-wrap:wrap;padding:12px 20px;background:var(--surface);border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif}
@@ -91,11 +91,11 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
   <div class="card" style="margin-bottom:20px">
   <div class="form-legend">
     <div class="form-legend-items">
-      <div class="fli"><span>Exact score</span><span class="fd fd-exact" style="width:18px;height:18px;font-size:7px">3</span></div>
-      <div class="fli"><span>Correct result</span><span class="fd fd-result" style="width:18px;height:18px;font-size:7px">1</span></div>
-      <div class="fli"><span>Wrong Result</span><span class="fd fd-wrong" style="width:18px;height:18px;font-size:7px">0</span></div>
-      <div class="fli"><span>Missed — got result</span><span class="fd fd-miss" style="width:18px;height:18px;font-size:7px;color:#fff">1</span></div>
-      <div class="fli"><span>Missed — wrong result</span><span class="fd fd-miss0" style="width:18px;height:18px;font-size:7px;color:#fff">0</span></div>
+      <div class="fli"><span>Exact<br>score</span><span class="fd fd-exact" style="width:18px;height:18px;font-size:7px">3</span></div>
+      <div class="fli"><span>Correct<br>result</span><span class="fd fd-result" style="width:18px;height:18px;font-size:7px">1</span></div>
+      <div class="fli"><span>Wrong<br>Result</span><span class="fd fd-wrong" style="width:18px;height:18px;font-size:7px">0</span></div>
+      <div class="fli"><span>Missed<br>got<br>result</span><span class="fd fd-miss" style="width:18px;height:18px;font-size:7px;color:#fff">1</span></div>
+      <div class="fli"><span>Missed<br>wrong<br>result</span><span class="fd fd-miss0" style="width:18px;height:18px;font-size:7px;color:#fff">0</span></div>
     </div>
   </div>
 <div style="overflow-x:auto">
@@ -2324,7 +2324,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--surface);color:#111;mi
   </div><!-- /card -->
 
   <div class="footer-bar">
-    <p>Last updated: 13 Jun 2026 11:05</p>
+    <p>Last updated: 13 Jun 2026 10:30</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a href="index.html" class="btn btn-nav">&#x2190; Dashboard</a>
       <a href="predict.html" class="btn btn-action" onclick="goPredict(event)">&#x26BD; My Predictions &#x2192;</a>
