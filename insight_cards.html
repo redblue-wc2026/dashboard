@@ -353,4 +353,20 @@ new Chart(document.getElementById('mc_chart_15'),{type:'bar',
     scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
 new Chart(document.getElementById('mc_chart_16'),{type:'bar',
   data:{labels:["Andrew", "Stephen", "Nigel", "ray", "Jamie"],datasets:[{data:[2.5, 2.25, 2.0, 2.0, 2.0],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
-  options:{r
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}}}}});
+new Chart(document.getElementById('mc_chart_17'),{type:'bar',
+  data:{labels:["Dave", "Richard"],datasets:[{data:[2.0, -1.5],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    indexAxis:"y",scales:{x:{display:false},y:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}}}}});
+new Chart(document.getElementById('mc_chart_18'),{type:'bar',
+  data:{labels:["Top 5 Scorelines", "Other"],datasets:[{data:[79, 21],backgroundColor:["#F5D020", "rgba(255,255,255,0.85)"],borderRadius:3,barThickness:9}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},
+    plugins:{legend:{display:false},tooltip:{enabled:false}},
+    scales:{x:{display:true,ticks:{color:'rgba(255,255,255,0.85)',font:{size:8}},grid:{display:false}},y:{display:false}}}});
+
+</script>
+</body>
+</html>
