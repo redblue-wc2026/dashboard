@@ -73,6 +73,19 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .prize-row:last-child{border-bottom:none}
 .prize-row .label{color:var(--muted)}.prize-row .value{font-weight:700;color:var(--prussian);font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .prize-row.total .value{color:var(--red);font-size:16px;font-weight:800}
+.prize-winner-row{border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:8px}
+.prize-winner-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-left:2px}
+.pw-name{font-size:12px;font-weight:700;color:var(--prussian);font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.pw-paid-name{color:var(--muted);text-decoration:line-through;font-weight:600}
+.pw-badge{font-size:9px;font-weight:800;letter-spacing:0.3px;padding:2px 8px;border-radius:20px;white-space:nowrap;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.pw-live{background:rgba(40,167,69,0.12);border:1px solid var(--green);color:#1B7A35}
+.pw-paid{background:#EEF2F8;border:1px solid var(--border);color:var(--muted)}
+.pw-pending{background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+.mini-lb-table{font-size:12px}
+.mini-lb-table th{padding:7px 6px;font-size:9.5px}
+.mini-lb-table td{padding:7px 6px}
+.mini-lb-table .rank-badge{width:22px;height:22px;font-size:11px}
+.mini-lb-table .wdl{width:20px;height:20px;font-size:11px}
 .mini-stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:10px;text-align:center;border-top:3px solid var(--blue)}
 .mini-stat .val{font-size:22px;font-weight:800;color:var(--red);font-family:'Plus Jakarta Sans',Arial,sans-serif}
 .mini-stat .desc{font-size:11px;color:var(--muted);margin-top:4px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
@@ -250,8 +263,8 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
   <div class="left-col">
 
     <div class="card">
-      <div class="section-title">🏆 Top 10</div>
-      <p class="updated">Last updated: 04 Jul 2026 08:00</p>
+      <div class="section-title">🏆 Overall Top 10</div>
+      <p class="updated">Last updated: 04 Jul 2026 09:18</p>
       <div class="form-legend">
         <div class="form-legend-items">
           <div class="fli"><span>Exact<br>score</span><span class="fd fd-exact" style="width:18px;height:18px;font-size:7px">3</span></div>
@@ -727,7 +740,7 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
     </div>
 
     <div class="card">
-      <div class="section-title">📅 Upcoming Fixtures</div>
+      <div class="section-title">📅 Upcoming Fixtures (Next 2 Days)</div>
       
       
       <div class="fixture-card">
@@ -762,54 +775,6 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
         </div>
       </div>
       
-      <div class="fixture-card">
-        <span class="fixture-time">06 Jul 2026 20:00 BST</span>
-        <div>
-          <div class="fixture-match">Portugal vs Spain</div>
-          <div class="fixture-stage">Last 16</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">07 Jul 2026 01:00 BST</span>
-        <div>
-          <div class="fixture-match">United States vs Belgium</div>
-          <div class="fixture-stage">Last 16</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">07 Jul 2026 17:00 BST</span>
-        <div>
-          <div class="fixture-match">TBC vs TBC</div>
-          <div class="fixture-stage">Last 16</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">07 Jul 2026 21:00 BST</span>
-        <div>
-          <div class="fixture-match">Switzerland vs TBC</div>
-          <div class="fixture-stage">Last 16</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">09 Jul 2026 21:00 BST</span>
-        <div>
-          <div class="fixture-match">TBC vs TBC</div>
-          <div class="fixture-stage">Quarter Finals</div>
-        </div>
-      </div>
-      
-      <div class="fixture-card">
-        <span class="fixture-time">10 Jul 2026 20:00 BST</span>
-        <div>
-          <div class="fixture-match">TBC vs TBC</div>
-          <div class="fixture-stage">Quarter Finals</div>
-        </div>
-      </div>
-      
       
       <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
         <a href="predict.html" class="btn btn-action" onclick="goToMyPredictions(event)">&#x26bd; My Predictions &#x2192;</a>
@@ -821,17 +786,194 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Arial,sans-serif}
 
   <div class="right-col">
     <div class="card">
-      <div class="section-title">💰 Prize Fund</div>
+      <div class="section-title">💰 Prize Fund (Current Positions)</div>
       <div class="prize-bar">
         <div class="prize-row total"><span class="label">Total Prize Fund</span><span class="value">&#xA3;720</span></div>
-        <div class="prize-row"><span class="label">🥇 1st Place</span><span class="value">&#xA3;273</span></div>
-        <div class="prize-row"><span class="label">🥈 2nd Place</span><span class="value">&#xA3;201</span></div>
-        <div class="prize-row"><span class="label">🥉 3rd Place</span><span class="value">&#xA3;100</span></div>
-        <div class="prize-row"><span class="label">📊 Group Stage</span><span class="value">&#xA3;72</span></div>
-        <div class="prize-row"><span class="label">&#x26A1; Knockout</span><span class="value">&#xA3;72</span></div>
+
+        
+        
+        <div class="prize-winner-row">
+          <div class="prize-row" style="border-bottom:none;padding-bottom:2px">
+            <span class="label">🥇 1st Place</span><span class="value">&#xA3;274</span>
+          </div>
+          <div class="prize-winner-meta">
+            <span class="pw-name">Tim richards</span>
+            
+            <span class="pw-badge pw-live">&#x25CF; LIVE</span>
+            
+          </div>
+        </div>
+        
+        <div class="prize-winner-row">
+          <div class="prize-row" style="border-bottom:none;padding-bottom:2px">
+            <span class="label">🥈 2nd Place</span><span class="value">&#xA3;202</span>
+          </div>
+          <div class="prize-winner-meta">
+            <span class="pw-name">Ian Donald</span>
+            
+            <span class="pw-badge pw-live">&#x25CF; LIVE</span>
+            
+          </div>
+        </div>
+        
+        <div class="prize-winner-row">
+          <div class="prize-row" style="border-bottom:none;padding-bottom:2px">
+            <span class="label">🥉 3rd Place</span><span class="value">&#xA3;101</span>
+          </div>
+          <div class="prize-winner-meta">
+            <span class="pw-name">Paul Bristow</span>
+            
+            <span class="pw-badge pw-live">&#x25CF; LIVE</span>
+            
+          </div>
+        </div>
+        
+        <div class="prize-winner-row">
+          <div class="prize-row" style="border-bottom:none;padding-bottom:2px">
+            <span class="label">📊 Group Stage</span><span class="value">&#xA3;72</span>
+          </div>
+          <div class="prize-winner-meta">
+            <span class="pw-name pw-paid-name">Tim richards</span>
+            
+            <span class="pw-badge pw-paid">&#x2714; PAID &#183; 28 Jun 2026</span>
+            
+          </div>
+        </div>
+        
+        <div class="prize-winner-row" style="border-bottom:none">
+          <div class="prize-row" style="border-bottom:none;padding-bottom:2px">
+            <span class="label">⚡ Knockout</span><span class="value">&#xA3;72</span>
+          </div>
+          <div class="prize-winner-meta">
+            <span class="pw-name">Richard Corbin</span>
+            
+            <span class="pw-badge pw-live">&#x25CF; LIVE</span>
+            
+          </div>
+        </div>
+        
+        
       </div>
       <p style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center;font-family:'Plus Jakarta Sans',Arial,sans-serif">28 places remaining — prize grows with every entry!</p>
+      
+      <p style="font-size:10px;color:var(--muted);margin-top:6px;text-align:center;font-style:italic">LIVE = current leader if the competition ended today &#183; PAID = prize already paid out</p>
+      
     </div>
+
+    
+    <div class="card">
+      <div class="section-title">&#x26A1; Knockout Stage Leaderboard (Top 10)</div>
+      <p class="updated">Points from Round of 32 onwards</p>
+      <div style="overflow-x:auto">
+      <table class="lb-table mini-lb-table">
+        <thead><tr><th>Pos</th><th>Player</th><th class="c">PTS</th><th class="c">ES</th><th class="c">CR</th><th class="c">L</th><th class="c">Tie Break GD</th></tr></thead>
+        <tbody>
+          
+          <tr>
+            <td><span class="rank-badge">1</span></td>
+            <td>Richard Corbin</td>
+            <td class="pts c">25</td>
+            <td class="c"><span class="wdl wdl-w">7</span></td>
+            <td class="c"><span class="wdl wdl-d">4</span></td>
+            <td class="c"><span class="wdl wdl-l">5</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">18</td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge">2</span></td>
+            <td>Paul Gear</td>
+            <td class="pts c">24</td>
+            <td class="c"><span class="wdl wdl-w">6</span></td>
+            <td class="c"><span class="wdl wdl-d">6</span></td>
+            <td class="c"><span class="wdl wdl-l">4</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">16</td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge">3</span></td>
+            <td>Laura L Deverson</td>
+            <td class="pts c">23</td>
+            <td class="c"><span class="wdl wdl-w">6</span></td>
+            <td class="c"><span class="wdl wdl-d">5</span></td>
+            <td class="c"><span class="wdl wdl-l">5</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">12</td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge">4</span></td>
+            <td>Tim richards</td>
+            <td class="pts c">21</td>
+            <td class="c"><span class="wdl wdl-w">5</span></td>
+            <td class="c"><span class="wdl wdl-d">6</span></td>
+            <td class="c"><span class="wdl wdl-l">5</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">18</td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge">4</span></td>
+            <td>Richard Furphy</td>
+            <td class="pts c">21</td>
+            <td class="c"><span class="wdl wdl-w">5</span></td>
+            <td class="c"><span class="wdl wdl-d">6</span></td>
+            <td class="c"><span class="wdl wdl-l">5</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">18</td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge">6</span></td>
+            <td>Tom Grover</td>
+            <td class="pts c">21</td>
+            <td class="c"><span class="wdl wdl-w">5</span></td>
+            <td class="c"><span class="wdl wdl-d">6</span></td>
+            <td class="c"><span class="wdl wdl-l">5</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">12</td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge">7</span></td>
+            <td>Paul Bristow</td>
+            <td class="pts c">21</td>
+            <td class="c"><span class="wdl wdl-w">4</span></td>
+            <td class="c"><span class="wdl wdl-d">9</span></td>
+            <td class="c"><span class="wdl wdl-l">3</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">26</td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge">8</span></td>
+            <td>Nilesh Parmar</td>
+            <td class="pts c">20</td>
+            <td class="c"><span class="wdl wdl-w">5</span></td>
+            <td class="c"><span class="wdl wdl-d">5</span></td>
+            <td class="c"><span class="wdl wdl-l">6</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">12</td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge">9</span></td>
+            <td>Alison Thrower</td>
+            <td class="pts c">20</td>
+            <td class="c"><span class="wdl wdl-w">5</span></td>
+            <td class="c"><span class="wdl wdl-d">5</span></td>
+            <td class="c"><span class="wdl wdl-l">6</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">10</td>
+          </tr>
+          
+          <tr>
+            <td><span class="rank-badge">10</span></td>
+            <td>Dale Saxby</td>
+            <td class="pts c">19</td>
+            <td class="c"><span class="wdl wdl-w">5</span></td>
+            <td class="c"><span class="wdl wdl-d">4</span></td>
+            <td class="c"><span class="wdl wdl-l">7</span></td>
+            <td class="c" style="color:var(--muted);font-size:12px">4</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+    </div>
+    
 
     
     <div class="card">
