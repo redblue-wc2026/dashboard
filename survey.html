@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wrap-Up Survey — Red and Blue Review WC2026 Prediction League</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#C4122E;--blue:#1B5BA8;--prussian:#1C3A6B;--sky:#4E8DD6;--gold:#F5D020;--white:#fff;--surface:#F7F8FA;--border:#E0E2E8;--muted:#9BA3AF}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',Arial,sans-serif;background:var(--surface);color:#111;min-height:100vh}
+h1,h2,h3,.hf{font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.nav{background:var(--blue);border-bottom:6px solid var(--red);padding:0 16px;box-shadow:0 2px 12px rgba(27,91,168,0.2)}
+.nav-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;padding:14px 0;gap:16px}
+.nav-brand{color:#fff;font-weight:800;font-size:16px;letter-spacing:1px;text-transform:uppercase;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.nav-brand span{color:var(--gold)}
+.hero{background:var(--blue);padding:36px 16px;border-bottom:3px solid var(--red);text-align:center}
+.hero h1{font-size:clamp(22px,5vw,32px);font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:1.5px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.hero h1 span{color:var(--gold)}
+.hero p{color:rgba(255,255,255,0.7);margin-top:10px;font-size:13px;font-family:'Plus Jakarta Sans',Arial,sans-serif;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6}
+.container{max-width:640px;margin:32px auto;padding:0 16px 48px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:20px}
+.section-title{color:var(--prussian);font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;padding-bottom:10px;border-bottom:2px solid var(--red);font-family:'Plus Jakarta Sans',Arial,sans-serif;display:flex;align-items:center;gap:8px}
+.section-sub{color:var(--muted);font-size:12px;margin-bottom:20px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.q{margin-bottom:24px}
+.q:last-child{margin-bottom:0}
+.q label.qlabel{display:block;font-size:13.5px;font-weight:700;color:#222;margin-bottom:10px;line-height:1.5;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.q .opt{font-weight:400;color:var(--muted);font-size:12px}
+.scale{display:flex;gap:6px;flex-wrap:wrap}
+.scale-btn{flex:1;min-width:36px;text-align:center;padding:10px 4px;border:1px solid var(--border);border-radius:6px;background:#fff;cursor:pointer;font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:700;font-size:13px;color:#444;transition:all .15s}
+.scale-btn:hover{border-color:var(--blue)}
+.scale-btn.selected{background:var(--blue);border-color:var(--blue);color:#fff}
+.scale-labels{display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--muted);font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.choice-group{display:flex;flex-direction:column;gap:8px}
+.choice{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--border);border-radius:6px;cursor:pointer;background:#fff;transition:all .15s}
+.choice:hover{border-color:var(--blue)}
+.choice.selected{border-color:var(--blue);background:#E8F0FB}
+.choice input{accent-color:var(--blue);width:16px;height:16px;cursor:pointer;flex-shrink:0}
+.choice span{font-size:13px;color:#333;font-family:'Montserrat',Arial,sans-serif}
+textarea,input[type=text]{width:100%;background:#fff;border:1px solid var(--border);border-radius:6px;padding:11px 13px;color:#111;font-size:13.5px;font-family:'Montserrat',Arial,sans-serif;resize:vertical;transition:border-color .2s}
+textarea:focus,input[type=text]:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,91,168,0.12)}
+.hint{font-size:11.5px;color:var(--muted);margin-top:6px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.other-box{margin-top:8px;display:none}
+.btn{display:block;width:100%;background:var(--red);color:#fff;border:none;padding:16px;border-radius:7px;font-size:14px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px;box-shadow:0 3px 10px rgba(196,18,46,0.35),0 1px 3px rgba(196,18,46,0.20)}
+.btn:hover{opacity:0.92}
+.btn:disabled{opacity:0.5;cursor:not-allowed;box-shadow:none}
+.progress-wrap{max-width:640px;margin:0 auto;padding:16px 16px 0}
+.progress-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--red);width:0%;transition:width .3s}
+.success-card{display:none;text-align:center;padding:40px 28px}
+.success-card .icon{font-size:56px;margin-bottom:16px}
+.success-card h2{color:var(--prussian);font-size:22px;margin-bottom:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.success-card p{color:#555;font-size:14px;line-height:1.8}
+#loading{text-align:center;padding:40px;color:var(--muted);font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.error-box{background:#FDE8EB;border-left:4px solid var(--red);color:#8C0A1F;padding:12px 14px;border-radius:4px;font-size:12.5px;margin-bottom:16px;display:none;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+.greeting{background:#E8F0FB;border-left:4px solid var(--blue);padding:12px 16px;border-radius:4px;font-size:13px;color:#1C3A6B;margin-bottom:20px;font-family:'Plus Jakarta Sans',Arial,sans-serif}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">🦅 Red and Blue Review <span>WC2026</span></div>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>The Wrap-Up <span>Survey</span></h1>
+  <p>The World Cup's done, the leaderboard's settled — now we want to hear from you. This takes about 5 minutes and helps shape whatever we run next.</p>
+</div>
+
+<div id="greeting-wrap" class="container" style="margin-bottom:0;display:none">
+  <div class="greeting" id="greeting-text"></div>
+</div>
+
+<div class="container" style="margin-top:16px">
+  <form id="survey-form" novalidate>
+
+    <!-- SECTION: Your Experience -->
+    <div class="card">
+      <div class="section-title">🏆 Your Experience</div>
+      <div class="section-sub">How the competition felt to play this year.</div>
+
+      <div class="q">
+        <label class="qlabel">1. Overall, how would you rate the competition this year?</label>
+        <div class="scale" data-name="q1" data-scale="10"></div>
+        <div class="scale-labels"><span>1 = Poor</span><span>10 = Excellent</span></div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">2. How clear were the rules and scoring system?</label>
+        <div class="scale" data-name="q2" data-scale="5"></div>
+        <div class="scale-labels"><span>1 = Very confusing</span><span>5 = Crystal clear</span></div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">3. How did you feel about the volume of emails?</label>
+        <div class="choice-group" data-name="q3">
+          <label class="choice"><input type="radio" name="q3" value="Added to the immersion"><span>Added to the immersion</span></label>
+          <label class="choice"><input type="radio" name="q3" value="Just right"><span>Just right</span></label>
+          <label class="choice"><input type="radio" name="q3" value="Too many"><span>Too many</span></label>
+          <label class="choice"><input type="radio" name="q3" value="Not enough"><span>Not enough</span></label>
+          <label class="choice"><input type="radio" name="q3" value="Irritating"><span>Irritating</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">4. Which email was your favourite?</label>
+        <div class="choice-group" data-name="q4">
+          <label class="choice"><input type="radio" name="q4" value="Morning Dispatch"><span>Morning Dispatch</span></label>
+          <label class="choice"><input type="radio" name="q4" value="The Final Verdict"><span>The Final Verdict</span></label>
+          <label class="choice"><input type="radio" name="q4" value="Both"><span>Both</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">5. How easy was making predictions each round?</label>
+        <div class="scale" data-name="q5" data-scale="5"></div>
+        <div class="scale-labels"><span>1 = Very difficult</span><span>5 = Very easy</span></div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">6. Did you hit any technical issues (missing predictions, wrong scores, etc.)?</label>
+        <div class="choice-group" data-name="q6">
+          <label class="choice"><input type="radio" name="q6" value="Yes"><span>Yes</span></label>
+          <label class="choice"><input type="radio" name="q6" value="No"><span>No</span></label>
+        </div>
+        <div class="other-box" id="q6-detail-box">
+          <textarea id="q6_detail" rows="2" placeholder="What happened? (optional)"></textarea>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">7. Would you recommend this competition to others?</label>
+        <div class="choice-group" data-name="q7">
+          <label class="choice"><input type="radio" name="q7" value="Yes"><span>Yes</span></label>
+          <label class="choice"><input type="radio" name="q7" value="No"><span>No</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">8. What was your favourite moment of the competition? <span class="opt">(optional)</span></label>
+        <textarea id="q8" rows="2" placeholder="A result, a run, a comeback..."></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">9. Any other comments regarding Your Experience, ie what worked for you and what didn't? <span class="opt">(optional)</span></label>
+        <textarea id="q9" rows="3" placeholder="Your thoughts..."></textarea>
+      </div>
+    </div>
+
+    <!-- SECTION: Future Competitions -->
+    <div class="card">
+      <div class="section-title">🔮 Future Competitions</div>
+      <div class="section-sub">Help shape what we build for next time.</div>
+
+      <div class="q">
+        <label class="qlabel">10. At registration, would you rather choose opt-in/opt-out per email type, or just get everything?</label>
+        <div class="choice-group" data-name="q10">
+          <label class="choice"><input type="radio" name="q10" value="Opt-in per email"><span>Opt-in per email</span></label>
+          <label class="choice"><input type="radio" name="q10" value="Opt-out per email"><span>Opt-out per email</span></label>
+          <label class="choice"><input type="radio" name="q10" value="No preference, send everything"><span>No preference, send everything</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">11. Is there any other type of email you'd like to see? What would it contain? <span class="opt">(optional)</span></label>
+        <textarea id="q11" rows="2" placeholder="e.g. a mid-week stats digest..."></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">12. Would you be interested in a Mini League feature which you could set up during the comp (group with up to 10 friends, with your own leaderboard)?</label>
+        <div class="choice-group" data-name="q12">
+          <label class="choice"><input type="radio" name="q12" value="Yes"><span>Yes</span></label>
+          <label class="choice"><input type="radio" name="q12" value="No"><span>No</span></label>
+          <label class="choice"><input type="radio" name="q12" value="Maybe"><span>Maybe</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">13. Which future competitions would you want to join?</label>
+        <div class="choice-group">
+          <label class="choice"><input type="checkbox" class="q13-cb" value="Euros 2028 Prediction League"><span>Euros 2028 Prediction League</span></label>
+          <label class="choice"><input type="checkbox" class="q13-cb" value="Premier League Last Man Standing"><span>Premier League Last Man Standing</span></label>
+          <label class="choice"><input type="checkbox" class="q13-cb" id="q13-other-cb" value="Other"><span>Other — give details</span></label>
+        </div>
+        <div class="other-box" id="q13-other-box">
+          <textarea id="q13_other" rows="2" placeholder="Tell us what you'd like to see (optional)"></textarea>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">14. Would you pay an extra £2 for extra features (mini leagues, access to WhatsApp group)?</label>
+        <div class="choice-group" data-name="q14">
+          <label class="choice"><input type="radio" name="q14" value="Yes"><span>Yes</span></label>
+          <label class="choice"><input type="radio" name="q14" value="No"><span>No</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qlabel">15. What would you consider a fair entry fee for a future competition? <span class="opt">(optional)</span></label>
+        <input type="text" id="q15" placeholder="e.g. £20">
+      </div>
+
+      <div class="q">
+        <label class="qlabel">16. Are there any other features you'd like to see in future competitions? <span class="opt">(optional)</span></label>
+        <textarea id="q16" rows="3" placeholder="Your ideas..."></textarea>
+      </div>
+    </div>
+
+    <!-- SECTION: General Feedback -->
+    <div class="card">
+      <div class="section-title">💬 General Feedback</div>
+      <div class="section-sub">Anything else on your mind.</div>
+
+      <div class="q">
+        <label class="qlabel">17. Anything else you'd like to tell us or suggest for next time? <span class="opt">(optional)</span></label>
+        <textarea id="q17" rows="4" placeholder="We read every response!"></textarea>
+      </div>
+    </div>
+
+    <div class="error-box" id="form-error"></div>
+    <button type="submit" class="btn" id="submit-btn">Submit Survey →</button>
+  </form>
+
+  <div class="card success-card" id="success-card">
+    <div class="icon">🎉</div>
+    <h2>Thanks for your feedback!</h2>
+    <p>You've been part of a brilliant first season. Your answers go straight into planning the next one.<br><br><strong>Come On You Eagles! 🦅</strong></p>
+  </div>
+</div>
+
+<div style="background:#1B5BA8;border-top:5px solid #C4122E;padding:24px 16px;text-align:center;margin-top:8px">
+  <p style="color:#fff;font-size:14px;font-weight:700;font-family:'Plus Jakarta Sans',Arial,sans-serif;margin-bottom:6px">🦅 Come On You Eagles! 🦅</p>
+  <p style="color:rgba(255,255,255,0.65);font-size:12px;font-family:'Plus Jakarta Sans',Arial,sans-serif">Red and Blue Review Podcast</p>
+</div>
+
+<script>
+// ── CONFIG — same GAS deployment used by register.html / predict.html ──
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzVQHGbw6gf0kzmbzadN28pRa1MUb2EezPyNSSxjObDR5sDCSoYmWAo-iTAvJm4tNGl/exec';
+
+// ── Build 1-10 / 1-5 scale buttons ──
+document.querySelectorAll('.scale').forEach(el => {
+  const max = parseInt(el.dataset.scale);
+  for (let i = 1; i <= max; i++) {
+    const btn = document.createElement('div');
+    btn.className = 'scale-btn';
+    btn.textContent = i;
+    btn.dataset.value = i;
+    btn.addEventListener('click', () => {
+      el.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      el.dataset.value = i;
+    });
+    el.appendChild(btn);
+  }
+});
+
+// ── Choice card highlight ──
+document.querySelectorAll('.choice-group[data-name] input[type=radio]').forEach(input => {
+  input.addEventListener('change', () => {
+    const group = input.closest('.choice-group');
+    group.querySelectorAll('.choice').forEach(c => c.classList.remove('selected'));
+    input.closest('.choice').classList.add('selected');
+  });
+});
+document.querySelectorAll('.choice input[type=checkbox]').forEach(input => {
+  input.addEventListener('change', () => {
+    input.closest('.choice').classList.toggle('selected', input.checked);
+  });
+});
+
+// ── Show detail box for Q6 "Yes" ──
+document.querySelectorAll('input[name=q6]').forEach(r => {
+  r.addEventListener('change', () => {
+    document.getElementById('q6-detail-box').style.display = r.value === 'Yes' && r.checked ? 'block' : 'none';
+  });
+});
+
+// ── Show "Other" text box for Q13 ──
+document.getElementById('q13-other-cb').addEventListener('change', function() {
+  document.getElementById('q13-other-box').style.display = this.checked ? 'block' : 'none';
+});
+
+// ── Optional token support: personalised link from wrap-up email (?token=XXX) ──
+const params = new URLSearchParams(window.location.search);
+const token  = params.get('token') || '';
+
+async function init() {
+  if (!token) return;
+  try {
+    const res  = await fetch(`${GAS_URL}?action=getPlayer&token=${encodeURIComponent(token)}`);
+    const data = await res.json();
+    if (data.success && data.full_name) {
+      document.getElementById('greeting-text').textContent = `Hi ${data.full_name} — thanks for playing this season! Your answers below are linked to your entry so we know who to thank.`;
+      document.getElementById('greeting-wrap').style.display = 'block';
+    }
+  } catch (e) {
+    // Silently ignore — survey still works without a recognised token
+  }
+}
+init();
+
+// ── Submit ──
+document.getElementById('survey-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const errBox = document.getElementById('form-error');
+  errBox.style.display = 'none';
+
+  const scaleVal = name => {
+    const el = document.querySelector(`.scale[data-name="${name}"]`);
+    return el.dataset.value || '';
+  };
+  const radioVal = name => {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : '';
+  };
+  const q13vals = Array.from(document.querySelectorAll('.q13-cb:checked')).map(c => c.value);
+
+  // Required fields: q1, q2, q3, q4, q5, q7, q10, q12, q14 (scale + single-choice questions)
+  const required = {
+    'Q1 (overall rating)':   scaleVal('q1'),
+    'Q2 (rules clarity)':    scaleVal('q2'),
+    'Q3 (email volume)':     radioVal('q3'),
+    'Q4 (favourite email)':  radioVal('q4'),
+    'Q5 (prediction ease)':  scaleVal('q5'),
+    'Q6 (technical issues)': radioVal('q6'),
+    'Q7 (recommend)':        radioVal('q7'),
+    'Q10 (email preference)':radioVal('q10'),
+    'Q12 (mini league)':     radioVal('q12'),
+    'Q14 (pay more)':        radioVal('q14')
+  };
+  const missing = Object.keys(required).filter(k => !required[k]);
+  if (missing.length) {
+    errBox.textContent = 'Please answer: ' + missing.join(', ');
+    errBox.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    return;
+  }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  const payload = {
+    action: 'submitSurvey',
+    token:  token,
+    q1: scaleVal('q1'),
+    q2: scaleVal('q2'),
+    q3: radioVal('q3'),
+    q4: radioVal('q4'),
+    q5: scaleVal('q5'),
+    q6: radioVal('q6'),
+    q6_detail: document.getElementById('q6_detail').value.trim(),
+    q7: radioVal('q7'),
+    q8: document.getElementById('q8').value.trim(),
+    q9: document.getElementById('q9').value.trim(),
+    q10: radioVal('q10'),
+    q11: document.getElementById('q11').value.trim(),
+    q12: radioVal('q12'),
+    q13: q13vals,
+    q13_other: document.getElementById('q13_other').value.trim(),
+    q14: radioVal('q14'),
+    q15: document.getElementById('q15').value.trim(),
+    q16: document.getElementById('q16').value.trim(),
+    q17: document.getElementById('q17').value.trim()
+  };
+
+  try {
+    const res  = await fetch(GAS_URL, { method: 'POST', body: JSON.stringify(payload) });
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById('survey-form').style.display = 'none';
+      document.getElementById('success-card').style.display = 'block';
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    } else {
+      errBox.textContent = 'Submission failed: ' + (data.error || 'Unknown error');
+      errBox.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Submit Survey →';
+    }
+  } catch (err) {
+    errBox.textContent = 'Network error — please try again';
+    errBox.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Submit Survey →';
+  }
+});
+</script>
+
+</body>
+</html>
