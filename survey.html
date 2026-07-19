@@ -69,10 +69,6 @@ textarea:focus,input[type=text]:focus{outline:none;border-color:var(--blue);box-
   <p>The World Cup's done, the leaderboard's settled — now we want to hear from you. This takes about 5 minutes and helps shape whatever we run next.</p>
 </div>
 
-<div id="greeting-wrap" class="container" style="margin-bottom:0;display:none">
-  <div class="greeting" id="greeting-text"></div>
-</div>
-
 <div class="container" style="margin-top:16px">
   <form id="survey-form" novalidate>
 
@@ -237,6 +233,7 @@ textarea:focus,input[type=text]:focus{outline:none;border-color:var(--blue);box-
 
 <script>
 // ── CONFIG — same GAS deployment used by register.html / predict.html ──
+// This survey is anonymous — no token/player lookup is performed.
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbzVQHGbw6gf0kzmbzadN28pRa1MUb2EezPyNSSxjObDR5sDCSoYmWAo-iTAvJm4tNGl/exec';
 
 // ── Build 1-10 / 1-5 scale buttons ──
@@ -282,25 +279,6 @@ document.getElementById('q13-other-cb').addEventListener('change', function() {
   document.getElementById('q13-other-box').style.display = this.checked ? 'block' : 'none';
 });
 
-// ── Optional token support: personalised link from wrap-up email (?token=XXX) ──
-const params = new URLSearchParams(window.location.search);
-const token  = params.get('token') || '';
-
-async function init() {
-  if (!token) return;
-  try {
-    const res  = await fetch(`${GAS_URL}?action=getPlayer&token=${encodeURIComponent(token)}`);
-    const data = await res.json();
-    if (data.success && data.full_name) {
-      document.getElementById('greeting-text').textContent = `Hi ${data.full_name} — thanks for playing this season! Your answers below are linked to your entry so we know who to thank.`;
-      document.getElementById('greeting-wrap').style.display = 'block';
-    }
-  } catch (e) {
-    // Silently ignore — survey still works without a recognised token
-  }
-}
-init();
-
 // ── Submit ──
 document.getElementById('survey-form').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -344,7 +322,6 @@ document.getElementById('survey-form').addEventListener('submit', async function
 
   const payload = {
     action: 'submitSurvey',
-    token:  token,
     q1: scaleVal('q1'),
     q2: scaleVal('q2'),
     q3: radioVal('q3'),
